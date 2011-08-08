@@ -59,9 +59,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Ex02.ConsoleUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Temp\Ex02.ConsoleUtils.dll</HintPath>
+    <Reference Include="Ex02.ConsoleUtils">
+      <HintPath>C:\Temp\Ex02.ConsoleUtils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>

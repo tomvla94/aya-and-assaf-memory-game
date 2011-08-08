@@ -26,7 +26,7 @@ namespace C11_Ex02
             Console.WriteLine("Welcome to the Game!");
 
             InitGame();
-            
+            Console.WriteLine(MemBL.Instance.PrintGameBoard());
             
             // Get Player Name
             // Get number of Players in the Game
@@ -34,6 +34,7 @@ namespace C11_Ex02
             // Play the Game
             // Print Error Messages to Screen
             // When the Game is Over - Ask if To Play another Game
+            Console.ReadLine();
         }
 
         /// <summary>

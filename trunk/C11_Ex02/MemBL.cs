@@ -37,6 +37,16 @@ namespace C11_Ex02
             }
         }
 
+        public bool IsGameExists
+        {
+            get { return v_GameExists; }
+        }
+
+        public bool IsGameEnd
+        {
+            get { return v_GameEnded; }
+        }
+
         /// <summary>
         /// Creates the Memory Game Board
         /// </summary>
@@ -102,6 +112,11 @@ namespace C11_Ex02
             // Throw Error Messages if Input not Valid
             // Score The Player if Player is Correct
             // Change Turns
+        }
+
+        public string PrintGameBoard()
+        {
+            return m_MemoryBoard.PrintBoard();
         }
     }
 }
