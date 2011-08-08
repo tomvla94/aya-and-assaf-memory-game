@@ -16,7 +16,6 @@ namespace C11_Ex02
     /// </summary>
     public class Player
     {
-
         private string m_Name;
         private int m_Score;
 

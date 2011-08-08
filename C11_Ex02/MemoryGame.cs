@@ -22,10 +22,12 @@ namespace C11_Ex02
         /// </summary>
         public static void Main() 
         {
-            InitGame();
-            
             // Welcome To the Game
             Console.WriteLine("Welcome to the Game!");
+
+            InitGame();
+            
+            
             // Get Player Name
             // Get number of Players in the Game
             // Construct Players (Human and Computer)
@@ -82,7 +84,8 @@ namespace C11_Ex02
                     isLegal = false;
                     Console.WriteLine("wrong input, please choose the board size: (4x4, 4X6, 6X4, 6X6)");
                 }
-            } while (!isLegal);
+            } 
+            while (!isLegal);
 
             MemBL.Instance.CreateMemoryGame(width, height);
         }
@@ -176,6 +179,5 @@ please type your name: ");
         /// <param name="i_NumberOfHumans">Number of Human Players</param>
         /// <param name="i_NumberOfComputers">Number of Computerized Players</param>
         private void CreatePlayers(int i_NumberOfHumans, int i_NumberOfComputers) { }
-        
     }
 }

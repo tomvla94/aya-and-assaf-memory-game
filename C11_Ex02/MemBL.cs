@@ -16,19 +16,14 @@ namespace C11_Ex02
     /// </summary>
     public class MemBL
     {
-        #region Fields
 
+        private static MemBL s_MemBLInstance;
         private MemBoard m_MemoryBoard = new MemBoard();
         private bool v_GameExists = false;
         private bool v_GameEnded = false;
         private int m_CurrentPlayingPlayerIndex;
         private List<Player> m_players = new List<Player>();
-
-        #endregion
-        
-        #region Instance
-
-        private static MemBL s_MemBLInstance;
+  
         public static MemBL Instance
         {
             get
@@ -37,11 +32,10 @@ namespace C11_Ex02
                 {
                     s_MemBLInstance = new MemBL();
                 }
+
                 return s_MemBLInstance;
             }
         }
-
-        #endregion
 
         /// <summary>
         /// Creates the Memory Game Board
@@ -57,7 +51,7 @@ namespace C11_Ex02
         /// Initializes the Memory Board Game.
         /// Creates The Board and Sets other Important Variables
         /// </summary>
-        public void InitializeMemoryGame( ) 
+        public void InitializeMemoryGame()
         { 
             // Create the Memory Game
             CreateMemoryGame(0, 0);
@@ -70,13 +64,21 @@ namespace C11_Ex02
         }
 
         /// <summary>
-        /// initialize players- human against computer
+        /// Initialize the Players
         /// </summary>
-        /// <param name="i_playerName"></param>
-        public void InitializePlayers(string i_PlayerName)
+        /// <param name="i_PlayerName">Players Name Array</param>
+        public void InitializePlayers(params string[] i_PlayerName)
         {
-            this.m_players.Add(new HumanPlayer(i_PlayerName));
-            this.m_players.Add(new ComputerizedPlayer());
+            if (i_PlayerName.Length == 1)
+            {
+                this.m_players.Add(new HumanPlayer(i_PlayerName[0]));
+                this.m_players.Add(new ComputerizedPlayer());
+            }
+            else if (i_PlayerName.Length == 2)
+            {
+                this.m_players.Add(new HumanPlayer(i_PlayerName[0]));
+                this.m_players.Add(new HumanPlayer(i_PlayerName[1]));
+            }   
         }
 
         /// <summary>

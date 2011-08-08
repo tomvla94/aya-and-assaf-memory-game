@@ -1,8 +1,5 @@
 <stylecopresultscache>
   <version>11</version>
-  <project key="309742878">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="ComputerizedPlayer.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
@@ -33,29 +30,57 @@
       </violation>
     </violations>
   </sourcecode>
+  <sourcecode name="MemSquare.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/06/2011 21:20:01</timestamp>
+    <milliseconds>878</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>20</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <project key="309742878">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="MemBL.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/08/2011 19:19:28</timestamp>
+    <milliseconds>589</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>18</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>23</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="MemMessages.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/06/2011 21:18:31</timestamp>
-    <milliseconds>626</milliseconds>
+    <timestamp>08/07/2011 23:01:59</timestamp>
+    <milliseconds>12</milliseconds>
     <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
-        <context>The code must not contain multiple blank lines in a row.</context>
-        <line>39</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>40</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
-        <context>The field must have an access modifier.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
         <line>20</line>
@@ -81,11 +106,6 @@
         <line>24</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
-        <context>The method must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>37</line>
-        <warning>False</warning>
-      </violation>
     </violations>
   </sourcecode>
   <sourcecode name="MemBoard.cs" parser="StyleCop.CSharp.CsParser">
@@ -93,8 +113,8 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/06/2011 21:18:57</timestamp>
-    <milliseconds>199</milliseconds>
+    <timestamp>08/07/2011 23:01:59</timestamp>
+    <milliseconds>3</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
@@ -116,104 +136,9 @@
         <line>25</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CommasMustBeSpacedCorrectly" ruleCheckId="SA1001">
-        <context>Invalid spacing around the comma.</context>
-        <line>45</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseBuiltInTypeAlias" ruleCheckId="SA1121">
-        <context>Use the built-in type alias 'string' rather than String or System.String.</context>
-        <line>60</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseBuiltInTypeAlias" ruleCheckId="SA1121">
-        <context>Use the built-in type alias 'string' rather than String or System.String.</context>
-        <line>67</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="UseBuiltInTypeAlias" ruleCheckId="SA1121">
-        <context>Use the built-in type alias 'string' rather than String or System.String.</context>
-        <line>74</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CommasMustBeSpacedCorrectly" ruleCheckId="SA1001">
-        <context>Invalid spacing around the comma.</context>
-        <line>60</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CommasMustBeSpacedCorrectly" ruleCheckId="SA1001">
-        <context>Invalid spacing around the comma.</context>
-        <line>67</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CommasMustBeSpacedCorrectly" ruleCheckId="SA1001">
-        <context>Invalid spacing around the comma.</context>
-        <line>74</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
         <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
         <line>129</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="ArithmeticExpressionsMustDeclarePrecedence" ruleCheckId="SA1407">
-        <context>Insert parenthesis within the arithmetic expression to declare the operator precedence.</context>
-        <line>127</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="ArithmeticExpressionsMustDeclarePrecedence" ruleCheckId="SA1407">
-        <context>Insert parenthesis within the arithmetic expression to declare the operator precedence.</context>
-        <line>150</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="MemBL.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/06/2011 21:18:24</timestamp>
-    <milliseconds>898</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="DoNotUseRegions" ruleCheckId="SA1124">
-        <context>The use of regions is not allowed. Remove the #region and #endregion tags.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="DoNotUseRegions" ruleCheckId="SA1124">
-        <context>The use of regions is not allowed. Remove the #region and #endregion tags.</context>
-        <line>29</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="StaticElementsMustAppearBeforeInstanceElements" ruleCheckId="SA1204">
-        <context>All static private fields must be placed before all non-static private fields.</context>
-        <line>31</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>22</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>23</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementsMustBeSeparatedByBlankLine" ruleCheckId="SA1516">
-        <context>Adjacent elements must be separated by a blank line.</context>
-        <line>32</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
-        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
-        <line>39</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="OpeningParenthesisMustBeSpacedCorrectly" ruleCheckId="SA1008">
-        <context>Invalid spacing around the opening parenthesis.</context>
-        <line>60</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -223,72 +148,22 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/06/2011 21:18:24</timestamp>
-    <milliseconds>904</milliseconds>
+    <timestamp>08/07/2011 23:01:59</timestamp>
+    <milliseconds>21</milliseconds>
     <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>179</line>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
+        <context>The code must not contain multiple blank lines in a row.</context>
+        <line>30</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsForMultiLineStatementsMustNotShareLine" ruleCheckId="SA1500">
         <context>If a statement spans multiple lines, the closing curly bracket must be placed on its own line.</context>
-        <line>84</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CurlyBracketsForMultiLineStatementsMustNotShareLine" ruleCheckId="SA1500">
-        <context>If a statement spans multiple lines, the closing curly bracket must be placed on its own line.</context>
-        <line>118</line>
+        <line>122</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="ElementMustNotBeOnSingleLine" ruleCheckId="SA1502">
         <context>The method must not be placed on a single line. The opening and closing curly brackets must each be placed on their own line.</context>
-        <line>177</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/06/2011 21:18:24</timestamp>
-    <milliseconds>907</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>18</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="MemSquare.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/06/2011 21:02:19</timestamp>
-    <milliseconds>952</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainBlankLinesAtEndOfFile" ruleCheckId="SA1518">
-        <context>The code must not contain blank lines at the end of the file.</context>
-        <line>59</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
-        <context>The code must not contain multiple blank lines in a row.</context>
-        <line>59</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>57</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>20</line>
+        <line>181</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -298,14 +173,17 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/06/2011 21:18:24</timestamp>
-    <milliseconds>911</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="CommentsMustContainText" ruleCheckId="SA1120">
-        <context>The comment is empty. Add text to the comment or remove it.</context>
-        <line>31</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <timestamp>08/07/2011 23:01:58</timestamp>
+    <milliseconds>979</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Player.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/07/2011 23:01:58</timestamp>
+    <milliseconds>989</milliseconds>
+    <violations />
   </sourcecode>
 </stylecopresultscache>
