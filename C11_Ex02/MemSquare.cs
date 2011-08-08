@@ -22,10 +22,11 @@ namespace C11_Ex02
         /// <summary>
         /// Construct the Memory Game Square
         /// </summary>
-        /// <param name="i_Leter"></param>
+        /// <param name="i_Leter">The Letter that this Square will Hold</param>
         public MemSquare(string i_Leter)
         {
             m_MemoryLetter = i_Leter;
+            v_IsHidden = true;
         }
 
         public bool IsHidden
