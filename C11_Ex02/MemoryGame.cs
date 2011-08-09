@@ -17,20 +17,22 @@ namespace C11_Ex02
     /// </summary>
     public class MemoryGame
     {
+        int m_NumberOfHumanPlayers = 0;
+
         /// <summary>
         /// Program Main
         /// </summary>
         public static void Main() 
         {
             // Welcome To the Game
-            Console.WriteLine("Welcome to the Game!");
+            Console.WriteLine("Hey, welcome to the Memory Game!");
 
+            // Initialize the Game
             InitGame();
+
+            // Print the Initialized Game Board
             Console.WriteLine(MemBL.Instance.PrintGameBoard());
-            
-            // Get Player Name
-            // Get number of Players in the Game
-            // Construct Players (Human and Computer)
+
             // Play the Game
             // Print Error Messages to Screen
             // When the Game is Over - Ask if To Play another Game
@@ -42,6 +44,8 @@ namespace C11_Ex02
         /// </summary>
         private static void InitGame()
         {
+            // Get Player Name
+            // Get number of Players in the Game
             GetPlayersInfoFromUser();
             GetBoardInfoFromUser();
         }
@@ -96,11 +100,9 @@ namespace C11_Ex02
             int numOfHumanPlayers = 0;
             string userInput;
             bool isLegal;
-            string secondPlayerName;
-            Console.WriteLine(@"Hey, welcome to the Memory Game
-please type your name: ");
+            Console.WriteLine("Please type your name: ");
             string playerName = Console.ReadLine();
-            Console.WriteLine("do you want to play against the computer? Y/N: ");
+            Console.WriteLine(playerName + ", Do you want to play against the computer? Y/N: ");
 
             do
             {
@@ -124,12 +126,15 @@ please type your name: ");
 
             if (numOfHumanPlayers == 2)
             {
-                Console.WriteLine("what is the second player name: ");
-                secondPlayerName = Console.ReadLine();
+                Console.WriteLine("What is the second player name: ");
+                string secondPlayerName = Console.ReadLine();
+
+                // Construct Players (Both Humans)
                 MemBL.Instance.InitializePlayers(playerName, secondPlayerName);
             }
             else
             {
+                // Construct Players (Human and Computer)
                 MemBL.Instance.InitializePlayers(playerName);
             }
         }
@@ -169,16 +174,9 @@ please type your name: ");
         /// Gets the Number of Players From Console
         /// </summary>
         /// <returns></returns>
-        public int GetNumberOfPlayer()
+        public int GetNumberOfPlayers()
         {
             return 0;
         }
-
-        /// <summary>
-        /// Creates the Players in the Game
-        /// </summary>
-        /// <param name="i_NumberOfHumans">Number of Human Players</param>
-        /// <param name="i_NumberOfComputers">Number of Computerized Players</param>
-        private void CreatePlayers(int i_NumberOfHumans, int i_NumberOfComputers) { }
     }
 }

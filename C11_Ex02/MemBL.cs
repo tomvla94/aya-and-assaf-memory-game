@@ -16,7 +16,6 @@ namespace C11_Ex02
     /// </summary>
     public class MemBL
     {
-
         private static MemBL s_MemBLInstance;
         private MemBoard m_MemoryBoard = new MemBoard();
         private bool v_GameExists = false;
@@ -89,17 +88,6 @@ namespace C11_Ex02
                 this.m_players.Add(new HumanPlayer(i_PlayerName[0]));
                 this.m_players.Add(new HumanPlayer(i_PlayerName[1]));
             }   
-        }
-
-        /// <summary>
-        /// initialize players- human against human
-        /// </summary>
-        /// <param name="i_FirstPlayerName">The First Players' Name</param>
-        /// <param name="i_SecondPlayerName">The Second Players' Name</param>
-        public void InitializePlayers(string i_FirstPlayerName, string i_SecondPlayerName)
-        {
-            this.m_players.Add(new HumanPlayer(i_FirstPlayerName));
-            this.m_players.Add(new HumanPlayer(i_SecondPlayerName));
         }
 
         /// <summary>
