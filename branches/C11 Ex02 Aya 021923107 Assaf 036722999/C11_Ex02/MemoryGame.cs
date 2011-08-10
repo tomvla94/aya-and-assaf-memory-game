@@ -20,143 +20,188 @@ namespace C11_Ex02
         int m_NumberOfHumanPlayers = 0;
         MemBL m_MemoryLogic = new MemBL();
 
-        /// <summary>
-        /// Get information from the user
-        /// </summary>
-        public void InitGame()
+        internal void Run()
         {
-            // Get Player Name
-            // Get number of Players in the Game
-            GetPlayersInfoFromUser();
-            GetBoardInfoFromUser();
-        }
-
-        private void GetBoardInfoFromUser()
-        {
-            bool isLegal;
-            string userInput;
-            int height = 0;
-            int width = 0;
-            // TODO: Let the User Choose Other Sizes in the Same Format
-            // Use Check Input From Board (or Something) 
-            Console.WriteLine("please choose the board size: (4x4, 4X6, 6X4, 6X6)");
-            do
-            {
-                userInput = getUserInput();
-                if (userInput.Equals("4X4", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    width = 4;
-                    height = 4;
-                }
-                else if (userInput.Equals("4X6", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    width = 4;
-                    height = 6;
-                }
-                else if (userInput.Equals("6X4", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    width = 6;
-                    height = 4;
-                }
-                else if (userInput.Equals("6X6", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    width = 6;
-                    height = 6;
-                }
-                else
-                {
-                    isLegal = false;
-                    Console.WriteLine("wrong input, please choose the board size: (4x4, 4X6, 6X4, 6X6)");
-                }
-            } 
-            while (!isLegal);
-
-            m_MemoryLogic.CreateMemoryGame(width, height);
-        }
-
-        private void GetPlayersInfoFromUser()
-        {
-            int numOfHumanPlayers = 0;
-            string userInput;
-            bool isLegal;
+            Console.WriteLine("Hey, welcome to the Memory Game!");
             Console.WriteLine("Please type your name: ");
             string playerName = Console.ReadLine();
             Console.WriteLine(playerName + ", Do you want to play against the computer? Y/N: ");
+            MemBL.eOponnentType oponnentChoice = getUserChoiceForOponnent();
 
-            do
-            {
-                userInput = getUserInput();
-                if (userInput.Equals("y", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    numOfHumanPlayers = 1;
-                }
-                else if (userInput.Equals("n", StringComparison.OrdinalIgnoreCase))
-                {
-                    isLegal = true;
-                    numOfHumanPlayers = 2;
-                }  
-                else
-                {
-                    isLegal = false;
-                    Console.WriteLine("wrong input, do you want to play against the computer? Y/N: ");
-                }
-            } while (!isLegal);
-
-            if (numOfHumanPlayers == 2)
+            string secondPlayerName = null;
+            if (oponnentChoice == MemBL.eOponnentType.Human)
             {
                 Console.WriteLine("What is the second player name: ");
-                string secondPlayerName = Console.ReadLine();
+                secondPlayerName = Console.ReadLine();
+            }
 
-                // Construct Players (Both Humans)
-                m_MemoryLogic.InitializePlayers(playerName, secondPlayerName);
+            m_MemoryLogic.initGame(playerName, secondPlayerName, oponnentChoice);
+
+            bool userNewGameChoice = true;
+            do
+            {
+                int width;
+                int height;
+                getUserChoiceForBoardSize(out width, out height);
+                m_MemoryLogic.initRound(width, height);
+
+                PrintGameBoard();
+
+                do
+                {
+                    MemSquare squareChoice = getUserChoiceForSquare();
+                    if (squareChoice != null)
+                    {
+                        m_MemoryLogic.DoMove(squareChoice);
+                        Ex02.ConsoleUtils.Screen.Clear();
+                        PrintGameBoard();
+                    }
+                    else
+                    {
+                        userNewGameChoice = false;
+                    }
+
+                    MemSquare matchSquareChoice = getUserChoiceForSquare();
+                    if (matchSquareChoice != null)
+                    {                       
+                        m_MemoryLogic.DoMove(squareChoice);
+                        Ex02.ConsoleUtils.Screen.Clear();
+                        PrintGameBoard();
+                    }
+                    else
+                    {
+                        userNewGameChoice = false;
+                    }
+
+                } while (!m_MemoryLogic.RoundFinished);
+
+                printRoundSummary();
+
+                userNewGameChoice = getUserChoiceForPlayingAnotherRound();
+
+            } while (userNewGameChoice);
+
+            printEndOfGameMessage();
+        }
+
+        private void printRoundSummary()
+        {
+            Console.WriteLine("the winner is : {0} with: {1} points against {2} points of {3}",
+                m_MemoryLogic.Winner.Name, m_MemoryLogic.Winner.Score, m_MemoryLogic.Loser.Score, m_MemoryLogic.Loser.Name);
+        }
+
+        private bool getUserChoiceForPlayingAnotherRound()
+        {
+            Console.WriteLine("do you want to play another round? Y/N");
+            string choice = Console.ReadLine();
+
+            if (choice.ToLower().Equals("y"))
+            {
+                return true;
+            }
+            else if (choice.ToLower().Equals("n"))
+            {
+                return false;
             }
             else
             {
-                // Construct Players (Human and Computer)
-                m_MemoryLogic.InitializePlayers(playerName);
+                Console.WriteLine("just y or no please");
+                return getUserChoiceForPlayingAnotherRound();
             }
         }
 
-        /// <summary>
-        /// Gets the user input, if the user input is 'Q' - Exiting the application
-        /// </summary>
-        /// <returns></returns>
-        private string getUserInput()
+        private MemSquare getUserChoiceForSquare()
         {
-            string userInput = Console.ReadLine();
+            MemSquare retSquare = null;
+            Console.WriteLine("please choose a square (in the format of e4)");
+            string retSquareStr = Console.ReadLine();
 
-            if (userInput.Equals("q", StringComparison.OrdinalIgnoreCase))
+            if (retSquareStr.ToLower().Equals("q"))
             {
-                Console.WriteLine("You chose to quit the game.");
-                endGame();
+                return retSquare;
             }
 
-            return userInput;
+            bool allGood = MemSquare.TryParse(retSquareStr, out retSquare);
+            if (!allGood)
+            {
+                Console.WriteLine("please type a legal square");
+                return getUserChoiceForSquare();
+            }
+            else
+            {
+                if (!m_MemoryLogic.Board.IsLeagalSquare(retSquare.Row, retSquare.Col))
+                {
+                    Console.WriteLine("the square is out of the bounds of the board, try again");
+                        return getUserChoiceForSquare();
+                }
+                else
+                {
+                    if (!m_MemoryLogic.isLegalMove(retSquare))
+                    {
+                        Console.WriteLine("not a legal move, try again");
+                        return getUserChoiceForSquare();
+                    }
+                }
+            }
+
+            return retSquare;
         }
 
-        private static void endGame()
+        private void printEndOfGameMessage()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Thanks for playing :)");
         }
 
-       
-        /// <summary>
-        /// Gets the Number of Players From Console
-        /// </summary>
-        /// <returns></returns>
-        public int GetNumberOfPlayers()
+        private void getUserChoiceForBoardSize(out int i_Width, out int i_Height)
         {
-            return 0;
+            Console.WriteLine("Board Size: number of squares should be even");
+            Console.WriteLine("please type the board height (4-6)");
+            string heightStr = Console.ReadLine();
+
+            bool allGood = int.TryParse(heightStr, out i_Height);
+            if (!allGood || i_Height > 6 || i_Height < 4)
+            {
+                Console.WriteLine("just a number between 4 and 6 please");
+                getUserChoiceForBoardSize(out i_Width, out i_Height);
+            }
+            else
+            {
+                Console.WriteLine("please type the board height (4-6)");
+                string widthtStr = Console.ReadLine();
+                allGood = int.TryParse(widthtStr, out i_Width);
+                if (!allGood || i_Width > 6 || i_Width < 4)
+                {
+                    Console.WriteLine("just a number between 4 and 6 please");
+                    getUserChoiceForBoardSize(out i_Width, out i_Height);
+                }
+            }
+        }
+
+        private MemBL.eOponnentType getUserChoiceForOponnent()
+        {
+            Console.WriteLine("do you want to play against the computer? Y/N");
+            string choice = Console.ReadLine();
+
+            if (choice.ToLower().Equals("y"))
+            {
+                return MemBL.eOponnentType.Computer;
+            }
+            else if (choice.ToLower().Equals("n"))
+            {
+                return MemBL.eOponnentType.Human;
+            }
+            else
+            {
+                Console.WriteLine("just y or n please");
+                return getUserChoiceForOponnent();
+            }
         }
 
         public string PrintGameBoard()
         {
             return m_MemoryLogic.PrintGameBoard();
         }
+
+        
     }
 }

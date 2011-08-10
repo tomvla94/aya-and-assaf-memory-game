@@ -57,7 +57,7 @@ namespace C11_Ex02
             get { return m_Card; }
         }
 
-        public bool TryParse(string i_SquareStr, out MemSquare o_Square)
+        public static bool TryParse(string i_SquareStr, out MemSquare o_Square)
         {
             bool retParseResult = false;
             o_Square = new MemSquare();

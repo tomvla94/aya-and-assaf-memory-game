@@ -16,6 +16,12 @@ namespace C11_Ex02
     /// </summary>
     public class MemBL
     {
+        public enum eOponnentType
+        {
+            Human,
+            Computer
+        }
+
         private MemBoard m_MemoryBoard = new MemBoard();
         private bool v_GameExists = false;
         private bool v_GameEnded = false;
