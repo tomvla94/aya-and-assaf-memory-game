@@ -73,13 +73,13 @@ namespace C11_Ex02
         {
             if (i_PlayerName.Length == 1)
             {
-                this.m_players.Add(new HumanPlayer(i_PlayerName[0]));
-                this.m_players.Add(new ComputerizedPlayer());
+                this.m_players.Add(new Player(i_PlayerName[0], Player.ePlayerType.Human));
+                this.m_players.Add(new Player(Player.ePlayerType.Computer));
             }
             else if (i_PlayerName.Length == 2)
             {
-                this.m_players.Add(new HumanPlayer(i_PlayerName[0]));
-                this.m_players.Add(new HumanPlayer(i_PlayerName[1]));
+                this.m_players.Add(new Player(i_PlayerName[0], Player.ePlayerType.Human));
+                this.m_players.Add(new Player(i_PlayerName[1], Player.ePlayerType.Human));
             }   
         }
 

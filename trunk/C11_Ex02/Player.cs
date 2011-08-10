@@ -26,6 +26,17 @@ namespace C11_Ex02
         private int m_Score;
         private ePlayerType m_Type;
 
+        public Player(string i_Name, ePlayerType i_PlayerType)
+        {
+            m_Name = i_Name;
+            m_Type = i_PlayerType;
+        }
+
+        public Player(Player.ePlayerType i_PlayerType)
+        {
+            m_Type = i_PlayerType;
+        }
+
         /// <summary>
         /// Gets and Sets the Player Name
         /// </summary>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace C11_Ex02
 {
-    class Card
+    public class Card
     {
         private string m_Sign;
         private bool v_IsHidden = false;
