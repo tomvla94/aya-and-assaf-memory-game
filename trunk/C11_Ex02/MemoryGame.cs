@@ -18,31 +18,12 @@ namespace C11_Ex02
     public class MemoryGame
     {
         int m_NumberOfHumanPlayers = 0;
-
-        /// <summary>
-        /// Program Main
-        /// </summary>
-        public static void Main() 
-        {
-            // Welcome To the Game
-            Console.WriteLine("Hey, welcome to the Memory Game!");
-
-            // Initialize the Game
-            InitGame();
-
-            // Print the Initialized Game Board
-            Console.WriteLine(MemBL.Instance.PrintGameBoard());
-
-            // Play the Game
-            // Print Error Messages to Screen
-            // When the Game is Over - Ask if To Play another Game
-            Console.ReadLine();
-        }
+        MemBL m_MemoryLogic = new MemBL();
 
         /// <summary>
         /// Get information from the user
         /// </summary>
-        private static void InitGame()
+        public void InitGame()
         {
             // Get Player Name
             // Get number of Players in the Game
@@ -50,12 +31,14 @@ namespace C11_Ex02
             GetBoardInfoFromUser();
         }
 
-        private static void GetBoardInfoFromUser()
+        private void GetBoardInfoFromUser()
         {
             bool isLegal;
             string userInput;
             int height = 0;
             int width = 0;
+            // TODO: Let the User Choose Other Sizes in the Same Format
+            // Use Check Input From Board (or Something) 
             Console.WriteLine("please choose the board size: (4x4, 4X6, 6X4, 6X6)");
             do
             {
@@ -92,10 +75,10 @@ namespace C11_Ex02
             } 
             while (!isLegal);
 
-            MemBL.Instance.CreateMemoryGame(width, height);
+            m_MemoryLogic.CreateMemoryGame(width, height);
         }
 
-        private static void GetPlayersInfoFromUser()
+        private void GetPlayersInfoFromUser()
         {
             int numOfHumanPlayers = 0;
             string userInput;
@@ -130,12 +113,12 @@ namespace C11_Ex02
                 string secondPlayerName = Console.ReadLine();
 
                 // Construct Players (Both Humans)
-                MemBL.Instance.InitializePlayers(playerName, secondPlayerName);
+                m_MemoryLogic.InitializePlayers(playerName, secondPlayerName);
             }
             else
             {
                 // Construct Players (Human and Computer)
-                MemBL.Instance.InitializePlayers(playerName);
+                m_MemoryLogic.InitializePlayers(playerName);
             }
         }
 
@@ -143,7 +126,7 @@ namespace C11_Ex02
         /// Gets the user input, if the user input is 'Q' - Exiting the application
         /// </summary>
         /// <returns></returns>
-        private static string getUserInput()
+        private string getUserInput()
         {
             string userInput = Console.ReadLine();
 
@@ -161,15 +144,7 @@ namespace C11_Ex02
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Gets the Player Name From Console
-        /// </summary>
-        /// <returns></returns>
-        public string GetPlayerName() 
-        {
-            return null;
-        }
-
+       
         /// <summary>
         /// Gets the Number of Players From Console
         /// </summary>
@@ -177,6 +152,11 @@ namespace C11_Ex02
         public int GetNumberOfPlayers()
         {
             return 0;
+        }
+
+        public string PrintGameBoard()
+        {
+            return m_MemoryLogic.PrintGameBoard();
         }
     }
 }
