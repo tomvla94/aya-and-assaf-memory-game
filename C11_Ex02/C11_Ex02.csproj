@@ -48,14 +48,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ComputerizedPlayer.cs" />
-    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="MemBL.cs" />
     <Compile Include="MemBoard.cs" />
     <Compile Include="MemMessages.cs" />
     <Compile Include="MemoryGame.cs" />
     <Compile Include="MemSquare.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
