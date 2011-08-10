@@ -16,8 +16,6 @@ namespace C11_Ex02
     /// </summary>
     public class MemBL
     {
-
-
         private MemBoard m_MemoryBoard = new MemBoard();
         private bool v_GameExists = false;
         private bool v_GameEnded = false;
