@@ -12,6 +12,7 @@ namespace C11_Ex02
         public static void Main()
         {
             MemoryGame memGame = new MemoryGame();
+            memGame.Run();
             // Welcome To the Game
             //Console.WriteLine("Hey, welcome to the Memory Game!");
 
