@@ -16,43 +16,66 @@ namespace C11_Ex02
     /// </summary>
     public class MemSquare
     {
-        private string m_MemoryLetter;
-        private bool v_IsHidden = false;
+        private int m_Row;
+        private int m_Col;
+        private Card m_Card;
 
         /// <summary>
         /// Construct the Memory Game Square
         /// </summary>
-        /// <param name="i_Leter">The Letter that this Square will Hold</param>
-        public MemSquare(string i_Leter)
+        /// <param name="i_Row">The Square Row</param>
+        /// <param name="i_Col">The Square Collumn</param>
+        /// <param name="i_Leter">The Letter for this Square Card</param>
+        public MemSquare(int i_Row, int i_Col, string i_Leter)
         {
-            m_MemoryLetter = i_Leter;
-            v_IsHidden = true;
+            m_Row = i_Row;
+            m_Col = i_Col;
+            m_Card.Sign = i_Leter;
         }
 
-        public bool IsHidden
+        public MemSquare()
         {
-            get { return v_IsHidden; }
+            m_Row = 0;
+            m_Col = 0;
+            m_Card = null;
         }
 
-        public string MemoryLetter
+        public int Row
         {
-            get { return m_MemoryLetter; }
+            get { return m_Row; }
+            set { m_Row = value; }
         }
 
-        /// <summary>
-        /// Shows the Square on the Board
-        /// </summary>
-        public void ShowSquare() 
+        public int Col
         {
-            v_IsHidden = false;
+            get { return m_Col; }
+            set { m_Col = value; }
         }
 
-        /// <summary>
-        /// Hides the Square from the Board
-        /// </summary>
-        public void HideSquare() 
+        public Card Card
         {
-            v_IsHidden = true;
+            get { return m_Card; }
+        }
+
+        public bool TryParse(string i_SquareStr, out MemSquare o_Square)
+        {
+            bool retParseResult = false;
+            o_Square = new MemSquare();
+            int row;
+            string convertedUpperCaseSquareString = i_SquareStr.ToUpper();
+            int col = (convertedUpperCaseSquareString[0] - 'A');
+            if (col > 0)
+            {
+                retParseResult = int.TryParse(convertedUpperCaseSquareString.Remove(0, 1),out row);
+                if (retParseResult)
+                {
+                    o_Square.Row = row;
+                    o_Square.Col = col;
+                    retParseResult = true;
+                }
+            }
+            
+            return retParseResult;
         }
     }
 }
