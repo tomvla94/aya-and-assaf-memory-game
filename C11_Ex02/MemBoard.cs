@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="MemBoard.cs">
 // Aya Chiprut 021923107 
 // Assaf Miron 036722999
@@ -42,7 +42,60 @@ namespace C11_Ex02
                 m_BoardHeight = i_Height;
                 
                 // Use the MemSquare Class to Build Each Square in the Game
-                m_Squares = new MemSquare[i_Width,i_Height];
+                m_Squares = new MemSquare[i_Height, i_Width];
+
+                // Create the Squares in the Array
+                CreateSquares();
+            }
+        }
+
+        private void CreateSquares()
+        {
+            int counter = m_BoardWidth + 1;
+            for (int i = 0; i < m_BoardHeight; i++)
+            {
+                for(int j = 0; j < m_BoardWidth; j += 2)
+                {
+                    char letter = (char)('B' + counter++);
+                    m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
+                    m_Squares[i, j + 1] = new MemSquare(i, j, letter.ToString());
+                }
+            }
+
+            RandomizeSquares();
+        }
+
+        private void RandomizeSquares()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < m_BoardHeight; i++)
+            {
+                for (int j = 0; j < m_BoardWidth; j++)
+                {
+                    SwapSquares(ref m_Squares[rand.Next(i), j], ref m_Squares[i, rand.Next(j)]);
+                }
+            }
+
+            UpdateSquares();
+        }
+
+        private void SwapSquares(ref MemSquare i_LeftSquare, ref MemSquare i_RightSquare)
+        {
+            MemSquare tempSquare;
+            tempSquare = i_LeftSquare;
+            i_LeftSquare = i_RightSquare;
+            i_RightSquare = tempSquare;
+        }
+
+        private void UpdateSquares()
+        {
+            for (int i = 0; i < m_BoardHeight; i++)
+            {
+                for (int j = 0; j < m_BoardWidth; j++)
+                {
+                    m_Squares[i, j].Row = i;
+                    m_Squares[i, j].Col = j;
+                }
             }
         }
 
@@ -57,24 +110,24 @@ namespace C11_Ex02
             if (i_Width < k_MinBoradSizeValue || i_Width > k_MaxBoradSizeValue)
             {
                 retValue = false;
-                throw new MemMessages(String.Format(MemMessages.k_InvalidBoardSize,"Width"));
+                throw new MemMessages(string.Format(MemMessages.k_InvalidBoardSize, "Width"));
             }
             
             // Check Height Valid Size
             if (i_Height < k_MinBoradSizeValue || i_Height > k_MaxBoradSizeValue)
             {
                 retValue = false;
-                throw new MemMessages(String.Format(MemMessages.k_InvalidBoardSize,"Height"));
+                throw new MemMessages(string.Format(MemMessages.k_InvalidBoardSize, "Height"));
             }
             
             // Verify that the Number of Squares is Even
             if((i_Width * i_Height) % 2 != 0)
             {
                 retValue = false;
-                throw new MemMessages(String.Format(MemMessages.k_BoradSizeNotEven,(i_Width * i_Height)));
+                throw new MemMessages(string.Format(MemMessages.k_BoradSizeNotEven, (i_Width * i_Height)));
             }
             
-            // Every thinfg is OK
+            // Every thing is OK
             retValue = true;
 
             return retValue;
@@ -96,6 +149,11 @@ namespace C11_Ex02
             return retRequestedSquare;
         }
 
+        public bool IsLeagalSquare(int i_Row, int i_Col)
+        {
+            return (i_Row <= m_BoardHeight && i_Col <= m_BoardWidth);
+        }
+
         /// <summary>
         /// Prepares the Game Board to be Printed
         /// </summary>
@@ -109,7 +167,7 @@ namespace C11_Ex02
             string retBoard = PrintHeadersRow();
 
             // Print Each Row with its Squares
-            for(int i = 0; i < m_BoardWidth; i++)
+            for(int i = 0; i < m_BoardHeight; i++)
             {
                 retBoard += PrintSquareRow(i);
             }
@@ -124,18 +182,18 @@ namespace C11_Ex02
         /// <returns>The Header Row With Spacers Ready for Print</returns>
         private string PrintHeadersRow()
         {
-            string spacer = new string(k_RowSpacer, m_BoardWidth * 4 + 1);
-            string retHeaderRow = "\t";
-            // Loop the Number of time the Header Width
-            // And Write The ABC Headers
+            string spacer = new string(k_RowSpacer, (m_BoardWidth * 8) - 4);
+            string retHeaderRow = "  ";
+            
+            // Loop the Number of time the Header Width And Write The ABC Headers
             for (int i = 0; i < m_BoardWidth; i++)
             {
                 // Seperate Each Header Letter with Tab
-                retHeaderRow += ('A' + i) + "\t";
+                retHeaderRow += "   " + (char)('A' + i) + "   ";
             }
 
             // Add the Row Spacer
-            retHeaderRow += "\n" + spacer;
+            retHeaderRow += "\n  " + spacer + "\n";
 
             return retHeaderRow;
         }
@@ -147,24 +205,24 @@ namespace C11_Ex02
         /// <returns>The Squares Row with Spacers Ready for Print</returns>
         private string PrintSquareRow(int i_RowIndex)
         {
-            string spacer = new string(k_RowSpacer, m_BoardWidth * 4 + 1);
-            string retSquaresRow = (i_RowIndex + 1) + " " + k_ColSpacer + " ";
+            string spacer = new string(k_RowSpacer, (m_BoardWidth * 8) - 4);
+            string retSquaresRow = (i_RowIndex + 1) + " " + k_ColSpacer;
 
             // Loop through the Row Squares and Print them Out
             for (int i = 0; i < m_BoardWidth; i++)
             {
-                if (m_Squares[i_RowIndex, i].IsHidden)
+                if (m_Squares[i, i_RowIndex].Card.IsHidden)
                 {
-                    retSquaresRow += " \t " + k_ColSpacer;
+                    retSquaresRow += "      " + k_ColSpacer;
                 }
                 else 
                 {
-                    retSquaresRow += " " + m_Squares[i_RowIndex, i].MemoryLetter + " " + k_ColSpacer;
+                    retSquaresRow += "  " + m_Squares[i, i_RowIndex].Card.Sign + "  " + k_ColSpacer;
                 }
             }
             
             // Add the Row Spacer
-            retSquaresRow += "\n" + spacer;
+            retSquaresRow += "\n  " + spacer + "\n";
 
             return retSquaresRow;
         }
