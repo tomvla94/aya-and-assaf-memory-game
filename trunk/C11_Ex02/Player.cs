@@ -16,8 +16,15 @@ namespace C11_Ex02
     /// </summary>
     public class Player
     {
+        public enum ePlayerType
+        {
+            Human,
+            Computer
+        }
+
         private string m_Name;
         private int m_Score;
+        private ePlayerType m_Type;
 
         /// <summary>
         /// Gets and Sets the Player Name
@@ -35,6 +42,15 @@ namespace C11_Ex02
         {
             get { return m_Score;  }
             set { m_Score = value; }
+        }
+
+        /// <summary>
+        /// Gets and Sets the Player Type
+        /// </summary>
+        public ePlayerType Type
+        {
+            get { return m_Type; }
+            set { m_Type = value; }
         }
     }
 }
