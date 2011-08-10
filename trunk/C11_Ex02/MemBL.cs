@@ -16,26 +16,14 @@ namespace C11_Ex02
     /// </summary>
     public class MemBL
     {
-        private static MemBL s_MemBLInstance;
+
+
         private MemBoard m_MemoryBoard = new MemBoard();
         private bool v_GameExists = false;
         private bool v_GameEnded = false;
         private int m_CurrentPlayingPlayerIndex;
         private List<Player> m_players = new List<Player>();
   
-        public static MemBL Instance
-        {
-            get
-            {
-                if (s_MemBLInstance == null)
-                {
-                    s_MemBLInstance = new MemBL();
-                }
-
-                return s_MemBLInstance;
-            }
-        }
-
         public bool IsGameExists
         {
             get { return v_GameExists; }
@@ -44,6 +32,11 @@ namespace C11_Ex02
         public bool IsGameEnd
         {
             get { return v_GameEnded; }
+        }
+
+        public MemBoard Board
+        {
+            get { return m_MemoryBoard; }
         }
 
         /// <summary>
@@ -95,6 +88,8 @@ namespace C11_Ex02
         /// </summary>
         public void PlayPlayerTurn() 
         {
+            // TODO: This is the Do Move Function
+
             // Get User Input about Selected Squares
             // Verify Valid Input
             // Throw Error Messages if Input not Valid
