@@ -21,7 +21,8 @@ namespace C11_Ex02
         private bool v_GameEnded = false;
         private int m_CurrentPlayingPlayerIndex = 0;
         private Player[] m_players = new Player[2];
-  
+        private int m_NumberOfFoundCardPairs = 0;
+
         public bool IsGameExists
         {
             get { return v_GameExists; }
@@ -96,6 +97,7 @@ namespace C11_Ex02
                     m_players[m_CurrentPlayingPlayerIndex].Score++;
                     m_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
                     m_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
+                    m_NumberOfFoundCardPairs += 2;
                     retPlayerScored = true;
                 }
                 m_PrevSquareChosen = null;
@@ -119,6 +121,7 @@ namespace C11_Ex02
             {
                 m_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
                 m_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
+                m_NumberOfFoundCardPairs += 2;
             }
             else 
             {
@@ -145,8 +148,8 @@ namespace C11_Ex02
                 bool foundOption = false;
                 while (!foundOption)
                 {
-                    int optionalRow = rand.Next(Board.Width);
-                    int optionalCol = rand.Next(Board.Height);
+                    int optionalRow = rand.Next(Board.Height);
+                    int optionalCol = rand.Next(Board.Width);
                     if (Board.IsLeagalSquare(optionalRow, optionalCol))
                     {
                         retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
@@ -180,11 +183,12 @@ namespace C11_Ex02
             get { return m_players[m_CurrentPlayingPlayerIndex]; }
         }
 
+        
         public bool RoundFinished
         {
             get
             {
-                return m_MemoryBoard.NumberOfVisibleSquares > 0;
+                return (m_MemoryBoard.NumberOfVisibleSquares - m_NumberOfFoundCardPairs) > 0;
             }
         }
 
