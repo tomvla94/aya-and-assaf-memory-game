@@ -106,6 +106,7 @@ namespace C11_Ex02
                             Console.WriteLine("Sorry... No Match here.");
                             Console.ReadLine();
                         }
+
                         printGameBoard(m_MemoryLogic.Board);
                     }
                 } while (!m_MemoryLogic.RoundFinished && continueGame);

@@ -188,7 +188,7 @@ namespace C11_Ex02
         {
             get
             {
-                return (m_MemoryBoard.NumberOfVisibleSquares - m_NumberOfFoundCardPairs) > 0;
+                return m_MemoryBoard.NumberOfVisibleSquares >= m_MemoryBoard.Height * m_MemoryBoard.Width;
             }
         }
 
