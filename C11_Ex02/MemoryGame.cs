@@ -57,9 +57,9 @@ namespace C11_Ex02
                     bool keepCardsVisible = false;
                     MemSquare firstSquareChoise = null;
                     MemSquare matchSquareChoice = null;
+                    Console.WriteLine("{0}'s Turn:", m_MemoryLogic.CurrentPlayer.Name);
                     if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
                     {
-
                         firstSquareChoise = getUserChoiceForSquare();
                         if (firstSquareChoise != null)
                         {
