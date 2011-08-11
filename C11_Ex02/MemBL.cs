@@ -98,6 +98,7 @@ namespace C11_Ex02
                     m_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
                     retPlayerScored = true;
                 }
+                m_PrevSquareChosen = null;
                 changePlayerIndex();
             }
            
