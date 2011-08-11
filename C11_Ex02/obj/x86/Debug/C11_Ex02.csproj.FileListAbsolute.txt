@@ -5,3 +5,9 @@ C:\Documents and Settings\aya chiprut\My Documents\Visual Studio 2010\Projects\a
 C:\Documents and Settings\aya chiprut\My Documents\Visual Studio 2010\Projects\aya-and-assaf-memory-game\branches\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\aya chiprut\My Documents\Visual Studio 2010\Projects\aya-and-assaf-memory-game\branches\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\C11_Ex02.exe
 C:\Documents and Settings\aya chiprut\My Documents\Visual Studio 2010\Projects\aya-and-assaf-memory-game\branches\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\C11_Ex02.pdb
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\bin\Debug\C11_Ex02.exe
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\bin\Debug\C11_Ex02.pdb
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\bin\Debug\Ex02.ConsoleUtils.dll
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\C11_Ex02.exe
+D:\מכללה\סמסטר ג - 2011\C#\תרגילים\תרגיל 2\aya-and-assaf-memory-game\C11 Ex02 Aya 021923107 Assaf 036722999\C11_Ex02\obj\x86\Debug\C11_Ex02.pdb

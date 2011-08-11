@@ -70,7 +70,7 @@ namespace C11_Ex02
                 retParseResult = int.TryParse(convertedUpperCaseSquareString.Remove(0, 1),out row);
                 if (retParseResult)
                 {
-                    o_Square.Row = row;
+                    o_Square.Row = row - 1;
                     o_Square.Col = col;
                     retParseResult = true;
                 }

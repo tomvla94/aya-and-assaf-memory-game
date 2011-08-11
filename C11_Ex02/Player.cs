@@ -34,6 +34,7 @@ namespace C11_Ex02
 
         public Player(ePlayerType i_PlayerType)
         {
+            m_Name = "Computer";
             m_Type = i_PlayerType;
         }
 
