@@ -44,19 +44,19 @@ namespace C11_Ex02
                 m_MemoryLogic.InitializePlayers(playerName);
             }
 
-            bool userNewGameChoice = true;  
+            bool continueGame = true;  
             int width;
             int height;
             getUserChoiceForBoardSize(out width, out height);
             m_MemoryLogic.initRound(width, height);
-            printGameBoard(m_MemoryLogic.Board);
             do
             {
+                printGameBoard(m_MemoryLogic.Board);
                 do
                 {
                     bool keepCardsVisible = false;
-                    MemSquare firstSquareChoise;
-                    MemSquare matchSquareChoice;
+                    MemSquare firstSquareChoise = null;
+                    MemSquare matchSquareChoice = null;
                     if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
                     {
 
@@ -69,19 +69,22 @@ namespace C11_Ex02
                         }
                         else
                         {
-                            userNewGameChoice = false;
+                            continueGame = false;
                         }
 
-                        matchSquareChoice = getUserChoiceForSquare();
-                        if (matchSquareChoice != null)
+                        if (continueGame)
                         {
-                            keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(matchSquareChoice);
-                            Ex02.ConsoleUtils.Screen.Clear();
-                            printGameBoard(m_MemoryLogic.Board);
-                        }
-                        else
-                        {
-                            userNewGameChoice = false;
+                            matchSquareChoice = getUserChoiceForSquare();
+                            if (matchSquareChoice != null)
+                            {
+                                keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(matchSquareChoice);
+                                Ex02.ConsoleUtils.Screen.Clear();
+                                printGameBoard(m_MemoryLogic.Board);
+                            }
+                            else
+                            {
+                                continueGame = false;
+                            }
                         }
                     }
                     else
@@ -89,33 +92,44 @@ namespace C11_Ex02
                         m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
                         printGameBoard(m_MemoryLogic.Board);
                     }
-                    bool showUserPointsMessage = m_MemoryLogic.EndPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
-                    if (showUserPointsMessage)
+
+                    if (continueGame)
                     {
-                        Console.WriteLine("Hey You Found a Match! :)");
-                        Console.ReadLine();
+                        bool showUserPointsMessage = m_MemoryLogic.EndPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
+                        if (showUserPointsMessage)
+                        {
+                            Console.WriteLine("Hey You Found a Match! :)");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry... No Match here.");
+                            Console.ReadLine();
+                        }
+                        printGameBoard(m_MemoryLogic.Board);
                     }
-                    else 
-                    {
-                        Console.WriteLine("Sorry... No Match here.");
-                        Console.ReadLine();
-                    }
-                    printGameBoard(m_MemoryLogic.Board);
-                } while (!m_MemoryLogic.RoundFinished);
+                } while (!m_MemoryLogic.RoundFinished && continueGame);
 
                 printRoundSummary();
 
-                userNewGameChoice = getUserChoiceForPlayingAnotherRound();
+                continueGame = getUserChoiceForPlayingAnotherRound();
 
-            } while (userNewGameChoice);
+            } while (continueGame);
 
             printEndOfGameMessage();
         }
 
         private void printRoundSummary()
         {
-            Console.WriteLine("The winner is : {0} with: {1} points against {2} points of {3}",
-                m_MemoryLogic.Winner.Name, m_MemoryLogic.Winner.Score, m_MemoryLogic.Loser.Score, m_MemoryLogic.Loser.Name);
+            if (m_MemoryLogic.Winner != m_MemoryLogic.Loser)
+            {
+                Console.WriteLine("The winner is : {0} with: {1} points against {2} points of {3}",
+                    m_MemoryLogic.Winner.Name, m_MemoryLogic.Winner.Score, m_MemoryLogic.Loser.Score, m_MemoryLogic.Loser.Name);
+            }
+            else
+            {
+                Console.WriteLine("Its a Tie!\nEverybody is a Winner! :)");
+            }
         }
 
         private bool getUserChoiceForPlayingAnotherRound()
