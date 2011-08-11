@@ -62,6 +62,11 @@ namespace C11_Ex02
         {
             bool retParseResult = false;
             o_Square = new MemSquare();
+            if (i_SquareStr.Length < 2)
+            {
+                return retParseResult;
+            }
+   
             int row;
             string convertedUpperCaseSquareString = i_SquareStr.ToUpper();
             int col = (convertedUpperCaseSquareString[0] - 'A');
