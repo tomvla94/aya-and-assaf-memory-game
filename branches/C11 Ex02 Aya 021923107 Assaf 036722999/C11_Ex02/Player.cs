@@ -16,17 +16,23 @@ namespace C11_Ex02
     /// </summary>
     public class Player
     {
+        public enum ePlayerType
+        {
+            Human,
+            Computer
+        }
+
         private string m_Name;
         private int m_Score;
-        private MemBL.eOponnentType m_Type;
+        private ePlayerType m_Type;
 
-        public Player(string i_Name, MemBL.eOponnentType i_PlayerType)
+        public Player(string i_Name, ePlayerType i_PlayerType)
         {
             m_Name = i_Name;
             m_Type = i_PlayerType;
         }
 
-        public Player(MemBL.eOponnentType i_PlayerType)
+        public Player(ePlayerType i_PlayerType)
         {
             m_Type = i_PlayerType;
         }
@@ -52,7 +58,7 @@ namespace C11_Ex02
         /// <summary>
         /// Gets and Sets the Player Type
         /// </summary>
-        public MemBL.eOponnentType Type
+        public ePlayerType Type
         {
             get { return m_Type; }
             set { m_Type = value; }

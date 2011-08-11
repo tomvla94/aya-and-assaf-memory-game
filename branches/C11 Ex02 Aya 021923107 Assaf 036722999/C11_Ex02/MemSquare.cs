@@ -28,6 +28,7 @@ namespace C11_Ex02
         /// <param name="i_Leter">The Letter for this Square Card</param>
         public MemSquare(int i_Row, int i_Col, string i_Leter)
         {
+            m_Card = new Card();
             m_Row = i_Row;
             m_Col = i_Col;
             m_Card.Sign = i_Leter;
@@ -64,7 +65,7 @@ namespace C11_Ex02
             int row;
             string convertedUpperCaseSquareString = i_SquareStr.ToUpper();
             int col = (convertedUpperCaseSquareString[0] - 'A');
-            if (col > 0)
+            if (col >= 0)
             {
                 retParseResult = int.TryParse(convertedUpperCaseSquareString.Remove(0, 1),out row);
                 if (retParseResult)
@@ -76,6 +77,11 @@ namespace C11_Ex02
             }
             
             return retParseResult;
+        }
+
+        internal bool IsPairWith(MemSquare i_SquareChoice)
+        {
+            return m_Card.Sign.Equals(i_SquareChoice.m_Card.Sign);
         }
     }
 }
