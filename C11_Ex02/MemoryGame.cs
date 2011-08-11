@@ -17,25 +17,25 @@ namespace C11_Ex02
     /// </summary>
     public class MemoryGame
     {
-        int m_NumberOfHumanPlayers = 0;
         MemBL m_MemoryLogic = new MemBL();
+        private const char k_RowSpacer = '=';
+        private const char k_ColSpacer = '|';
 
         internal void Run()
         {
             Console.WriteLine("Hey, welcome to the Memory Game!");
             Console.WriteLine("Please type your name: ");
             string playerName = Console.ReadLine();
-            Console.WriteLine(playerName + ", Do you want to play against the computer? Y/N: ");
-            MemBL.eOponnentType oponnentChoice = getUserChoiceForOponnent();
+            Player.ePlayerType oponnentChoice = getUserChoiceForOponnent();
 
             string secondPlayerName = null;
-            if (oponnentChoice == MemBL.eOponnentType.Human)
+            if (oponnentChoice == Player.ePlayerType.Human)
             {
                 Console.WriteLine("What is the second player name: ");
                 secondPlayerName = Console.ReadLine();
             }
 
-            m_MemoryLogic.initGame(playerName, secondPlayerName, oponnentChoice);
+            m_MemoryLogic.InitializePlayers(playerName, secondPlayerName);
 
             bool userNewGameChoice = true;
             do
@@ -44,17 +44,16 @@ namespace C11_Ex02
                 int height;
                 getUserChoiceForBoardSize(out width, out height);
                 m_MemoryLogic.initRound(width, height);
-
-                PrintGameBoard();
+                printGameBoard(m_MemoryLogic.Board);
 
                 do
                 {
                     MemSquare squareChoice = getUserChoiceForSquare();
                     if (squareChoice != null)
                     {
-                        m_MemoryLogic.DoMove(squareChoice);
-                        Ex02.ConsoleUtils.Screen.Clear();
-                        PrintGameBoard();
+                        m_MemoryLogic.PlayPlayerTurn(squareChoice);
+                        Screen.Clear();
+                        printGameBoard(m_MemoryLogic.Board);
                     }
                     else
                     {
@@ -63,10 +62,10 @@ namespace C11_Ex02
 
                     MemSquare matchSquareChoice = getUserChoiceForSquare();
                     if (matchSquareChoice != null)
-                    {                       
-                        m_MemoryLogic.DoMove(squareChoice);
+                    {
+                        m_MemoryLogic.PlayPlayerTurn(squareChoice);
                         Ex02.ConsoleUtils.Screen.Clear();
-                        PrintGameBoard();
+                        printGameBoard(m_MemoryLogic.Board);
                     }
                     else
                     {
@@ -136,7 +135,7 @@ namespace C11_Ex02
                 }
                 else
                 {
-                    if (!m_MemoryLogic.isLegalMove(retSquare))
+                    if (!m_MemoryLogic.IsLegalMove(retSquare))
                     {
                         Console.WriteLine("not a legal move, try again");
                         return getUserChoiceForSquare();
@@ -177,18 +176,18 @@ namespace C11_Ex02
             }
         }
 
-        private MemBL.eOponnentType getUserChoiceForOponnent()
+        private Player.ePlayerType getUserChoiceForOponnent()
         {
             Console.WriteLine("do you want to play against the computer? Y/N");
             string choice = Console.ReadLine();
 
             if (choice.ToLower().Equals("y"))
             {
-                return MemBL.eOponnentType.Computer;
+                return Player.ePlayerType.Computer;
             }
             else if (choice.ToLower().Equals("n"))
             {
-                return MemBL.eOponnentType.Human;
+                return Player.ePlayerType.Human;
             }
             else
             {
@@ -197,11 +196,73 @@ namespace C11_Ex02
             }
         }
 
-        public string PrintGameBoard()
+        private void printGameBoard(MemBoard i_MemBoard)
         {
-            return m_MemoryLogic.PrintGameBoard();
+            // Clear the Screen
+            Screen.Clear();
+
+            // Print the Header Row
+            string retBoard = printHeadersRow(i_MemBoard);
+
+            // Print Each Row with its Squares
+            for (int i = 0; i < i_MemBoard.Height; i++)
+            {
+                retBoard += printSquareRow(i_MemBoard, i);
+            }
+
+            // print the Board
+            Console.WriteLine(retBoard);
         }
 
-        
+        /// <summary>
+        /// Prepares the Header Row To be Printed
+        /// </summary>
+        /// <returns>The Header Row With Spacers Ready for Print</returns>
+        private string printHeadersRow(MemBoard i_MemBoard)
+        {
+            string spacer = new string(k_RowSpacer, (i_MemBoard.Width * 8) - 4);
+            string retHeaderRow = "  ";
+
+            // Loop the Number of time the Header Width And Write The ABC Headers
+            for (int i = 0; i < i_MemBoard.Width; i++)
+            {
+                // Seperate Each Header Letter with Tab
+                retHeaderRow += "   " + (char)('A' + i) + "   ";
+            }
+
+            // Add the Row Spacer
+            retHeaderRow += "\n  " + spacer + "\n";
+
+            return retHeaderRow;
+        }
+
+        /// <summary>
+        /// Prepares the Squares Row to be Printed
+        /// </summary>
+        /// <param name="i_RowIndex">The Row Index to be Displayed</param>
+        /// <returns>The Squares Row with Spacers Ready for Print</returns>
+        private string printSquareRow(MemBoard i_MemBoard, int i_RowIndex)
+        {
+            string spacer = new string(k_RowSpacer, (i_MemBoard.Width * 8) - 4);
+            string retSquaresRow = (i_RowIndex + 1) + " " + k_ColSpacer;
+
+            // Loop through the Row Squares and Print them Out
+            for (int i = 0; i < i_MemBoard.Width; i++)
+            {
+                if (i_MemBoard[i_RowIndex, i].Card.IsHidden)
+                {
+                    retSquaresRow += "      " + k_ColSpacer;
+                }
+                else
+                {
+                    retSquaresRow += "  " + i_MemBoard[i_RowIndex, i].Card.Sign + "  " + k_ColSpacer;
+                }
+            }
+
+            // Add the Row Spacer
+            retSquaresRow += "\n  " + spacer + "\n";
+
+            return retSquaresRow;
+        }
     }
 }

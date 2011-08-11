@@ -32,7 +32,7 @@ namespace C11_Ex02
         /// </summary>
         /// <param name="i_Width">The Board Width</param>
         /// <param name="i_Height">The Board Height</param>
-        public void BuildBoard(int i_Width, int i_Height) 
+        public void BuildBoard(int i_Width, int i_Height)
         {
             // Check if the Input is Valid
             if (CheckInput(i_Width, i_Height))
@@ -40,7 +40,7 @@ namespace C11_Ex02
                 // Save the Board Width and Height
                 m_BoardWidth = i_Width;
                 m_BoardHeight = i_Height;
-                
+
                 // Use the MemSquare Class to Build Each Square in the Game
                 m_Squares = new MemSquare[i_Height, i_Width];
 
@@ -54,7 +54,7 @@ namespace C11_Ex02
             int counter = m_BoardWidth + 1;
             for (int i = 0; i < m_BoardHeight; i++)
             {
-                for(int j = 0; j < m_BoardWidth; j += 2)
+                for (int j = 0; j < m_BoardWidth; j += 2)
                 {
                     char letter = (char)('B' + counter++);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
@@ -102,31 +102,28 @@ namespace C11_Ex02
         /// <summary>
         /// Checks the User Input for the Board Size
         /// </summary>
-        private bool CheckInput(int i_Width, int i_Height) 
+        private bool CheckInput(int i_Width, int i_Height)
         {
             bool retValue = false;
-            
+
             // Check Width Valid Size
             if (i_Width < k_MinBoradSizeValue || i_Width > k_MaxBoradSizeValue)
             {
                 retValue = false;
-                throw new MemMessages(string.Format(MemMessages.k_InvalidBoardSize, "Width"));
             }
-            
+
             // Check Height Valid Size
             if (i_Height < k_MinBoradSizeValue || i_Height > k_MaxBoradSizeValue)
             {
                 retValue = false;
-                throw new MemMessages(string.Format(MemMessages.k_InvalidBoardSize, "Height"));
             }
-            
+
             // Verify that the Number of Squares is Even
-            if((i_Width * i_Height) % 2 != 0)
+            if ((i_Width * i_Height) % 2 != 0)
             {
                 retValue = false;
-                throw new MemMessages(string.Format(MemMessages.k_BoradSizeNotEven, (i_Width * i_Height)));
             }
-            
+
             // Every thing is OK
             retValue = true;
 
@@ -155,76 +152,64 @@ namespace C11_Ex02
         }
 
         /// <summary>
-        /// Prepares the Game Board to be Printed
+        /// number of visible squares
         /// </summary>
-        /// <returns>The Game Board</returns>
-        public string PrintBoard()
+        public int NumberOfVisibleSquares
         {
-            // Clear the Screen
-            Screen.Clear();
-
-            // Print the Header Row
-            string retBoard = PrintHeadersRow();
-
-            // Print Each Row with its Squares
-            for(int i = 0; i < m_BoardHeight; i++)
+            get
             {
-                retBoard += PrintSquareRow(i);
+                return countNumberOfVisibleSquares();
             }
-
-            // Return the Board
-            return retBoard;
         }
 
         /// <summary>
-        /// Prepares the Header Row To be Printed
+        /// count the number of visible squares
         /// </summary>
-        /// <returns>The Header Row With Spacers Ready for Print</returns>
-        private string PrintHeadersRow()
+        /// <returns></returns>
+        private int countNumberOfVisibleSquares()
         {
-            string spacer = new string(k_RowSpacer, (m_BoardWidth * 8) - 4);
-            string retHeaderRow = "  ";
-            
-            // Loop the Number of time the Header Width And Write The ABC Headers
-            for (int i = 0; i < m_BoardWidth; i++)
+            int visibleSquaresCounter = 0;
+            for (int row = 0; row < m_BoardHeight; row++)
             {
-                // Seperate Each Header Letter with Tab
-                retHeaderRow += "   " + (char)('A' + i) + "   ";
+                for (int col = 0; col < m_BoardWidth; col++)
+                {
+                    if (!m_Squares[row, col].Card.IsHidden)
+                    {
+                        visibleSquaresCounter++;
+                    }
+                }
             }
 
-            // Add the Row Spacer
-            retHeaderRow += "\n  " + spacer + "\n";
-
-            return retHeaderRow;
+            return visibleSquaresCounter;
         }
 
-        /// <summary>
-        /// Prepares the Squares Row to be Printed
-        /// </summary>
-        /// <param name="i_RowIndex">The Row Index to be Displayed</param>
-        /// <returns>The Squares Row with Spacers Ready for Print</returns>
-        private string PrintSquareRow(int i_RowIndex)
+        public MemSquare this[int i_Row, int i_Col]
         {
-            string spacer = new string(k_RowSpacer, (m_BoardWidth * 8) - 4);
-            string retSquaresRow = (i_RowIndex + 1) + " " + k_ColSpacer;
-
-            // Loop through the Row Squares and Print them Out
-            for (int i = 0; i < m_BoardWidth; i++)
+            get
             {
-                if (m_Squares[i, i_RowIndex].Card.IsHidden)
-                {
-                    retSquaresRow += "      " + k_ColSpacer;
-                }
-                else 
-                {
-                    retSquaresRow += "  " + m_Squares[i, i_RowIndex].Card.Sign + "  " + k_ColSpacer;
-                }
+                return m_Squares[i_Row, i_Col];
             }
-            
-            // Add the Row Spacer
-            retSquaresRow += "\n  " + spacer + "\n";
+        }
 
-            return retSquaresRow;
+        internal void FlipSquare(MemSquare i_SquareChoice)
+        {
+            m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip();
+        }
+
+        public int Width
+        {
+            get
+            {
+                return m_BoardWidth;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return m_BoardHeight;
+            }
         }
     }
 }

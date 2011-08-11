@@ -7,7 +7,7 @@ namespace C11_Ex02
     public class Card
     {
         private string m_Sign;
-        private bool v_IsHidden = false;
+        private bool v_IsHidden = true;
 
         public string Sign
         {
