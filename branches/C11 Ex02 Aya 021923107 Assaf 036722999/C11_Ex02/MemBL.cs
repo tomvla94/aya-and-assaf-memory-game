@@ -70,37 +70,96 @@ namespace C11_Ex02
         /// <summary>
         /// Plays The Current Playing Player Turn
         /// </summary>
-        public void PlayPlayerTurn(MemSquare i_SquareChoice) 
+        public bool PlayPlayerTurn(MemSquare i_SquareChoice) 
         {
-            m_MemoryBoard.FlipSquare(i_SquareChoice);
-
+            bool retPlayerScored = false;
+            
             if (m_PrevSquareChosen == null)
             {
+                // Flip the First Card
+                m_MemoryBoard.FlipSquare(i_SquareChoice);
+
                 m_PrevSquareChosen = i_SquareChoice;
+                // Save the Show Card in the List
+                m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
             }
-            else 
+            else
             {
+                // Flip the Second Card
+                m_MemoryBoard.FlipSquare(i_SquareChoice);
+                // Save the Show Card in the List
+                m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                // Compare Pairs
                 if (m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col].IsPairWith
                     (m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
                 {
                     m_players[m_CurrentPlayingPlayerIndex].Score++;
+                    m_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                    m_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
+                    retPlayerScored = true;
                 }
-                else
+                changePlayerIndex();
+            }
+           
+
+            return retPlayerScored;
+        }
+
+        private readonly List<MemSquare> m_ShowSquareCards = new List<MemSquare>();
+
+        public void PlayComputerTurn(out MemSquare i_FirstSquare, out MemSquare i_SecondSquare, out bool i_PlayerScored)
+        {
+            i_FirstSquare = CompChooseCardFromSeenCards();
+            m_MemoryBoard.FlipSquare(i_FirstSquare);
+            i_SecondSquare = CompFindMatch(i_FirstSquare.Card);
+            m_MemoryBoard.FlipSquare(i_SecondSquare);
+            i_PlayerScored = i_FirstSquare.Card.IsPairWith(i_SecondSquare.Card);
+            if (i_PlayerScored)
+            {
+                m_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
+                m_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
+            }
+            else 
+            {
+                m_ShowSquareCards.Add(i_SecondSquare);
+            }
+            changePlayerIndex();
+        }
+
+        private MemSquare CompFindMatch(Card i_FindCard)
+        {
+            MemSquare retFoundSquare = null;
+            foreach (MemSquare seenSquare in m_ShowSquareCards)
+            {
+                if (m_ShowSquareCards.IndexOf(seenSquare) != 0 && i_FindCard.IsPairWith(seenSquare.Card))
                 {
-                    m_MemoryBoard.FlipSquare(i_SquareChoice);
-                    m_MemoryBoard.FlipSquare(i_SquareChoice);
-                    changePlayerIndex();
-                    if (m_players[m_CurrentPlayingPlayerIndex].Type == Player.ePlayerType.Computer)
+                    retFoundSquare = seenSquare;
+                    break;
+                }
+            }
+
+            if (retFoundSquare == null)
+            {
+                Random rand = new Random();
+                bool foundOption = false;
+                while (!foundOption)
+                {
+                    int optionalRow = rand.Next(Board.Width);
+                    int optionalCol = rand.Next(Board.Height);
+                    if (Board.IsLeagalSquare(optionalRow, optionalCol))
                     {
-                        playComputerTurn();
+                        retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
+                        foundOption = true;
                     }
                 }
             }
+
+            return retFoundSquare;
         }
 
-        private void playComputerTurn()
+        private MemSquare CompChooseCardFromSeenCards()
         {
-            throw new NotImplementedException();
+            return m_ShowSquareCards[0];
         }
 
         private void changePlayerIndex()
@@ -113,6 +172,11 @@ namespace C11_Ex02
             {
                 m_CurrentPlayingPlayerIndex = 0;
             }
+        }
+
+        public Player CurrentPlayer
+        {
+            get { return m_players[m_CurrentPlayingPlayerIndex]; }
         }
 
         public bool RoundFinished
@@ -142,6 +206,19 @@ namespace C11_Ex02
         public bool IsLegalMove(MemSquare i_ChosenSquare)
         {
             return m_MemoryBoard[i_ChosenSquare.Row, i_ChosenSquare.Col].Card.IsHidden;               
+        }
+
+        public bool EndPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_KeepCardsVisible)
+        {
+            bool retUserGotPoint = i_KeepCardsVisible;
+
+            if (!i_KeepCardsVisible)
+            {
+                m_MemoryBoard[i_FirstSquare.Row,i_FirstSquare.Col].Card.Flip();
+                m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col].Card.Flip();
+            }
+
+            return retUserGotPoint;
         }
     }
 }

@@ -52,13 +52,13 @@ namespace C11_Ex02
         private void CreateSquares()
         {
             int counter = m_BoardWidth + 1;
-            for (int i = 0; i < m_BoardHeight; i++)
+            for (int i = 0; i < m_BoardHeight; i += 2)
             {
-                for (int j = 0; j < m_BoardWidth; j += 2)
+                for (int j = 0; j < m_BoardWidth; j ++)
                 {
                     char letter = (char)('B' + counter++);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
-                    m_Squares[i, j + 1] = new MemSquare(i, j, letter.ToString());
+                    m_Squares[i + 1, j] = new MemSquare(i, j, letter.ToString());
                 }
             }
 
@@ -130,25 +130,9 @@ namespace C11_Ex02
             return retValue;
         }
 
-        /// <summary>
-        /// Gets the Requested Square From the Board
-        /// </summary>
-        /// <param name="i_Row">Requested Square Row</param>
-        /// <param name="i_Col">Requested Square Collumn</param>
-        /// <returns>The Requested Square</returns>
-        public MemSquare GetSquareAt(int i_Row, char i_Col)
-        {
-            MemSquare retRequestedSquare = null;
-
-            // Return the Requested Square
-            retRequestedSquare = m_Squares[i_Row, i_Col];
-
-            return retRequestedSquare;
-        }
-
         public bool IsLeagalSquare(int i_Row, int i_Col)
         {
-            return (i_Row <= m_BoardHeight && i_Col <= m_BoardWidth);
+            return (i_Row <= m_BoardHeight && i_Col < m_BoardWidth);
         }
 
         /// <summary>

@@ -35,43 +35,72 @@ namespace C11_Ex02
                 secondPlayerName = Console.ReadLine();
             }
 
-            m_MemoryLogic.InitializePlayers(playerName, secondPlayerName);
+            if (secondPlayerName != null)
+            {
+                m_MemoryLogic.InitializePlayers(playerName, secondPlayerName);
+            }
+            else 
+            {
+                m_MemoryLogic.InitializePlayers(playerName);
+            }
 
-            bool userNewGameChoice = true;
+            bool userNewGameChoice = true;  
+            int width;
+            int height;
+            getUserChoiceForBoardSize(out width, out height);
+            m_MemoryLogic.initRound(width, height);
+            printGameBoard(m_MemoryLogic.Board);
             do
             {
-                int width;
-                int height;
-                getUserChoiceForBoardSize(out width, out height);
-                m_MemoryLogic.initRound(width, height);
-                printGameBoard(m_MemoryLogic.Board);
-
                 do
                 {
-                    MemSquare squareChoice = getUserChoiceForSquare();
-                    if (squareChoice != null)
+                    bool keepCardsVisible = false;
+                    MemSquare firstSquareChoise;
+                    MemSquare matchSquareChoice;
+                    if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
                     {
-                        m_MemoryLogic.PlayPlayerTurn(squareChoice);
-                        Screen.Clear();
-                        printGameBoard(m_MemoryLogic.Board);
+
+                        firstSquareChoise = getUserChoiceForSquare();
+                        if (firstSquareChoise != null)
+                        {
+                            keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(firstSquareChoise);
+                            Screen.Clear();
+                            printGameBoard(m_MemoryLogic.Board);
+                        }
+                        else
+                        {
+                            userNewGameChoice = false;
+                        }
+
+                        matchSquareChoice = getUserChoiceForSquare();
+                        if (matchSquareChoice != null)
+                        {
+                            keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(matchSquareChoice);
+                            Ex02.ConsoleUtils.Screen.Clear();
+                            printGameBoard(m_MemoryLogic.Board);
+                        }
+                        else
+                        {
+                            userNewGameChoice = false;
+                        }
                     }
                     else
                     {
-                        userNewGameChoice = false;
-                    }
-
-                    MemSquare matchSquareChoice = getUserChoiceForSquare();
-                    if (matchSquareChoice != null)
-                    {
-                        m_MemoryLogic.PlayPlayerTurn(squareChoice);
-                        Ex02.ConsoleUtils.Screen.Clear();
+                        m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
                         printGameBoard(m_MemoryLogic.Board);
                     }
-                    else
+                    bool showUserPointsMessage = m_MemoryLogic.EndPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
+                    if (showUserPointsMessage)
                     {
-                        userNewGameChoice = false;
+                        Console.WriteLine("Hey You Found a Match! :)");
+                        Console.ReadLine();
                     }
-
+                    else 
+                    {
+                        Console.WriteLine("Sorry... No Match here.");
+                        Console.ReadLine();
+                    }
+                    printGameBoard(m_MemoryLogic.Board);
                 } while (!m_MemoryLogic.RoundFinished);
 
                 printRoundSummary();
@@ -85,13 +114,13 @@ namespace C11_Ex02
 
         private void printRoundSummary()
         {
-            Console.WriteLine("the winner is : {0} with: {1} points against {2} points of {3}",
+            Console.WriteLine("The winner is : {0} with: {1} points against {2} points of {3}",
                 m_MemoryLogic.Winner.Name, m_MemoryLogic.Winner.Score, m_MemoryLogic.Loser.Score, m_MemoryLogic.Loser.Name);
         }
 
         private bool getUserChoiceForPlayingAnotherRound()
         {
-            Console.WriteLine("do you want to play another round? Y/N");
+            Console.WriteLine("Do you want to play another round? Y/N");
             string choice = Console.ReadLine();
 
             if (choice.ToLower().Equals("y"))
@@ -104,7 +133,7 @@ namespace C11_Ex02
             }
             else
             {
-                Console.WriteLine("just y or no please");
+                Console.WriteLine("Just Y or N please");
                 return getUserChoiceForPlayingAnotherRound();
             }
         }
@@ -112,7 +141,7 @@ namespace C11_Ex02
         private MemSquare getUserChoiceForSquare()
         {
             MemSquare retSquare = null;
-            Console.WriteLine("please choose a square (in the format of e4)");
+            Console.WriteLine("Please choose a square (in the format of e4)");
             string retSquareStr = Console.ReadLine();
 
             if (retSquareStr.ToLower().Equals("q"))
@@ -123,21 +152,21 @@ namespace C11_Ex02
             bool allGood = MemSquare.TryParse(retSquareStr, out retSquare);
             if (!allGood)
             {
-                Console.WriteLine("please type a legal square");
+                Console.WriteLine("Please type a legal square");
                 return getUserChoiceForSquare();
             }
             else
             {
                 if (!m_MemoryLogic.Board.IsLeagalSquare(retSquare.Row, retSquare.Col))
                 {
-                    Console.WriteLine("the square is out of the bounds of the board, try again");
+                    Console.WriteLine("The square is out of the bounds of the board, try again");
                         return getUserChoiceForSquare();
                 }
                 else
                 {
                     if (!m_MemoryLogic.IsLegalMove(retSquare))
                     {
-                        Console.WriteLine("not a legal move, try again");
+                        Console.WriteLine("Not a legal move, try again");
                         return getUserChoiceForSquare();
                     }
                 }
@@ -154,23 +183,23 @@ namespace C11_Ex02
         private void getUserChoiceForBoardSize(out int i_Width, out int i_Height)
         {
             Console.WriteLine("Board Size: number of squares should be even");
-            Console.WriteLine("please type the board height (4-6)");
+            Console.WriteLine("Please type the board height (4-6)");
             string heightStr = Console.ReadLine();
 
             bool allGood = int.TryParse(heightStr, out i_Height);
             if (!allGood || i_Height > 6 || i_Height < 4)
             {
-                Console.WriteLine("just a number between 4 and 6 please");
+                Console.WriteLine("Just a number between 4 and 6 please");
                 getUserChoiceForBoardSize(out i_Width, out i_Height);
             }
             else
             {
-                Console.WriteLine("please type the board height (4-6)");
+                Console.WriteLine("Please type the board Width (4-6)");
                 string widthtStr = Console.ReadLine();
                 allGood = int.TryParse(widthtStr, out i_Width);
                 if (!allGood || i_Width > 6 || i_Width < 4)
                 {
-                    Console.WriteLine("just a number between 4 and 6 please");
+                    Console.WriteLine("Just a number between 4 and 6 please");
                     getUserChoiceForBoardSize(out i_Width, out i_Height);
                 }
             }
@@ -178,7 +207,7 @@ namespace C11_Ex02
 
         private Player.ePlayerType getUserChoiceForOponnent()
         {
-            Console.WriteLine("do you want to play against the computer? Y/N");
+            Console.WriteLine("Do you want to play against the computer? Y/N");
             string choice = Console.ReadLine();
 
             if (choice.ToLower().Equals("y"))
@@ -191,7 +220,7 @@ namespace C11_Ex02
             }
             else
             {
-                Console.WriteLine("just y or n please");
+                Console.WriteLine("Just y or n please");
                 return getUserChoiceForOponnent();
             }
         }
@@ -226,8 +255,8 @@ namespace C11_Ex02
             // Loop the Number of time the Header Width And Write The ABC Headers
             for (int i = 0; i < i_MemBoard.Width; i++)
             {
-                // Seperate Each Header Letter with Tab
-                retHeaderRow += "   " + (char)('A' + i) + "   ";
+                // Seperate Each Header Letter with Spaces
+                retHeaderRow += string.Format("   {0}   ", (char)('A' + i));
             }
 
             // Add the Row Spacer
@@ -249,14 +278,17 @@ namespace C11_Ex02
             // Loop through the Row Squares and Print them Out
             for (int i = 0; i < i_MemBoard.Width; i++)
             {
+                string sign = null;
                 if (i_MemBoard[i_RowIndex, i].Card.IsHidden)
                 {
-                    retSquaresRow += "      " + k_ColSpacer;
+                    sign = " ";
                 }
                 else
                 {
-                    retSquaresRow += "  " + i_MemBoard[i_RowIndex, i].Card.Sign + "  " + k_ColSpacer;
+                    sign = i_MemBoard[i_RowIndex, i].Card.Sign;
                 }
+
+                retSquaresRow += string.Format("  {0}   " + k_ColSpacer, sign);
             }
 
             // Add the Row Spacer
