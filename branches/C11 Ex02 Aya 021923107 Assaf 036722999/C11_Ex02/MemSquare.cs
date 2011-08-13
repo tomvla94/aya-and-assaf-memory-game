@@ -12,13 +12,46 @@ namespace C11_Ex02
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// A Memory Game Square
     /// </summary>
     public class MemSquare
     {
         private int m_Row;
         private int m_Col;
         private Card m_Card;
+
+        /// <summary>
+        /// Converts a String representation of a Memory Square Position to its MemSquare Equivalent.
+        /// A Return valuse indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="i_SquareStr">The String Representation of a Square Position</param>
+        /// <param name="o_Square">The Real Memory Square</param>
+        /// <returns>True if the Conversion was Successful</returns>
+        public static bool TryParse(string i_SquareStr, out MemSquare o_Square)
+        {
+            bool retParseResult = false;
+            o_Square = new MemSquare();
+            if (i_SquareStr.Length < 2)
+            {
+                return retParseResult;
+            }
+
+            int row;
+            string convertedUpperCaseSquareString = i_SquareStr.ToUpper();
+            int col = convertedUpperCaseSquareString[0] - 'A';
+            if (col >= 0)
+            {
+                retParseResult = int.TryParse(convertedUpperCaseSquareString.Remove(0, 1), out row);
+                if (retParseResult)
+                {
+                    o_Square.Row = row - 1;
+                    o_Square.Col = col;
+                    retParseResult = true;
+                }
+            }
+
+            return retParseResult;
+        }
 
         /// <summary>
         /// Construct the Memory Game Square
@@ -58,33 +91,12 @@ namespace C11_Ex02
             get { return m_Card; }
         }
 
-        public static bool TryParse(string i_SquareStr, out MemSquare o_Square)
-        {
-            bool retParseResult = false;
-            o_Square = new MemSquare();
-            if (i_SquareStr.Length < 2)
-            {
-                return retParseResult;
-            }
-   
-            int row;
-            string convertedUpperCaseSquareString = i_SquareStr.ToUpper();
-            int col = (convertedUpperCaseSquareString[0] - 'A');
-            if (col >= 0)
-            {
-                retParseResult = int.TryParse(convertedUpperCaseSquareString.Remove(0, 1),out row);
-                if (retParseResult)
-                {
-                    o_Square.Row = row - 1;
-                    o_Square.Col = col;
-                    retParseResult = true;
-                }
-            }
-            
-            return retParseResult;
-        }
-
-        internal bool IsPairWith(MemSquare i_SquareChoice)
+        /// <summary>
+        /// Checks if a Square Card is Paired with Another Square Card
+        /// </summary>
+        /// <param name="i_SquareChoice">The Square Card To Match</param>
+        /// <returns>True if the Square Cards Match</returns>
+        public bool IsPairWith(MemSquare i_SquareChoice)
         {
             return m_Card.Sign.Equals(i_SquareChoice.m_Card.Sign);
         }

@@ -27,6 +27,38 @@ namespace C11_Ex02
         private int m_BoardWidth;
         private int m_BoardHeight;
 
+        public int Width
+        {
+            get
+            {
+                return m_BoardWidth;
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                return m_BoardHeight;
+            }
+        }
+
+        public int NumberOfVisibleSquares
+        {
+            get
+            {
+                return countNumberOfVisibleSquares();
+            }
+        }
+
+        public MemSquare this[int i_Row, int i_Col]
+        {
+            get
+            {
+                return m_Squares[i_Row, i_Col];
+            }
+        }
+
         /// <summary>
         /// Build The Memory Game Board
         /// </summary>
@@ -49,6 +81,9 @@ namespace C11_Ex02
             }
         }
 
+        /// <summary>
+        /// Create the Squares on the Board
+        /// </summary>
         private void CreateSquares()
         {
             int counter = m_BoardWidth + 1;
@@ -62,9 +97,13 @@ namespace C11_Ex02
                 }
             }
 
+            // Randomize the Squares Position on the Board
             RandomizeSquares();
         }
 
+        /// <summary>
+        /// Randomizes the Square Position on the Board
+        /// </summary>
         private void RandomizeSquares()
         {
             Random rand = new Random();
@@ -75,10 +114,16 @@ namespace C11_Ex02
                     SwapSquares(ref m_Squares[rand.Next(i), j], ref m_Squares[i, rand.Next(j)]);
                 }
             }
-
+            
+            // Update the Square New Position 
             UpdateSquares();
         }
 
+        /// <summary>
+        /// Swap Squares Position
+        /// </summary>
+        /// <param name="i_LeftSquare">The Left Square</param>
+        /// <param name="i_RightSquare">The Right Square</param>
         private void SwapSquares(ref MemSquare i_LeftSquare, ref MemSquare i_RightSquare)
         {
             MemSquare tempSquare;
@@ -87,6 +132,9 @@ namespace C11_Ex02
             i_RightSquare = tempSquare;
         }
 
+        /// <summary>
+        /// Updates the Correct Squares Position on the Board
+        /// </summary>
         private void UpdateSquares()
         {
             for (int i = 0; i < m_BoardHeight; i++)
@@ -102,6 +150,9 @@ namespace C11_Ex02
         /// <summary>
         /// Checks the User Input for the Board Size
         /// </summary>
+        /// <param name="i_Width">The Board Width</param>
+        /// <param name="i_Height">The Board Height</param>
+        /// <returns>True if the Board Dimentions are OK</returns>
         private bool CheckInput(int i_Width, int i_Height)
         {
             bool retValue = false;
@@ -130,26 +181,21 @@ namespace C11_Ex02
             return retValue;
         }
 
+        /// <summary>
+        /// Checks if the Requested Square is a Valid Square on the Board
+        /// </summary>
+        /// <param name="i_Row">Requested Row</param>
+        /// <param name="i_Col">Requested Collumn</param>
+        /// <returns>True if the Square is On the Board</returns>
         public bool IsLeagalSquare(int i_Row, int i_Col)
         {
             return (i_Row <= m_BoardHeight && i_Col < m_BoardWidth);
         }
-
+       
         /// <summary>
-        /// number of visible squares
+        /// Count the number of visible squares
         /// </summary>
-        public int NumberOfVisibleSquares
-        {
-            get
-            {
-                return countNumberOfVisibleSquares();
-            }
-        }
-
-        /// <summary>
-        /// count the number of visible squares
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>The Number of Visible Square</returns>
         private int countNumberOfVisibleSquares()
         {
             int visibleSquaresCounter = 0;
@@ -167,35 +213,18 @@ namespace C11_Ex02
             return visibleSquaresCounter;
         }
 
-        public MemSquare this[int i_Row, int i_Col]
-        {
-            get
-            {
-                return m_Squares[i_Row, i_Col];
-            }
-        }
-
-        internal void FlipSquare(MemSquare i_SquareChoice)
+        /// <summary>
+        /// Flips a Square
+        /// </summary>
+        /// <param name="i_SquareChoice">The Square to Flip</param>
+        public void FlipSquare(MemSquare i_SquareChoice)
         {
             m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip();
         }
 
-        public int Width
-        {
-            get
-            {
-                return m_BoardWidth;
-            }
-        }
-
-        public int Height
-        {
-            get
-            {
-                return m_BoardHeight;
-            }
-        }
-
+        /// <summary>
+        /// Hides All Squares on the Board
+        /// </summary>
         internal void HideAllSquares()
         {
             foreach (MemSquare square in m_Squares)
