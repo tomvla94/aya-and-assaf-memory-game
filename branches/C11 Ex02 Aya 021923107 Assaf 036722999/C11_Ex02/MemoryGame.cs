@@ -44,13 +44,14 @@ namespace C11_Ex02
                 m_MemoryLogic.InitializePlayers(playerName);
             }
 
-            bool continueGame = true;  
-            int width;
-            int height;
-            getUserChoiceForBoardSize(out width, out height);
-            m_MemoryLogic.initRound(width, height);
+            bool continueGame = true; 
             do
-            {
+            {             
+                int width;
+                int height;
+                getUserChoiceForBoardSize(out width, out height);
+                m_MemoryLogic.initRound(width, height);
+
                 printGameBoard(m_MemoryLogic.Board);
                 do
                 {
@@ -78,7 +79,7 @@ namespace C11_Ex02
                             if (matchSquareChoice != null)
                             {
                                 keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(matchSquareChoice);
-                                Ex02.ConsoleUtils.Screen.Clear();
+                                Screen.Clear();
                                 printGameBoard(m_MemoryLogic.Board);
                             }
                             else
