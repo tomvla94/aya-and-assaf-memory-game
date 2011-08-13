@@ -54,7 +54,7 @@ namespace C11_Ex02
             int counter = m_BoardWidth + 1;
             for (int i = 0; i < m_BoardHeight; i += 2)
             {
-                for (int j = 0; j < m_BoardWidth; j ++)
+                for (int j = 0; j < m_BoardWidth; j++)
                 {
                     char letter = (char)('B' + counter++);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());

@@ -82,14 +82,20 @@ namespace C11_Ex02
 
                 m_PrevSquareChosen = i_SquareChoice;
                 // Save the Show Card in the List
-                m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                if (!m_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
+                {
+                    m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                }
             }
             else
             {
                 // Flip the Second Card
                 m_MemoryBoard.FlipSquare(i_SquareChoice);
                 // Save the Show Card in the List
-                m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                if (!m_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
+                {
+                    m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                }
                 // Compare Pairs
                 if (m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col].IsPairWith
                     (m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
@@ -116,7 +122,17 @@ namespace C11_Ex02
 
         public void PlayComputerTurn(out MemSquare i_FirstSquare, out MemSquare i_SecondSquare, out bool i_PlayerScored)
         {
-            i_FirstSquare = CompChooseRandomSquare();
+            // check if a pair already seen on the board if not choose randomly
+            if (!aPairAlreadySeen(out i_FirstSquare))
+            {
+                i_FirstSquare = CompChooseRandomSquare();
+            }
+
+            if (!m_ShowSquareCards.Contains(i_FirstSquare))
+            {
+                m_ShowSquareCards.Add(i_FirstSquare);
+            }
+            
             m_MemoryBoard.FlipSquare(i_FirstSquare);
             i_SecondSquare = CompFindMatch(i_FirstSquare.Card);
             m_MemoryBoard.FlipSquare(i_SecondSquare);
@@ -129,10 +145,37 @@ namespace C11_Ex02
             }
             else 
             {
-                m_ShowSquareCards.Add(i_SecondSquare);
+                if (!m_ShowSquareCards.Contains(i_SecondSquare))
+                {
+                    m_ShowSquareCards.Add(i_SecondSquare);
+                }
+
                 changePlayerIndex();
             }           
         }
+
+        /// <summary>
+        /// check if a pair already seen on the board
+        /// </summary>
+        /// <param name="i_Square"></param>
+        /// <returns></returns>
+        private bool aPairAlreadySeen(out MemSquare i_Square)
+        {
+            i_Square = null;
+            foreach (MemSquare seenSquare in m_ShowSquareCards)
+            {
+                foreach (MemSquare square in m_ShowSquareCards)
+                {
+                    if (seenSquare != square && seenSquare.IsPairWith(square))
+                    {
+                        i_Square = seenSquare;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
 
         private MemSquare CompFindMatch(Card i_FindCard)
         {
