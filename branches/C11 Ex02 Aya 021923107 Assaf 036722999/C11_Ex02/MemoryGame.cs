@@ -256,7 +256,7 @@ namespace C11_Ex02
             }
             else
             {
-                Console.WriteLine("Just y or n please");
+                Console.WriteLine("Just Y or N please");
                 return getUserChoiceForOponnent();
             }
         }
