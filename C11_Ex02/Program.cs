@@ -4,7 +4,7 @@ using System.Text;
 
 namespace C11_Ex02
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// Program Main

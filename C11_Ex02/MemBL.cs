@@ -12,29 +12,48 @@ namespace C11_Ex02
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The Memory Game Logic
     /// </summary>
     public class MemBL
     {
+        private readonly List<MemSquare> r_ShowSquareCards = new List<MemSquare>();
         private MemBoard m_MemoryBoard = new MemBoard();
-        private bool v_GameExists = false;
-        private bool v_GameEnded = false;
-        private int m_CurrentPlayingPlayerIndex = 0;
         private Player[] m_players = new Player[2];
-
-        public bool IsGameExists
-        {
-            get { return v_GameExists; }
-        }
-
-        public bool IsGameEnd
-        {
-            get { return v_GameEnded; }
-        }
+        private MemSquare m_PrevSquareChosen = null;
+        private int m_CurrentPlayingPlayerIndex = 0;
 
         public MemBoard Board
         {
             get { return m_MemoryBoard; }
+        }
+
+        public Player CurrentPlayer
+        {
+            get { return m_players[m_CurrentPlayingPlayerIndex]; }
+        }
+
+        public bool RoundFinished
+        {
+            get
+            {
+                return m_MemoryBoard.NumberOfVisibleSquares >= m_MemoryBoard.Height * m_MemoryBoard.Width;
+            }
+        }
+
+        public Player Winner
+        {
+            get
+            {
+                return m_players[0].Score > m_players[1].Score ? m_players[0] : m_players[1];
+            }
+        }
+
+        public Player Loser
+        {
+            get
+            {
+                return m_players[0].Score < m_players[1].Score ? m_players[0] : m_players[1];
+            }
         }
 
         /// <summary>
@@ -66,44 +85,52 @@ namespace C11_Ex02
             }   
         }
 
-        private MemSquare m_PrevSquareChosen = null;
-
         /// <summary>
-        /// Plays The Current Playing Player Turn
+        /// Plays The Current Human Playing Player Turn
         /// </summary>
+        /// <param name="i_SquareChoice">The Players Chosen Square</param>
+        /// <returns>True if the Player Scored a Point - Found a Match</returns>
         public bool PlayPlayerTurn(MemSquare i_SquareChoice) 
         {
             bool retPlayerScored = false;
             
+            // First Square Choise
             if (m_PrevSquareChosen == null)
             {
                 // Flip the First Card
                 m_MemoryBoard.FlipSquare(i_SquareChoice);
 
+                // Save the Chosen Square
                 m_PrevSquareChosen = i_SquareChoice;
-                // Save the Show Card in the List
-                if (!m_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
+               
+                // Save the Shown Square in the List
+                if (!r_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
                 {
-                    m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                    r_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
                 }
             }
             else
             {
+                // Second Square Choise
                 // Flip the Second Card
                 m_MemoryBoard.FlipSquare(i_SquareChoice);
-                // Save the Show Card in the List
-                if (!m_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
+                
+                // Save the Shown Square in the List
+                if (!r_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
                 {
-                    m_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                    r_ShowSquareCards.Add(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
                 }
+                
                 // Compare Pairs
-                if (m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col].IsPairWith
-                    (m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
+                if (m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col].IsPairWith(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
                 {
+                    // Player Scored!
                     m_players[m_CurrentPlayingPlayerIndex].Score++;
-                    m_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
-                    m_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
-                    //m_NumberOfFoundCardPairs += 2;
+
+                    // Remove the Squares from the List
+                    r_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
+                    r_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
+                    
                     retPlayerScored = true;
                 }
                 else
@@ -113,41 +140,53 @@ namespace C11_Ex02
 
                 m_PrevSquareChosen = null;          
             }
-           
 
             return retPlayerScored;
         }
 
-        private readonly List<MemSquare> m_ShowSquareCards = new List<MemSquare>();
-
+        /// <summary>
+        /// Plays the Computer Turn
+        /// </summary>
+        /// <param name="i_FirstSquare">The First Chosen Square</param>
+        /// <param name="i_SecondSquare">The Second Chosen Square</param>
+        /// <param name="i_PlayerScored">Has the Computer Found a Match</param>
         public void PlayComputerTurn(out MemSquare i_FirstSquare, out MemSquare i_SecondSquare, out bool i_PlayerScored)
         {
-            // check if a pair already seen on the board if not choose randomly
+            // Check if a pair was already seen on the board
             if (!aPairAlreadySeen(out i_FirstSquare))
             {
+                // If Not Choose a Square randomly
                 i_FirstSquare = CompChooseRandomSquare();
             }
 
-            if (!m_ShowSquareCards.Contains(i_FirstSquare))
+            // Check if the First Square Card was Seen on the Board
+            if (!r_ShowSquareCards.Contains(i_FirstSquare))
             {
-                m_ShowSquareCards.Add(i_FirstSquare);
+                r_ShowSquareCards.Add(i_FirstSquare);
             }
             
+            // Flip the First Square Card
             m_MemoryBoard.FlipSquare(i_FirstSquare);
+            
+            // Find a Matching Square
             i_SecondSquare = CompFindMatch(i_FirstSquare.Card);
+            
+            // Flip the Second Square Card
             m_MemoryBoard.FlipSquare(i_SecondSquare);
+
+            // Check if the Computer Found a Match
             i_PlayerScored = i_FirstSquare.Card.IsPairWith(i_SecondSquare.Card);
             if (i_PlayerScored)
             {
-                m_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
-                m_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
+                r_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
+                r_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
                 CurrentPlayer.Score++;
             }
             else 
             {
-                if (!m_ShowSquareCards.Contains(i_SecondSquare))
+                if (!r_ShowSquareCards.Contains(i_SecondSquare))
                 {
-                    m_ShowSquareCards.Add(i_SecondSquare);
+                    r_ShowSquareCards.Add(i_SecondSquare);
                 }
 
                 changePlayerIndex();
@@ -155,32 +194,39 @@ namespace C11_Ex02
         }
 
         /// <summary>
-        /// check if a pair already seen on the board
+        /// Checks if a pair was already seen on the board
+        /// By any Playing Player
         /// </summary>
-        /// <param name="i_Square"></param>
-        /// <returns></returns>
+        /// <param name="i_Square">The Square Seen</param>
+        /// <returns>If a Pair was seen or not</returns>
         private bool aPairAlreadySeen(out MemSquare i_Square)
         {
             i_Square = null;
-            foreach (MemSquare seenSquare in m_ShowSquareCards)
+            bool retVal = false;
+            foreach (MemSquare seenSquare in r_ShowSquareCards)
             {
-                foreach (MemSquare square in m_ShowSquareCards)
+                foreach (MemSquare square in r_ShowSquareCards)
                 {
                     if (seenSquare != square && seenSquare.IsPairWith(square))
                     {
                         i_Square = seenSquare;
-                        return true;
+                        retVal = true;
                     }
                 }
             }
-            return false;
+
+            return retVal;
         }
 
-
+        /// <summary>
+        /// Computer Tries to find a Match from the Seen Squares
+        /// </summary>
+        /// <param name="i_FindCard">The Card to Find aMatch To</param>
+        /// <returns>The Matching Square if Found And a Random Square if Not Found</returns>
         private MemSquare CompFindMatch(Card i_FindCard)
         {
             MemSquare retFoundSquare = null;
-            foreach (MemSquare seenSquare in m_ShowSquareCards)
+            foreach (MemSquare seenSquare in r_ShowSquareCards)
             {
                 if (IsLegalMove(seenSquare) && i_FindCard.IsPairWith(seenSquare.Card))
                 {
@@ -189,25 +235,20 @@ namespace C11_Ex02
                 }
             }
 
+            // Check if a Match was Found
             if (retFoundSquare == null)
             {
-                Random rand = new Random();
-                bool foundOption = false;
-                while (!foundOption)
-                {
-                    int optionalRow = rand.Next(Board.Height);
-                    int optionalCol = rand.Next(Board.Width);
-                    if (isLegalMove(optionalRow, optionalCol))
-                    {
-                        retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
-                        foundOption = true;
-                    }
-                }
+                // Find A Random Square
+                retFoundSquare = CompChooseRandomSquare();
             }
 
             return retFoundSquare;
         }
 
+        /// <summary>
+        /// Finds a Random Valid Square on the Board
+        /// </summary>
+        /// <returns>The Chosen Square</returns>
         private MemSquare CompChooseRandomSquare()
         {
             MemSquare retFoundSquare = null;
@@ -217,6 +258,8 @@ namespace C11_Ex02
             {
                 int optionalRow = rand.Next(Board.Height);
                 int optionalCol = rand.Next(Board.Width);
+
+                // Verify that the Move is Leagal
                 if (isLegalMove(optionalRow, optionalCol))
                 {
                     retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
@@ -227,6 +270,9 @@ namespace C11_Ex02
             return retFoundSquare;
         }
 
+        /// <summary>
+        /// Changes the Current Player Index
+        /// </summary>
         private void changePlayerIndex()
         {
             if (m_CurrentPlayingPlayerIndex == 0)
@@ -239,53 +285,41 @@ namespace C11_Ex02
             }
         }
 
-        public Player CurrentPlayer
-        {
-            get { return m_players[m_CurrentPlayingPlayerIndex]; }
-        }
-
-        
-        public bool RoundFinished
-        {
-            get
-            {
-                return m_MemoryBoard.NumberOfVisibleSquares >= m_MemoryBoard.Height * m_MemoryBoard.Width;
-            }
-        }
-
-        public Player Winner
-        {
-            get
-            {
-                return m_players[0].Score > m_players[1].Score ? m_players[0] : m_players[1];
-            }
-        }
-
-        public Player Loser
-        {
-            get
-            {
-                return m_players[0].Score < m_players[1].Score ? m_players[0] : m_players[1];
-            }
-        }
-
+        /// <summary>
+        /// Checks if the Requested Move is Leagal
+        /// </summary>
+        /// <param name="i_ChosenSquare">The Requested Chosen Square</param>
+        /// <returns>True if the Move is OK</returns>
         public bool IsLegalMove(MemSquare i_ChosenSquare)
         {
             return m_MemoryBoard[i_ChosenSquare.Row, i_ChosenSquare.Col].Card.IsHidden;               
         }
 
+        /// <summary>
+        /// Checks if the Requested Move is Leagal
+        /// </summary>
+        /// <param name="i_Row">The Requested Row</param>
+        /// <param name="i_Col">The Requested Collumn</param>
+        /// <returns>True if the Move is OK</returns>
         private bool isLegalMove(int i_Row, int i_Col)
         {
             return m_MemoryBoard[i_Row, i_Col].Card.IsHidden;
         }
 
+        /// <summary>
+        /// Ends a Players Turn
+        /// </summary>
+        /// <param name="i_FirstSquare">The First Player Chosen Square</param>
+        /// <param name="i_SecondSquare">The Second Player Chosen Square</param>
+        /// <param name="i_KeepCardsVisible">To Keep the Cards Visible?</param>
+        /// <returns>True if the cards are visible</returns>
         public bool EndPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_KeepCardsVisible)
         {
             bool retUserGotPoint = i_KeepCardsVisible;
 
             if (!i_KeepCardsVisible)
             {
-                m_MemoryBoard[i_FirstSquare.Row,i_FirstSquare.Col].Card.Flip();
+                m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col].Card.Flip();
                 m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col].Card.Flip();
             }
 

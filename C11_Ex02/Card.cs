@@ -4,6 +4,9 @@ using System.Text;
 
 namespace C11_Ex02
 {
+    /// <summary>
+    /// The Memory Card Object
+    /// </summary>
     public class Card
     {
         private string m_Sign;
@@ -15,6 +18,11 @@ namespace C11_Ex02
             set { m_Sign = value; }
         }
 
+        public bool IsHidden
+        {
+            get { return v_IsHidden; }
+        }
+
         public void Flip()
         {
             v_IsHidden = !v_IsHidden;
@@ -22,12 +30,7 @@ namespace C11_Ex02
 
         public bool IsPairWith(Card i_CardToCheck)
         {
-            return (m_Sign.CompareTo(i_CardToCheck.Sign) == 0);
-        }
-
-        public bool IsHidden
-        {
-            get { return v_IsHidden; }
+            return m_Sign.CompareTo(i_CardToCheck.Sign) == 0;
         }
     }
 }

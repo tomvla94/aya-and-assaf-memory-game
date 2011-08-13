@@ -17,18 +17,23 @@ namespace C11_Ex02
     /// </summary>
     public class MemoryGame
     {
-        MemBL m_MemoryLogic = new MemBL();
         private const char k_RowSpacer = '=';
         private const char k_ColSpacer = '|';
+        private MemBL m_MemoryLogic = new MemBL();
 
-        internal void Run()
+        /// <summary>
+        /// The Memory Game Run Function
+        /// </summary>
+        public void Run()
         {
             Console.WriteLine("Hey, welcome to the Memory Game!");
             Console.WriteLine("Please type your name: ");
             string playerName = Console.ReadLine();
-            Player.ePlayerType oponnentChoice = getUserChoiceForOponnent();
-
             string secondPlayerName = null;
+            bool continueGame = true; 
+            
+            // Get the Opponent Type
+            Player.ePlayerType oponnentChoice = getUserChoiceForOponnent();
             if (oponnentChoice == Player.ePlayerType.Human)
             {
                 Console.WriteLine("What is the second player name: ");
@@ -44,21 +49,29 @@ namespace C11_Ex02
                 m_MemoryLogic.InitializePlayers(playerName);
             }
 
-            bool continueGame = true; 
             do
             {             
                 int width;
                 int height;
-                getUserChoiceForBoardSize(out width, out height);
-                m_MemoryLogic.initRound(width, height);
 
+                // Get the Requested Board Size
+                getUserChoiceForBoardSize(out width, out height);
+
+                // Initialize a Game Round
+                m_MemoryLogic.initRound(width, height);
                 printGameBoard(m_MemoryLogic.Board);
+
                 do
                 {
+                    // Start a Memory Game Round
                     bool keepCardsVisible = false;
                     MemSquare firstSquareChoise = null;
                     MemSquare matchSquareChoice = null;
+
+                    // Inform the Players Turn
                     Console.WriteLine("{0}'s Turn:", m_MemoryLogic.CurrentPlayer.Name);
+
+                    // Check if the Player is Human
                     if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
                     {
                         firstSquareChoise = getUserChoiceForSquare();
@@ -73,6 +86,7 @@ namespace C11_Ex02
                             continueGame = false;
                         }
 
+                        // Verify that the Player wants to Keep Playing
                         if (continueGame)
                         {
                             matchSquareChoice = getUserChoiceForSquare();
@@ -94,6 +108,7 @@ namespace C11_Ex02
                         printGameBoard(m_MemoryLogic.Board);
                     }
 
+                    // Verify that the Player wants to Keep Playing
                     if (continueGame)
                     {
                         bool showUserPointsMessage = m_MemoryLogic.EndPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
@@ -110,50 +125,51 @@ namespace C11_Ex02
 
                         printGameBoard(m_MemoryLogic.Board);
                     }
-                } while (!m_MemoryLogic.RoundFinished && continueGame);
+                } 
+                while (!m_MemoryLogic.RoundFinished && continueGame);
 
                 printRoundSummary();
 
+                // Check if the User wants another Round
                 continueGame = getUserChoiceForPlayingAnotherRound();
+            } 
+            while (continueGame);
 
-            } while (continueGame);
-
+            // Game is Over - Print the End Game Message
             printEndOfGameMessage();
         }
 
-        private void printRoundSummary()
-        {
-            if (m_MemoryLogic.Winner != m_MemoryLogic.Loser)
-            {
-                Console.WriteLine("The winner is : {0} with: {1} points against {2} points of {3}",
-                    m_MemoryLogic.Winner.Name, m_MemoryLogic.Winner.Score, m_MemoryLogic.Loser.Score, m_MemoryLogic.Loser.Name);
-            }
-            else
-            {
-                Console.WriteLine("Its a Tie!\nEverybody is a Winner! :)");
-            }
-        }
-
+        /// <summary>
+        /// Checks if the User wants to Play another Round
+        /// </summary>
+        /// <returns>True if The User Wants to Play another Round</returns>
         private bool getUserChoiceForPlayingAnotherRound()
         {
+            bool retPlayAnotherRound = false;
             Console.WriteLine("Do you want to play another round? Y/N");
             string choice = Console.ReadLine();
 
             if (choice.ToLower().Equals("y"))
             {
-                return true;
+                retPlayAnotherRound = true;
             }
             else if (choice.ToLower().Equals("n"))
             {
-                return false;
+                retPlayAnotherRound = false;
             }
             else
             {
                 Console.WriteLine("Just Y or N please");
                 return getUserChoiceForPlayingAnotherRound();
             }
+
+            return retPlayAnotherRound;
         }
 
+        /// <summary>
+        /// Requests the User for a Square
+        /// </summary>
+        /// <returns>The Requested Square</returns>
         private MemSquare getUserChoiceForSquare()
         {
             MemSquare retSquare = null;
@@ -191,11 +207,11 @@ namespace C11_Ex02
             return retSquare;
         }
 
-        private void printEndOfGameMessage()
-        {
-            Console.WriteLine("Thanks for playing :)");
-        }
-
+        /// <summary>
+        /// Requests The User for a Game Board Size
+        /// </summary>
+        /// <param name="i_Width">The Requested Width</param>
+        /// <param name="i_Height">The Requested Height</param>
         private void getUserChoiceForBoardSize(out int i_Width, out int i_Height)
         {
             Console.WriteLine("Board Size: number of squares should be even");
@@ -221,6 +237,10 @@ namespace C11_Ex02
             }
         }
 
+        /// <summary>
+        /// Asks the User for its Opponent Type
+        /// </summary>
+        /// <returns>The Opponent Type (Human / Computer)</returns>
         private Player.ePlayerType getUserChoiceForOponnent()
         {
             Console.WriteLine("Do you want to play against the computer? Y/N");
@@ -241,6 +261,38 @@ namespace C11_Ex02
             }
         }
 
+        /// <summary>
+        /// Prints the Round Summary
+        /// </summary>
+        private void printRoundSummary()
+        {
+            if (m_MemoryLogic.Winner != m_MemoryLogic.Loser)
+            {
+                Console.WriteLine(
+                    "The winner is : {0} with: {1} points against {2} points of {3}",
+                    m_MemoryLogic.Winner.Name, 
+                    m_MemoryLogic.Winner.Score, 
+                    m_MemoryLogic.Loser.Score, 
+                    m_MemoryLogic.Loser.Name);
+            }
+            else
+            {
+                Console.WriteLine("Its a Tie!\nEverybody is a Winner! :)");
+            }
+        }
+
+        /// <summary>
+        /// Prints the End Game Message
+        /// </summary>
+        private void printEndOfGameMessage()
+        {
+            Console.WriteLine("Thanks for playing :)");
+        }
+
+        /// <summary>
+        /// Prints the Game Board
+        /// </summary>
+        /// <param name="i_MemBoard">The Game Board Object</param>
         private void printGameBoard(MemBoard i_MemBoard)
         {
             // Clear the Screen

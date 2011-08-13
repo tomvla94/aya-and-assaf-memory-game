@@ -12,7 +12,7 @@ namespace C11_Ex02
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The Player Object
     /// </summary>
     public class Player
     {
