@@ -195,5 +195,16 @@ namespace C11_Ex02
                 return m_BoardHeight;
             }
         }
+
+        internal void HideAllSquares()
+        {
+            foreach (MemSquare square in m_Squares)
+            {
+                if (!square.Card.IsHidden)
+                {
+                    square.Card.Flip();
+                }
+            }
+        }
     }
 }

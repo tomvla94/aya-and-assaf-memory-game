@@ -21,7 +21,6 @@ namespace C11_Ex02
         private bool v_GameEnded = false;
         private int m_CurrentPlayingPlayerIndex = 0;
         private Player[] m_players = new Player[2];
-        private int m_NumberOfFoundCardPairs = 0;
 
         public bool IsGameExists
         {
@@ -46,6 +45,7 @@ namespace C11_Ex02
         public void initRound(int i_BoardWidth, int i_BoardHeight)
         {
             this.m_MemoryBoard.BuildBoard(i_BoardWidth, i_BoardHeight);
+            this.m_MemoryBoard.HideAllSquares();
         }
 
         /// <summary>
@@ -97,11 +97,15 @@ namespace C11_Ex02
                     m_players[m_CurrentPlayingPlayerIndex].Score++;
                     m_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
                     m_ShowSquareCards.Remove(m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col]);
-                    m_NumberOfFoundCardPairs += 2;
+                    //m_NumberOfFoundCardPairs += 2;
                     retPlayerScored = true;
                 }
-                m_PrevSquareChosen = null;
-                changePlayerIndex();
+                else
+                {
+                    changePlayerIndex();
+                }
+
+                m_PrevSquareChosen = null;          
             }
            
 
@@ -112,7 +116,7 @@ namespace C11_Ex02
 
         public void PlayComputerTurn(out MemSquare i_FirstSquare, out MemSquare i_SecondSquare, out bool i_PlayerScored)
         {
-            i_FirstSquare = CompChooseCardFromSeenCards();
+            i_FirstSquare = CompChooseRandomSquare();
             m_MemoryBoard.FlipSquare(i_FirstSquare);
             i_SecondSquare = CompFindMatch(i_FirstSquare.Card);
             m_MemoryBoard.FlipSquare(i_SecondSquare);
@@ -121,13 +125,13 @@ namespace C11_Ex02
             {
                 m_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
                 m_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
-                m_NumberOfFoundCardPairs += 2;
+                CurrentPlayer.Score++;
             }
             else 
             {
                 m_ShowSquareCards.Add(i_SecondSquare);
-            }
-            changePlayerIndex();
+                changePlayerIndex();
+            }           
         }
 
         private MemSquare CompFindMatch(Card i_FindCard)
@@ -135,7 +139,7 @@ namespace C11_Ex02
             MemSquare retFoundSquare = null;
             foreach (MemSquare seenSquare in m_ShowSquareCards)
             {
-                if (m_ShowSquareCards.IndexOf(seenSquare) != 0 && i_FindCard.IsPairWith(seenSquare.Card))
+                if (IsLegalMove(seenSquare) && i_FindCard.IsPairWith(seenSquare.Card))
                 {
                     retFoundSquare = seenSquare;
                     break;
@@ -150,7 +154,7 @@ namespace C11_Ex02
                 {
                     int optionalRow = rand.Next(Board.Height);
                     int optionalCol = rand.Next(Board.Width);
-                    if (Board.IsLeagalSquare(optionalRow, optionalCol))
+                    if (isLegalMove(optionalRow, optionalCol))
                     {
                         retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
                         foundOption = true;
@@ -161,9 +165,23 @@ namespace C11_Ex02
             return retFoundSquare;
         }
 
-        private MemSquare CompChooseCardFromSeenCards()
+        private MemSquare CompChooseRandomSquare()
         {
-            return m_ShowSquareCards[0];
+            MemSquare retFoundSquare = null;
+            Random rand = new Random();
+            bool foundOption = false;
+            while (!foundOption)
+            {
+                int optionalRow = rand.Next(Board.Height);
+                int optionalCol = rand.Next(Board.Width);
+                if (isLegalMove(optionalRow, optionalCol))
+                {
+                    retFoundSquare = m_MemoryBoard[optionalRow, optionalCol];
+                    foundOption = true;
+                }
+            }
+
+            return retFoundSquare;
         }
 
         private void changePlayerIndex()
@@ -211,6 +229,11 @@ namespace C11_Ex02
         public bool IsLegalMove(MemSquare i_ChosenSquare)
         {
             return m_MemoryBoard[i_ChosenSquare.Row, i_ChosenSquare.Col].Card.IsHidden;               
+        }
+
+        private bool isLegalMove(int i_Row, int i_Col)
+        {
+            return m_MemoryBoard[i_Row, i_Col].Card.IsHidden;
         }
 
         public bool EndPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_KeepCardsVisible)
