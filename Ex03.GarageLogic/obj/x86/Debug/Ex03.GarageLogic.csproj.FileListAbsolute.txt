@@ -1,0 +1,5 @@
+D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.dll
+D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\bin\Debug\Ex03.GarageLogic.pdb
+D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\obj\x86\Debug\Ex03.GarageLogic.dll
+D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\obj\x86\Debug\Ex03.GarageLogic.pdb
