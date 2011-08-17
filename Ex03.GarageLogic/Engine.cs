@@ -1,7 +1,6 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Vehicle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
+// <copyright file="Engine.cs" company="Microsoft">
+// TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -14,12 +13,14 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Vehicle
+    public abstract class Engine
     {
-        protected string m_Model;
-        protected string m_Liecense;
-        protected float m_EnergyPrecentage;
-        protected Wheel[] m_Wheels;
-        protected Engine m_EgineType;
+        public enum eEngineType
+        { 
+            Fuel,
+            Battery
+        }
+
+        protected eEngineType m_EngineType;
     }
 }

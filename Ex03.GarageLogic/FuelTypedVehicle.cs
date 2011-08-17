@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class FuelTypedVehicle
+    public class FuelTypedVehicle : Engine
     {
         public enum eFuelType
         { 
