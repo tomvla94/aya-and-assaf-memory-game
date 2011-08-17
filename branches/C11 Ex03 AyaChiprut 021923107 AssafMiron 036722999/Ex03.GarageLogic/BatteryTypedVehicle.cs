@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Vehicle.cs">
+// <copyright file="BattaryTypedVehicle.cs">
 // Aya Chiprut 021923107 
 // Assaf Miron 036722999
 // </copyright>
@@ -14,12 +14,12 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Vehicle
+    public class BatteryTypedVehicle : Engine
     {
-        protected string m_Model;
-        protected string m_Liecense;
-        protected float m_EnergyPrecentage;
-        protected Wheel[] m_Wheels;
-        protected Engine m_EgineType;
+        private float m_BatteryTimeLegt;
+        private float m_MaxBatteryTime;
+
+        public virtual void Charge(float i_Time)
+        { }
     }
 }

@@ -1,7 +1,6 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="BattaryTypedVehicle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
+// <copyright file="FuledMotorcycle.cs" company="Microsoft">
+// TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -14,12 +13,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class BattaryTypedVehicle
+    public class FuledMotorcycle : Motorcycle
     {
-        private float m_BatteryTimeLegt;
-        private float m_MaxBatteryTime;
-
-        public virtual void Charge(float i_Time)
-        { }
     }
 }
