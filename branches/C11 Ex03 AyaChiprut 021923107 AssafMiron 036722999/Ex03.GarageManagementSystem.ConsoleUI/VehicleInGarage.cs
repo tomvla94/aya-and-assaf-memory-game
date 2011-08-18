@@ -47,5 +47,11 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
         {
             get { return m_Vehicle.LicenseNumber; }
         }
+
+        public void Inflate()
+        {
+            m_Vehicle.InflateWheelsToMax();
+        }
+
     }
 }
