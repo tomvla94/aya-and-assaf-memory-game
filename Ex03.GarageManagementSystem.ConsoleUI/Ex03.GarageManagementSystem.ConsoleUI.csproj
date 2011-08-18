@@ -39,7 +39,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GarageBL.cs" />
+    <Compile Include="GarageUI.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="VehicleInGarage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

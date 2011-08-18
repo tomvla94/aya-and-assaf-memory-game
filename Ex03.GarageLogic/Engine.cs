@@ -1,6 +1,7 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Engine.cs" company="Microsoft">
-// TODO: Update copyright text.
+// <copyright file="Engine.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -21,6 +22,18 @@ namespace Ex03.GarageLogic
             Battery
         }
 
-        protected eEngineType m_EngineType;
+        private eEngineType m_EngineType;
+
+        public eEngineType EngineType
+        {
+            get { return m_EngineType; }
+            protected set { m_EngineType = value; }
+        }
+
+        public abstract float GetRemainingEnergyPrecentage();
+
+        public abstract float GetRemianingEnergyAmount();
+
+        public abstract float GetMaximumEnergyAmount();
     }
 }
