@@ -73,5 +73,13 @@ namespace Ex03.GarageLogic
         {
             return m_Engine.EngineType;
         }
+
+        public void InflateWheelsToMax()
+        {
+            foreach (Wheel wheel in m_Wheels)
+            {
+                wheel.Inflate(wheel.MaxAirPressureByManufacturer);
+            }
+        }
     }
 }
