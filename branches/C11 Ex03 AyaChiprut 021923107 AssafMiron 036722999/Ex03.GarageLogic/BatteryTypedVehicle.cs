@@ -16,10 +16,46 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class BatteryTypedVehicle : Engine
     {
-        private float m_BatteryTimeLegt;
-        private float m_MaxBatteryTime;
+        private const float k_MinBatteryCharge = 0;
+        private float m_RemainingBatteryHours;
+        private float m_MaxBatteryHours;
 
-        public virtual void Charge(float i_Time)
-        { }
+        public virtual void Charge(float i_HoursToCharge)
+        {
+            if (i_HoursToCharge + m_RemainingBatteryHours > m_MaxBatteryHours)
+            {
+                throw new ValueOutOfRangeException(m_RemainingBatteryHours, m_MaxBatteryHours);
+            }
+
+            m_RemainingBatteryHours += i_HoursToCharge;
+        }
+
+        public BatteryTypedVehicle(float i_MaxBatteryHours, float i_RemainingBatteryHours)
+        {
+            EngineType = eEngineType.Battery;
+            if ((i_MaxBatteryHours <= k_MinBatteryCharge) ||
+                    (i_RemainingBatteryHours < k_MinBatteryCharge))
+            {
+                throw new ValueOutOfRangeException(k_MinBatteryCharge, float.MaxValue);
+            }
+
+            m_MaxBatteryHours = i_MaxBatteryHours;
+            m_RemainingBatteryHours = i_RemainingBatteryHours;
+        }
+
+        public float MaxBatteryHours
+        {
+            get { return m_MaxBatteryHours; }
+        }
+
+        public float RemainingBatteryHours
+        {
+            get { return m_RemainingBatteryHours; }
+        }
+
+        public override float GetRemainingEnergyPrecentage()
+        {
+            return m_RemainingBatteryHours / m_MaxBatteryHours;
+        }
     }
 }
