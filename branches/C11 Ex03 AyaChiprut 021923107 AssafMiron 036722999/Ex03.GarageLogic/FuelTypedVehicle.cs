@@ -38,24 +38,30 @@ namespace Ex03.GarageLogic
         }
 
         public eFuelType FuelType
-        { get { return m_FuelType; } }
+        { 
+            get { return m_FuelType; } 
+        }
 
         public float MaxFuelLiters
-        { get { return m_MaxFuelLitersAmount; } }
+        { 
+            get { return m_MaxFuelLitersAmount; } 
+        }
 
         public float CurrentFuelAmount
-        { get { return m_CurrentFuelLitersAmount; } }
+        { 
+            get { return m_CurrentFuelLitersAmount; } 
+        }
 
         public virtual void Refuel(int i_Amount, eFuelType i_FuelType)
         {
             if (i_FuelType != m_FuelType)
             {
-                string wrongFuelErrMsg = String.Format(k_WrongFuelErrorFormat, m_FuelType, i_FuelType);
+                string wrongFuelErrMsg = string.Format(k_WrongFuelErrorFormat, m_FuelType, i_FuelType);
                 throw new ArgumentException(wrongFuelErrMsg);
             }
             else if (i_Amount + m_CurrentFuelLitersAmount > m_MaxFuelLitersAmount)
             {
-                throw new ValueOutOfRangeException(m_MaxFuelLitersAmount,float.MinValue);
+                throw new ValueOutOfRangeException(m_MaxFuelLitersAmount, float.MinValue);
             }
 
             m_CurrentFuelLitersAmount += i_Amount;

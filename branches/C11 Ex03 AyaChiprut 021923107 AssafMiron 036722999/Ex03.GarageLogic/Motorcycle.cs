@@ -23,6 +23,7 @@ namespace Ex03.GarageLogic
             A2,
             B
         }
+
         public const int k_NumOfWheels = 2;
         public const float k_MaxAirPressure = 31;
         private int m_EngineSize;

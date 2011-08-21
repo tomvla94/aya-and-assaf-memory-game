@@ -28,8 +28,7 @@ namespace Ex03.GarageLogic
             string i_WheelManufacturer,
             float i_WheelCurrentAirPressure,
             int i_MaxAllowedAmountOfPassengers,
-            bool i_HasGuideSeat
-            )
+            bool i_HasGuideSeat)
             : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_WheelManufacturer, i_WheelCurrentAirPressure, k_MaxAirPressure)
         {
             m_MaxAllowedAmountOfPassengers = i_MaxAllowedAmountOfPassengers;
@@ -45,6 +44,5 @@ namespace Ex03.GarageLogic
         {
             get { return v_HasGuideSeat; }
         }
-
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    class ElectricMotorcycle : Motorcycle
+    public sealed class ElectricMotorcycle : Motorcycle
     {
         private const float k_MaxBatteryHours = 1.8F;
 

@@ -5,7 +5,7 @@ using Ex03.GarageLogic;
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
-    class VehicleInGarage
+    public class VehicleInGarage
     {
         public enum eVehicleState
         { 
@@ -52,6 +52,5 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
         {
             m_Vehicle.InflateWheelsToMax();
         }
-
     }
 }

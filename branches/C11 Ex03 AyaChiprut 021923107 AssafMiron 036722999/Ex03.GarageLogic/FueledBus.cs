@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    class FueledBus : Bus
+    public sealed class FueledBus : Bus
     {
         private const float k_MaxFuelLiters = 200;
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Soler;
