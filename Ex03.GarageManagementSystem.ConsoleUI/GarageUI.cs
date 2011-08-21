@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
-    class GarageUI
+    public class GarageUI
     {
+        private GarageBL m_GarageLogic = new GarageBL();
+
+        public void Run()
+        { 
+            ////TODO Add Menu for Garage Program
+        }
     }
 }

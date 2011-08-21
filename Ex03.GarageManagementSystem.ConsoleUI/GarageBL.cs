@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Ex03.GarageLogic;
+
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
-    class GarageBL
+    public class GarageBL
     {
         private List<VehicleInGarage> m_VehiclesInGarage;
+
+        public GarageBL()
+        {
+            m_VehiclesInGarage = new List<VehicleInGarage>();
+        }
 
         public string AddVehicleToGarage(string i_OwnerName, string i_OwnerPhoneNumber, Vehicle i_Vehicle)
         {
@@ -24,7 +30,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
             if (!foundVehicle)
             {
-                retMessage = "";
+                retMessage = string.Empty;
                 m_VehiclesInGarage.Add(new VehicleInGarage(i_OwnerName, i_OwnerPhoneNumber, i_Vehicle));
             }
             
@@ -44,8 +50,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         {
                             retLicenseNumberList.Add(vehicle.LicenseNumber);
                         }
-                    }
-                    
+                    }  
                 }
             }
             else 

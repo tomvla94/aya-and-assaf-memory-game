@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    class Wheel
+    public sealed class Wheel
     {
         private const int k_MinAirPressure = 0;
         private string m_Manufacturer;

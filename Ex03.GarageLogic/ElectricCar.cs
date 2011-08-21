@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    class ElectricCar : Car
+    public sealed class ElectricCar : Car
     {
         private const float k_MaxBatteryHours = 2.5F;
 
@@ -30,6 +30,5 @@ namespace Ex03.GarageLogic
         {
             m_Engine = new BatteryTypedVehicle(k_MaxBatteryHours, i_RemainingBatteryHours);
         }
-
     }
 }
