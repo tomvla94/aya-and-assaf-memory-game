@@ -37,20 +37,17 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             return retMessage;
         }
 
-        public List<string> ListAllVehiclesInGarage(params VehicleInGarage.eVehicleState[] i_FilterVehicleStates)
+        public List<string> ListAllVehiclesInGarage(VehicleInGarage.eVehicleState? i_FilterVehicleState)
         {
             List<string> retLicenseNumberList = new List<string>();
-            if (i_FilterVehicleStates != null)
+            if (i_FilterVehicleState != null)
             {
                 foreach (VehicleInGarage vehicle in m_VehiclesInGarage)
                 {
-                    foreach (VehicleInGarage.eVehicleState filterVehicleStates in i_FilterVehicleStates)
+                    if (vehicle.VehicleState == i_FilterVehicleState)
                     {
-                        if (vehicle.VehicleState == filterVehicleStates)
-                        {
-                            retLicenseNumberList.Add(vehicle.LicenseNumber);
-                        }
-                    }  
+                        retLicenseNumberList.Add(vehicle.LicenseNumber);
+                    }
                 }
             }
             else 

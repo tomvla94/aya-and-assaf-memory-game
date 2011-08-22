@@ -98,39 +98,96 @@ Enter your choice: ");
             }
         }
 
+        private void printListOfTheVehicles()
+        {
+            string userInput;
+            int userChoice;
+            bool isLegal;
+            VehicleInGarage.eVehicleState? stateNeeded = null;
+            List<string> vehiclesLicenseList;
+
+            try
+            {
+                Console.WriteLine(
+    @"Print vehicles by status:
+1. in repair.
+2. fixed.
+3. paid.
+4. all vehicles.");
+                userInput = Console.ReadLine();
+                isLegal = int.TryParse(userInput, out userChoice);
+                if (!isLegal || userChoice < 1 || userChoice > 4)
+                {
+                    throw new FormatException("Invalid choice");
+                }
+
+                stateNeeded = getNeededVehicleState(userChoice);
+                vehiclesLicenseList = m_GarageLogic.ListAllVehiclesInGarage(stateNeeded);
+                foreach (string vehicleLicense in vehiclesLicenseList)
+                {
+                    Console.WriteLine(vehicleLicense);
+                }
+            }
+            catch (FormatException formatException)
+            {
+                Console.WriteLine(formatException.Message);
+                printListOfTheVehicles();
+            }
+        }
+
+        private VehicleInGarage.eVehicleState? getNeededVehicleState(int i_UserChoice)
+        {
+            VehicleInGarage.eVehicleState? vehicleState = null;
+            if(Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice))
+            {
+                vehicleState = (VehicleInGarage.eVehicleState)Enum.Parse(typeof(VehicleInGarage.eVehicleState), i_UserChoice.ToString());
+            }
+
+            return vehicleState;
+        }
+
         private void insertVehicleToTheGarage()
         {
             string userInput;
             string[] vehicleParameters;
             string[] vehicleTypes;
 
-            Console.WriteLine("Enter the following info seperated by commas(,): ");
-            Console.WriteLine("Model name, License number, Available energy precent");
-            userInput = Console.ReadLine();
-            vehicleParameters = userInput.Split(',');
-            if (vehicleParameters.Length != 3)
+            try
             {
-                Console.WriteLine("Invalid number of parameters");
+                Console.WriteLine("Enter the following info seperated by commas(,): ");
+                Console.WriteLine("Model name, License number, Available energy precent");
+                userInput = Console.ReadLine();
+                vehicleParameters = userInput.Split(',');
+                if (vehicleParameters.Length != 3)
+                {
+                    throw new FormatException("Invalid number of parameters");                    
+                }
+
+                vehicleTypes = Enum.GetNames(typeof(Ex03.GarageLogic.VehicleFactory.eVehicleType));
+                Console.WriteLine("Choose the vehicle type: ");
+
+                int index = 1;
+                foreach (string vehicleType in vehicleTypes)
+                {
+                    Console.WriteLine("{0}. {1}", index, vehicleType);
+                }
+
+                userInput = Console.ReadLine();
+                //...
+            }
+            catch (FormatException formatException)
+            {
+                Console.WriteLine(formatException.Message);
                 insertVehicleToTheGarage();
             }
-
-            vehicleTypes = Enum.GetNames(typeof(Ex03.GarageLogic.VehicleFactory.eVehicleType));
-            Console.WriteLine("Choose the vehicle type: ");
-
-            int index = 1;
-            foreach (string vehicleType in vehicleTypes)
-            {
-                Console.WriteLine("{0}. {1}", index, vehicleType);
-            }
-
-            userInput = Console.ReadLine();
-            //...
         }
 
         private eMenuOption? getMenuOptionFromInput(string i_UserChoice)
         {
             eMenuOption? retMenuOption = null;
-            if(Enum.IsDefined(typeof(eMenuOption), i_UserChoice))
+            int choice;
+
+            if (int.TryParse(i_UserChoice, out choice) && Enum.IsDefined(typeof(eMenuOption), choice))
             {
                 retMenuOption = (eMenuOption)Enum.Parse(typeof(eMenuOption), i_UserChoice);
             }
