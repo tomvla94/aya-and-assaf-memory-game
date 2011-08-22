@@ -18,8 +18,8 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
     {
         public static void Main()
         {
-            GarageUI garageProgram = new GarageUI();
-            garageProgram.Run();
+            GarageUI garageUI = new GarageUI();
+            garageUI.Start();
         }
     }
 }
