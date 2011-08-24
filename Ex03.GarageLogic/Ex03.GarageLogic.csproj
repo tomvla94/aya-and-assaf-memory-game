@@ -49,7 +49,6 @@
     <Compile Include="Motorcycle.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="Vehicle.cs" />
-    <Compile Include="VehicleFactory.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>
   <ItemGroup>

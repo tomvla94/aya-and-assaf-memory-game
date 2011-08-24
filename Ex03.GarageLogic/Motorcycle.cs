@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Motorcycle : Vehicle
+    public sealed class Motorcycle : Vehicle
     {
         public enum eLicenseType
         { 
@@ -32,10 +32,9 @@ namespace Ex03.GarageLogic
         public Motorcycle(
             string i_Model,
             string i_LicenseNumber,
-            string i_WheelManufacturer,
-            float i_WheelManufacturerMaxAirPressure,
+            List<Wheel> i_Wheels,
             eLicenseType i_LicenseType)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_WheelManufacturer, i_WheelManufacturerMaxAirPressure, k_MaxAirPressure)
+            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
             m_LicenseType = i_LicenseType;
         }

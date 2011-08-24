@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Car : Vehicle
+    public sealed class Car : Vehicle
     {
         public enum eCarColor
         {
@@ -33,14 +33,15 @@ namespace Ex03.GarageLogic
         private eCarColor m_CarColor;
 
         protected Car(
-    string i_Model,
-    string i_LicenseNumber,
-    string i_WheelManufacturer,
-    float i_WheelCurrentAirPressure,
-    eCarColor i_CarColor,
-    int i_NumOfDoors)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_WheelManufacturer, i_WheelCurrentAirPressure, k_MaxAirPressure)
+            string i_Model,
+            string i_LicenseNumber,
+            List<Wheel> i_Wheels,
+            eCarColor i_CarColor,
+            int i_NumOfDoors,
+            Engine i_Enginetype)
+            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
+            m_Engine = i_Enginetype;
             m_CarColor = i_CarColor;
             if (i_NumOfDoors < k_MinNumOfDoors)
             {
@@ -58,6 +59,13 @@ namespace Ex03.GarageLogic
         public int NumOfDoors
         {
             get { return m_NumOfDoors; }
-        }  
+        }
+
+        public static override string[] GetProperties()
+        {
+            return new string[]{"NumOfDoors", "CarColor"};
+        }
+
+   
     }
 }

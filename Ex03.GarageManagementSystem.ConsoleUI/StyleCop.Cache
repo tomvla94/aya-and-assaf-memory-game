@@ -1,0 +1,42 @@
+<stylecopresultscache>
+  <version>11</version>
+  <project key="802155431">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="GarageUI.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/21/2011 23:20:19</timestamp>
+    <milliseconds>540</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="GarageBL.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/21/2011 23:21:05</timestamp>
+    <milliseconds>740</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/21/2011 23:14:16</timestamp>
+    <milliseconds>143</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="VehicleInGarage.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/21/2011 23:21:05</timestamp>
+    <milliseconds>743</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

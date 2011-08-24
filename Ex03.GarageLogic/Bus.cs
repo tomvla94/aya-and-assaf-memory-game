@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Bus : Vehicle
+    public sealed class Bus : Vehicle
     {
         public const int k_NumOfWheels = 8;
         public const float k_MaxAirPressure = 25;
@@ -25,11 +25,10 @@ namespace Ex03.GarageLogic
         protected Bus(
             string i_Model,
             string i_LicenseNumber,
-            string i_WheelManufacturer,
-            float i_WheelCurrentAirPressure,
+            List<Wheel> i_Wheels,
             int i_MaxAllowedAmountOfPassengers,
             bool i_HasGuideSeat)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_WheelManufacturer, i_WheelCurrentAirPressure, k_MaxAirPressure)
+            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
             m_MaxAllowedAmountOfPassengers = i_MaxAllowedAmountOfPassengers;
             v_HasGuideSeat = i_HasGuideSeat;
