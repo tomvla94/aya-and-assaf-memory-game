@@ -32,6 +32,12 @@ namespace Ex03.GarageLogic
         private int m_NumOfDoors;
         private eCarColor m_CarColor;
 
+        private Car()
+        {
+            // TODO: Create the Properties for the Car
+            m_PropertiesForInput = new List<string>();
+        }
+
         protected Car(
             string i_Model,
             string i_LicenseNumber,
