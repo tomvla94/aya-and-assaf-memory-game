@@ -77,6 +77,23 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public override int GetHashCode()
+        {
+            return m_LicenseNumber.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            bool found = false;
+            Vehicle vehicleToCompare = obj as Vehicle;
+            if (vehicleToCompare != null)
+            {
+                found = this.m_LicenseNumber == vehicleToCompare.LicenseNumber;
+            }
+
+            return found;
+        }
+
         public virtual List<string> GetPropertiesForInput();
 
         public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser);
