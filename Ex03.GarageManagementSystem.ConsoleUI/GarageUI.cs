@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Ex03.GarageLogic;
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
@@ -98,6 +99,146 @@ Enter your choice: ");
             }
         }
 
+        private void rechargeAVehicle()
+        {
+            try
+            {
+                string licenseNumber;
+                int numOfMinutes;
+
+                if (readLicenseNumberAndVerify(out licenseNumber))
+                {
+                    numOfMinutes = getNumOfMinutesToRecharge();
+                    m_GarageLogic.RechargeVehicle(licenseNumber, numOfMinutes);
+                }
+            }
+            catch (ArgumentException i_ArgumentException)
+            {
+                Console.WriteLine(i_ArgumentException.Message);
+            }
+            catch (ValueOutOfRangeException i_ValueOutOfRangeException)
+            {
+                Console.WriteLine(i_ValueOutOfRangeException.Message);
+            }
+        }
+
+        private int getNumOfMinutesToRecharge()
+        {
+            int numericAmount;
+            string chargeAmount;
+
+            try
+            {
+                System.Console.Write("Enter number of minutes to recharge: ");
+                chargeAmount = System.Console.ReadLine();
+                if (!int.TryParse(chargeAmount, out numericAmount))
+                {
+                    throw new FormatException("Number of minutes must be numeric."); 
+                }
+            }
+            catch (FormatException i_FormatException)
+            {
+                Console.WriteLine(i_FormatException.Message);
+                numericAmount = getNumOfMinutesToRecharge();
+            }
+
+            return numericAmount;
+        }
+
+        private void refuelAvehicle()
+        {
+            try
+            {
+                FuelTypedVehicle.eFuelType fuelType;
+                string licenseNumber;
+                int amoutNeeded;
+
+                if (readLicenseNumberAndVerify(out licenseNumber))
+                {
+                    fuelType = getNeededFuelTypeFromUser();
+                    amoutNeeded = getAmountOfFuelNeeded();
+                    m_GarageLogic.RefuelVehicle(licenseNumber, fuelType, amoutNeeded);
+                }
+            }
+            catch (ArgumentException i_ArgumentException)
+            {
+                Console.WriteLine(i_ArgumentException.Message);
+            }
+            catch (ValueOutOfRangeException i_ValueOutOfRangeException)
+            {
+                Console.WriteLine(i_ValueOutOfRangeException.Message);
+            }
+        }
+
+        private int getAmountOfFuelNeeded()
+        {
+            int numericAmount;
+            string fuelAmount;
+
+            try
+            {
+                System.Console.Write("Enter amount of fuel: ");
+                fuelAmount = System.Console.ReadLine();
+                if (!int.TryParse(fuelAmount, out numericAmount))
+                {
+                    throw new FormatException("amount of fuel must be numeric.");
+                }
+            }
+            catch (FormatException i_FormatException)
+            {
+                Console.WriteLine(i_FormatException.Message);
+                numericAmount = getAmountOfFuelNeeded();
+            }
+
+            return numericAmount;
+        }
+
+        private FuelTypedVehicle.eFuelType getNeededFuelTypeFromUser()
+        {
+            FuelTypedVehicle.eFuelType? fuelType;
+            FuelTypedVehicle.eFuelType retFuelType = FuelTypedVehicle.eFuelType.Octan95;
+
+            try
+            {
+                string fuelTypeString;
+                string[] fuelOptions;
+                int chosenOption;
+
+                fuelOptions = Enum.GetNames(typeof(FuelTypedVehicle.eFuelType));
+                Console.WriteLine("Choose fuel: ");
+                printListOfStringsToTheUser(fuelOptions);
+                fuelTypeString = Console.ReadLine();
+                if (!int.TryParse(fuelTypeString, out chosenOption) || chosenOption < 1 || chosenOption > 4)
+                {
+                    throw new FormatException("Invalid input Please try again");
+                }
+                else
+                {
+                    fuelType = getNeededFuelType(fuelTypeString);
+                    if (fuelType.HasValue)
+                    {
+                        retFuelType = fuelType.Value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("type of fuel does not exist");
+                    }
+                }
+            }
+            catch (FormatException i_FormatException)
+            {
+                Console.WriteLine(i_FormatException.Message);
+                fuelType = getNeededFuelTypeFromUser();
+            }
+            catch (ArgumentException i_ArgumentException)
+            {
+                Console.WriteLine(i_ArgumentException.Message);
+                throw;
+            }
+
+            return retFuelType;
+        }
+
         private void inflatesTiresOfAVehicle()
         {
             string licenseNumber;
@@ -143,14 +284,14 @@ Enter your choice: ");
 
                 o_LicenseNumber = licenseNumber;
             }
-            catch (FormatException formatException)
+            catch (FormatException i_FormatException)
             {
-                Console.WriteLine(formatException.Message);
+                Console.WriteLine(i_FormatException.Message);
                 isValidReturnValue = readLicenseNumberAndVerify(out o_LicenseNumber);
             }
-            catch (ArgumentException argumentException)
+            catch (ArgumentException i_ArgumentException)
             {
-                Console.WriteLine(argumentException.Message);
+                Console.WriteLine(i_ArgumentException.Message);
                 isValidReturnValue = false;
             }
 
@@ -182,13 +323,22 @@ Enter your choice: ");
                     {
                         retState = state.Value;
                     }
+                    else
+                    {
+                        throw new ArgumentException("chosen state does not exist");
+                    }
                 }
             }
-            catch (FormatException formatException)
+            catch (FormatException i_FormatException)
             {
-                Console.WriteLine(formatException.Message);
+                Console.WriteLine(i_FormatException.Message);
                 changeVehicleStatus();
             }
+            catch (ArgumentException i_ArgumentException)
+            {
+                Console.WriteLine(i_ArgumentException.Message);
+            }
+
             return retState;
         }
 
@@ -222,9 +372,9 @@ Enter your choice: ");
                     Console.WriteLine(vehicleLicense);
                 }
             }
-            catch (FormatException formatException)
+            catch (FormatException i_FormatException)
             {
-                Console.WriteLine(formatException.Message);
+                Console.WriteLine(i_FormatException.Message);
                 printListOfTheVehicles();
             }
         }
@@ -265,9 +415,9 @@ Enter your choice: ");
                 userInput = Console.ReadLine();
                 //...
             }
-            catch (FormatException formatException)
+            catch (FormatException i_FormatException)
             {
-                Console.WriteLine(formatException.Message);
+                Console.WriteLine(i_FormatException.Message);
                 insertVehicleToTheGarage();
             }
         }
@@ -292,6 +442,19 @@ Enter your choice: ");
             }
 
             return retMenuOption;
+        }
+
+        private FuelTypedVehicle.eFuelType? getNeededFuelType(string i_UserChoice)
+        {
+            FuelTypedVehicle.eFuelType retFuelType = null;
+            int choice;
+
+            if (int.TryParse(i_UserChoice, out choice) && Enum.IsDefined(typeof(FuelTypedVehicle.eFuelType), choice))
+            {
+                retFuelType = (FuelTypedVehicle.eFuelType)Enum.Parse(typeof(FuelTypedVehicle.eFuelType), i_UserChoice);
+            }
+
+            return retFuelType;
         }
     }
 }
