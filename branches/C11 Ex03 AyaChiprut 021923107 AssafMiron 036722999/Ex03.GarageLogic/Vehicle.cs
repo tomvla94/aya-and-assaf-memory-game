@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class Vehicle
+    public abstract class Vehicle
     {
         public const int k_MinNumOfWheels = 2;
         private string m_Model;
@@ -25,28 +25,17 @@ namespace Ex03.GarageLogic
         protected Vehicle(
             string i_Model,
             string i_LicenseNumber,
-            int i_NumOfWheels,
-            string i_WheelManufacturer,
-            float i_WheelCurrentAirPressure, 
-            float i_WheelManufacturerMaxAirPressure)
+            int i_NumOfWeels,
+            List<Wheel> i_Wheels)
         {
             m_Model = i_Model;
             m_LicenseNumber = i_LicenseNumber;
-            if (i_NumOfWheels <= k_MinNumOfWheels)
+            if (i_NumOfWeels <= k_MinNumOfWheels)
             {
                 throw new ValueOutOfRangeException(k_MinNumOfWheels, float.MaxValue);
             }
 
-            initWheels(i_NumOfWheels, i_WheelManufacturer, i_WheelCurrentAirPressure, i_WheelManufacturerMaxAirPressure);
-        }
-
-               private void initWheels(int i_NumOfWheels, string i_WheelManufacturer, float i_WheelCurrentAirPressure, float i_WheelManufacturerMaxAirPressure)
-        {
-            m_Wheels = new List<Wheel>(i_NumOfWheels);
-            for (int i = 0; i < i_NumOfWheels; i++)
-            {
-                m_Wheels.Add(new Wheel(i_WheelManufacturer, i_WheelCurrentAirPressure, i_WheelManufacturerMaxAirPressure));
-            }
+            m_Wheels = i_Wheels;
         }
 
         public string Model
@@ -81,5 +70,7 @@ namespace Ex03.GarageLogic
                 wheel.Inflate(wheel.MaxAirPressureByManufacturer);
             }
         }
+
+        public static abstract string[] GetProperties();
     }
 }
