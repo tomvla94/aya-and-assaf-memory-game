@@ -21,6 +21,12 @@ namespace Ex03.GarageLogic
         private string m_LicenseNumber;
         private List<Wheel> m_Wheels;
         protected Engine m_Engine;
+        protected List<string> m_PropertiesForInput;
+
+        protected Vehicle()
+        { 
+
+        }
 
         protected Vehicle(
             string i_Model,
@@ -71,6 +77,11 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public static abstract string[] GetProperties();
+        public virtual List<string> GetPropertiesForInput();
+
+        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser);
+
+        public virtual string GetDetails();
+
     }
 }
