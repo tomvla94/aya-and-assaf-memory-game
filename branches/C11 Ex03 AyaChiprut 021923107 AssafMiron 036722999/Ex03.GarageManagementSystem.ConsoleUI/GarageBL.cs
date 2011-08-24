@@ -103,7 +103,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                     break;
                 }
             }
-
+            
             return retVehicle;
         }
     }
