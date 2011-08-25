@@ -20,6 +20,7 @@ namespace Ex03.GarageLogic
         private string m_Manufacturer;
         private float m_CurrentAirPressure;
         private float m_MaxAirPressureByManufacturer;
+        private List<string> m_PropertiesForInput;
 
         public Wheel(string i_Manufacturer, float i_CurrentAirPressure, float i_MaxAirPressureByManufacturer)
         {
@@ -56,6 +57,21 @@ namespace Ex03.GarageLogic
         public float MaxAirPressureByManufacturer
         {
             get { return m_MaxAirPressureByManufacturer; }
+        }
+
+        public virtual List<string> GetPropertiesForInput()
+        {
+            return m_PropertiesForInput;
+        }
+
+        internal static List<Wheel> SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

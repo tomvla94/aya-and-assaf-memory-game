@@ -407,7 +407,7 @@ Enter your choice: ");
                     throw new FormatException("Invalid number of parameters");                    
                 }
 
-                vehicleTypes = Enum.GetNames(typeof(Ex03.GarageLogic.VehicleFactory.eVehicleType));
+                vehicleTypes = Enum.GetNames(typeof(VehicleFactory.eVehicleType));
                 Console.WriteLine("Choose the vehicle type: ");
 
                 printListOfStringsToTheUser(vehicleTypes);
@@ -446,7 +446,7 @@ Enter your choice: ");
 
         private FuelTypedVehicle.eFuelType? getNeededFuelType(string i_UserChoice)
         {
-            FuelTypedVehicle.eFuelType retFuelType = null;
+            FuelTypedVehicle.eFuelType retFuelType = FuelTypedVehicle.eFuelType.Octan95;
             int choice;
 
             if (int.TryParse(i_UserChoice, out choice) && Enum.IsDefined(typeof(FuelTypedVehicle.eFuelType), choice))

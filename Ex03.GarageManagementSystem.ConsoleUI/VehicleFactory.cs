@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Ex03.GarageLogic;
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
     public class VehicleFactory
     {
-        private AbstractVehicleUI m_VehicleUI;
         public enum eVehicleType
         {
             FueledCar = 1,
@@ -22,12 +22,11 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             {
                 case eVehicleType.FueledCar: 
                     {
-                        m_VehicleUI = new CarUI();
+                        //m_VehicleUI = new Car;
                         break;
                     }
             }
             
-            m_VehicleUI.GetVehicleProperties();
         }
     }
 }

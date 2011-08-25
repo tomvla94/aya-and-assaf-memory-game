@@ -23,11 +23,6 @@ namespace Ex03.GarageLogic
         protected Engine m_Engine;
         protected List<string> m_PropertiesForInput;
 
-        protected Vehicle()
-        { 
-
-        }
-
         protected Vehicle(
             string i_Model,
             string i_LicenseNumber,
@@ -94,11 +89,35 @@ namespace Ex03.GarageLogic
             return found;
         }
 
-        public virtual List<string> GetPropertiesForInput();
+        public virtual List<string> GetPropertiesForInput()
+        {
+            return m_PropertiesForInput;
+        }
 
-        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser);
+        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        {
+            // Get First Parameter - The Vehicle Model
+            m_Model =  i_PropertiesFromUser[0];
+            i_PropertiesFromUser.RemoveAt(0);
 
-        public virtual string GetDetails();
+            // Get Second Parameter - The Vehicle License Number
+            m_LicenseNumber = i_PropertiesFromUser[0];
+            i_PropertiesFromUser.RemoveAt(0);
+
+            // Get Third Parameter - The Vehicle Wheels List
+            m_Wheels = Wheel.SetPropertiesFromInput(i_PropertiesFromUser);
+            i_PropertiesFromUser.RemoveAt(0);
+
+        }
+
+        public virtual string GetDetails()
+        {
+            string retDetails = string.Format("Model: {0}{3}"
+                + "License Number: {1}{3}"
+                + "Wheels List: {2}{3}", m_Model, m_LicenseNumber, m_Wheels.GetDetails(), Environment.NewLine);
+
+            return retDetails;
+        }
 
     }
 }

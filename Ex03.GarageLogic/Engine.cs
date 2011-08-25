@@ -35,5 +35,11 @@ namespace Ex03.GarageLogic
         public abstract float GetRemianingEnergyAmount();
 
         public abstract float GetMaximumEnergyAmount();
+
+        public abstract List<string> GetPropertiesForInput();
+
+        public abstract void SetPropertiesFromInput(List<string> i_PropertiesFromUser);
+
+        public abstract string GetDetails();
     }
 }
