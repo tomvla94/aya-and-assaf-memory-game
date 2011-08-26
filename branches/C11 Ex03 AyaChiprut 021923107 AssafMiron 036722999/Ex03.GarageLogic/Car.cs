@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public sealed class Car : Vehicle
+    public class Car : Vehicle
     {
         public enum eCarColor
         {

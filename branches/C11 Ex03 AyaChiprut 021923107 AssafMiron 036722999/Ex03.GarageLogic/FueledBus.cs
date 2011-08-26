@@ -7,7 +7,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// 
     /// </summary>
-    class FueledBus
+    public class FueledBus : Bus
     {
         private Bus m_Vehicle;
         private const float k_MaxFuelLiters = 200;
@@ -15,34 +15,23 @@ namespace Ex03.GarageLogic
         protected List<string> m_PropertiesForInput;
 
         public FueledBus()
+            : base(new FuelTypedVehicle())
         {
-            m_Vehicle = new Bus();
         }
 
-        public FueledBus(
-            string i_Model,
-            string i_LicenseNumber,
-            float i_RemainingFuelLiters)
-        {
-            m_Vehicle = new Bus(i_Model, i_LicenseNumber, wheels, new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters, i_RemainingFuelLiters));
-
-            m_PropertiesForInput = new List<string>();
-        }
-
-        public List<string> GetPropertiesForInput()
+        public virtual List<string> GetPropertiesForInput()
         {
             return m_PropertiesForInput;
         }
 
-        public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-
-            m_Vehicle.SetPropertiesFromInput(i_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
         }
 
-        public string GetDetails()
+        public virtual string GetDetails()
         {
-            return m_Vehicle.GetDetails();
+            return base.GetDetails();
         }
     }
 }

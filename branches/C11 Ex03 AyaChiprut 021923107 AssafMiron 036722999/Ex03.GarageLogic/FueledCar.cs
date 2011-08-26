@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class FueledCar
+    public class FueledCar : Car
     {
         private Car m_Vehicle;
         private const float k_MaxFuelLiters = 45;
@@ -22,35 +22,23 @@ namespace Ex03.GarageLogic
         protected List<string> m_PropertiesForInput;
 
         public FueledCar()
+            : base(new FuelTypedVehicle())
         {
-            m_Vehicle = new Car();
         }
 
-        public FueledCar(
-            string i_Model,
-            string i_LicenseNumber,
-            Car.eCarColor i_CarColor,
-            int i_NumOfDoors,
-            float i_RemainingFuelLiters)
-        {
-            m_Vehicle = new Car(i_Model, i_LicenseNumber, wheels, new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters, i_RemainingFuelLiters), i_CarColor, i_NumOfDoors);
-
-            m_PropertiesForInput = new List<string>();
-        }
-
-        public List<string> GetPropertiesForInput()
+        public virtual List<string> GetPropertiesForInput()
         {
             return m_PropertiesForInput;
         }
 
-        public void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-            m_Vehicle.SetPropertiesFromInput(io_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
         }
 
-        public string GetDetails()
+        public virtual string GetDetails()
         {
-            return m_Vehicle.GetDetails();
+            return base.GetDetails();
         }
     }
 }

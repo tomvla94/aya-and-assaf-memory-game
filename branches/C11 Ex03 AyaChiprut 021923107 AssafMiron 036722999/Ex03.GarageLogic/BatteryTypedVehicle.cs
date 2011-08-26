@@ -22,6 +22,7 @@ namespace Ex03.GarageLogic
 
         public BatteryTypedVehicle()
         {
+            EngineType = eEngineType.Battery;
             m_PropertiesForInput = new List<string>();
 
             m_PropertiesForInput.Add("Maximum Battery Hours");

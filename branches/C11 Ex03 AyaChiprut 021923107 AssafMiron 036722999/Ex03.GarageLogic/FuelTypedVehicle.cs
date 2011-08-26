@@ -31,6 +31,7 @@ namespace Ex03.GarageLogic
 
         public FuelTypedVehicle()
         {
+            EngineType = eEngineType.Fuel;
             m_PropertiesForInput = new List<string>();
 
             m_PropertiesForInput.Add("Fuel Type");
