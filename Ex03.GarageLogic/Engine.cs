@@ -40,7 +40,7 @@ namespace Ex03.GarageLogic
 
         public abstract List<string> GetPropertiesForInput();
 
-        public abstract void SetPropertiesFromInput(List<string> i_PropertiesFromUser);
+        public abstract void SetPropertiesFromInput(List<string> io_PropertiesFromUser);
 
         public abstract string GetDetails();
     }
