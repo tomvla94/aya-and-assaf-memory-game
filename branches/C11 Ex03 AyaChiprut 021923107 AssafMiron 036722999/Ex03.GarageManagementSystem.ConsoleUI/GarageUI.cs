@@ -426,7 +426,6 @@ Enter your choice: ");
         private void insertVehicleToTheGarage()
         {
             string userInput;
-            string[] vehicleParameters;
             string[] vehicleTypes;
             int chosenOption;
             VehicleFactory.eVehicleType? vehicleType = null;
@@ -434,16 +433,6 @@ Enter your choice: ");
 
             try
             {
-                // TODO: Why do we need the Avilable Energy Precent? we calculate it
-                Console.WriteLine("Enter the following info seperated by commas(,): ");
-                Console.WriteLine("Model name, License number, Available energy precent");
-                userInput = Console.ReadLine();
-                vehicleParameters = userInput.Split(',');
-                if (vehicleParameters.Length != 3)
-                {
-                    throw new FormatException("Invalid number of parameters");                    
-                }
-
                 vehicleTypes = Enum.GetNames(typeof(VehicleFactory.eVehicleType));
                 Console.WriteLine("Choose the vehicle type: ");
 
@@ -512,6 +501,7 @@ Enter your choice: ");
             foreach (string vehicleType in i_Options)
             {
                 Console.WriteLine("{0}. {1}", index, vehicleType);
+                index++;
             }
         }
 

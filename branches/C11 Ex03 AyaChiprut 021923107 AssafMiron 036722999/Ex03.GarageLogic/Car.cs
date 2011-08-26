@@ -57,7 +57,7 @@ namespace Ex03.GarageLogic
         {
             for (int i = 0; i < k_NumOfWheels; i++)
             {
-                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                m_Wheels.Add(new Wheel(k_MaxAirPressure));
                 m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
             }
 

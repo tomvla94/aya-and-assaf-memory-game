@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
         protected List<string> m_PropertiesForInput;
 
         public FueledMotorcycle()
-            : base(new FuelTypedVehicle(k_MaxFuelLiters, k_FuelType))
+            : base(new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters))
         {
         }
 

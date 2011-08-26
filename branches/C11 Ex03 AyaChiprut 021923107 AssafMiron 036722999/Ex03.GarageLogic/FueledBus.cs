@@ -9,13 +9,13 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class FueledBus : Bus
     {
+        private Bus m_Vehicle;
         private const float k_MaxFuelLiters = 200;
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Soler;
-        private Bus m_Vehicle;
         protected List<string> m_PropertiesForInput;
 
         public FueledBus()
-            : base(new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters))
+           : base(new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters))
         {
         }
 
