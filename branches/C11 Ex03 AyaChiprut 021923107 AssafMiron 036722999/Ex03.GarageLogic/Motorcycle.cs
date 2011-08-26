@@ -73,14 +73,14 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle
-            base.SetPropertiesFromInput(io_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The License Type
-            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), io_PropertiesFromUser[0]);
-            io_PropertiesFromUser.RemoveAt(0);
+            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), i_PropertiesFromUser[0]);
+            i_PropertiesFromUser.RemoveAt(0);
         }
 
         public override string GetDetails()

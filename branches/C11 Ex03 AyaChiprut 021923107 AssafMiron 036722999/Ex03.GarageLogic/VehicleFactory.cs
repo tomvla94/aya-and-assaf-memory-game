@@ -15,15 +15,39 @@ namespace Ex03.GarageLogic
             FueledBus = 5
         }
 
-        public static Vehicle CreateVehicle(eVehicleType i_VehicleType)
+        public static Vehicle CreateVehicle(eVehicleType? i_VehicleType)
         {
-            Vehicle retVehicle = null;
+            Vehicle vehicle = null;
             switch (i_VehicleType)
             {
-                
+                case eVehicleType.FueledCar: 
+                {
+                    vehicle = new FueledCar();
+                    break;
+                }
+                case eVehicleType.ElectricCar:
+                {
+                    vehicle = new ElectricCar();
+                    break;
+                }
+                case eVehicleType.FueledMotorcycle:
+                {
+                    vehicle = new FueledMotorcycle();
+                    break;
+                }
+                case eVehicleType.ElectricMotorcycle:
+                {
+                    vehicle = new ElectricMotorcycle();
+                    break;
+                }
+                case eVehicleType.FueledBus:
+                {
+                    vehicle = new FueledBus();
+                    break;
+                }
             }
 
-            return retVehicle;
+            return vehicle;
         }
     }
 }

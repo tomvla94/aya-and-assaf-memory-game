@@ -84,15 +84,15 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Maximum Battery Hours
-            bool tryParse = float.TryParse(io_PropertiesFromUser[0], out m_MaxBatteryHours);
-            io_PropertiesFromUser.RemoveAt(0);
+            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxBatteryHours);
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Remaining Battery Hours
-            tryParse = float.TryParse(io_PropertiesFromUser[0], out m_RemainingBatteryHours);
-            io_PropertiesFromUser.RemoveAt(0);
+            tryParse = float.TryParse(i_PropertiesFromUser[0], out m_RemainingBatteryHours);
+            i_PropertiesFromUser.RemoveAt(0);
 
             if(m_RemainingBatteryHours < k_MinBatteryCharge || m_RemainingBatteryHours > m_MaxBatteryHours)
             {

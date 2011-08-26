@@ -112,18 +112,18 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Fuel Type
-            m_FuelType = (eFuelType)Enum.Parse(typeof(eFuelType), io_PropertiesFromUser[0]);
+            m_FuelType = (eFuelType)Enum.Parse(typeof(eFuelType), i_PropertiesFromUser[0]);
 
             // Get Second Parameter - The Maximun Amount of Liters
-            bool tryParse = float.TryParse(io_PropertiesFromUser[0], out m_MaxFuelLitersAmount);
-            io_PropertiesFromUser.RemoveAt(0);
+            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxFuelLitersAmount);
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get third Parameter - The Remaining Amount of Fuel Liters
-            tryParse = float.TryParse(io_PropertiesFromUser[0], out m_CurrentFuelLitersAmount);
-            io_PropertiesFromUser.RemoveAt(0);
+            tryParse = float.TryParse(i_PropertiesFromUser[0], out m_CurrentFuelLitersAmount);
+            i_PropertiesFromUser.RemoveAt(0);
         }
     }
 }
