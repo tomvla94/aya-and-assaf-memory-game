@@ -49,7 +49,27 @@ namespace Ex03.GarageLogic
 
         public void Inflate()
         {
+            m_VehicleState = eVehicleState.InRepair;
             m_Vehicle.InflateWheelsToMax();
+            m_VehicleState = eVehicleState.Fixed;
+        }
+
+        public void Recharge(int i_NumOfHours)
+        {
+            m_VehicleState = eVehicleState.InRepair;
+            ((BatteryTypedVehicle)m_Vehicle.Engine).Charge(i_NumOfHours);
+            m_VehicleState = eVehicleState.Fixed;
+        }
+
+        public void Refuel(int i_Amount, FuelTypedVehicle.eFuelType i_FuelType)
+        {
+            m_VehicleState = eVehicleState.InRepair;
+            ((FuelTypedVehicle)m_Vehicle.Engine).Refuel(i_Amount, i_FuelType);
+        }
+
+        public string GetDetails()
+        {
+            return m_Vehicle.GetDetails();
         }
     }
 }

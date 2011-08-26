@@ -62,6 +62,11 @@ namespace Ex03.GarageLogic
             get { return m_Wheels; }
         }
 
+        public Engine Engine
+        {
+            get { return m_Engine; }
+        }
+
         public float getRemainingEnergyPrecentage()
         {
             return m_Engine.GetRemainingEnergyPrecentage();
@@ -119,6 +124,7 @@ namespace Ex03.GarageLogic
                 i_PropertiesFromUser.RemoveAt(0);
                 i_PropertiesFromUser.RemoveAt(0);
             }
+
             i_PropertiesFromUser.RemoveAt(0);
         }
 
@@ -127,17 +133,21 @@ namespace Ex03.GarageLogic
             string wheelsDetails = string.Empty;
             for (int i = 0; i < m_Wheels.Count; i++)
             {
-                wheelsDetails += string.Format("Wheel No. {0}{1}"
-                                        + m_Wheels[i].GetDetails(),
-                                        i,
-                                        Environment.NewLine);
+                wheelsDetails += string.Format(
+                    "Wheel No. {0}{1}"
+                    + m_Wheels[i].GetDetails(),
+                    i,
+                    Environment.NewLine);
             }
-            string retDetails = string.Format("Model: {0}{3}"
-                                        + "License Number: {1}{3}"
-                                        + "Wheels List: {3}{2}",
-                                        m_Model, m_LicenseNumber,
-                                        wheelsDetails,
-                                        Environment.NewLine);
+
+            string retDetails = string.Format(
+                "Model: {0}{3}"
+                + "License Number: {1}{3}"
+                + "Wheels List: {3}{2}",
+                m_Model, 
+                m_LicenseNumber,
+                wheelsDetails,
+                Environment.NewLine);
 
             return retDetails;
         }

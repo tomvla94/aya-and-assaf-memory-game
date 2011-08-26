@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class ElectricMotorcycle : Motorcycle
     {
-        private Motorcycle m_Vehicle;
         private const float k_MaxBatteryHours = 1.8F;
+        private Motorcycle m_Vehicle;
         protected List<string> m_PropertiesForInput;
 
         public ElectricMotorcycle()

@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
         public BatteryTypedVehicle(float i_MaxBatteryHours)
         {
             EngineType = eEngineType.Battery;
-            if ((i_MaxBatteryHours <= k_MinBatteryCharge))                  
+            if (i_MaxBatteryHours <= k_MinBatteryCharge)
             {
                 throw new ValueOutOfRangeException(k_MinBatteryCharge, float.MaxValue);
             }
@@ -68,13 +68,14 @@ namespace Ex03.GarageLogic
 
         public override string GetDetails()
         {
-            string retDetails = string.Format("Engine Type: {0}{3}"
-                                        + "Maximum Battery Hours: {1}{3}"
-                                        + "Remaining Battery Hours: {2}{3}", 
-                                        eEngineType.Battery.ToString(), 
-                                        m_MaxBatteryHours.ToString(), 
-                                        m_RemainingBatteryHours.ToString(), 
-                                        Environment.NewLine);
+            string retDetails = string.Format(
+                "Engine Type: {0}{3}"
+                + "Maximum Battery Hours: {1}{3}"
+                + "Remaining Battery Hours: {2}{3}", 
+                eEngineType.Battery.ToString(), 
+                m_MaxBatteryHours.ToString(), 
+                m_RemainingBatteryHours.ToString(), 
+                Environment.NewLine);
 
             return retDetails;   
         }

@@ -86,10 +86,12 @@ namespace Ex03.GarageLogic
 
         internal string GetDetails()
         {
-            string retDetails = string.Format("Manufacturer: {0}{2}CurrentAirPressure: {1}{2}",
-                                m_Manufacturer,
-                                m_CurrentAirPressure,
-                                Environment.NewLine);
+            string retDetails = string.Format(
+                "Manufacturer: {0}{2}CurrentAirPressure: {1}{2}",
+                m_Manufacturer,
+                m_CurrentAirPressure,
+                Environment.NewLine);
+
             return retDetails;
         }
 

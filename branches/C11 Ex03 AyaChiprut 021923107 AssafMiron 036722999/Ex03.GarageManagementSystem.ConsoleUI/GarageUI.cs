@@ -108,11 +108,11 @@ Enter your choice: ");
         private void printVehicleDetails()
         {
             string licenseNumber;
-            string vehicleDeatails;
+            string vehicleDeatails = string.Empty;
 
             if (readLicenseNumberAndVerify(out licenseNumber))
             {
-                vehicleDeatails = m_GarageLogic.GetVehicleDeatails(licenseNumber);
+                vehicleDeatails = m_GarageLogic.GetVehicleDetails(licenseNumber);
             }
 
             Console.WriteLine(vehicleDeatails);
@@ -170,13 +170,13 @@ Enter your choice: ");
             {
                 FuelTypedVehicle.eFuelType fuelType;
                 string licenseNumber;
-                int amoutNeeded;
+                int amountNeeded;
 
                 if (readLicenseNumberAndVerify(out licenseNumber))
                 {
                     fuelType = getNeededFuelTypeFromUser();
-                    amoutNeeded = getAmountOfFuelNeeded();
-                    m_GarageLogic.RefuelVehicle(licenseNumber, fuelType, amoutNeeded);
+                    amountNeeded = getAmountOfFuelNeeded();
+                    m_GarageLogic.RefuelVehicle(licenseNumber, fuelType, amountNeeded);
                 }
             }
             catch (ArgumentException i_ArgumentException)
@@ -288,6 +288,7 @@ Enter your choice: ");
                 string licenseNumber = System.Console.ReadLine();
 
                 int licenseNumberNumeric;
+                // TODO: Fix, License Number is String...
                 if (!int.TryParse(licenseNumber, out licenseNumberNumeric))
                 {
                     throw new FormatException("License number must be numeric.");
@@ -306,11 +307,13 @@ Enter your choice: ");
             catch (FormatException i_FormatException)
             {
                 Console.WriteLine(i_FormatException.Message);
+                o_LicenseNumber = null;
                 isValidReturnValue = readLicenseNumberAndVerify(out o_LicenseNumber);
             }
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
+                o_LicenseNumber = null;
                 isValidReturnValue = false;
             }
 
@@ -431,6 +434,7 @@ Enter your choice: ");
 
             try
             {
+                // TODO: Why do we need the Avilable Energy Precent? we calculate it
                 Console.WriteLine("Enter the following info seperated by commas(,): ");
                 Console.WriteLine("Model name, License number, Available energy precent");
                 userInput = Console.ReadLine();
@@ -464,13 +468,27 @@ Enter your choice: ");
                 }
 
                 getInformationAboutTheVehicle(newVehicle);
-                m_GarageLogic.AddVehicleToGarage(newVehicle);
+                string ownerName = getOwnerName();
+                string ownerPhone = getOwnerPhoneNumber();
+                m_GarageLogic.AddVehicleToGarage(ownerName, ownerPhone, newVehicle);
             }
             catch (FormatException i_FormatException)
             {
                 Console.WriteLine(i_FormatException.Message);
                 insertVehicleToTheGarage();
             }
+        }
+
+        private string getOwnerPhoneNumber()
+        {
+            Console.WriteLine("What is your Name? (To record in our system as Owner Name)");
+            return Console.ReadLine();
+        }
+
+        private string getOwnerName()
+        {
+            Console.WriteLine("What is your Phone Number?");
+            return Console.ReadLine();
         }
 
         private void getInformationAboutTheVehicle(Vehicle newVehicle)
@@ -522,5 +540,7 @@ Enter your choice: ");
 
             return retFuelType;
         }
+
+        public int amountNeeded { get; set; }
     }
 }
