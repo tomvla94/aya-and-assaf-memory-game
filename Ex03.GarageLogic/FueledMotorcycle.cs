@@ -14,12 +14,16 @@ namespace Ex03.GarageLogic
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Octan98;
         protected List<string> m_PropertiesForInput;
 
+        public FueledMotorcycle()
+        {
+            m_Vehicle = new Motorcycle();
+        }
+
         public FueledMotorcycle(
             string i_Model,
             string i_LicenseNumber,
             float i_RemainingFuelLiters)
         {
-            List<Wheel> wheels = new List<Wheel>(); // TODO: Complete Wheels List
             m_Vehicle = new Motorcycle(i_Model, i_LicenseNumber, wheels, new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters, i_RemainingFuelLiters));
 
             m_PropertiesForInput = new List<string>();

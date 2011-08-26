@@ -13,6 +13,11 @@ namespace Ex03.GarageLogic
         private const float k_MaxBatteryHours = 2.5F;
         protected List<string> m_PropertiesForInput;
 
+        public ElectricCar()
+        {
+            m_Vehicle = new Car();
+        }
+
         public ElectricCar(
             string i_Model,
             string i_LicenseNumber,
@@ -20,7 +25,6 @@ namespace Ex03.GarageLogic
             int i_NumOfDoors,
             float i_RemainingBatteryHours)
         {
-            List<Wheel> wheels = new List<Wheel>(); // TODO: Complete Wheels List
             m_Vehicle = new Car(i_Model, i_LicenseNumber, wheels, new BatteryTypedVehicle(k_MaxBatteryHours, i_RemainingBatteryHours), i_CarColor, i_NumOfDoors);
 
             m_PropertiesForInput = new List<string>();

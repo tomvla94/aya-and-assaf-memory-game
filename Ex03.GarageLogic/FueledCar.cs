@@ -21,6 +21,11 @@ namespace Ex03.GarageLogic
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Octan95;
         protected List<string> m_PropertiesForInput;
 
+        public FueledCar()
+        {
+            m_Vehicle = new Car();
+        }
+
         public FueledCar(
             string i_Model,
             string i_LicenseNumber,
@@ -28,7 +33,6 @@ namespace Ex03.GarageLogic
             int i_NumOfDoors,
             float i_RemainingFuelLiters)
         {
-            List<Wheel> wheels = new List<Wheel>(); // TODO: Complete Wheels List
             m_Vehicle = new Car(i_Model, i_LicenseNumber, wheels, new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters, i_RemainingFuelLiters), i_CarColor, i_NumOfDoors);
 
             m_PropertiesForInput = new List<string>();

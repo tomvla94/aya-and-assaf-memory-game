@@ -105,7 +105,12 @@ namespace Ex03.GarageLogic
             i_PropertiesFromUser.RemoveAt(0);
 
             // Get Third Parameter - The Vehicle Wheels List
-            m_Wheels = Wheel.SetPropertiesFromInput(i_PropertiesFromUser);
+            foreach (Wheel wheel in m_Wheels)
+            {
+                wheel.SetPropertiesFromInput(i_PropertiesFromUser[0], i_PropertiesFromUser[1]);
+                i_PropertiesFromUser.RemoveAt(0);
+                i_PropertiesFromUser.RemoveAt(0);
+            }
             i_PropertiesFromUser.RemoveAt(0);
         }
 
