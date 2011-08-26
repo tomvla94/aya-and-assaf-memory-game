@@ -76,8 +76,7 @@ namespace Ex03.GarageLogic
 
         public override string GetDetails()
         {
-            string retDetails = string.Format("Maximum Allowed Passengers: {0}{3}"
-            +  "The Bus Has a Guide Seat: {1}{3}", 
+            string retDetails = string.Format("Maximum Allowed Passengers: {0}{3}The Bus Has a Guide Seat: {1}{3}", 
             m_MaxAllowedAmountOfPassengers.ToString(), 
             v_HasGuideSeat.ToString(), 
             Environment.NewLine);

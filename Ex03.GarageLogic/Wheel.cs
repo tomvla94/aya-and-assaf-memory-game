@@ -30,6 +30,8 @@ namespace Ex03.GarageLogic
             }
 
             m_MaxAirPressureByManufacturer = i_MaxAirPressureByManufacturer;
+
+            fillPropertiesForUser();
         }
 
         public Wheel(string i_Manufacturer, float i_CurrentAirPressure, float i_MaxAirPressureByManufacturer)
@@ -69,6 +71,14 @@ namespace Ex03.GarageLogic
             get { return m_MaxAirPressureByManufacturer; }
         }
 
+        private void fillPropertiesForUser()
+        {
+            m_PropertiesForInput = new List<string>();
+
+            m_PropertiesForInput.Add("Manufacturer");
+            m_PropertiesForInput.Add("CurrentAirPressure");
+        }
+
         internal List<string> GetPropertiesForInput()
         {
             return m_PropertiesForInput;
@@ -76,13 +86,20 @@ namespace Ex03.GarageLogic
 
         internal string GetDetails()
         {
-            throw new NotImplementedException();
+            string retDetails = string.Format("Manufacturer: {0}{2}CurrentAirPressure: {1}{2}",
+                                m_Manufacturer,
+                                m_CurrentAirPressure,
+                                Environment.NewLine);
+            return retDetails;
         }
 
         internal void SetPropertiesFromInput(string i_Manufacturer, string i_CurrentAirPressure)
         {
             m_Manufacturer = i_Manufacturer;
-            float.TryParse(i_CurrentAirPressure, out m_CurrentAirPressure);
+            if (float.TryParse(i_CurrentAirPressure, out m_CurrentAirPressure))
+            {
+                Inflate(m_CurrentAirPressure);
+            }
         }
     }
 }
