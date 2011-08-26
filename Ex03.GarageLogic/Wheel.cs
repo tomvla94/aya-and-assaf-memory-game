@@ -59,12 +59,12 @@ namespace Ex03.GarageLogic
             get { return m_MaxAirPressureByManufacturer; }
         }
 
-        public virtual List<string> GetPropertiesForInput()
+        public List<string> GetPropertiesForInput()
         {
             return m_PropertiesForInput;
         }
 
-        internal static List<Wheel> SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        internal List<Wheel> SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             throw new NotImplementedException();
         }

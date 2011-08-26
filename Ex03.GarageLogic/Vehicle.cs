@@ -112,9 +112,8 @@ namespace Ex03.GarageLogic
 
         public virtual string GetDetails()
         {
-            string retDetails = string.Format("Model: {0}{3}"
-                + "License Number: {1}{3}"
-                + "Wheels List: {2}{3}", m_Model, m_LicenseNumber, m_Wheels.GetDetails(), Environment.NewLine);
+            string retDetails = string.Format("Model: {0}{3}License Number: {1}{3}Wheels List: {2}{3}",
+                m_Model, m_LicenseNumber, m_Wheels.GetDetails(), Environment.NewLine);
 
             return retDetails;
         }

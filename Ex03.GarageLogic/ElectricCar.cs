@@ -1,35 +1,27 @@
-﻿-﻿// -----------------------------------------------------------------------
-// <copyright file="FueledCar.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Ex03.GarageLogic
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
-    /// TODO: Update summary.
+    /// 
     /// </summary>
-    public class FueledCar
+    class ElectricCar
     {
         private Car m_Vehicle;
-        private const float k_MaxFuelLiters = 45;
-        private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Octan95;
+        private const float k_MaxBatteryHours = 2.5F;
         protected List<string> m_PropertiesForInput;
 
-        public FueledCar(
+        public ElectricCar(
             string i_Model,
             string i_LicenseNumber,
             Car.eCarColor i_CarColor,
             int i_NumOfDoors,
-            float i_RemainingFuelLiters)
+            float i_RemainingBatteryHours)
         {
             List<Wheel> wheels = new List<Wheel>(); // TODO: Complete Wheels List
-            m_Vehicle = new Car(i_Model, i_LicenseNumber, wheels, new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters, i_RemainingFuelLiters), i_CarColor, i_NumOfDoors);
+            m_Vehicle = new Car(i_Model, i_LicenseNumber, wheels, new BatteryTypedVehicle(k_MaxBatteryHours, i_RemainingBatteryHours), i_CarColor, i_NumOfDoors);
 
             m_PropertiesForInput = new List<string>();
         }
@@ -41,7 +33,6 @@ namespace Ex03.GarageLogic
 
         public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-
             m_Vehicle.SetPropertiesFromInput(i_PropertiesFromUser);
         }
 
