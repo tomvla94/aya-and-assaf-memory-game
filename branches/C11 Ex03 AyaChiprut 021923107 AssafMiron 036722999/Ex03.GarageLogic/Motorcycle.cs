@@ -71,7 +71,7 @@ namespace Ex03.GarageLogic
 
         public override string GetDetails()
         {
-            string retDetails = string.Format("License Tyoe: {0}{2}"
+            string retDetails = string.Format("License Type: {0}{2}"
                           , m_LicenseType.ToString(), Environment.NewLine);
 
             return retDetails;

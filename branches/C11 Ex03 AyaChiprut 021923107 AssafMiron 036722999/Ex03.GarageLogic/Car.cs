@@ -36,10 +36,13 @@ namespace Ex03.GarageLogic
             string i_Model,
             string i_LicenseNumber,
             List<Wheel> i_Wheels,
-            Engine i_EngineType)
+            Engine i_EngineType,
+            eCarColor i_CarColor,
+            int i_NumOfDoors)
             : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
             m_Engine = i_EngineType;
+            m_CarColor = i_CarColor;
             m_PropertiesForInput = new List<string>();
 
             string colors;
@@ -106,9 +109,8 @@ namespace Ex03.GarageLogic
         public override string GetDetails()
         {
             string retDetails = base.GetDetails();
-            retDetails = m_Engine.GetDetails();
-            retDetails += string.Format("Color: {0}{3}"
-                         + "Number of Doors: {1}{3}"
+            retDetails += m_Engine.GetDetails();
+            retDetails += string.Format("Color: {0}{2}Number of Doors: {1}{2}"
                           , m_CarColor.ToString(), m_NumOfDoors, Environment.NewLine);
 
             return retDetails;
