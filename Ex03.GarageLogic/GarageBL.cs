@@ -105,5 +105,55 @@ namespace Ex03.GarageLogic
             
             return retVehicle;
         }
+
+        public bool RechargeVehicle(string i_LicenseNumber, int i_NumOfHours)
+        {
+            bool retRechargeSucceeded = false;
+            VehicleInGarage vehicleToRecharge = SearchVehicleInGarage(i_LicenseNumber);
+            if (vehicleToRecharge != null)
+            {
+                vehicleToRecharge.Recharge(i_NumOfHours);
+                retRechargeSucceeded = true;
+            }
+
+            return retRechargeSucceeded;
+        }
+
+        public bool RefuelVehicle(string i_LicenseNumber, FuelTypedVehicle.eFuelType i_FuelType, int i_AmountNeeded)
+        {
+            bool retRefuelSucceeded = false;
+            VehicleInGarage vehicleToRefuel = SearchVehicleInGarage(i_LicenseNumber);
+            if (vehicleToRefuel != null)
+            {
+                vehicleToRefuel.Refuel(i_AmountNeeded, i_FuelType);
+                retRefuelSucceeded = true;
+            }
+
+            return retRefuelSucceeded;
+        }
+
+        public bool IsVehicleExistInGarage(string i_LicenseNumber)
+        {
+            bool retVehicleFound = false;
+            VehicleInGarage vehicleToSearch = SearchVehicleInGarage(i_LicenseNumber);
+            if (vehicleToSearch != null)
+            {
+                retVehicleFound = true;
+            }
+
+            return retVehicleFound;
+        }
+
+        public string GetVehicleDetails(string i_LicenseNumber)
+        {
+            VehicleInGarage vehicleToSearch = SearchVehicleInGarage(i_LicenseNumber);
+            string retVehicleDetails = string.Empty;
+            if (vehicleToSearch != null)
+            {
+                retVehicleDetails = vehicleToSearch.GetDetails();
+            }
+
+            return retVehicleDetails;
+        }
     }
 }
