@@ -29,23 +29,14 @@ namespace Ex03.GarageLogic
         private float m_MaxFuelLitersAmount;
         private eFuelType m_FuelType;
 
-        public FuelTypedVehicle()
+        public FuelTypedVehicle(eFuelType i_FuelType, float i_MaxFuelLitersAmount)
         {
-            EngineType = eEngineType.Fuel;
-            m_PropertiesForInput = new List<string>();
-
-            m_PropertiesForInput.Add("Fuel Type");
-            m_PropertiesForInput.Add("Maximum Fuel Liters");
-            m_PropertiesForInput.Add("Current Fuel Amount (Liters)");
-        }
-
-        public FuelTypedVehicle(eFuelType i_FuelType, float i_MaxFuelLitersAmount, float i_CurrentFuelLitersAmount)
-        {
-            EngineType = eEngineType.Fuel;
             m_FuelType = i_FuelType;
             m_MaxFuelLitersAmount = i_MaxFuelLitersAmount;
-            m_CurrentFuelLitersAmount = i_CurrentFuelLitersAmount;
+            EngineType = eEngineType.Fuel;
+            fillPropertiesForUser();
         }
+
 
         public eFuelType FuelType
         { 
@@ -90,6 +81,15 @@ namespace Ex03.GarageLogic
         public override float GetMaximumEnergyAmount()
         {
             return m_MaxFuelLitersAmount;
+        }
+
+        private void fillPropertiesForUser()
+        {
+            m_PropertiesForInput = new List<string>();
+
+            m_PropertiesForInput.Add("Fuel Type");
+            m_PropertiesForInput.Add("Maximum Fuel Liters");
+            m_PropertiesForInput.Add("Current Fuel Amount (Liters)");
         }
 
         public override string GetDetails()

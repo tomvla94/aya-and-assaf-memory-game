@@ -105,6 +105,19 @@ Enter your choice: ");
             }
         }
 
+        private void printVehicleDetails()
+        {
+            string licenseNumber;
+            string vehicleDeatails;
+
+            if (readLicenseNumberAndVerify(out licenseNumber))
+            {
+                vehicleDeatails = m_GarageLogic.GetVehicleDeatails(licenseNumber);
+            }
+
+            Console.WriteLine(vehicleDeatails);
+        }
+
         private void rechargeAVehicle()
         {
             try

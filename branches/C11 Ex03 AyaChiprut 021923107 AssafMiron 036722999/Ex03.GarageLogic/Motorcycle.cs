@@ -35,17 +35,7 @@ namespace Ex03.GarageLogic
 
             // Create the Wheel for the Motorcycle and Add thier Properties For Input
             m_Wheels = new List<Wheel>(k_NumOfWheels);
-            for (int i = 0; i < k_NumOfWheels; i++)
-            {
-                m_Wheels[i] = new Wheel(k_MaxAirPressure);
-                foreach (string wheelProp in m_Wheels[i].GetPropertiesForInput())
-                {
-                    m_PropertiesForInput.Add(wheelProp);
-                }
-            }
-
-            // Add the Properties for the Motorcycle
-            m_PropertiesForInput.Add("License Type");
+            fillPropertiesForUser();
         }
 
         public Motorcycle(
@@ -61,19 +51,21 @@ namespace Ex03.GarageLogic
             m_PropertiesForInput.Add("License Type");
         }
 
-        public Motorcycle(
-            string i_Model,
-            string i_LicenseNumber,
-            List<Wheel> i_Wheels,
-            eLicenseType i_LicenseType)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
-        {
-            m_LicenseType = i_LicenseType;
-        }
-
         public eLicenseType LicenseType
         { 
             get { return m_LicenseType; } 
+        }
+
+        private void fillPropertiesForUser()
+        {
+            for (int i = 0; i < k_NumOfWheels; i++)
+            {
+                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
+            }
+
+            // Add the Properties for the Motorcycle
+            m_PropertiesForInput.Add("License Type");
         }
 
         public override List<string> GetPropertiesForInput()
