@@ -25,7 +25,6 @@ namespace Ex03.GarageLogic
         public Bus(Engine i_EngineType)
         {
             m_Engine = i_EngineType;
-            fillPropertiesForUser();
             m_Wheels = new List<Wheel>(k_NumOfWheels);
             fillPropertiesForUser();
         }
@@ -56,7 +55,7 @@ namespace Ex03.GarageLogic
         {
             for (int i = 0; i < k_NumOfWheels; i++)
             {
-                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                m_Wheels.Add(new Wheel(k_MaxAirPressure));
                 m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
             }
 
