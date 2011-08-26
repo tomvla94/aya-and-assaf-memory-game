@@ -49,7 +49,6 @@ Enter your choice: ");
                     handleUserChoice(chosenOption);
                 }
             }
-
             while (chosenOption != eMenuOption.Exit);
         }
 
@@ -62,36 +61,43 @@ Enter your choice: ");
                     insertVehicleToTheGarage();
                     break;
                 }
+
                 case eMenuOption.PrintVehiclesList:
                 {
                     printListOfTheVehicles();
                     break;
                 }
+
                 case eMenuOption.ChangeVehicleStatus:
                 {
                     changeVehicleStatus();
                     break;
                 }
+
                 case eMenuOption.InflateTires:
                 {
                     inflatesTiresOfAVehicle();
                     break;
                 }
+
                 case eMenuOption.RefuelVehicle:
                 {
                     refuelAvehicle();
                     break;
                 }
+
                 case eMenuOption.RechargeVehicle:
                 {
                     rechargeAVehicle();
                     break;
                 }
+
                 case eMenuOption.PrintVehicleDetails:
                 {
                     printVehicleDetails();
                     break;
                 }
+
                 case eMenuOption.Exit:
                 {
                     break;

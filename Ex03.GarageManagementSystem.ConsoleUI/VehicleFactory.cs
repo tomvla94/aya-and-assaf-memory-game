@@ -26,7 +26,6 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                         break;
                     }
             }
-            
         }
     }
 }

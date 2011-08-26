@@ -97,7 +97,7 @@ namespace Ex03.GarageLogic
         public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Vehicle Model
-            m_Model =  i_PropertiesFromUser[0];
+            m_Model = i_PropertiesFromUser[0];
             i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Vehicle License Number
@@ -107,16 +107,18 @@ namespace Ex03.GarageLogic
             // Get Third Parameter - The Vehicle Wheels List
             m_Wheels = Wheel.SetPropertiesFromInput(i_PropertiesFromUser);
             i_PropertiesFromUser.RemoveAt(0);
-
         }
 
         public virtual string GetDetails()
         {
-            string retDetails = string.Format("Model: {0}{3}License Number: {1}{3}Wheels List: {2}{3}",
-                m_Model, m_LicenseNumber, m_Wheels.GetDetails(), Environment.NewLine);
+            string retDetails = string.Format("Model: {0}{3}"
+                                        + "License Number: {1}{3}"
+                                        + "Wheels List: {2}{3}",
+                                        m_Model, m_LicenseNumber,
+                                        m_Wheels.GetDetails(),
+                                        Environment.NewLine);
 
             return retDetails;
         }
-
     }
 }
