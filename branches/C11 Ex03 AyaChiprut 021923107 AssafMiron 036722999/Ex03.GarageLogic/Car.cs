@@ -32,17 +32,46 @@ namespace Ex03.GarageLogic
         private int m_NumOfDoors;
         private eCarColor m_CarColor;
 
+        public Car(Engine i_EngineType)
+        {
+            m_Engine = i_EngineType;
+
+            // Create the Wheel for the Car and Add thier Properties For Input
+            m_Wheels = new List<Wheel>(k_NumOfWheels);
+            for (int i = 0; i < k_NumOfWheels; i++)
+            {
+                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                foreach (string wheelProp in m_Wheels[i].GetPropertiesForInput())
+                {
+                    m_PropertiesForInput.Add(wheelProp);
+                }
+            }
+
+            // Add the Properties for the Car
+            string colors;
+            colors = "Color [";
+
+            Array eColors = Enum.GetValues(typeof(eCarColor));
+
+            for (int i = 0; i < eColors.Length; i++)
+            {
+                colors += eColors.GetValue(i).ToString() + ",";
+            }
+
+            colors += "\b]";
+
+            m_PropertiesForInput.Add(colors);
+            m_PropertiesForInput.Add("Doors Number");
+        }
+
         public Car(
             string i_Model,
             string i_LicenseNumber,
             List<Wheel> i_Wheels,
-            Engine i_EngineType,
-            eCarColor i_CarColor,
-            int i_NumOfDoors)
+            Engine i_EngineType)
             : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
             m_Engine = i_EngineType;
-            m_CarColor = i_CarColor;
             m_PropertiesForInput = new List<string>();
 
             string colors;
@@ -95,15 +124,18 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
         {
+            // Set the Properties of the Base Vehicle
+            base.SetPropertiesFromInput(io_PropertiesFromUser);
+
             // Get First Parameter - The Car Color
-            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), i_PropertiesFromUser[0]);
-            i_PropertiesFromUser.RemoveAt(0);
+            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), io_PropertiesFromUser[0]);
+            io_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Number of Doors
-            bool tryParse = int.TryParse(i_PropertiesFromUser[0], out m_NumOfDoors);
-            i_PropertiesFromUser.RemoveAt(0);
+            bool tryParse = int.TryParse(io_PropertiesFromUser[0], out m_NumOfDoors);
+            io_PropertiesFromUser.RemoveAt(0);
         }
 
         public override string GetDetails()

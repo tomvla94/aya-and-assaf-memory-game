@@ -33,12 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AbstractVehicleUI.cs" />
-    <Compile Include="CarUI.cs" />
     <Compile Include="GarageBL.cs" />
     <Compile Include="GarageUI.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="VehicleDescriptor.cs" />
     <Compile Include="VehicleFactory.cs" />
     <Compile Include="VehicleInGarage.cs" />
   </ItemGroup>

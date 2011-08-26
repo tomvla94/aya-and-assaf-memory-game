@@ -29,6 +29,25 @@ namespace Ex03.GarageLogic
         private int m_EngineSize;
         private eLicenseType m_LicenseType;
 
+        public Motorcycle(Engine i_EngineType)
+        {
+            m_Engine = i_EngineType;
+
+            // Create the Wheel for the Motorcycle and Add thier Properties For Input
+            m_Wheels = new List<Wheel>(k_NumOfWheels);
+            for (int i = 0; i < k_NumOfWheels; i++)
+            {
+                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                foreach (string wheelProp in m_Wheels[i].GetPropertiesForInput())
+                {
+                    m_PropertiesForInput.Add(wheelProp);
+                }
+            }
+
+            // Add the Properties for the Motorcycle
+            m_PropertiesForInput.Add("License Type");
+        }
+
         public Motorcycle(
             string i_Model,
             string i_LicenseNumber,
@@ -62,17 +81,22 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
         {
+            // Set the Properties of the Base Vehicle
+            base.SetPropertiesFromInput(io_PropertiesFromUser);
+
             // Get First Parameter - The License Type
-            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), i_PropertiesFromUser[0]);
-            i_PropertiesFromUser.RemoveAt(0);
+            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), io_PropertiesFromUser[0]);
+            io_PropertiesFromUser.RemoveAt(0);
         }
 
         public override string GetDetails()
         {
-            string retDetails = string.Format("License Type: {0}{2}"
-                          , m_LicenseType.ToString(), Environment.NewLine);
+            string retDetails = base.GetDetails();
+            retDetails += string.Format("License Type: {0}{2}", 
+                                m_LicenseType.ToString(), 
+                                Environment.NewLine);
 
             return retDetails;
         }

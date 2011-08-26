@@ -43,10 +43,9 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        public void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
         {
-
-            m_Vehicle.SetPropertiesFromInput(i_PropertiesFromUser);
+            m_Vehicle.SetPropertiesFromInput(io_PropertiesFromUser);
         }
 
         public string GetDetails()
