@@ -25,9 +25,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="802155431">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="GarageBL.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
@@ -61,6 +58,9 @@
     <milliseconds>242</milliseconds>
     <violations />
   </sourcecode>
+  <project key="802155431">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
@@ -75,17 +75,12 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 15:30:50</timestamp>
-    <milliseconds>266</milliseconds>
+    <timestamp>08/26/2011 18:19:12</timestamp>
+    <milliseconds>183</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
         <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>422</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
-        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>422</line>
+        <line>291</line>
         <warning>False</warning>
       </violation>
     </violations>

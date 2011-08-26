@@ -37,7 +37,6 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
-
         public eFuelType FuelType
         { 
             get { return m_FuelType; } 
@@ -94,15 +93,16 @@ namespace Ex03.GarageLogic
 
         public override string GetDetails()
         {
-            string retDetails = string.Format("Engine Type: {0}{4}"
-                                       + "Fuel Type: {1}{4}"
-                                       + "Maximum Fuel Liters: {2}{4}"
-                                       + "Current Fuel Amount (Liters): {3}{4}", 
-                                       eEngineType.Battery.ToString(), 
-                                       m_FuelType.ToString(), 
-                                       m_MaxFuelLitersAmount.ToString(), 
-                                       m_CurrentFuelLitersAmount.ToString(), 
-                                       Environment.NewLine);
+            string retDetails = string.Format(
+                "Engine Type: {0}{4}"
+                + "Fuel Type: {1}{4}"
+                + "Maximum Fuel Liters: {2}{4}"
+                + "Current Fuel Amount (Liters): {3}{4}", 
+                eEngineType.Battery.ToString(), 
+                m_FuelType.ToString(), 
+                m_MaxFuelLitersAmount.ToString(), 
+                m_CurrentFuelLitersAmount.ToString(), 
+                Environment.NewLine);
 
             return retDetails;   
         }

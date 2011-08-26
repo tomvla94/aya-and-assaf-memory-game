@@ -9,8 +9,8 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class ElectricCar : Car
     {
-        private Car m_Vehicle;
         private const float k_MaxBatteryHours = 2.5F;
+        private Car m_Vehicle;
         protected List<string> m_PropertiesForInput;
 
         public ElectricCar()

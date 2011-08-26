@@ -25,21 +25,25 @@ namespace Ex03.GarageLogic
                     vehicle = new FueledCar();
                     break;
                 }
+
                 case eVehicleType.ElectricCar:
                 {
                     vehicle = new ElectricCar();
                     break;
                 }
+
                 case eVehicleType.FueledMotorcycle:
                 {
                     vehicle = new FueledMotorcycle();
                     break;
                 }
+
                 case eVehicleType.ElectricMotorcycle:
                 {
                     vehicle = new ElectricMotorcycle();
                     break;
                 }
+
                 case eVehicleType.FueledBus:
                 {
                     vehicle = new FueledBus();

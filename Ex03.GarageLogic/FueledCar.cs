@@ -1,4 +1,4 @@
-﻿-﻿// -----------------------------------------------------------------------
+﻿﻿// -----------------------------------------------------------------------
 // <copyright file="FueledCar.cs">
 // Aya Chiprut 021923107 
 // Assaf Miron 036722999
@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
         protected List<string> m_PropertiesForInput;
 
         public FueledCar()
-            : base(new FuelTypedVehicle(k_MaxFuelLiters, k_FuelType))
+            : base(new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters))
         {
         }
 
