@@ -142,7 +142,8 @@ namespace Ex03.GarageLogic
         {
             string retDetails = base.GetDetails();
             retDetails += m_Engine.GetDetails();
-            retDetails += string.Format("Color: {0}{2}Number of Doors: {1}{2}",
+            retDetails += string.Format("Color: {0}{2}"
+                                + "Number of Doors: {1}{2}",
                                 m_CarColor.ToString(), 
                                 m_NumOfDoors, 
                                 Environment.NewLine);
