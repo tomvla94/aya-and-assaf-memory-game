@@ -24,6 +24,8 @@ namespace Ex03.GarageLogic
 
         private eEngineType m_EngineType;
 
+        protected List<string> m_PropertiesForInput;
+
         public eEngineType EngineType
         {
             get { return m_EngineType; }

@@ -54,6 +54,7 @@ namespace Ex03.GarageLogic
             {
                 colors += eColors.GetValue(i).ToString() + ",";
             }
+
             colors += "\b]";
 
             m_PropertiesForInput.Add(colors);
@@ -69,7 +70,6 @@ namespace Ex03.GarageLogic
             Engine i_EngineType)
             : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
         {
-            
             m_Engine = i_EngineType;
             m_CarColor = i_CarColor;
             if (i_NumOfDoors < k_MinNumOfDoors)
@@ -110,8 +110,11 @@ namespace Ex03.GarageLogic
         {
             string retDetails = base.GetDetails();
             retDetails += m_Engine.GetDetails();
-            retDetails += string.Format("Color: {0}{2}Number of Doors: {1}{2}"
-                          , m_CarColor.ToString(), m_NumOfDoors, Environment.NewLine);
+            retDetails += string.Format("Color: {0}{2}"
+                                + "Number of Doors: {1}{2}",
+                                m_CarColor.ToString(), 
+                                m_NumOfDoors, 
+                                Environment.NewLine);
 
             return retDetails;
         }

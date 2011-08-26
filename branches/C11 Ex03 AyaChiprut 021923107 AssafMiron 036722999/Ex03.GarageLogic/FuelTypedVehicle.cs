@@ -29,6 +29,15 @@ namespace Ex03.GarageLogic
         private float m_MaxFuelLitersAmount;
         private eFuelType m_FuelType;
 
+        public FuelTypedVehicle()
+        {
+            m_PropertiesForInput = new List<string>();
+
+            m_PropertiesForInput.Add("Fuel Type");
+            m_PropertiesForInput.Add("Maximum Fuel Liters");
+            m_PropertiesForInput.Add("Current Fuel Amount (Liters)");
+        }
+
         public FuelTypedVehicle(eFuelType i_FuelType, float i_MaxFuelLitersAmount, float i_CurrentFuelLitersAmount)
         {
             EngineType = eEngineType.Fuel;
@@ -80,6 +89,40 @@ namespace Ex03.GarageLogic
         public override float GetMaximumEnergyAmount()
         {
             return m_MaxFuelLitersAmount;
+        }
+
+        public override string GetDetails()
+        {
+            string retDetails = string.Format("Engine Type: {0}{4}"
+                                       + "Fuel Type: {1}{4}"
+                                       + "Maximum Fuel Liters: {2}{4}"
+                                       + "Current Fuel Amount (Liters): {3}{4}", 
+                                       eEngineType.Battery.ToString(), 
+                                       m_FuelType.ToString(), 
+                                       m_MaxFuelLitersAmount.ToString(), 
+                                       m_CurrentFuelLitersAmount.ToString(), 
+                                       Environment.NewLine);
+
+            return retDetails;   
+        }
+
+        public override List<string> GetPropertiesForInput()
+        {
+            return m_PropertiesForInput;
+        }
+
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        {
+            // Get First Parameter - The Fuel Type
+            m_FuelType = (eFuelType)Enum.Parse(typeof(eFuelType), i_PropertiesFromUser[0]);
+
+            // Get Second Parameter - The Maximun Amount of Liters
+            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxFuelLitersAmount);
+            i_PropertiesFromUser.RemoveAt(0);
+
+            // Get third Parameter - The Remaining Amount of Fuel Liters
+            tryParse = float.TryParse(i_PropertiesFromUser[0], out m_CurrentFuelLitersAmount);
+            i_PropertiesFromUser.RemoveAt(0);
         }
     }
 }

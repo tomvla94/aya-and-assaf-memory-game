@@ -1,8 +1,5 @@
 <stylecopresultscache>
   <version>11</version>
-  <project key="821904916">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="ElectricCar.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
@@ -10,71 +7,6 @@
     </settings>
     <timestamp>08/21/2011 23:20:19</timestamp>
     <milliseconds>557</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Bus.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>547</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>20</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>23</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Car.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>550</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>28</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>29</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>30</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="BatteryTypedVehicle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/18/2011 09:36:32</timestamp>
-    <milliseconds>0</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
@@ -97,15 +29,6 @@
         <warning>False</warning>
       </violation>
     </violations>
-  </sourcecode>
-  <sourcecode name="Engine.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/18/2011 09:28:14</timestamp>
-    <milliseconds>0</milliseconds>
-    <violations />
   </sourcecode>
   <sourcecode name="FueledBus.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
@@ -147,13 +70,99 @@
       </violation>
     </violations>
   </sourcecode>
+  <project key="821904916">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="Engine.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/26/2011 15:05:04</timestamp>
+    <milliseconds>98</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BatteryTypedVehicle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/26/2011 15:33:40</timestamp>
+    <milliseconds>137</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>71</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="FueledCar.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>554</milliseconds>
+    <timestamp>08/26/2011 15:26:50</timestamp>
+    <milliseconds>741</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\Temp\C#\aya-and-assaf-memory-game\C11 Ex03 AyaChiprut 021923107 AssafMiron 036722999\Ex03.GarageLogic\FueledCar.cs on line 1.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="Car.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/26/2011 15:33:29</timestamp>
+    <milliseconds>86</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>28</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>29</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>30</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>113</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ValueOutOfRangeException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/21/2011 23:20:20</timestamp>
+    <milliseconds>0</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Bus.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/26/2011 15:28:29</timestamp>
+    <milliseconds>380</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
@@ -165,6 +174,21 @@
         <line>20</line>
         <warning>False</warning>
       </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>23</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>79</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CodeMustNotContainMultipleWhitespaceInARow" ruleCheckId="SA1025">
+        <context>The code contains multiple spaces in a row. Only one space is needed.</context>
+        <line>80</line>
+        <warning>False</warning>
+      </violation>
     </violations>
   </sourcecode>
   <sourcecode name="FuelTypedVehicle.cs" parser="StyleCop.CSharp.CsParser">
@@ -172,32 +196,73 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>543</milliseconds>
+    <timestamp>08/26/2011 15:33:32</timestamp>
+    <milliseconds>149</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
         <line>27</line>
         <warning>False</warning>
       </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>96</line>
+        <warning>False</warning>
+      </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="ValueOutOfRangeException.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="Wheel.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>563</milliseconds>
-    <violations />
+    <timestamp>08/26/2011 15:26:50</timestamp>
+    <milliseconds>750</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="Vehicle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/26/2011 15:33:56</timestamp>
+    <milliseconds>402</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParametersMustBeOnSameLineOrSeparateLines" ruleCheckId="SA1117">
+        <context>All method parameters must be placed on the same line, or each parameter must be placed on a separate line.</context>
+        <line>114</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>114</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParameterMustFollowComma" ruleCheckId="SA1115">
+        <context>The parameter must begin on the line after the previous parameter.</context>
+        <line>117</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Motorcycle.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>567</milliseconds>
+    <timestamp>08/26/2011 15:26:50</timestamp>
+    <milliseconds>732</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
@@ -209,34 +274,29 @@
         <line>28</line>
         <warning>False</warning>
       </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Vehicle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/18/2011 23:26:51</timestamp>
-    <milliseconds>263</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParametersMustBeOnSameLineOrSeparateLines" ruleCheckId="SA1117">
+        <context>All method parameters must be placed on the same line, or each parameter must be placed on a separate line.</context>
+        <line>74</line>
         <warning>False</warning>
       </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Wheel.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/21/2011 23:20:19</timestamp>
-    <milliseconds>536</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>74</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="CommaMustBeOnSameLineAsPreviousParameter" ruleCheckId="SA1113">
+        <context>The comma must be placed on the same line as the previous parameter.</context>
+        <line>75</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParameterMustFollowComma" ruleCheckId="SA1115">
+        <context>The parameter must begin on the line after the previous parameter.</context>
+        <line>75</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="CommasMustBeSpacedCorrectly" ruleCheckId="SA1001">
+        <context>Invalid spacing around the comma.</context>
+        <line>75</line>
         <warning>False</warning>
       </violation>
     </violations>
