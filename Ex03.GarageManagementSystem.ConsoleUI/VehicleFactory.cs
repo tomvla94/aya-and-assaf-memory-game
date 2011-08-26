@@ -16,16 +16,23 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             FueledBus = 5
         }
 
-        public void CreateVehicle(eVehicleType i_VehicleType)
+        public Vehicle CreateVehicle(eVehicleType i_VehicleType)
         {
+            Vehicle vehicle;
             switch (i_VehicleType)
             {
                 case eVehicleType.FueledCar: 
-                    {
-                        //m_VehicleUI = new Car;
-                        break;
-                    }
+                {
+                    vehicle = new FueledCar();
+                    break;
+                }
+                case eVehicleType.ElectricCar:
+                {
+                    vehicle = new ElectricCar();
+                    break;
+                }
             }
+
         }
     }
 }

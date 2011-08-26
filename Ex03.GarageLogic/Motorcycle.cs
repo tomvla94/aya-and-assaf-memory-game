@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public sealed class Motorcycle : Vehicle
+    public class Motorcycle : Vehicle
     {
         public enum eLicenseType
         { 

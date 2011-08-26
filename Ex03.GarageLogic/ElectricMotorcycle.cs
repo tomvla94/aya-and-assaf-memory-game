@@ -7,40 +7,30 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// 
     /// </summary>
-    class ElectricMotorcycle
+    public class ElectricMotorcycle : Motorcycle
     {
         private Motorcycle m_Vehicle;
         private const float k_MaxBatteryHours = 1.8F;
         protected List<string> m_PropertiesForInput;
 
         public ElectricMotorcycle()
+            : base(new BatteryTypedVehicle())
         {
-            m_Vehicle = new Motorcycle();
         }
 
-        public ElectricMotorcycle(
-            string i_Model,
-            string i_LicenseNumber,
-            float i_RemainingBatteryHours)
-        {
-            m_Vehicle = new Motorcycle(i_Model, i_LicenseNumber, wheels, new BatteryTypedVehicle(k_MaxBatteryHours, i_RemainingBatteryHours));
-
-            m_PropertiesForInput = new List<string>();
-        }
-
-        public List<string> GetPropertiesForInput()
+        public virtual List<string> GetPropertiesForInput()
         {
             return m_PropertiesForInput;
         }
 
-        public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
+        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-            m_Vehicle.SetPropertiesFromInput(i_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
         }
 
-        public string GetDetails()
+        public virtual string GetDetails()
         {
-            return m_Vehicle.GetDetails();
+            return base.GetDetails();
         }
     }
 }

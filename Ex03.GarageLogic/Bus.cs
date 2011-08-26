@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public sealed class Bus : Vehicle
+    public class Bus : Vehicle
     {
         public const int k_NumOfWheels = 8;
         public const float k_MaxAirPressure = 25;
