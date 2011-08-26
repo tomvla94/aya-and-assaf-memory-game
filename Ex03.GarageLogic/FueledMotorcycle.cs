@@ -13,7 +13,8 @@ namespace Ex03.GarageLogic
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Octan98;
         protected List<string> m_PropertiesForInput;
 
-        public FueledMotorcycle():base(new FuelTypedVehicle())
+        public FueledMotorcycle()
+            : base(new FuelTypedVehicle(k_MaxFuelLiters, k_FuelType))
         {
         }
 

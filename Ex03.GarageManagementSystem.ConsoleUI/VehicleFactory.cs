@@ -18,7 +18,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
 
         public Vehicle CreateVehicle(eVehicleType i_VehicleType)
         {
-            Vehicle vehicle;
+            Vehicle vehicle = null;
             switch (i_VehicleType)
             {
                 case eVehicleType.FueledCar: 
@@ -31,8 +31,24 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
                     vehicle = new ElectricCar();
                     break;
                 }
+                case eVehicleType.FueledMotorcycle:
+                {
+                    vehicle = new FueledMotorcycle();
+                    break;
+                }
+                case eVehicleType.ElectricMotorcycle:
+                {
+                    vehicle = new ElectricMotorcycle();
+                    break;
+                }
+                case eVehicleType.FueledBus:
+                {
+                    vehicle = new FueledBus();
+                    break;
+                }
             }
 
+            return vehicle;
         }
     }
 }

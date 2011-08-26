@@ -20,26 +20,17 @@ namespace Ex03.GarageLogic
         private float m_RemainingBatteryHours;
         private float m_MaxBatteryHours;
 
-        public BatteryTypedVehicle()
+        public BatteryTypedVehicle(float i_MaxBatteryHours)
         {
             EngineType = eEngineType.Battery;
-            m_PropertiesForInput = new List<string>();
-
-            m_PropertiesForInput.Add("Maximum Battery Hours");
-            m_PropertiesForInput.Add("Remiaing Battery Hours");
-        }
-
-        public BatteryTypedVehicle(float i_MaxBatteryHours, float i_RemainingBatteryHours)
-        {
-            EngineType = eEngineType.Battery;
-            if ((i_MaxBatteryHours <= k_MinBatteryCharge) ||
-                    (i_RemainingBatteryHours < k_MinBatteryCharge))
+            if ((i_MaxBatteryHours <= k_MinBatteryCharge))                  
             {
                 throw new ValueOutOfRangeException(k_MinBatteryCharge, float.MaxValue);
             }
 
             m_MaxBatteryHours = i_MaxBatteryHours;
-            m_RemainingBatteryHours = i_RemainingBatteryHours;
+
+            fillPropertiesForUser();
         }
 
         public virtual void Charge(float i_HoursToCharge)
@@ -65,6 +56,14 @@ namespace Ex03.GarageLogic
         public override float GetRemainingEnergyPrecentage()
         {
             return m_RemainingBatteryHours / m_MaxBatteryHours;
+        }
+
+        private void fillPropertiesForUser()
+        {
+            m_PropertiesForInput = new List<string>();
+
+            m_PropertiesForInput.Add("Maximum Battery Hours");
+            m_PropertiesForInput.Add("Remiaing Battery Hours");
         }
 
         public override string GetDetails()
@@ -94,6 +93,11 @@ namespace Ex03.GarageLogic
             // Get Second Parameter - The Remaining Battery Hours
             tryParse = float.TryParse(io_PropertiesFromUser[0], out m_RemainingBatteryHours);
             io_PropertiesFromUser.RemoveAt(0);
+
+            if(m_RemainingBatteryHours < k_MinBatteryCharge || m_RemainingBatteryHours > m_MaxBatteryHours)
+            {
+                throw new ValueOutOfRangeException(k_MinBatteryCharge, m_MaxBatteryHours);
+            }
         }
     }
 }

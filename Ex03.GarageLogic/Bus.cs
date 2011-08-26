@@ -25,35 +25,9 @@ namespace Ex03.GarageLogic
         public Bus(Engine i_EngineType)
         {
             m_Engine = i_EngineType;
-
-            // Create the Wheel for the Bus and Add thier Properties For Input
+            fillPropertiesForUser();
             m_Wheels = new List<Wheel>(k_NumOfWheels);
-            for(int i = 0; i < k_NumOfWheels; i++)
-            {
-                m_Wheels[i] = new Wheel(k_MaxAirPressure);
-                foreach(string wheelProp in m_Wheels[i].GetPropertiesForInput())
-                {
-                    m_PropertiesForInput.Add(wheelProp);
-                }
-            }
-
-            // Add the Properties for the Bus
-            m_PropertiesForInput.Add("Maximum Allowed Number of Passengers");
-            m_PropertiesForInput.Add("Guide Seat");
-        }
-
-        public Bus(
-            string i_Model,
-            string i_LicenseNumber,
-            List<Wheel> i_Wheels,
-            Engine i_EngineType)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
-        {
-            m_Engine = i_EngineType;
-            m_PropertiesForInput = new List<string>();
-
-            m_PropertiesForInput.Add("Maximum Allowed Number of Passengers");
-            m_PropertiesForInput.Add("Guide Seat");
+            fillPropertiesForUser();
         }
 
         public Bus(
@@ -76,6 +50,19 @@ namespace Ex03.GarageLogic
         public bool HasGuideSeat
         {
             get { return v_HasGuideSeat; }
+        }
+
+        private void fillPropertiesForUser()
+        {
+            for (int i = 0; i < k_NumOfWheels; i++)
+            {
+                m_Wheels[i] = new Wheel(k_MaxAirPressure);
+                m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
+            }
+
+            // Add the Properties for the Bus
+            m_PropertiesForInput.Add("Maximum Allowed Number of Passengers");
+            m_PropertiesForInput.Add("Guide Seat");
         }
 
         public override List<string> GetPropertiesForInput()

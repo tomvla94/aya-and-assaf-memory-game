@@ -14,7 +14,7 @@ namespace Ex03.GarageLogic
         protected List<string> m_PropertiesForInput;
 
         public ElectricMotorcycle()
-            : base(new BatteryTypedVehicle())
+            : base(new BatteryTypedVehicle(k_MaxBatteryHours))
         {
         }
 
