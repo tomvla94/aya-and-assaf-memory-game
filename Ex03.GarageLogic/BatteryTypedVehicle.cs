@@ -33,7 +33,7 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
-        public virtual void Charge(float i_HoursToCharge)
+        public void Charge(float i_HoursToCharge)
         {
             if (i_HoursToCharge + m_RemainingBatteryHours > m_MaxBatteryHours)
             {
@@ -53,17 +53,27 @@ namespace Ex03.GarageLogic
             get { return m_RemainingBatteryHours; }
         }
 
-        public override float GetRemainingEnergyPrecentage()
-        {
-            return m_RemainingBatteryHours / m_MaxBatteryHours;
-        }
-
         private void fillPropertiesForUser()
         {
             m_PropertiesForInput = new List<string>();
 
             m_PropertiesForInput.Add("Maximum Battery Hours");
             m_PropertiesForInput.Add("Remiaing Battery Hours");
+        }
+
+        public override float GetRemainingEnergyPrecentage()
+        {
+            return m_RemainingBatteryHours / m_MaxBatteryHours;
+        }
+
+        public override float GetMaximumEnergyAmount()
+        {
+            return m_MaxBatteryHours;
+        }
+
+        public override float GetRemianingEnergyAmount()
+        {
+            return m_RemainingBatteryHours;
         }
 
         public override string GetDetails()
