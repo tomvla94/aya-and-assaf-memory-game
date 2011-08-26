@@ -102,24 +102,24 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public virtual void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public virtual void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Vehicle Model
-            m_Model = io_PropertiesFromUser[0];
-            io_PropertiesFromUser.RemoveAt(0);
+            m_Model = i_PropertiesFromUser[0];
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Vehicle License Number
-            m_LicenseNumber = io_PropertiesFromUser[0];
-            io_PropertiesFromUser.RemoveAt(0);
+            m_LicenseNumber = i_PropertiesFromUser[0];
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Third Parameter - The Vehicle Wheels List
             foreach (Wheel wheel in m_Wheels)
             {
-                wheel.SetPropertiesFromInput(io_PropertiesFromUser[0], io_PropertiesFromUser[1]);
-                io_PropertiesFromUser.RemoveAt(0);
-                io_PropertiesFromUser.RemoveAt(0);
+                wheel.SetPropertiesFromInput(i_PropertiesFromUser[0], i_PropertiesFromUser[1]);
+                i_PropertiesFromUser.RemoveAt(0);
+                i_PropertiesFromUser.RemoveAt(0);
             }
-            io_PropertiesFromUser.RemoveAt(0);
+            i_PropertiesFromUser.RemoveAt(0);
         }
 
         public virtual string GetDetails()

@@ -28,6 +28,7 @@ namespace Ex03.GarageLogic
         public const int k_NumOfWheels = 4;
         public const float k_MaxAirPressure = 29;
         public const int k_MinNumOfDoors = 2;
+        public const int k_MaxNumOfDoors = 5;
         
         private int m_NumOfDoors;
         private eCarColor m_CarColor;
@@ -82,22 +83,22 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle
-            base.SetPropertiesFromInput(io_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The Car Color
-            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), io_PropertiesFromUser[0]);
-            io_PropertiesFromUser.RemoveAt(0);
+            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), i_PropertiesFromUser[0]);
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Number of Doors
-            bool tryParse = int.TryParse(io_PropertiesFromUser[0], out m_NumOfDoors);
-            io_PropertiesFromUser.RemoveAt(0);
+            bool tryParse = int.TryParse(i_PropertiesFromUser[0], out m_NumOfDoors);
+            i_PropertiesFromUser.RemoveAt(0);
 
-            if (i_NumOfDoors < k_MinNumOfDoors)
+            if (m_NumOfDoors < k_MinNumOfDoors || m_NumOfDoors > k_MaxNumOfDoors)
             {
-                throw new ValueOutOfRangeException(k_MinNumOfDoors, float.MaxValue);
+                throw new ValueOutOfRangeException(k_MinNumOfDoors, k_MaxNumOfDoors);
             }
         }
 

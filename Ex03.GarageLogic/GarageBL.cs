@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Ex03.GarageLogic;
 
-namespace Ex03.GarageManagementSystem.ConsoleUI
+namespace Ex03.GarageLogic
 {
     public class GarageBL
     {
@@ -105,19 +104,6 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
             }
             
             return retVehicle;
-        }
-
-        public bool RechargeVehicle(string i_LicenseNumber, int i_NumOfMinutes)
-        {
-            bool retRechargeSucceeded = false;
-            VehicleInGarage vehicleToRecharge =  SearchVehicleInGarage(i_LicenseNumber);
-            if (vehicleToRecharge != null)
-            {
-                vehicleToRecharge.Recharge();
-                retRechargeSucceeded = true;
-            }
-
-            return retRechargeSucceeded;
         }
     }
 }

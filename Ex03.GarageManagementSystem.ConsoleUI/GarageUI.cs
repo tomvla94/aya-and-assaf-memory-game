@@ -227,7 +227,7 @@ Enter your choice: ");
                 Console.WriteLine("Choose fuel: ");
                 printListOfStringsToTheUser(fuelOptions);
                 fuelTypeString = Console.ReadLine();
-                if (!int.TryParse(fuelTypeString, out chosenOption) || chosenOption < 1 || chosenOption > 4)
+                if (!int.TryParse(fuelTypeString, out chosenOption) || chosenOption < 1 || chosenOption > fuelOptions.Length)
                 {
                     throw new FormatException("Invalid input Please try again");
                 }
@@ -331,7 +331,7 @@ Enter your choice: ");
                 Console.WriteLine("Choose state: ");
                 printListOfStringsToTheUser(statusOptions);
                 userChoice = Console.ReadLine();
-                if (!int.TryParse(userChoice, out chosenOption) || chosenOption < 1 || chosenOption > 3)
+                if (!int.TryParse(userChoice, out chosenOption) || chosenOption < 1 || chosenOption > statusOptions.Length)
                 {
                     throw new FormatException("Invalid input Please try again");
                 }
@@ -409,11 +409,25 @@ Enter your choice: ");
             return vehicleState;
         }
 
+        private VehicleFactory.eVehicleType? getNeededVehicleType(int i_UserChoice)
+        {
+            VehicleFactory.eVehicleType? vehicleType = null;
+            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice))
+            {
+                vehicleType = (VehicleFactory.eVehicleType)Enum.Parse(typeof(VehicleFactory.eVehicleType), i_UserChoice.ToString());
+            }
+
+            return vehicleType;
+        }
+
         private void insertVehicleToTheGarage()
         {
             string userInput;
             string[] vehicleParameters;
             string[] vehicleTypes;
+            int chosenOption;
+            VehicleFactory.eVehicleType? vehicleType = null;
+            Vehicle newVehicle;
 
             try
             {
@@ -432,13 +446,46 @@ Enter your choice: ");
                 printListOfStringsToTheUser(vehicleTypes);
 
                 userInput = Console.ReadLine();
-                //...
+                if (!int.TryParse(userInput, out chosenOption) || chosenOption < 1 || chosenOption > vehicleTypes.Length)
+                {
+                    throw new FormatException("Invalid input Please try again");
+                }
+                else
+                {
+                    vehicleType = getNeededVehicleType(chosenOption);
+                    if (vehicleType.HasValue)
+                    {
+                        newVehicle = VehicleFactory.CreateVehicle(vehicleType);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("chosen Type does not exist");
+                    }
+                }
+
+                getInformationAboutTheVehicle(newVehicle);
+                m_GarageLogic.AddVehicleToGarage(newVehicle);
             }
             catch (FormatException i_FormatException)
             {
                 Console.WriteLine(i_FormatException.Message);
                 insertVehicleToTheGarage();
             }
+        }
+
+        private void getInformationAboutTheVehicle(Vehicle newVehicle)
+        {
+            List<string> propertiesToAsk;
+            List<string> propertiesToPass = new List<string>();
+
+            propertiesToAsk = newVehicle.GetPropertiesForInput();
+            foreach (string question in propertiesToAsk)
+            {
+                Console.WriteLine("Please enter {0}", question);
+                propertiesToPass.Add(Console.ReadLine());
+            }
+
+            newVehicle.SetPropertiesFromInput(propertiesToPass);
         }
 
         private void printListOfStringsToTheUser(string[] i_Options)

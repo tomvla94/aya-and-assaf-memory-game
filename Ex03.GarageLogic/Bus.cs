@@ -70,18 +70,18 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
-        public override void SetPropertiesFromInput(List<string> io_PropertiesFromUser)
+        public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle
-            base.SetPropertiesFromInput(io_PropertiesFromUser);
+            base.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The Number of Allowed Passengers
-            bool tryParse = int.TryParse(io_PropertiesFromUser[0], out m_MaxAllowedAmountOfPassengers);
-            io_PropertiesFromUser.RemoveAt(0);
+            bool tryParse = int.TryParse(i_PropertiesFromUser[0], out m_MaxAllowedAmountOfPassengers);
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - If the Bus has a Guid seat or not
-            v_HasGuideSeat = bool.Parse(io_PropertiesFromUser[0]);
-            io_PropertiesFromUser.RemoveAt(0);
+            v_HasGuideSeat = bool.Parse(i_PropertiesFromUser[0]);
+            i_PropertiesFromUser.RemoveAt(0);
         }
 
         public override string GetDetails()
