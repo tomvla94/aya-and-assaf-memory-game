@@ -511,6 +511,10 @@ Enter your choice: ");
                 Console.WriteLine(i_FormatException.Message);
                 insertVehicleToTheGarage();
             }
+            catch (ArgumentException i_ArgumentException)
+            {
+                Console.WriteLine(i_ArgumentException.Message);
+            }
         }
 
         private string getOwnerPhoneNumber()

@@ -98,15 +98,25 @@ namespace Ex03.GarageLogic
             base.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The License Type
-            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), i_PropertiesFromUser[0]);
+            string licenseTypeInTheRightFormat = getLicensTypeRightFormat(i_PropertiesFromUser[0]);
+            m_LicenseType = (eLicenseType)Enum.Parse(typeof(eLicenseType), licenseTypeInTheRightFormat);
             i_PropertiesFromUser.RemoveAt(0);
+        }
+
+        private string getLicensTypeRightFormat(string i_LicenseType)
+        {
+            string licenseTypeInTheRightFormat = string.Format("{0}{1}",
+                i_LicenseType[0].ToString().ToUpper(), i_LicenseType.Remove(0));
+
+            return licenseTypeInTheRightFormat;
         }
 
         public override string GetDetails()
         {
             string retDetails = base.GetDetails();
             retDetails += string.Format(
-                "License Type: {0}{2}", 
+                "{0}License Type: {1}{2}",
+                m_Engine.GetDetails(),
                 m_LicenseType.ToString(), 
                 Environment.NewLine);
 

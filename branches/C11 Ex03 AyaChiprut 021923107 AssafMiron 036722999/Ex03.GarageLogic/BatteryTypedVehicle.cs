@@ -79,9 +79,7 @@ namespace Ex03.GarageLogic
         public override string GetDetails()
         {
             string retDetails = string.Format(
-                "Engine Type: {0}{3}"
-                + "Maximum Battery Hours: {1}{3}"
-                + "Remaining Battery Hours: {2}{3}", 
+                "Engine Type: {0}{3}Maximum Battery Hours: {1}{3}Remaining Battery Hours: {2}{3}", 
                 eEngineType.Battery.ToString(), 
                 m_MaxBatteryHours.ToString(), 
                 m_RemainingBatteryHours.ToString(), 

@@ -90,7 +90,8 @@ namespace Ex03.GarageLogic
             base.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The Car Color
-            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), i_PropertiesFromUser[0]);
+            string colorInTheRightFormat = getColorRightFormat(i_PropertiesFromUser[0]);
+            m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), colorInTheRightFormat);
             i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Number of Doors
@@ -103,16 +104,25 @@ namespace Ex03.GarageLogic
             }
         }
 
+        private string getColorRightFormat(string i_Color)
+        {
+            string colorInTheRightFormat;
+            string firstChar = i_Color[0].ToString().ToUpper();
+            string theRest = i_Color.Remove(0, 1).ToLower();
+
+            colorInTheRightFormat = string.Format("{0}{1}", firstChar, theRest);
+            return colorInTheRightFormat;
+        }
+
         public override string GetDetails()
         {
             string retDetails = base.GetDetails();
-            retDetails += m_Engine.GetDetails();
             retDetails += string.Format(
-                "Color: {0}{2}"
-                + "Number of Doors: {1}{2}",
+                "{3}Color: {0}{2}Number of Doors: {1}{2}",
                 m_CarColor.ToString(), 
                 m_NumOfDoors, 
-                Environment.NewLine);
+                Environment.NewLine,
+                m_Engine.GetDetails());
 
             return retDetails;
         }
