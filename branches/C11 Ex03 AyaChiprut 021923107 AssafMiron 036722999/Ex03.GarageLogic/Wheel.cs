@@ -52,7 +52,6 @@ namespace Ex03.GarageLogic
             {
                 throw new ValueOutOfRangeException(k_MinAirPressure, m_MaxAirPressureByManufacturer);
             }
-
             m_CurrentAirPressure = i_AirAmount;
         }
 

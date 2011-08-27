@@ -54,11 +54,18 @@ namespace Ex03.GarageLogic
             m_VehicleState = eVehicleState.Fixed;
         }
 
-        public void Recharge(int i_NumOfHours)
+        public void Recharge(float i_NumOfHours)
         {
-            m_VehicleState = eVehicleState.InRepair;
-            ((BatteryTypedVehicle)m_Vehicle.Engine).Charge(i_NumOfHours);
-            m_VehicleState = eVehicleState.Fixed;
+            if (m_Vehicle.Engine is BatteryTypedVehicle)
+            {
+                m_VehicleState = eVehicleState.InRepair;
+                ((BatteryTypedVehicle)m_Vehicle.Engine).Charge(i_NumOfHours);
+                m_VehicleState = eVehicleState.Fixed;
+            }
+            else
+            {
+                throw new FormatException("This is not an Electric Vehicle");
+            }
         }
 
         public void Refuel(int i_Amount, FuelTypedVehicle.eFuelType i_FuelType)
@@ -73,3 +80,4 @@ namespace Ex03.GarageLogic
         }
     }
 }
+

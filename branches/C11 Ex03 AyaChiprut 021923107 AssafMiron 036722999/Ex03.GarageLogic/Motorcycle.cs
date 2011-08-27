@@ -48,7 +48,17 @@ namespace Ex03.GarageLogic
             m_Engine = i_EngineType;
             m_PropertiesForInput = new List<string>();
 
-            m_PropertiesForInput.Add("License Type");
+            string licenseType = "License Type [";
+            Array eLicense = Enum.GetValues(typeof(eLicenseType));
+
+            for (int i = 0; i < eLicense.Length; i++)
+            {
+                licenseType += eLicense.GetValue(i).ToString() + ", ";
+            }
+
+            licenseType += "\b\b]";
+
+            m_PropertiesForInput.Add(licenseType);
         }
 
         public eLicenseType LicenseType

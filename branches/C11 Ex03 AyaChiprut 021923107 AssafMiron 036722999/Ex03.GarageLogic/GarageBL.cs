@@ -106,7 +106,7 @@ namespace Ex03.GarageLogic
             return retVehicle;
         }
 
-        public bool RechargeVehicle(string i_LicenseNumber, int i_NumOfHours)
+        public bool RechargeVehicle(string i_LicenseNumber, float i_NumOfHours)
         {
             bool retRechargeSucceeded = false;
             VehicleInGarage vehicleToRecharge = SearchVehicleInGarage(i_LicenseNumber);

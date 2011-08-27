@@ -27,7 +27,7 @@ namespace Ex03.GarageLogic
         {
             m_PropertiesForInput = new List<string>();
 
-            m_PropertiesForInput.Add("Model");
+            m_PropertiesForInput.Add("Vehicle Model");
             m_PropertiesForInput.Add("License Number");
         }
 
