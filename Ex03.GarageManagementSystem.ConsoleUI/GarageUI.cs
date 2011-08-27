@@ -228,7 +228,7 @@ Enter your choice: ");
                 fuelAmount = System.Console.ReadLine();
                 if (!int.TryParse(fuelAmount, out numericAmount))
                 {
-                    throw new FormatException("amount of fuel must be numeric.");
+                    throw new FormatException("Amount of fuel must be numeric.");
                 }
             }
             catch (FormatException i_FormatException)

@@ -76,7 +76,7 @@ namespace Ex03.GarageLogic
             colors += "\b\b]";
 
             m_PropertiesForInput.Add(colors);
-            m_PropertiesForInput.Add("Number of Doors");
+            m_PropertiesForInput.Add(string.Format("Number of Doors [Value between {0} and {1}", k_MinNumOfDoors, k_MaxNumOfDoors));
         }
 
         public override List<string> GetPropertiesForInput()

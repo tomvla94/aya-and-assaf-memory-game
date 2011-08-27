@@ -75,7 +75,7 @@ namespace Ex03.GarageLogic
             m_PropertiesForInput = new List<string>();
 
             m_PropertiesForInput.Add("Wheel Manufacturer");
-            m_PropertiesForInput.Add("Current Wheel Air Pressure");
+            m_PropertiesForInput.Add(string.Format("Current Wheel Air Pressure [Value between {0} and {1}]", k_MinAirPressure, MaxAirPressureByManufacturer));
         }
 
         internal List<string> GetPropertiesForInput()
