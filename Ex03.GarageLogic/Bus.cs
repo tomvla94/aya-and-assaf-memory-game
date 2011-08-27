@@ -18,7 +18,6 @@ namespace Ex03.GarageLogic
     {
         public const int k_NumOfWheels = 8;
         public const float k_MaxAirPressure = 25;
-        private int m_EngineSize;
         private int m_MaxAllowedAmountOfPassengers;
         private bool v_HasGuideSeat;
 

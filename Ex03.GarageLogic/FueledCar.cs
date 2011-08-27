@@ -16,29 +16,12 @@ namespace Ex03.GarageLogic
     /// </summary>
     public class FueledCar : Car
     {
-        private Car m_Vehicle;
         private const float k_MaxFuelLiters = 45;
         private const FuelTypedVehicle.eFuelType k_FuelType = FuelTypedVehicle.eFuelType.Octan95;
-        protected List<string> m_PropertiesForInput;
 
         public FueledCar()
             : base(new FuelTypedVehicle(k_FuelType, k_MaxFuelLiters))
         {
-        }
-
-        public virtual List<string> GetPropertiesForInput()
-        {
-            return m_PropertiesForInput;
-        }
-
-        public void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
-        {
-            base.SetPropertiesFromInput(i_PropertiesFromUser);
-        }
-
-        public virtual string GetDetails()
-        {
-            return base.GetDetails();
         }
     }
 }

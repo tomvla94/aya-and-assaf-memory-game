@@ -26,7 +26,6 @@ namespace Ex03.GarageLogic
 
         public const int k_NumOfWheels = 2;
         public const float k_MaxAirPressure = 31;
-        private int m_EngineSize;
         private eLicenseType m_LicenseType;
 
         public Motorcycle(Engine i_EngineType)
