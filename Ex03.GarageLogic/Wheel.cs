@@ -48,11 +48,10 @@ namespace Ex03.GarageLogic
 
         public void Inflate(float i_AirAmount)
         {
-            if ((i_AirAmount < 0) || (i_AirAmount > m_MaxAirPressureByManufacturer))
+            if (checkAirPressureRange(i_AirAmount))
             {
-                throw new ValueOutOfRangeException(k_MinAirPressure, m_MaxAirPressureByManufacturer);
+                m_CurrentAirPressure = i_AirAmount;
             }
-            m_CurrentAirPressure = i_AirAmount;
         }
 
         public float CurrentAirPressure
@@ -68,6 +67,21 @@ namespace Ex03.GarageLogic
         public float MaxAirPressureByManufacturer
         {
             get { return m_MaxAirPressureByManufacturer; }
+        }
+
+        private bool checkAirPressureRange(float i_AirPressure)
+        {
+            bool retAirPressureOK = false;
+            if ((i_AirPressure < 0) || (i_AirPressure > m_MaxAirPressureByManufacturer))
+            {
+                throw new ValueOutOfRangeException(k_MinAirPressure, m_MaxAirPressureByManufacturer);
+            }
+            else
+            {
+                retAirPressureOK = true;
+            }
+
+            return retAirPressureOK;
         }
 
         private void fillPropertiesForUser()
@@ -97,10 +111,21 @@ namespace Ex03.GarageLogic
         internal void SetPropertiesFromInput(string i_Manufacturer, string i_CurrentAirPressure)
         {
             m_Manufacturer = i_Manufacturer;
-            if (float.TryParse(i_CurrentAirPressure, out m_CurrentAirPressure))
+            float currAirPressure;
+            if (float.TryParse(i_CurrentAirPressure, out currAirPressure))
             {
-                // TODO: Why do we inflate?
-                Inflate(m_CurrentAirPressure);
+                try
+                {
+                    if (checkAirPressureRange(m_CurrentAirPressure))
+                    {
+                        m_CurrentAirPressure = currAirPressure;
+                    }
+                }
+                catch (ValueOutOfRangeException ex)
+                {
+                    m_CurrentAirPressure = 0;
+                    throw ex;
+                }
             }
         }
     }
