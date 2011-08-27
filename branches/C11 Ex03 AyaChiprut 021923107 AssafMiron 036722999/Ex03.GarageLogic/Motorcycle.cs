@@ -74,7 +74,17 @@ namespace Ex03.GarageLogic
             }
 
             // Add the Properties for the Motorcycle
-            m_PropertiesForInput.Add("License Type");
+            string licenseType = "License Type [";
+            Array eLicense = Enum.GetValues(typeof(eLicenseType));
+
+            for (int i = 0; i < eLicense.Length; i++)
+            {
+                licenseType += eLicense.GetValue(i).ToString() + ", ";
+            }
+
+            licenseType += "\b\b]";
+
+            m_PropertiesForInput.Add(licenseType);
         }
 
         public override List<string> GetPropertiesForInput()
