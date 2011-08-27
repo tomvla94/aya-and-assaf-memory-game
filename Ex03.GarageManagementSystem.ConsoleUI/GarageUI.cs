@@ -117,9 +117,12 @@ Enter your choice: ");
 
         private void waitForUserResponse(params string[] i_MessageToDisplay)
         {
-            if (i_MessageToDisplay != null)
+            if (i_MessageToDisplay != null && i_MessageToDisplay.Length > 0)
             {
-                Console.WriteLine(i_MessageToDisplay);
+                foreach (string message in i_MessageToDisplay)
+                {
+                    Console.WriteLine();
+                }
             }
             Console.Write("Press Any Key to Continue...");
             Console.ReadLine();
