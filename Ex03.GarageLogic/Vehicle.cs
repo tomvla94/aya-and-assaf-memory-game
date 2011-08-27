@@ -132,16 +132,14 @@ namespace Ex03.GarageLogic
             for (int i = 0; i < m_Wheels.Count; i++)
             {
                 wheelsDetails += string.Format(
-                    "Wheel No. {0}{1}"
-                    + m_Wheels[i].GetDetails(),
-                    i,
+                    "Wheel No. {1}{2}{0}",
+                    m_Wheels[i].GetDetails(),
+                    i + 1,
                     Environment.NewLine);
             }
 
             string retDetails = string.Format(
-                "Model: {0}{3}"
-                + "License Number: {1}{3}"
-                + "Wheels List: {3}{2}",
+                "Model: {0}{3}License Number: {1}{3}Wheels List: {3}{2}",
                 m_Model, 
                 m_LicenseNumber,
                 wheelsDetails,

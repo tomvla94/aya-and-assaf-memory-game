@@ -86,11 +86,11 @@ namespace Ex03.GarageLogic
         {
             string retDetails = base.GetDetails();
             retDetails += string.Format(
-                "Maximum Allowed Passengers: {0}{3}"
-                + "The Bus Has a Guide Seat: {1}{3}",
+                "{3}Maximum Allowed Passengers: {0}{2}The Bus Has a Guide Seat: {1}{2}",
                 m_MaxAllowedAmountOfPassengers.ToString(),
                 v_HasGuideSeat.ToString(),
-                Environment.NewLine);
+                Environment.NewLine,
+                m_Engine.GetDetails());
 
             return retDetails;
         }

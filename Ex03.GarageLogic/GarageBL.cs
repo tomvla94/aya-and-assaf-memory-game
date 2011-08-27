@@ -13,27 +13,26 @@ namespace Ex03.GarageLogic
             m_VehiclesInGarage = new List<VehicleInGarage>();
         }
 
-        public string AddVehicleToGarage(string i_OwnerName, string i_OwnerPhoneNumber, Vehicle i_Vehicle)
+        public void AddVehicleToGarage(string i_OwnerName, string i_OwnerPhoneNumber, Vehicle i_Vehicle)
         {
-            string retMessage = null;
             bool foundVehicle = false;
             foreach(VehicleInGarage inGarageVehicle in m_VehiclesInGarage)
             {
                 if (inGarageVehicle.LicenseNumber == i_Vehicle.LicenseNumber)
                 {
-                    retMessage = string.Format("The Vehicle is allready in the Garage.{0}Switching the Vehicle to be Repaired.", Environment.NewLine);
                     foundVehicle = true;
                     inGarageVehicle.VehicleState = VehicleInGarage.eVehicleState.InRepair;
+                    throw new ArgumentException(
+                        string.Format(
+                        "The Vehicle is allready in the Garage.{0}Switching the Vehicle to be Repaired.",
+                        Environment.NewLine));
                 }
             }
 
             if (!foundVehicle)
             {
-                retMessage = string.Empty;
                 m_VehiclesInGarage.Add(new VehicleInGarage(i_OwnerName, i_OwnerPhoneNumber, i_Vehicle));
             }
-            
-            return retMessage;
         }
 
         public List<string> ListAllVehiclesInGarage(VehicleInGarage.eVehicleState? i_FilterVehicleState)

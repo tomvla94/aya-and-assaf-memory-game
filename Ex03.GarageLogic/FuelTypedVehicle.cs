@@ -18,10 +18,10 @@ namespace Ex03.GarageLogic
     {
         public enum eFuelType
         { 
-            Octan95,
-            Octan96,
-            Octan98,
-            Soler
+            Octan95 = 1,
+            Octan96 = 2,
+            Octan98 = 3,
+            Soler = 4
         }
 
         private const string k_WrongFuelErrorFormat = "Wrong Fuel Type! The Engine can only accept {0}, and not {1}";
@@ -94,11 +94,8 @@ namespace Ex03.GarageLogic
         public override string GetDetails()
         {
             string retDetails = string.Format(
-                "Engine Type: {0}{4}"
-                + "Fuel Type: {1}{4}"
-                + "Maximum Fuel Liters: {2}{4}"
-                + "Current Fuel Amount (Liters): {3}{4}", 
-                eEngineType.Battery.ToString(), 
+                "Engine Type: {0}{4}Fuel Type: {1}{4}Maximum Fuel Liters: {2}{4}Current Fuel Amount (Liters): {3}{4}", 
+                eEngineType.Fuel.ToString(), 
                 m_FuelType.ToString(), 
                 m_MaxFuelLitersAmount.ToString(), 
                 m_CurrentFuelLitersAmount.ToString(), 
