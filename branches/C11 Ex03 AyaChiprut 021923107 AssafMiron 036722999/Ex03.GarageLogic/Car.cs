@@ -11,9 +11,6 @@ namespace Ex03.GarageLogic
     using System.Collections.Generic;
     using System.Text;
 
-    /// <summary>
-    /// TODO: Update summary.
-    /// </summary>
     public class Car : Vehicle
     {
         public enum eCarColor
@@ -33,6 +30,10 @@ namespace Ex03.GarageLogic
         private int m_NumOfDoors;
         private eCarColor m_CarColor;
 
+        /// <summary>
+        /// Basic Car Contructor
+        /// </summary>
+        /// <param name="i_EngineType"></param>
         public Car(Engine i_EngineType)
         {
             m_Engine = i_EngineType;
@@ -63,19 +64,19 @@ namespace Ex03.GarageLogic
 
             // Add the Properties for the Car
             string colors;
-            colors = "Color [";
+            colors = "Car Color [";
 
             Array eColors = Enum.GetValues(typeof(eCarColor));
 
             for (int i = 0; i < eColors.Length; i++)
             {
-                colors += eColors.GetValue(i).ToString() + ",";
+                colors += eColors.GetValue(i).ToString() + ", ";
             }
 
-            colors += "\b]";
+            colors += "\b\b]";
 
             m_PropertiesForInput.Add(colors);
-            m_PropertiesForInput.Add("Doors Number");
+            m_PropertiesForInput.Add("Number of Doors");
         }
 
         public override List<string> GetPropertiesForInput()
