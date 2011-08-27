@@ -64,14 +64,21 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new FormatException("This is not an Electric Vehicle");
+                throw new ArgumentException("This is not an Electric Vehicle");
             }
         }
 
         public void Refuel(int i_Amount, FuelTypedVehicle.eFuelType i_FuelType)
         {
-            m_VehicleState = eVehicleState.InRepair;
-            ((FuelTypedVehicle)m_Vehicle.Engine).Refuel(i_Amount, i_FuelType);
+            if (m_Vehicle.Engine is FuelTypedVehicle)
+            {
+                m_VehicleState = eVehicleState.InRepair;
+                ((FuelTypedVehicle)m_Vehicle.Engine).Refuel(i_Amount, i_FuelType);
+            }
+            else
+            {
+                throw new ArgumentException("This is not a Fueled Vehicle");
+            }
         }
 
         public string GetDetails()
