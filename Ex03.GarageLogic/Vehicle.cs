@@ -124,8 +124,6 @@ namespace Ex03.GarageLogic
                 i_PropertiesFromUser.RemoveAt(0);
                 i_PropertiesFromUser.RemoveAt(0);
             }
-
-            i_PropertiesFromUser.RemoveAt(0);
         }
 
         public virtual string GetDetails()

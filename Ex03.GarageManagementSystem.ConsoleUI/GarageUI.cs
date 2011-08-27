@@ -287,13 +287,13 @@ Enter your choice: ");
                 System.Console.WriteLine("Enter vehicle's license number: ");
                 string licenseNumber = System.Console.ReadLine();
 
-                int licenseNumberNumeric;
-                // TODO: Fix, License Number is String...
-                if (!int.TryParse(licenseNumber, out licenseNumberNumeric))
-                {
-                    throw new FormatException("License number must be numeric.");
-                }
-                else if (!m_GarageLogic.IsVehicleExistInGarage(licenseNumber))
+                //int licenseNumberNumeric;
+                //// TODO: Fix, License Number is String...
+                //if (!int.TryParse(licenseNumber, out licenseNumberNumeric))
+                //{
+                //    throw new FormatException("License number must be numeric.");
+                //}
+                if (!m_GarageLogic.IsVehicleExistInGarage(licenseNumber))
                 {
                     throw new ArgumentException("Vehicle was not found");
                 }
@@ -470,13 +470,13 @@ Enter your choice: ");
 
         private string getOwnerPhoneNumber()
         {
-            Console.WriteLine("What is your Name? (To record in our system as Owner Name)");
+            Console.WriteLine("What is your Phone Number?");
             return Console.ReadLine();
         }
 
         private string getOwnerName()
         {
-            Console.WriteLine("What is your Phone Number?");
+            Console.WriteLine("What is your Name? (To record in our system as Owner Name)");
             return Console.ReadLine();
         }
 

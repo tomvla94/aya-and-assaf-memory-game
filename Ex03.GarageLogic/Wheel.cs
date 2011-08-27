@@ -75,8 +75,8 @@ namespace Ex03.GarageLogic
         {
             m_PropertiesForInput = new List<string>();
 
-            m_PropertiesForInput.Add("Manufacturer");
-            m_PropertiesForInput.Add("CurrentAirPressure");
+            m_PropertiesForInput.Add("Wheel Manufacturer");
+            m_PropertiesForInput.Add("Current Wheel Air Pressure");
         }
 
         internal List<string> GetPropertiesForInput()
@@ -87,7 +87,7 @@ namespace Ex03.GarageLogic
         internal string GetDetails()
         {
             string retDetails = string.Format(
-                "Manufacturer: {0}{2}CurrentAirPressure: {1}{2}",
+                "Wheel Manufacturer: {0}{2}Current Air Pressure: {1}{2}",
                 m_Manufacturer,
                 m_CurrentAirPressure,
                 Environment.NewLine);
@@ -100,6 +100,7 @@ namespace Ex03.GarageLogic
             m_Manufacturer = i_Manufacturer;
             if (float.TryParse(i_CurrentAirPressure, out m_CurrentAirPressure))
             {
+                // TODO: Why do we inflate?
                 Inflate(m_CurrentAirPressure);
             }
         }
