@@ -61,7 +61,7 @@ namespace Ex03.GarageLogic
 
             // Add the Properties for the Bus
             m_PropertiesForInput.Add("Maximum Allowed Number of Passengers");
-            m_PropertiesForInput.Add("Guide Seat");
+            m_PropertiesForInput.Add("Has Guide Seat [Yes (Y) / No (N)]");
         }
 
         public override List<string> GetPropertiesForInput()
