@@ -48,6 +48,7 @@ Enter your choice: ");
                 {
                     handleUserChoice(chosenOption);
                 }
+                Console.Clear();
             }
             while (chosenOption != eMenuOption.Exit);
         }
@@ -59,50 +60,74 @@ Enter your choice: ");
                 case eMenuOption.InsertVehicle:
                 {
                     insertVehicleToTheGarage();
+                    waitForUserResponse("Vehicle Entered the Garage.");
                     break;
                 }
 
                 case eMenuOption.PrintVehiclesList:
                 {
                     printListOfTheVehicles();
+                    waitForUserResponse();
                     break;
                 }
 
                 case eMenuOption.ChangeVehicleStatus:
                 {
                     changeVehicleStatus();
+                    waitForUserResponse();
                     break;
                 }
 
                 case eMenuOption.InflateTires:
                 {
                     inflatesTiresOfAVehicle();
+                    waitForUserResponse("All Vehicle Wheels are Inflated");
                     break;
                 }
 
                 case eMenuOption.RefuelVehicle:
                 {
                     refuelAvehicle();
+                    waitForUserResponse("The Vehicle is now Refuled");
                     break;
                 }
 
                 case eMenuOption.RechargeVehicle:
                 {
                     rechargeAVehicle();
+                    waitForUserResponse("The Vehicle is now Recharged");
                     break;
                 }
 
                 case eMenuOption.PrintVehicleDetails:
                 {
                     printVehicleDetails();
+                    waitForUserResponse();
                     break;
                 }
 
                 case eMenuOption.Exit:
                 {
+                    printExitMessage();
+                    waitForUserResponse();
                     break;
                 }
             }
+        }
+
+        private void waitForUserResponse(params string[] i_MessageToDisplay)
+        {
+            if (i_MessageToDisplay != null)
+            {
+                Console.WriteLine(i_MessageToDisplay);
+            }
+            Console.Write("Press Any Key to Continue...");
+            Console.ReadLine();
+        }
+
+        private void printExitMessage()
+        {
+            Console.WriteLine(string.Format("Thank you for Using the Garage Management System{0}Goodbye!", Environment.NewLine));
         }
 
         private void printVehicleDetails()
@@ -123,12 +148,12 @@ Enter your choice: ");
             try
             {
                 string licenseNumber;
-                int numOfMinutes;
+                float numOfHours;
 
                 if (readLicenseNumberAndVerify(out licenseNumber))
                 {
-                    numOfMinutes = getNumOfMinutesToRecharge();
-                    m_GarageLogic.RechargeVehicle(licenseNumber, numOfMinutes);
+                    numOfHours = getNumOfHoursToRecharge();
+                    m_GarageLogic.RechargeVehicle(licenseNumber, numOfHours);
                 }
             }
             catch (ArgumentException i_ArgumentException)
@@ -141,24 +166,24 @@ Enter your choice: ");
             }
         }
 
-        private int getNumOfMinutesToRecharge()
+        private float getNumOfHoursToRecharge()
         {
-            int numericAmount;
+            float numericAmount;
             string chargeAmount;
 
             try
             {
-                System.Console.Write("Enter number of minutes to recharge: ");
+                System.Console.Write("Enter number of hours to recharge: ");
                 chargeAmount = System.Console.ReadLine();
-                if (!int.TryParse(chargeAmount, out numericAmount))
+                if (!float.TryParse(chargeAmount, out numericAmount))
                 {
-                    throw new FormatException("Number of minutes must be numeric."); 
+                    throw new FormatException("Number of hours must be numeric."); 
                 }
             }
             catch (FormatException i_FormatException)
             {
                 Console.WriteLine(i_FormatException.Message);
-                numericAmount = getNumOfMinutesToRecharge();
+                numericAmount = getNumOfHoursToRecharge();
             }
 
             return numericAmount;
@@ -263,7 +288,16 @@ Enter your choice: ");
             string licenseNumber;
             if (readLicenseNumberAndVerify(out licenseNumber))
             {
-                m_GarageLogic.InflateVehicleWheelAir(licenseNumber);
+                try
+                {
+                    Console.WriteLine(string.Format("Inflating...{0}",Environment.NewLine));
+                    m_GarageLogic.InflateVehicleWheelAir(licenseNumber);
+                    Console.WriteLine(string.Format("All Vehicle Wheels are Inflated to the Maximum.{0}",Environment.NewLine));
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -376,10 +410,10 @@ Enter your choice: ");
             {
                 Console.WriteLine(
     @"Print vehicles by status:
-1. in repair.
-2. fixed.
-3. paid.
-4. all vehicles.");
+1. In repair.
+2. Fixed.
+3. Paid.
+4. All vehicles.");
                 userInput = Console.ReadLine();
                 isLegal = int.TryParse(userInput, out userChoice);
                 if (!isLegal || userChoice < 1 || userChoice > 4)
@@ -388,10 +422,18 @@ Enter your choice: ");
                 }
 
                 stateNeeded = getNeededVehicleState(userChoice);
+                Console.WriteLine("Printing All {0} Vehicles.", (stateNeeded != null ? stateNeeded.ToString() : "\b"));
                 vehiclesLicenseList = m_GarageLogic.ListAllVehiclesInGarage(stateNeeded);
-                foreach (string vehicleLicense in vehiclesLicenseList)
+                if (vehiclesLicenseList.Count > 0)
                 {
-                    Console.WriteLine(vehicleLicense);
+                    foreach (string vehicleLicense in vehiclesLicenseList)
+                    {
+                        Console.WriteLine(vehicleLicense);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No Vehicles in this Category");
                 }
             }
             catch (FormatException i_FormatException)
@@ -404,9 +446,9 @@ Enter your choice: ");
         private VehicleInGarage.eVehicleState? getNeededVehicleState(int i_UserChoice)
         {
             VehicleInGarage.eVehicleState? vehicleState = null;
-            if(Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice))
+            if(Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice - 1))
             {
-                vehicleState = (VehicleInGarage.eVehicleState)Enum.Parse(typeof(VehicleInGarage.eVehicleState), i_UserChoice.ToString());
+                vehicleState = (VehicleInGarage.eVehicleState)Enum.Parse(typeof(VehicleInGarage.eVehicleState), (i_UserChoice - 1).ToString());
             }
 
             return vehicleState;
@@ -415,7 +457,7 @@ Enter your choice: ");
         private VehicleFactory.eVehicleType? getNeededVehicleType(int i_UserChoice)
         {
             VehicleFactory.eVehicleType? vehicleType = null;
-            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice))
+            if (Enum.IsDefined(typeof(VehicleFactory.eVehicleType), i_UserChoice))
             {
                 vehicleType = (VehicleFactory.eVehicleType)Enum.Parse(typeof(VehicleFactory.eVehicleType), i_UserChoice.ToString());
             }
