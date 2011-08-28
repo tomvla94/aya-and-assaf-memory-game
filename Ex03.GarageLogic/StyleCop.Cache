@@ -1,5 +1,14 @@
 <stylecopresultscache>
   <version>11</version>
+  <sourcecode name="FuledMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/18/2011 00:01:38</timestamp>
+    <milliseconds>0</milliseconds>
+    <violations />
+  </sourcecode>
   <project key="821904916">
     <configuration>DEBUG;TRACE</configuration>
   </project>
@@ -8,12 +17,12 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:24:53</timestamp>
-    <milliseconds>745</milliseconds>
+    <timestamp>08/28/2011 23:53:54</timestamp>
+    <milliseconds>92</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>12</line>
+        <line>13</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -23,8 +32,8 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:26:04</timestamp>
-    <milliseconds>399</milliseconds>
+    <timestamp>08/28/2011 23:42:24</timestamp>
+    <milliseconds>550</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
@@ -38,75 +47,22 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:26:04</timestamp>
-    <milliseconds>406</milliseconds>
+    <timestamp>08/28/2011 23:28:03</timestamp>
+    <milliseconds>701</milliseconds>
     <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>19</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>20</line>
-        <warning>False</warning>
-      </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
         <line>23</line>
         <warning>False</warning>
       </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="ElectricMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:27:28</timestamp>
-    <milliseconds>640</milliseconds>
-    <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>12</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="Engine.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 17:52:45</timestamp>
-    <milliseconds>283</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="FueledCar.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:27:28</timestamp>
-    <milliseconds>644</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="FueledBus.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:27:28</timestamp>
-    <milliseconds>648</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>12</line>
+        <line>24</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>13</line>
+        <line>26</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -116,19 +72,145 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:26:04</timestamp>
-    <milliseconds>403</milliseconds>
+    <timestamp>08/28/2011 23:34:13</timestamp>
+    <milliseconds>789</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>28</line>
+        <line>32</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>29</line>
+        <line>33</line>
         <warning>False</warning>
       </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>34</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>35</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="Engine.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:35:03</timestamp>
+    <milliseconds>853</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ElectricMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:54:10</timestamp>
+    <milliseconds>414</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>13</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="FueledCar.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:46:32</timestamp>
+    <milliseconds>324</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FueledMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:46:33</timestamp>
+    <milliseconds>778</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>14</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>15</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="FueledBus.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/29/2011 00:02:37</timestamp>
+    <milliseconds>79</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>21</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="FuelTypedVehicle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:45:17</timestamp>
+    <milliseconds>335</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
+        <context>Field names must not contain underscores.</context>
+        <line>27</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="GarageBL.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/27/2011 18:33:38</timestamp>
+    <milliseconds>486</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ValueOutOfRangeException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/28/2011 23:35:32</timestamp>
+    <milliseconds>57</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Motorcycle.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/29/2011 00:06:08</timestamp>
+    <milliseconds>973</milliseconds>
+    <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
         <line>30</line>
@@ -141,95 +223,22 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="FuledMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/18/2011 00:01:38</timestamp>
-    <milliseconds>0</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="FueledMotorcycle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 17:52:45</timestamp>
-    <milliseconds>292</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>12</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>13</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="FuelTypedVehicle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:28:35</timestamp>
-    <milliseconds>128</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>27</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="ValueOutOfRangeException.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/21/2011 23:20:20</timestamp>
-    <milliseconds>0</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="GarageBL.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:28:35</timestamp>
-    <milliseconds>125</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="Motorcycle.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:26:01</timestamp>
-    <milliseconds>987</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>27</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
-        <context>Field names must not contain underscores.</context>
-        <line>28</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
   <sourcecode name="VehicleFactory.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:28:31</timestamp>
-    <milliseconds>818</milliseconds>
+    <timestamp>08/29/2011 00:02:48</timestamp>
+    <milliseconds>23</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="VehicleInGarage.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>08/01/2011 20:12:46</timestamp>
+      <milliseconds>876</milliseconds>
+    </settings>
+    <timestamp>08/29/2011 00:05:34</timestamp>
+    <milliseconds>919</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="Vehicle.cs" parser="StyleCop.CSharp.CsParser">
@@ -237,36 +246,27 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:29:00</timestamp>
-    <milliseconds>907</milliseconds>
+    <timestamp>08/28/2011 23:38:03</timestamp>
+    <milliseconds>902</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>19</line>
+        <line>24</line>
         <warning>False</warning>
       </violation>
     </violations>
-  </sourcecode>
-  <sourcecode name="VehicleInGarage.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 18:14:21</timestamp>
-    <milliseconds>923</milliseconds>
-    <violations />
   </sourcecode>
   <sourcecode name="Wheel.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 19:25:31</timestamp>
-    <milliseconds>200</milliseconds>
+    <timestamp>08/28/2011 23:39:15</timestamp>
+    <milliseconds>365</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotContainUnderscore" ruleCheckId="SA1310">
         <context>Field names must not contain underscores.</context>
-        <line>19</line>
+        <line>22</line>
         <warning>False</warning>
       </violation>
     </violations>

@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Ex03.GarageLogic;
+﻿// -----------------------------------------------------------------------
+// <copyright file="GarageUI.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Ex03.GarageManagementSystem.ConsoleUI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Ex03.GarageLogic;
+
     public class GarageUI
     {
         private enum eMenuOption
@@ -48,6 +55,7 @@ Enter your choice: ");
                 {
                     handleUserChoice(chosenOption);
                 }
+
                 Console.Clear();
             }
             while (chosenOption != eMenuOption.Exit);
@@ -124,6 +132,7 @@ Enter your choice: ");
                     Console.WriteLine();
                 }
             }
+
             Console.Write("Press Any Key to Continue...");
             Console.ReadLine();
         }
@@ -293,9 +302,9 @@ Enter your choice: ");
             {
                 try
                 {
-                    Console.WriteLine(string.Format("Inflating...{0}",Environment.NewLine));
+                    Console.WriteLine(string.Format("Inflating...{0}", Environment.NewLine));
                     m_GarageLogic.InflateVehicleWheelAir(licenseNumber);
-                    Console.WriteLine(string.Format("All Vehicle Wheels are Inflated to the Maximum.{0}",Environment.NewLine));
+                    Console.WriteLine(string.Format("All Vehicle Wheels are Inflated to the Maximum.{0}", Environment.NewLine));
                 }
                 catch (ArgumentException ex)
                 {
@@ -324,12 +333,6 @@ Enter your choice: ");
                 System.Console.WriteLine("Enter vehicle's license number: ");
                 string licenseNumber = System.Console.ReadLine();
 
-                //int licenseNumberNumeric;
-                //// TODO: Fix, License Number is String...
-                //if (!int.TryParse(licenseNumber, out licenseNumberNumeric))
-                //{
-                //    throw new FormatException("License number must be numeric.");
-                //}
                 if (!m_GarageLogic.IsVehicleExistInGarage(licenseNumber))
                 {
                     throw new ArgumentException("Vehicle was not found");

@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Abstract Engine Class
     /// </summary>
     public abstract class Engine
     {

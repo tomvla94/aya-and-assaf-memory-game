@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Battery Typed Vehicle Engine Class
     /// </summary>
     public class BatteryTypedVehicle : Engine
     {
@@ -33,6 +33,10 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
+        /// <summary>
+        /// Charge the Vehicle
+        /// </summary>
+        /// <param name="i_HoursToCharge">Number of Hours can not exeed the Maximum Battery Hours of the vehicle</param>
         public void Charge(float i_HoursToCharge)
         {
             if (i_HoursToCharge + m_RemainingBatteryHours > m_MaxBatteryHours)
@@ -93,6 +97,10 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
+        /// <summary>
+        /// Sets the Battery Engine Properties Recieved from the User
+        /// </summary>
+        /// <param name="i_PropertiesFromUser">Must be of Length 2</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Maximum Battery Hours

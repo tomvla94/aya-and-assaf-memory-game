@@ -12,9 +12,12 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Abstract Motorcycle Class
+    /// A Motorcycle has the following Properties:
+    /// * 2 Wheels with Maximum Air Pressure of 31
+    /// * License Type (A, A1, A2, B)
     /// </summary>
-    public class Motorcycle : Vehicle
+    public abstract class Motorcycle : Vehicle
     {
         public enum eLicenseType
         { 
@@ -28,6 +31,10 @@ namespace Ex03.GarageLogic
         public const float k_MaxAirPressure = 31;
         private eLicenseType m_LicenseType;
 
+        /// <summary>
+        /// Basic Motorcycle Constructor
+        /// </summary>
+        /// <param name="i_EngineType"></param>
         public Motorcycle(Engine i_EngineType)
         {
             m_Engine = i_EngineType;
@@ -37,6 +44,13 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
+        /// <summary>
+        /// Complex Motorcycle Constructor
+        /// </summary>
+        /// <param name="i_Model"></param>
+        /// <param name="i_LicenseNumber"></param>
+        /// <param name="i_Wheels">List Must be with 2 Wheels</param>
+        /// <param name="i_EngineType"></param>
         public Motorcycle(
             string i_Model,
             string i_LicenseNumber,
@@ -92,6 +106,10 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
+        /// <summary>
+        /// Sets the Motorcycle Properties Recieved from the User
+        /// </summary>
+        /// <param name="i_PropertiesFromUser">Must be of Length 5</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle
@@ -105,8 +123,10 @@ namespace Ex03.GarageLogic
 
         private string getLicensTypeRightFormat(string i_LicenseType)
         {
-            string licenseTypeInTheRightFormat = string.Format("{0}{1}",
-                i_LicenseType[0].ToString().ToUpper(), i_LicenseType.Remove(0));
+            string licenseTypeInTheRightFormat = string.Format(
+                "{0}{1}",
+                i_LicenseType[0].ToString().ToUpper(), 
+                i_LicenseType.Remove(0));
 
             return licenseTypeInTheRightFormat;
         }

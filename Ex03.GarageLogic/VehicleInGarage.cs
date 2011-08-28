@@ -1,9 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// -----------------------------------------------------------------------
+// <copyright file="VehicleInGarage.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// A Vehicle in the Garage Class
+    /// A Vehicle in the garage has the following Properties:
+    /// * The Owner Name
+    /// * The Owner phone Number
+    /// * The Vehicle State in the Garage
+    /// </summary>
     public class VehicleInGarage
     {
         public enum eVehicleState
@@ -87,4 +101,3 @@ namespace Ex03.GarageLogic
         }
     }
 }
-

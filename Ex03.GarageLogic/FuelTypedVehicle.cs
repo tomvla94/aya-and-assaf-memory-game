@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Fueled Typed Vehicle Engine Class
     /// </summary>
     public class FuelTypedVehicle : Engine
     {
@@ -52,6 +52,11 @@ namespace Ex03.GarageLogic
             get { return m_CurrentFuelLitersAmount; } 
         }
 
+        /// <summary>
+        /// Refuel the Vehicle
+        /// </summary>
+        /// <param name="i_Amount">Can not exeed the vehicles' Maximum Fuel Liters amount</param>
+        /// <param name="i_FuelType">Must be the Same Fuel Type that the Vehicle Needs</param>
         public virtual void Refuel(int i_Amount, eFuelType i_FuelType)
         {
             if (i_FuelType != m_FuelType)
@@ -109,10 +114,15 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
+        /// <summary>
+        /// Sets the Fuel Engine Properties Recieved from the User
+        /// </summary>
+        /// <param name="i_PropertiesFromUser">Must be of Length 3</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Get First Parameter - The Fuel Type
             m_FuelType = (eFuelType)Enum.Parse(typeof(eFuelType), i_PropertiesFromUser[0]);
+            i_PropertiesFromUser.RemoveAt(0);
 
             // Get Second Parameter - The Maximun Amount of Liters
             bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxFuelLitersAmount);

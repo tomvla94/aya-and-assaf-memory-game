@@ -1,9 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// -----------------------------------------------------------------------
+// <copyright file="VehicleFactory.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    /// <summary>
+    /// The Vehicle Factory
+    /// Here you can Create new vehicles
+    /// </summary>
     public class VehicleFactory
     {
         public enum eVehicleType
