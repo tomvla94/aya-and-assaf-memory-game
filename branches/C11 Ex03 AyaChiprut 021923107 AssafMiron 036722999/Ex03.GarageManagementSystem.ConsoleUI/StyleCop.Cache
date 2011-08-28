@@ -66,8 +66,8 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/23/2011 20:14:28</timestamp>
-    <milliseconds>0</milliseconds>
+    <timestamp>08/28/2011 23:36:50</timestamp>
+    <milliseconds>477</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="GarageUI.cs" parser="StyleCop.CSharp.CsParser">
@@ -75,14 +75,8 @@
       <timestamp>08/01/2011 20:12:46</timestamp>
       <milliseconds>876</milliseconds>
     </settings>
-    <timestamp>08/26/2011 18:19:12</timestamp>
-    <milliseconds>183</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="SingleLineCommentMustBePrecededByBlankLine" ruleCheckId="SA1515">
-        <context>A single-line comment must be preceded by a blank line or another single-line comment, or must be the first item in its scope. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>291</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
+    <timestamp>08/29/2011 00:06:27</timestamp>
+    <milliseconds>884</milliseconds>
+    <violations />
   </sourcecode>
 </stylecopresultscache>

@@ -12,7 +12,7 @@ namespace Ex03.GarageManagementSystem.ConsoleUI
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The Main Program Class
     /// </summary>
     public class Program
     {

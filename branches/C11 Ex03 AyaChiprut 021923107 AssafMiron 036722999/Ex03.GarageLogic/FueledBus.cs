@@ -1,11 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// -----------------------------------------------------------------------
+// <copyright file="FueledBus.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
+// </copyright>
+// -----------------------------------------------------------------------
 
 namespace Ex03.GarageLogic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
     /// <summary>
-    /// 
+    /// A Fueled Bus
+    /// Works on Soler Fuel Type
+    /// Has Maximum Fuel Liters of 200
     /// </summary>
     public class FueledBus : Bus
     {

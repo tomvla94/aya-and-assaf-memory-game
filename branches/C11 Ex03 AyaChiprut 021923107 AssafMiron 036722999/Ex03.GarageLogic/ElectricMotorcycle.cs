@@ -5,7 +5,8 @@ using System.Text;
 namespace Ex03.GarageLogic
 {
     /// <summary>
-    /// 
+    /// An Electric Motorcycle
+    /// Can Work 1.8 Hours (Maximum Battery Hours)
     /// </summary>
     public class ElectricMotorcycle : Motorcycle
     {

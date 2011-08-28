@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Exception of Value Out of Range
     /// </summary>
     public class ValueOutOfRangeException : Exception
     {

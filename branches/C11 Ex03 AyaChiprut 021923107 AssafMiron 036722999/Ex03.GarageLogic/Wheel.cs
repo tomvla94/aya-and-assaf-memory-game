@@ -12,7 +12,10 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Wheel Class
+    /// A Wheel has the following Properties:
+    /// * Wheel Manufacturer
+    /// * Wheel Air Pressure (Maximum defiened by Manufacturer and Current)
     /// </summary>
     public sealed class Wheel
     {
