@@ -12,7 +12,11 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Abstract Bus Class
+    /// A Bus has the following Properties:
+    /// * 8 Wheels with Maximum air pressure of 25
+    /// * Maximum Passengers Allowed on the Bus
+    /// * Guide Seat (With or Without)
     /// </summary>
     public abstract class Bus : Vehicle
     {
@@ -21,6 +25,10 @@ namespace Ex03.GarageLogic
         private int m_MaxAllowedAmountOfPassengers;
         private bool v_HasGuideSeat;
 
+        /// <summary>
+        /// Basic Bus Constructor
+        /// </summary>
+        /// <param name="i_EngineType"></param>
         public Bus(Engine i_EngineType)
         {
             m_Engine = i_EngineType;
@@ -28,6 +36,14 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
+        /// <summary>
+        /// Complex Constructor
+        /// </summary>
+        /// <param name="i_Model"></param>
+        /// <param name="i_LicenseNumber"></param>
+        /// <param name="i_Wheels">List must be with 8 Wheels</param>
+        /// <param name="i_MaxAllowedAmountOfPassengers">Only possitive Numbers</param>
+        /// <param name="i_HasGuideSeat"></param>
         public Bus(
             string i_Model,
             string i_LicenseNumber,
@@ -68,6 +84,10 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
+        /// <summary>
+        /// Sets the Bus Properties Recieved from the User
+        /// </summary>
+        /// <param name="i_PropertiesFromUser">Must be of Length 12</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle

@@ -11,6 +11,13 @@ namespace Ex03.GarageLogic
     using System.Collections.Generic;
     using System.Text;
 
+    /// <summary>
+    /// Abstract Car Class
+    /// A Car has the following Properties:
+    /// * 4 Wheels with Maximum Air Pressure of 29
+    /// * Number of Doors (Minimum 2, Maximum 5)
+    /// * Car Color (Black, White, Silver, Blue, Azure)
+    /// </summary>
     public abstract class Car : Vehicle
     {
         public enum eCarColor
@@ -76,7 +83,7 @@ namespace Ex03.GarageLogic
             colors += "\b\b]";
 
             m_PropertiesForInput.Add(colors);
-            m_PropertiesForInput.Add(string.Format("Number of Doors [Value between {0} and {1}", k_MinNumOfDoors, k_MaxNumOfDoors));
+            m_PropertiesForInput.Add(string.Format("Number of Doors [Value between {0} and {1}]", k_MinNumOfDoors, k_MaxNumOfDoors));
         }
 
         public override List<string> GetPropertiesForInput()
@@ -84,6 +91,10 @@ namespace Ex03.GarageLogic
             return m_PropertiesForInput;
         }
 
+        /// <summary>
+        /// Sets the Car Properties Recieved from the User
+        /// </summary>
+        /// <param name="i_PropertiesFromUser">Must be of Length 8</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
             // Set the Properties of the Base Vehicle
