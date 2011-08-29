@@ -12,7 +12,9 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// A Fueled Car
+    /// Works on Octan 95 Fuel Type
+    /// Has Maximum Fuel Liters of 45
     /// </summary>
     public class FueledCar : Car
     {

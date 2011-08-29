@@ -12,7 +12,12 @@ namespace Ex03.GarageLogic
     using System.Text;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Abstract Vehicle
+    /// A Vehicle has the following Properties:
+    /// * Vehicle Model
+    /// * Vehicle License Number
+    /// * List of Wheels (Minimum Wheels Number is 2)
+    /// * Vehicle Engine
     /// </summary>
     public abstract class Vehicle
     {
