@@ -126,7 +126,7 @@ namespace Ex03.GarageLogic
             string licenseTypeInTheRightFormat = string.Format(
                 "{0}{1}",
                 i_LicenseType[0].ToString().ToUpper(), 
-                i_LicenseType.Remove(0));
+                i_LicenseType.Remove(0, 1));
 
             return licenseTypeInTheRightFormat;
         }
