@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex03.GarageLogic", "Ex03.Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex03.GarageManagementSystem.ConsoleUI", "Ex03.GarageManagementSystem.ConsoleUI\Ex03.GarageManagementSystem.ConsoleUI.csproj", "{12EF6416-3344-467B-ACCC-E0415BB0B2AB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FD6CB3F-C255-4C54-A26C-9213817F2E9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
