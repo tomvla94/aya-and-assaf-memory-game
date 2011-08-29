@@ -37,21 +37,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BatteryTypedVehicle.cs" />
-    <Compile Include="Bus.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="ElectricCar.cs" />
-    <Compile Include="ElectricMotorcycle.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="FueledBus.cs" />
-    <Compile Include="FueledCar.cs" />
-    <Compile Include="FueledMotorcycle.cs" />
     <Compile Include="FuelTypedVehicle.cs" />
     <Compile Include="GarageBL.cs" />
-    <Compile Include="Motorcycle.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
-    <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleFactory.cs" />
     <Compile Include="VehicleInGarage.cs" />
+    <Compile Include="Vehicles\Bus.cs" />
+    <Compile Include="Vehicles\Car.cs" />
+    <Compile Include="Vehicles\ElectricCar.cs" />
+    <Compile Include="Vehicles\ElectricMotorcycle.cs" />
+    <Compile Include="Vehicles\Engine.cs" />
+    <Compile Include="Vehicles\FueledBus.cs" />
+    <Compile Include="Vehicles\FueledCar.cs" />
+    <Compile Include="Vehicles\FueledMotorcycle.cs" />
+    <Compile Include="Vehicles\Motorcycle.cs" />
+    <Compile Include="Vehicles\Vehicle.cs" />
     <Compile Include="Wheel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +60,7 @@
   <ItemGroup>
     <None Include="GarageLogicClassDiag.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
