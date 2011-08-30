@@ -11,56 +11,49 @@
     <Position X="0.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QACAKAAAAAAAAAAAAAAIAgAAAAAAEAEAEAAAAAQAAAA=</HashCode>
-      <FileName>Bus.cs</FileName>
+      <FileName>Vehicles\Bus.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Car" Collapsed="true">
     <Position X="8.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAKIAAAAAAAQAEAAQAAgAAAAAAAAEAEAABAAQIAAA=</HashCode>
-      <FileName>Car.cs</FileName>
+      <FileName>Vehicles\Car.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.ElectricCar" Collapsed="true">
     <Position X="9.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
-      <FileName>ElectricCar.cs</FileName>
+      <FileName>Vehicles\ElectricCar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.ElectricMotorcycle" Collapsed="true">
     <Position X="5.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
-      <FileName>ElectricMotorcycle.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Ex03.GarageLogic.Engine" Collapsed="true">
-    <Position X="1.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAAAKAAAAAAAAAAAAAAAgBAggAAAAAEABAAAAAAAAAA=</HashCode>
-      <FileName>Engine.cs</FileName>
+      <FileName>Vehicles\ElectricMotorcycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.FueledBus" Collapsed="true">
     <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>FueledBus.cs</FileName>
+      <FileName>Vehicles\FueledBus.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.FueledCar" Collapsed="true">
     <Position X="7.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>FueledCar.cs</FileName>
+      <FileName>Vehicles\FueledCar.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.FueledMotorcycle" Collapsed="true">
     <Position X="3" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
-      <FileName>FueledMotorcycle.cs</FileName>
+      <FileName>Vehicles\FueledMotorcycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.FuelTypedVehicle" Collapsed="true">
@@ -81,7 +74,7 @@
     <Position X="4.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAKAABAAAAAAAAAAAAIAAAAAAAAAEAEAAAAAQAAAA=</HashCode>
-      <FileName>Motorcycle.cs</FileName>
+      <FileName>Vehicles\Motorcycle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.ValueOutOfRangeException" Collapsed="true">
@@ -95,7 +88,7 @@
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AwAAaAAAAAEQAAAAgAAAkAAAAAAgAIEQBAgAAgAAAAA=</HashCode>
-      <FileName>Vehicle.cs</FileName>
+      <FileName>Vehicles\Vehicle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.VehicleFactory" Collapsed="true">
@@ -117,6 +110,13 @@
     <TypeIdentifier>
       <HashCode>AAiAKAAAAAAAAACAAAKAiAAAAgEgAQEAAAAAAAAAAAA=</HashCode>
       <FileName>Wheel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Engine" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAKAAAAAAAAAAAAAAAgBAggAAAAAEABAAAAAAAAAA=</HashCode>
+      <FileName>Engine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

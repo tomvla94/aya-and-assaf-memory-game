@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
             ElectricCar = 2,
             FueledMotorcycle = 3,
             ElectricMotorcycle = 4,
-            FueledBus = 5
+            FueledBus = 5,
         }
 
         public static Vehicle CreateVehicle(eVehicleType? i_VehicleType)

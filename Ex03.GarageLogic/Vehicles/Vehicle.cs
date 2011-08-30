@@ -46,7 +46,8 @@ namespace Ex03.GarageLogic
             m_LicenseNumber = i_LicenseNumber;
             if (i_NumOfWeels <= k_MinNumOfWheels)
             {
-                throw new ValueOutOfRangeException(k_MinNumOfWheels, float.MaxValue);
+                throw new ValueOutOfRangeException("Num of wheels is smaller then possible",
+                    k_MinNumOfWheels, float.MaxValue);
             }
 
             m_Wheels = i_Wheels;

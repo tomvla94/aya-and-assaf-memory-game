@@ -66,60 +66,60 @@ Enter your choice: ");
             switch (chosenOption)
             {
                 case eMenuOption.InsertVehicle:
-                {
-                    insertVehicleToTheGarage();
-                    waitForUserResponse("Vehicle Entered the Garage.");
-                    break;
-                }
+                    {
+                        insertVehicleToTheGarage();
+                        waitForUserResponse("Vehicle Entered the Garage.");
+                        break;
+                    }
 
                 case eMenuOption.PrintVehiclesList:
-                {
-                    printListOfTheVehicles();
-                    waitForUserResponse();
-                    break;
-                }
+                    {
+                        printListOfTheVehicles();
+                        waitForUserResponse();
+                        break;
+                    }
 
                 case eMenuOption.ChangeVehicleStatus:
-                {
-                    changeVehicleStatus();
-                    waitForUserResponse();
-                    break;
-                }
+                    {
+                        changeVehicleStatus();
+                        waitForUserResponse();
+                        break;
+                    }
 
                 case eMenuOption.InflateTires:
-                {
-                    inflatesTiresOfAVehicle();
-                    waitForUserResponse("All Vehicle Wheels are Inflated");
-                    break;
-                }
+                    {
+                        inflatesTiresOfAVehicle();
+                        waitForUserResponse("All Vehicle Wheels are Inflated");
+                        break;
+                    }
 
                 case eMenuOption.RefuelVehicle:
-                {
-                    refuelAvehicle();
-                    waitForUserResponse("The Vehicle is now Refuled");
-                    break;
-                }
+                    {
+                        refuelAvehicle();
+                        waitForUserResponse("The Vehicle is now Refuled");
+                        break;
+                    }
 
                 case eMenuOption.RechargeVehicle:
-                {
-                    rechargeAVehicle();
-                    waitForUserResponse("The Vehicle is now Recharged");
-                    break;
-                }
+                    {
+                        rechargeAVehicle();
+                        waitForUserResponse("The Vehicle is now Recharged");
+                        break;
+                    }
 
                 case eMenuOption.PrintVehicleDetails:
-                {
-                    printVehicleDetails();
-                    waitForUserResponse();
-                    break;
-                }
+                    {
+                        printVehicleDetails();
+                        waitForUserResponse();
+                        break;
+                    }
 
                 case eMenuOption.Exit:
-                {
-                    printExitMessage();
-                    waitForUserResponse();
-                    break;
-                }
+                    {
+                        printExitMessage();
+                        waitForUserResponse();
+                        break;
+                    }
             }
         }
 
@@ -171,10 +171,13 @@ Enter your choice: ");
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
+                rechargeAVehicle();
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                Console.WriteLine(i_ValueOutOfRangeException.Message);
+                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
+                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                rechargeAVehicle();
             }
         }
 
@@ -189,7 +192,7 @@ Enter your choice: ");
                 chargeAmount = System.Console.ReadLine();
                 if (!float.TryParse(chargeAmount, out numericAmount))
                 {
-                    throw new FormatException("Number of hours must be numeric."); 
+                    throw new FormatException("Number of hours must be numeric.");
                 }
             }
             catch (FormatException i_FormatException)
@@ -219,10 +222,13 @@ Enter your choice: ");
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
+                refuelAvehicle();
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                Console.WriteLine(i_ValueOutOfRangeException.Message);
+                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
+                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                refuelAvehicle();
             }
         }
 
@@ -309,6 +315,13 @@ Enter your choice: ");
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
+                    inflatesTiresOfAVehicle();
+                }
+                catch (ValueOutOfRangeException i_ValueOutOfRangeException)
+                {
+                     Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
+                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                    inflatesTiresOfAVehicle();
                 }
             }
         }
@@ -363,7 +376,7 @@ Enter your choice: ");
         private VehicleInGarage.eVehicleState getNeededStateFromUser()
         {
             string[] statusOptions;
-            string userChoice; 
+            string userChoice;
             int chosenOption;
             VehicleInGarage.eVehicleState? state = null;
             VehicleInGarage.eVehicleState retState = VehicleInGarage.eVehicleState.InRepair;
@@ -452,7 +465,7 @@ Enter your choice: ");
         private VehicleInGarage.eVehicleState? getNeededVehicleState(int i_UserChoice)
         {
             VehicleInGarage.eVehicleState? vehicleState = null;
-            if(Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice - 1))
+            if (Enum.IsDefined(typeof(VehicleInGarage.eVehicleState), i_UserChoice - 1))
             {
                 vehicleState = (VehicleInGarage.eVehicleState)Enum.Parse(typeof(VehicleInGarage.eVehicleState), (i_UserChoice - 1).ToString());
             }
@@ -518,6 +531,11 @@ Enter your choice: ");
             {
                 Console.WriteLine(i_ArgumentException.Message);
             }
+            catch (ValueOutOfRangeException i_ValueOutOfRangeException)
+            {
+                 Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
+                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+            }
         }
 
         private string getOwnerPhoneNumber()
@@ -534,17 +552,26 @@ Enter your choice: ");
 
         private void getInformationAboutTheVehicle(Vehicle newVehicle)
         {
-            List<string> propertiesToAsk;
-            List<string> propertiesToPass = new List<string>();
-
-            propertiesToAsk = newVehicle.GetPropertiesForInput();
-            foreach (string question in propertiesToAsk)
+            try
             {
-                Console.WriteLine("Please enter {0}", question);
-                propertiesToPass.Add(Console.ReadLine());
-            }
+                List<string> propertiesToAsk;
+                List<string> propertiesToPass = new List<string>();
 
-            newVehicle.SetPropertiesFromInput(propertiesToPass);
+                propertiesToAsk = newVehicle.GetPropertiesForInput();
+                foreach (string question in propertiesToAsk)
+                {
+                    Console.WriteLine("Please enter {0}", question);
+                    propertiesToPass.Add(Console.ReadLine());
+                }
+
+                newVehicle.SetPropertiesFromInput(propertiesToPass);
+            }
+            catch (ValueOutOfRangeException i_ValueOutOfRangeException)
+            {
+                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
+                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                getInformationAboutTheVehicle(newVehicle);
+            }
         }
 
         private void printListOfStringsToTheUser(string[] i_Options)
@@ -582,7 +609,5 @@ Enter your choice: ");
 
             return retFuelType;
         }
-
-        public int amountNeeded { get; set; }
     }
 }

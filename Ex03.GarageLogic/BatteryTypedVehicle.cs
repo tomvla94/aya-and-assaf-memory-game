@@ -25,7 +25,8 @@ namespace Ex03.GarageLogic
             EngineType = eEngineType.Battery;
             if (i_MaxBatteryHours <= k_MinBatteryCharge)
             {
-                throw new ValueOutOfRangeException(k_MinBatteryCharge, float.MaxValue);
+                throw new ValueOutOfRangeException("Max battery hour has to be possitive",
+                    k_MinBatteryCharge, m_MaxBatteryHours);
             }
 
             m_MaxBatteryHours = i_MaxBatteryHours;
@@ -39,9 +40,14 @@ namespace Ex03.GarageLogic
         /// <param name="i_HoursToCharge">Number of Hours can not exeed the Maximum Battery Hours of the vehicle</param>
         public void Charge(float i_HoursToCharge)
         {
+            if (i_HoursToCharge <= 0)
+            {
+                throw new ArgumentException("Number of hours to charge has to be possitive");
+            }
+
             if (i_HoursToCharge + m_RemainingBatteryHours > m_MaxBatteryHours)
             {
-                throw new ValueOutOfRangeException(m_RemainingBatteryHours, m_MaxBatteryHours);
+                throw new ValueOutOfRangeException("Number of hours to charge is bigger than possible", m_RemainingBatteryHours, m_MaxBatteryHours);
             }
 
             m_RemainingBatteryHours += i_HoursToCharge;
@@ -113,7 +119,8 @@ namespace Ex03.GarageLogic
 
             if(m_RemainingBatteryHours < k_MinBatteryCharge || m_RemainingBatteryHours > m_MaxBatteryHours)
             {
-                throw new ValueOutOfRangeException(k_MinBatteryCharge, m_MaxBatteryHours);
+                throw new ValueOutOfRangeException("Remaining battery hours is smaller or bigger than possible",
+                    k_MinBatteryCharge, m_MaxBatteryHours);
             }
         }
     }
