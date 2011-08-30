@@ -111,7 +111,8 @@ namespace Ex03.GarageLogic
 
             if (m_NumOfDoors < k_MinNumOfDoors || m_NumOfDoors > k_MaxNumOfDoors)
             {
-                throw new ValueOutOfRangeException(k_MinNumOfDoors, k_MaxNumOfDoors);
+                throw new ValueOutOfRangeException("Number of doors is smaller or bigger than possible",
+                    k_MinNumOfDoors, k_MaxNumOfDoors);
             }
         }
 

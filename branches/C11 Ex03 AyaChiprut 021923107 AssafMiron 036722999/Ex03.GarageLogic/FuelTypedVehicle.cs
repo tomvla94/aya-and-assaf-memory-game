@@ -64,9 +64,10 @@ namespace Ex03.GarageLogic
                 string wrongFuelErrMsg = string.Format(k_WrongFuelErrorFormat, m_FuelType, i_FuelType);
                 throw new ArgumentException(wrongFuelErrMsg);
             }
-            else if (i_Amount + m_CurrentFuelLitersAmount > m_MaxFuelLitersAmount)
+            else if (i_Amount + m_CurrentFuelLitersAmount > m_MaxFuelLitersAmount || i_Amount <= 0)
             {
-                throw new ValueOutOfRangeException(m_MaxFuelLitersAmount, float.MinValue);
+                throw new ValueOutOfRangeException("Amount of fuel is bigger or smaller than possible",
+                    m_MaxFuelLitersAmount - m_CurrentFuelLitersAmount, 0);
             }
 
             m_CurrentFuelLitersAmount += i_Amount;

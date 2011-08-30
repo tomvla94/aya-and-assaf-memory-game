@@ -29,24 +29,13 @@ namespace Ex03.GarageLogic
         {
             if (i_MaxAirPressureByManufacturer <= k_MinAirPressure)
             {
-                throw new ValueOutOfRangeException(i_MaxAirPressureByManufacturer, k_MinAirPressure);
+                throw new ValueOutOfRangeException("Max air pressure has to be possitive",
+                    k_MinAirPressure, m_MaxAirPressureByManufacturer);
             }
 
             m_MaxAirPressureByManufacturer = i_MaxAirPressureByManufacturer;
 
             fillPropertiesForUser();
-        }
-
-        public Wheel(string i_Manufacturer, float i_CurrentAirPressure, float i_MaxAirPressureByManufacturer)
-        {
-            m_Manufacturer = i_Manufacturer;
-            if (i_MaxAirPressureByManufacturer <= k_MinAirPressure)
-            {
-                throw new ValueOutOfRangeException(i_MaxAirPressureByManufacturer, k_MinAirPressure);
-            }
-
-            m_MaxAirPressureByManufacturer = i_MaxAirPressureByManufacturer;
-            Inflate(i_CurrentAirPressure);
         }
 
         public void Inflate(float i_AirAmount)
@@ -77,7 +66,8 @@ namespace Ex03.GarageLogic
             bool retAirPressureOK = false;
             if ((i_AirPressure < 0) || (i_AirPressure > m_MaxAirPressureByManufacturer))
             {
-                throw new ValueOutOfRangeException(k_MinAirPressure, m_MaxAirPressureByManufacturer);
+                throw new ValueOutOfRangeException("Air pressure is smaller or bigger than possible",
+                    k_MinAirPressure, m_MaxAirPressureByManufacturer);
             }
             else
             {
@@ -119,7 +109,7 @@ namespace Ex03.GarageLogic
             {
                 try
                 {
-                    if (checkAirPressureRange(m_CurrentAirPressure))
+                    if (checkAirPressureRange(currAirPressure))
                     {
                         m_CurrentAirPressure = currAirPressure;
                     }
