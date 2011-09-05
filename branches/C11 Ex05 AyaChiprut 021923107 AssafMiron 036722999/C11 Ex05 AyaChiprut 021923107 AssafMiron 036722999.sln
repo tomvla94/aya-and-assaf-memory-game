@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.MemoryGame.WindowForm", "Ex05.MemoryGame.WindowForm\Ex05.MemoryGame.WindowForm.csproj", "{FA045BCC-4626-44F1-905E-E9FBC8D7A9AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.MemoryGame.Logic", "Ex05.MemoryGame.Logic\Ex05.MemoryGame.Logic.csproj", "{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{FA045BCC-4626-44F1-905E-E9FBC8D7A9AB}.Debug|x86.Build.0 = Debug|x86
 		{FA045BCC-4626-44F1-905E-E9FBC8D7A9AB}.Release|x86.ActiveCfg = Release|x86
 		{FA045BCC-4626-44F1-905E-E9FBC8D7A9AB}.Release|x86.Build.0 = Release|x86
+		{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}.Debug|x86.ActiveCfg = Debug|x86
+		{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}.Debug|x86.Build.0 = Debug|x86
+		{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}.Release|x86.ActiveCfg = Release|x86
+		{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

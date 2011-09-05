@@ -21,19 +21,44 @@ namespace Ex05.MemoryGame.WindowForm
         private Button m_ButtonStart;
         private Button m_ButtonBoard;
         private Button m_ButtonApponent;
+        private Label m_LabelHeader;
+        private Label m_LabelSubHeader;
         private Label m_LabelFirstPlayer;
         private Label m_LabelSecondPlayer;
         private TextBox m_TextFirstPlayer;
         private TextBox m_TextSecondPlayer;
+        private int m_CurrentWidth;
+        private int m_CurrentHeight;
 
-        public MemoryGameSettingsForm()
+        public SettingsForm()
         {
             this.Text = "Memory Game - Settings";
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
-            this.Size = new Size(300, 300);
+            this.Size = new Size(450, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            m_CurrentHeight = m_CurrentWidth = Ex05.MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
+
+            initHeader();
             initControls();
+        }
+
+        private void initHeader()
+        {
+            m_LabelHeader = new Label();
+            m_LabelSubHeader = new Label();
+            m_LabelHeader.Text = "Memory Game";
+            m_LabelHeader.Font = new Font("Calibri", 20);
+            m_LabelHeader.Location = new Point((this.Size.Width / 2) - (m_LabelHeader.Text.Length * 9), 10);
+            m_LabelHeader.AutoSize = true;
+
+            m_LabelSubHeader.Text = "by Aya and Assaf";
+            m_LabelSubHeader.Font = new Font("Calibri", 12);
+            m_LabelSubHeader.Location = new Point(m_LabelHeader.Location.X + m_LabelSubHeader.Text.Length, m_LabelHeader.Location.Y + m_LabelHeader.Size.Height + 20);
+            m_LabelSubHeader.AutoSize = true;
+
+            this.Controls.Add(m_LabelHeader);
+            this.Controls.Add(m_LabelSubHeader);
         }
 
         private void initControls()
@@ -54,7 +79,7 @@ namespace Ex05.MemoryGame.WindowForm
             // Setting the Board Button
             m_ButtonBoard = new Button();
             // TODO: Get the Initial Board Size
-            m_ButtonBoard.Text = "4 X 4";
+            m_ButtonBoard.Text = getButtonBoardText();
             m_ButtonBoard.Size = new Size(50, 50);
             m_ButtonBoard.Click += new EventHandler(m_ButtonBoard_Click);
             m_ButtonBoard.Parent = this;
@@ -67,7 +92,7 @@ namespace Ex05.MemoryGame.WindowForm
             m_ButtonStart.Parent = this;
 
             // Arrange the Controls
-            arrangeControls(20, 20, 10, 10);
+            arrangeControls(30, 20, 10, 30);
         }
 
         private void initFirstPlayerControls()
@@ -95,9 +120,14 @@ namespace Ex05.MemoryGame.WindowForm
             m_TextSecondPlayer.Parent = this;
         }
 
+        private string getButtonBoardText()
+        {
+            return string.Format("{0} X {1}", m_CurrentHeight, m_CurrentWidth);
+        }
+
         private void arrangeControls(int i_Top, int i_Left, int i_Right, int i_Bottom)
         {
-            m_LabelFirstPlayer.Location = new Point(i_Left, i_Top);
+            m_LabelFirstPlayer.Location = new Point(i_Left, m_LabelSubHeader.Location.Y + m_LabelSubHeader.Size.Height + i_Top);
             m_TextFirstPlayer.Location = new Point(m_LabelFirstPlayer.Location.X + m_LabelFirstPlayer.Size.Width + i_Right, m_LabelFirstPlayer.Location.Y);
             m_LabelSecondPlayer.Location = new Point(i_Left, m_LabelFirstPlayer.Location.Y + i_Top);
             m_TextSecondPlayer.Location = new Point(m_LabelSecondPlayer.Location.X + m_LabelSecondPlayer.Size.Width + i_Right, m_LabelSecondPlayer.Location.Y);
@@ -118,26 +148,69 @@ namespace Ex05.MemoryGame.WindowForm
         }
 
         private void m_ButtonBoard_Click(object sender, EventArgs e)
-        { 
-            // TODO: Set the Button Text by Board Enum Size
-            // TODO: Set the Board Size
+        {
+            if (m_CurrentWidth + 1 > MemoryGame.Logic.MemBoard.k_MaxBoradSizeValue)
+            {
+                m_CurrentWidth = MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
+                if (m_CurrentHeight + 1 > MemoryGame.Logic.MemBoard.k_MaxBoradSizeValue)
+                {
+                    m_CurrentHeight = MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
+                }
+                else
+                {
+                    m_CurrentHeight++;
+                }
+            }
+            else
+            {
+                m_CurrentWidth++;
+            }
+
+            m_ButtonBoard.Text = getButtonBoardText();
         }
 
-        public void m_ButtonStart_Click(object sender, EventArgs e)
-        { 
+        
+
+        private void m_ButtonStart_Click(object sender, EventArgs e)
+        {
             // TODO: Start the Game
         }
 
-        void m_ButtonApponent_ComputerClick(object sender, EventArgs e)
+        private void m_ButtonApponent_ComputerClick(object sender, EventArgs e)
         {
             m_ButtonApponent.Text = "Against a Friend";
             v_ApponentComputer = true;
-            m_ButtonApponent.Click -= new EventHandler(m_ButtonApponent_ComputerClick);         
+            m_ButtonApponent.Click -= new EventHandler(m_ButtonApponent_ComputerClick);
             m_ButtonApponent.Click += new EventHandler(m_ButtonApponent_FriendClick);
 
             m_TextSecondPlayer.Text = "Computer";
             m_TextSecondPlayer.Enabled = false;
         }
-    }
+
+        public string GetFirstPlayerName()
+        {
+            return m_TextFirstPlayer.Text;
+        }
+
+        public string GetSecondPlayerName()
+        {
+            string retPlayerName = null;
+            if (m_TextSecondPlayer.Text != "Computer")
+            {
+                retPlayerName = m_TextSecondPlayer.Text;
+            }
+
+            return retPlayerName;
+        }
+
+        public int GetBoardHeight()
+        {
+            return m_CurrentHeight;
+        }
+
+        public int GetBoardWidth()
+        {
+            return m_CurrentWidth;
+        }
     }
 }
