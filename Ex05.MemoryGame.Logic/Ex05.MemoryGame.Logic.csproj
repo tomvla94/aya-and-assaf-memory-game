@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FA045BCC-4626-44F1-905E-E9FBC8D7A9AB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ex05.MemoryGame.WindowForm</RootNamespace>
-    <AssemblyName>Ex05.MemoryGame.WindowForm</AssemblyName>
+    <RootNamespace>Ex05.MemoryGame.Logic</RootNamespace>
+    <AssemblyName>Ex05.MemoryGame.Logic</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,24 +36,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BoardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Card.cs" />
+    <Compile Include="MemBoard.cs" />
+    <Compile Include="MemGameBL.cs" />
+    <Compile Include="MemSquare.cs" />
+    <Compile Include="Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ex05.MemoryGame.Logic\Ex05.MemoryGame.Logic.csproj">
-      <Project>{26B5B901-D9AD-45BC-8ABE-B7BB8B65BF5D}</Project>
-      <Name>Ex05.MemoryGame.Logic</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

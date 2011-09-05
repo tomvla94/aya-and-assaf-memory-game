@@ -8,9 +8,9 @@ namespace Ex05.MemoryGame.WindowForm
     {
         public static void Main()
         {
-            SettingsForm memSettings = new SettingsForm();
+            BoardForm memBoard = new BoardForm();
 
-            memSettings.ShowDialog();
+            memBoard.Run();
         }
     }
 }
