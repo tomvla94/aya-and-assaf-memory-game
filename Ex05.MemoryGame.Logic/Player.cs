@@ -24,11 +24,11 @@ namespace Ex05.MemoryGame.Logic
 
         public enum ePlayerColor
         { 
-            Green,
-            Blue,
-            Cyan
+            MediumSpringGreen,
+            MediumSlateBlue,
+            MediumOrchid
         }
-
+        
         private string m_Name;
         private int m_Score;
         private ePlayerType m_Type;
