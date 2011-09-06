@@ -73,12 +73,12 @@ namespace Ex05.MemoryGame.WindowForm
             createLabel(out m_LabelCurrentPlayer, 15, lastControlYPos + 20);
             setCurrentPlayerNameLabel();
 
-            createLabel(out m_LabelFirstPlayerScore, 15, m_LabelCurrentPlayer.Location.Y + 40);
+            createLabel(out m_LabelFirstPlayerScore, 15, m_LabelCurrentPlayer.Location.Y + 30);
             setFirstPlayerScore();
 
-            createLabel(out m_LabelSecondPlayerScore, 15, m_LabelFirstPlayerScore.Location.Y + 40);
+            createLabel(out m_LabelSecondPlayerScore, 15, m_LabelFirstPlayerScore.Location.Y + 30);
             setSecondPlayerScore();
-
+            
             m_ButtonExit = new Button();
             m_ButtonExit.Text = "Exit";
             m_ButtonExit.AutoSize = true;

@@ -95,13 +95,23 @@ namespace Ex05.MemoryGame.Logic
         private void createSquares()
         {
             int counter = m_BoardWidth + 1;
+            int numOfTimesLetterUsed = 1;
             for (int i = 0; i < m_BoardHeight; i ++)
             {
-                for (int j = 0; j < m_BoardWidth - 1; j += 2)
+                for (int j = 0; j < m_BoardWidth; j++)
                 {
-                    char letter = (char)('B' + counter++);
+                    char letter = (char)('B' + counter);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
-                    m_Squares[i, j + 1] = new MemSquare(i, j + 1, letter.ToString());
+                    
+                    if (numOfTimesLetterUsed == 2)
+                    {
+                        counter++;
+                        numOfTimesLetterUsed = 1;
+                    }
+                    else
+                    {
+                        numOfTimesLetterUsed++;
+                    }
                 }
             }
 

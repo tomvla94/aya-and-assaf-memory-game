@@ -96,16 +96,16 @@ namespace Ex05.MemoryGame.Logic
             if (i_PlayerNames.Length == 1)
             {
                 this.m_Players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
-                this.m_Players[0].Color = Player.ePlayerColor.Green;
+                this.m_Players[0].Color = Player.ePlayerColor.MediumSpringGreen;
                 this.m_Players[1] = new Player(Player.ePlayerType.Computer);
-                this.m_Players[1].Color = Player.ePlayerColor.Cyan;
+                this.m_Players[1].Color = Player.ePlayerColor.MediumOrchid;
             }
             else if (i_PlayerNames.Length == 2)
             {
                 this.m_Players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
-                this.m_Players[0].Color = Player.ePlayerColor.Green;
+                this.m_Players[0].Color = Player.ePlayerColor.MediumSpringGreen;
                 this.m_Players[1] = new Player(i_PlayerNames[1], Player.ePlayerType.Human);
-                this.m_Players[1].Color = Player.ePlayerColor.Blue;
+                this.m_Players[1].Color = Player.ePlayerColor.MediumSlateBlue;
             }
         }
 
