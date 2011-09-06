@@ -17,8 +17,8 @@ namespace Ex05.MemoryGame.Logic
     /// </summary>
     public class MemBoard
     {
-        public const int k_MinBoradSizeValue = 4;
-        public const int k_MaxBoradSizeValue = 6;
+        private const int k_MinBoradSizeValue = 4;
+        private const int k_MaxBoradSizeValue = 6;
         private const char k_RowSpacer = '=';
         private const char k_ColSpacer = '|';
         private MemSquare[,] m_Squares;
@@ -39,6 +39,16 @@ namespace Ex05.MemoryGame.Logic
             {
                 return m_BoardHeight;
             }
+        }
+
+        public int GetMaxSize()
+        {
+            return k_MaxBoradSizeValue;
+        }
+
+        public int GetMinSize()
+        {
+            return k_MinBoradSizeValue;
         }
 
         public int NumberOfVisibleSquares
@@ -85,13 +95,13 @@ namespace Ex05.MemoryGame.Logic
         private void createSquares()
         {
             int counter = m_BoardWidth + 1;
-            for (int i = 0; i < m_BoardHeight; i += 2)
+            for (int i = 0; i < m_BoardHeight; i ++)
             {
-                for (int j = 0; j < m_BoardWidth; j++)
+                for (int j = 0; j < m_BoardWidth - 1; j += 2)
                 {
                     char letter = (char)('B' + counter++);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
-                    m_Squares[i + 1, j] = new MemSquare(i, j, letter.ToString());
+                    m_Squares[i, j + 1] = new MemSquare(i, j + 1, letter.ToString());
                 }
             }
 

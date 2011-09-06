@@ -10,7 +10,7 @@ namespace Ex05.MemoryGame.Logic
     using System;
     using System.Collections.Generic;
     using System.Text;
-
+    
     /// <summary>
     /// The Player Object
     /// </summary>
@@ -22,9 +22,17 @@ namespace Ex05.MemoryGame.Logic
             Computer
         }
 
+        public enum ePlayerColor
+        { 
+            Green,
+            Blue,
+            Cyan
+        }
+
         private string m_Name;
         private int m_Score;
         private ePlayerType m_Type;
+        private ePlayerColor m_Color;
 
         public Player(string i_Name, ePlayerType i_PlayerType)
         {
@@ -63,6 +71,12 @@ namespace Ex05.MemoryGame.Logic
         {
             get { return m_Type; }
             set { m_Type = value; }
+        }
+
+        public ePlayerColor Color
+        {
+            get { return m_Color; }
+            set { m_Color = value; }
         }
     }
 }

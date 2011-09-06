@@ -29,6 +29,8 @@ namespace Ex05.MemoryGame.WindowForm
         private TextBox m_TextSecondPlayer;
         private int m_CurrentWidth;
         private int m_CurrentHeight;
+        private Ex05.MemoryGame.Logic.MemGameBL m_MemoryLogic = new Logic.MemGameBL();
+        private bool v_IsStartClicked = false;
 
         public SettingsForm()
         {
@@ -37,7 +39,7 @@ namespace Ex05.MemoryGame.WindowForm
             this.Size = new Size(450, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            m_CurrentHeight = m_CurrentWidth = Ex05.MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
+            m_CurrentHeight = m_CurrentWidth = m_MemoryLogic.GetMinimumBoardSize();
 
             initHeader();
             initControls();
@@ -149,31 +151,60 @@ namespace Ex05.MemoryGame.WindowForm
 
         private void m_ButtonBoard_Click(object sender, EventArgs e)
         {
-            if (m_CurrentWidth + 1 > MemoryGame.Logic.MemBoard.k_MaxBoradSizeValue)
+            incWidthHeight();
+            m_ButtonBoard.Text = getButtonBoardText();
+        }
+
+        private void incWidthHeight()
+        {
+            if (m_CurrentWidth + 1 > m_MemoryLogic.GetMaximumBoardSize())
             {
-                m_CurrentWidth = MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
-                if (m_CurrentHeight + 1 > MemoryGame.Logic.MemBoard.k_MaxBoradSizeValue)
+                m_CurrentWidth = m_MemoryLogic.GetMinimumBoardSize();
+                if (m_CurrentHeight + 1 > m_MemoryLogic.GetMaximumBoardSize())
                 {
-                    m_CurrentHeight = MemoryGame.Logic.MemBoard.k_MinBoradSizeValue;
+                    m_CurrentHeight = m_MemoryLogic.GetMinimumBoardSize();
                 }
                 else
                 {
-                    m_CurrentHeight++;
+                    if (isMulResultEven(m_CurrentWidth, m_CurrentHeight + 1))
+                    {
+                        m_CurrentHeight++;
+                    }
+                    else
+                    {
+                        incWidthHeight();
+                    }
                 }
             }
             else
             {
-                m_CurrentWidth++;
+                if (isMulResultEven(m_CurrentWidth + 1, m_CurrentHeight))
+                {
+                    m_CurrentWidth++;
+                }
+                else
+                {
+                    m_CurrentWidth++;
+                    incWidthHeight();
+                }
             }
-
-            m_ButtonBoard.Text = getButtonBoardText();
         }
 
-        
+        private bool isMulResultEven(int i_FirstNum, int i_SecondNum)
+        {
+            bool retMulResult = true;
+            if ((i_FirstNum * i_SecondNum) % 2 != 0)
+            {
+                retMulResult = false;
+            }
+
+            return retMulResult;
+        }
 
         private void m_ButtonStart_Click(object sender, EventArgs e)
         {
-            // TODO: Start the Game
+            v_IsStartClicked = true;
+            this.Close();
         }
 
         private void m_ButtonApponent_ComputerClick(object sender, EventArgs e)
@@ -211,6 +242,11 @@ namespace Ex05.MemoryGame.WindowForm
         public int GetBoardWidth()
         {
             return m_CurrentWidth;
+        }
+
+        public bool IsClosedOK()
+        {
+            return v_IsStartClicked;
         }
     }
 }
