@@ -18,7 +18,7 @@ namespace Ex05.MemoryGame.Logic
     {
         private readonly List<MemSquare> r_ShowSquareCards = new List<MemSquare>();
         private MemBoard m_MemoryBoard = new MemBoard();
-        private Player[] m_players = new Player[2];
+        private Player[] m_Players = new Player[2];
         private MemSquare m_PrevSquareChosen = null;
         private int m_CurrentPlayingPlayerIndex = 0;
 
@@ -29,7 +29,17 @@ namespace Ex05.MemoryGame.Logic
 
         public Player CurrentPlayer
         {
-            get { return m_players[m_CurrentPlayingPlayerIndex]; }
+            get { return m_Players[m_CurrentPlayingPlayerIndex]; }
+        }
+
+        public Player FirstPlayer
+        {
+            get { return m_Players[0]; }
+        }
+
+        public Player SecondPlayer
+        {
+            get { return m_Players[1]; }
         }
 
         public bool RoundFinished
@@ -44,7 +54,7 @@ namespace Ex05.MemoryGame.Logic
         {
             get
             {
-                return m_players[0].Score > m_players[1].Score ? m_players[0] : m_players[1];
+                return m_Players[0].Score > m_Players[1].Score ? m_Players[0] : m_Players[1];
             }
         }
 
@@ -52,8 +62,18 @@ namespace Ex05.MemoryGame.Logic
         {
             get
             {
-                return m_players[0].Score < m_players[1].Score ? m_players[0] : m_players[1];
+                return m_Players[0].Score < m_Players[1].Score ? m_Players[0] : m_Players[1];
             }
+        }
+
+        public int GetMaximumBoardSize()
+        {
+            return m_MemoryBoard.GetMaxSize();
+        }
+
+        public int GetMinimumBoardSize()
+        {
+            return m_MemoryBoard.GetMinSize();
         }
 
         /// <summary>
@@ -75,13 +95,17 @@ namespace Ex05.MemoryGame.Logic
         {
             if (i_PlayerNames.Length == 1)
             {
-                this.m_players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
-                this.m_players[1] = new Player(Player.ePlayerType.Computer);
+                this.m_Players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
+                this.m_Players[0].Color = Player.ePlayerColor.Green;
+                this.m_Players[1] = new Player(Player.ePlayerType.Computer);
+                this.m_Players[1].Color = Player.ePlayerColor.Cyan;
             }
             else if (i_PlayerNames.Length == 2)
             {
-                this.m_players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
-                this.m_players[1] = new Player(i_PlayerNames[1], Player.ePlayerType.Human);
+                this.m_Players[0] = new Player(i_PlayerNames[0], Player.ePlayerType.Human);
+                this.m_Players[0].Color = Player.ePlayerColor.Green;
+                this.m_Players[1] = new Player(i_PlayerNames[1], Player.ePlayerType.Human);
+                this.m_Players[1].Color = Player.ePlayerColor.Blue;
             }
         }
 
@@ -125,7 +149,7 @@ namespace Ex05.MemoryGame.Logic
                 if (m_MemoryBoard[m_PrevSquareChosen.Row, m_PrevSquareChosen.Col].IsPairWith(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
                 {
                     // Player Scored!
-                    m_players[m_CurrentPlayingPlayerIndex].Score++;
+                    m_Players[m_CurrentPlayingPlayerIndex].Score++;
 
                     // Remove the Squares from the List
                     r_ShowSquareCards.Remove(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]);
@@ -169,7 +193,7 @@ namespace Ex05.MemoryGame.Logic
             m_MemoryBoard.FlipSquare(i_FirstSquare);
 
             // Find a Matching Square
-            i_SecondSquare = CompFindMatch(i_FirstSquare.Card);
+            i_SecondSquare = compFindMatch(i_FirstSquare.Card);
 
             // Flip the Second Square Card
             m_MemoryBoard.FlipSquare(i_SecondSquare);
@@ -223,7 +247,7 @@ namespace Ex05.MemoryGame.Logic
         /// </summary>
         /// <param name="i_FindCard">The Card to Find aMatch To</param>
         /// <returns>The Matching Square if Found And a Random Square if Not Found</returns>
-        private MemSquare CompFindMatch(Card i_FindCard)
+        private MemSquare compFindMatch(Card i_FindCard)
         {
             MemSquare retFoundSquare = null;
             foreach (MemSquare seenSquare in r_ShowSquareCards)
@@ -244,8 +268,7 @@ namespace Ex05.MemoryGame.Logic
 
             return retFoundSquare;
         }
-
-
+        
         /// <summary>
         /// Finds a Random Valid Square on the Board
         /// </summary>

@@ -91,6 +91,16 @@ namespace Ex05.MemoryGame.Logic
             get { return m_Card; }
         }
 
+        public void AttachObserver(IFlipedObserver i_Observer)
+        {
+            m_Card.AttachObserver(i_Observer);
+        }
+
+        public void DetachObserver(IFlipedObserver i_Observer)
+        {
+            m_Card.DetachObserver(i_Observer);
+        }
+
         /// <summary>
         /// Checks if a Square Card is Paired with Another Square Card
         /// </summary>

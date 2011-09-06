@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
+    <Compile Include="IFlipedObserver.cs" />
     <Compile Include="MemBoard.cs" />
     <Compile Include="MemGameBL.cs" />
     <Compile Include="MemSquare.cs" />
