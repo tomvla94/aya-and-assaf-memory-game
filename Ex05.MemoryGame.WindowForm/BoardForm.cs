@@ -1,4 +1,4 @@
- // -----------------------------------------------------------------------
+﻿ // -----------------------------------------------------------------------
 // <copyright file="BoardForm.cs" company="Microsoft">
 // TODO: Update copyright text.
 // </copyright>
@@ -16,7 +16,7 @@ namespace Ex05.MemoryGame.WindowForm
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class BoardForm : Form
+    public class BoardForm : Form, IChangePlayerObserver
     {
         private MemGameBL m_MemoryLogic = new MemGameBL();
         private int m_BoardHeight;
@@ -153,11 +153,13 @@ namespace Ex05.MemoryGame.WindowForm
             {
                 m_MemoryLogic.InitializePlayers(i_FirstPlayerName);
             }
+
+            m_MemoryLogic.AttachObserver(this as IChangePlayerObserver);
         }
 
         private void memcard_Click(object sender, EventArgs e)
         {
-            bool userGotPoint = false;
+            
             MemCardButton clickedButton = (MemCardButton)sender;
             clickedButton.BackColor = Color.FromName(m_MemoryLogic.CurrentPlayer.Color.ToString());
             clickedButton.Enabled = false;
@@ -168,9 +170,7 @@ namespace Ex05.MemoryGame.WindowForm
             }
             else
             {
-                userGotPoint = m_MemoryLogic.EndPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible);
-                showEndTurnMessage(userGotPoint);
-                if (!userGotPoint)
+                if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
                 {
                     clickedButton.BackColor = Color.WhiteSmoke;
                     clickedButton.Enabled = true;
@@ -179,7 +179,13 @@ namespace Ex05.MemoryGame.WindowForm
                 }
                 m_PrevClickedButton = null;
             }
+        }
 
+        private bool endPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_IsMatch)
+        {
+            bool retUserGotPoint = m_MemoryLogic.EndPlayerTurn(i_FirstSquare, i_SecondSquare, i_IsMatch);
+            showEndTurnMessage(retUserGotPoint);
+            return retUserGotPoint;
         }
 
         private void showEndTurnMessage(bool i_UserGotPoint)
@@ -203,6 +209,18 @@ namespace Ex05.MemoryGame.WindowForm
         void m_ButtonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void PlayerChanged()
+        {
+            if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Computer)
+            {
+                bool keepCardsVisible = false;
+                MemSquare firstSquareChoise = null;
+                MemSquare matchSquareChoice = null;
+                m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
+                endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
+            }
         }
     }
 }
