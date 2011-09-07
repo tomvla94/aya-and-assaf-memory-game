@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+ // -----------------------------------------------------------------------
 // <copyright file="BoardForm.cs" company="Microsoft">
 // TODO: Update copyright text.
 // </copyright>
@@ -12,7 +12,7 @@ namespace Ex05.MemoryGame.WindowForm
     using System.Windows.Forms;
     using System.Drawing;
     using MemoryGame.Logic;
-    
+
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
@@ -33,12 +33,12 @@ namespace Ex05.MemoryGame.WindowForm
             SettingsForm gameSettings = new SettingsForm();
             gameSettings.ShowDialog();
 
-            if (gameSettings.IsClosedOK())
+            if (gameSettings.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                initPlayers(gameSettings.GetFirstPlayerName(), gameSettings.GetSecondPlayerName());
+                initPlayers(gameSettings.FirstPlayerName, gameSettings.SecondPlayerName);
 
-                m_BoardHeight = gameSettings.GetBoardHeight();
-                m_BoardWidth = gameSettings.GetBoardWidth();
+                m_BoardHeight = gameSettings.BoardHeight;
+                m_BoardWidth = gameSettings.BoardWidth;
 
                 showGameBoard(m_MemoryLogic.Board);
             }
@@ -65,11 +65,13 @@ namespace Ex05.MemoryGame.WindowForm
 
         private void initControls()
         {
+            this.SuspendLayout();
+
             createMemoryButtons();
 
             int lastControlYPos = m_ButtonBoard[m_BoardHeight - 1, m_BoardWidth - 1].Location.Y + 90;
             int lastControlXPos = m_ButtonBoard[m_BoardHeight - 1, m_BoardWidth - 1].Location.X;
-            
+
             createLabel(out m_LabelCurrentPlayer, 15, lastControlYPos + 20);
             setCurrentPlayerNameLabel();
 
@@ -78,13 +80,15 @@ namespace Ex05.MemoryGame.WindowForm
 
             createLabel(out m_LabelSecondPlayerScore, 15, m_LabelFirstPlayerScore.Location.Y + 30);
             setSecondPlayerScore();
-            
+
             m_ButtonExit = new Button();
             m_ButtonExit.Text = "Exit";
             m_ButtonExit.AutoSize = true;
             m_ButtonExit.Location = new Point(lastControlXPos, m_LabelSecondPlayerScore.Location.Y);
             m_ButtonExit.Click += new EventHandler(m_ButtonExit_Click);
             this.Controls.Add(m_ButtonExit);
+            
+            this.ResumeLayout();
         }
 
         private void createMemoryButtons()
@@ -138,7 +142,7 @@ namespace Ex05.MemoryGame.WindowForm
             m_LabelCurrentPlayer.Text = string.Format("Current Player: {0}", m_MemoryLogic.CurrentPlayer.Name);
             m_LabelCurrentPlayer.BackColor = Color.FromName(m_MemoryLogic.CurrentPlayer.Color.ToString());
         }
-        
+
         private void initPlayers(string i_FirstPlayerName, string i_SecondPlayerName)
         {
             if (i_SecondPlayerName != null)
@@ -175,7 +179,7 @@ namespace Ex05.MemoryGame.WindowForm
                 }
                 m_PrevClickedButton = null;
             }
-            
+
         }
 
         private void showEndTurnMessage(bool i_UserGotPoint)
