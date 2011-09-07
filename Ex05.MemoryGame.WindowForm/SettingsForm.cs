@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="SettingsForm.cs" company="Microsoft">
 // TODO: Update copyright text.
 // </copyright>
@@ -27,15 +27,17 @@ namespace Ex05.MemoryGame.WindowForm
         private Label m_LabelSecondPlayer;
         private TextBox m_TextFirstPlayer;
         private TextBox m_TextSecondPlayer;
+        private LabeledTextBox m_LTextFirstPlayer;
         private int m_CurrentWidth;
         private int m_CurrentHeight;
         private Ex05.MemoryGame.Logic.MemGameBL m_MemoryLogic = new Logic.MemGameBL();
-        private bool v_IsStartClicked = false;
 
         public SettingsForm()
         {
             this.Text = "Memory Game - Settings";
-            this.FormBorderStyle = FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Size = new Size(450, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -56,15 +58,16 @@ namespace Ex05.MemoryGame.WindowForm
 
             m_LabelSubHeader.Text = "by Aya and Assaf";
             m_LabelSubHeader.Font = new Font("Calibri", 12);
-            m_LabelSubHeader.Location = new Point(m_LabelHeader.Location.X + m_LabelSubHeader.Text.Length, m_LabelHeader.Location.Y + m_LabelHeader.Size.Height + 20);
+            m_LabelSubHeader.Location = new Point(m_LabelHeader.Location.X + m_LabelSubHeader.Text.Length, m_LabelHeader.Bottom + 20);
             m_LabelSubHeader.AutoSize = true;
 
-            this.Controls.Add(m_LabelHeader);
-            this.Controls.Add(m_LabelSubHeader);
+            this.Controls.AddRange(new Control[]{ m_LabelHeader, m_LabelSubHeader });
         }
 
         private void initControls()
         {
+            this.SuspendLayout();
+
             // Setting the First Player Label and Text
             initFirstPlayerControls();
 
@@ -95,18 +98,26 @@ namespace Ex05.MemoryGame.WindowForm
 
             // Arrange the Controls
             arrangeControls(30, 20, 10, 30);
+
+            this.ResumeLayout();
         }
 
         private void initFirstPlayerControls()
         {
-            m_LabelFirstPlayer = new Label();
-            m_TextFirstPlayer = new TextBox();
-            m_LabelFirstPlayer.Text = "First Player Name:";
-            m_TextFirstPlayer.Text = string.Empty;
-            m_TextFirstPlayer.Size = new Size(100, 50);
-            m_LabelFirstPlayer.Size = new Size(120, 20);
-            m_LabelFirstPlayer.Parent = this;
-            m_TextFirstPlayer.Parent = this;
+            //m_LabelFirstPlayer = new Label();
+            //m_TextFirstPlayer = new TextBox();
+            //m_LabelFirstPlayer.Text = "First Player Name:";
+            //m_TextFirstPlayer.Text = string.Empty;
+            //m_TextFirstPlayer.Size = new Size(100, 50);
+            //m_LabelFirstPlayer.Size = new Size(120, 20);
+            //m_LabelFirstPlayer.Parent = this;
+            //m_TextFirstPlayer.Parent = this;
+            m_LTextFirstPlayer = new LabeledTextBox();
+            m_LTextFirstPlayer.Label = "First Player Name:";
+            m_LTextFirstPlayer.Text = string.Empty;
+            m_LTextFirstPlayer.Size = new Size(240, 20);
+            m_LTextFirstPlayer.BackColor = Color.AliceBlue;
+            this.Controls.Add(m_LTextFirstPlayer);
         }
 
         private void initSecondPlayerControls()
@@ -129,9 +140,10 @@ namespace Ex05.MemoryGame.WindowForm
 
         private void arrangeControls(int i_Top, int i_Left, int i_Right, int i_Bottom)
         {
-            m_LabelFirstPlayer.Location = new Point(i_Left, m_LabelSubHeader.Location.Y + m_LabelSubHeader.Size.Height + i_Top);
-            m_TextFirstPlayer.Location = new Point(m_LabelFirstPlayer.Location.X + m_LabelFirstPlayer.Size.Width + i_Right, m_LabelFirstPlayer.Location.Y);
-            m_LabelSecondPlayer.Location = new Point(i_Left, m_LabelFirstPlayer.Location.Y + i_Top);
+         //   m_LabelFirstPlayer.Location = new Point(i_Left, m_LabelSubHeader.Location.Y + m_LabelSubHeader.Size.Height + i_Top);
+           // m_TextFirstPlayer.Location = new Point(m_LabelFirstPlayer.Location.X + m_LabelFirstPlayer.Size.Width + i_Right, m_LabelFirstPlayer.Location.Y);
+            m_LTextFirstPlayer.Location = new Point(i_Left, m_LabelSubHeader.Bottom + i_Top);
+            m_LabelSecondPlayer.Location = new Point(i_Left, m_LTextFirstPlayer.Bottom + i_Top);
             m_TextSecondPlayer.Location = new Point(m_LabelSecondPlayer.Location.X + m_LabelSecondPlayer.Size.Width + i_Right, m_LabelSecondPlayer.Location.Y);
             m_ButtonApponent.Location = new Point(m_TextSecondPlayer.Location.X + m_TextSecondPlayer.Size.Width + i_Right, m_TextSecondPlayer.Location.Y);
             m_ButtonBoard.Location = new Point(i_Left, m_LabelSecondPlayer.Location.Y + i_Top + i_Bottom);
@@ -203,7 +215,7 @@ namespace Ex05.MemoryGame.WindowForm
 
         private void m_ButtonStart_Click(object sender, EventArgs e)
         {
-            v_IsStartClicked = true;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 
@@ -218,35 +230,34 @@ namespace Ex05.MemoryGame.WindowForm
             m_TextSecondPlayer.Enabled = false;
         }
 
-        public string GetFirstPlayerName()
+        public string FirstPlayerName
         {
-            return m_TextFirstPlayer.Text;
+            get {return m_TextFirstPlayer.Text; }
         }
 
-        public string GetSecondPlayerName()
+        public string SecondPlayerName
         {
-            string retPlayerName = null;
-            if (m_TextSecondPlayer.Text != "Computer")
+            get
             {
-                retPlayerName = m_TextSecondPlayer.Text;
+                string retPlayerName = null;
+                if (m_TextSecondPlayer.Text != "Computer")
+                {
+                    retPlayerName = m_TextSecondPlayer.Text;
+                }
+
+                return retPlayerName;
             }
-
-            return retPlayerName;
         }
 
-        public int GetBoardHeight()
+        public int BoardHeight
         {
-            return m_CurrentHeight;
+            get { return m_CurrentHeight; }
         }
 
-        public int GetBoardWidth()
+        public int BoardWidth
         {
-            return m_CurrentWidth;
-        }
-
-        public bool IsClosedOK()
-        {
-            return v_IsStartClicked;
+            get { return m_CurrentWidth; }
         }
     }
 }
+
