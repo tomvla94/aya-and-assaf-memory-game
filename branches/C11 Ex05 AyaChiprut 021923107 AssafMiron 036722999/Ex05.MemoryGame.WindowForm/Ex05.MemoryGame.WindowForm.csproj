@@ -39,6 +39,9 @@
     <Compile Include="BoardForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LabeledTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MemCardButton.cs">
       <SubType>Component</SubType>
     </Compile>
