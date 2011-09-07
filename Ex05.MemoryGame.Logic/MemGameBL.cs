@@ -17,7 +17,6 @@ namespace Ex05.MemoryGame.Logic
     public class MemGameBL
     {
         private readonly List<MemSquare> r_ShowSquareCards = new List<MemSquare>();
-        private List<IChangePlayerObserver> m_PlayerChangedObservers = new List<IChangePlayerObserver>();
         private MemBoard m_MemoryBoard = new MemBoard();
         private Player[] m_Players = new Player[2];
         private MemSquare m_PrevSquareChosen = null;
@@ -308,11 +307,6 @@ namespace Ex05.MemoryGame.Logic
             {
                 m_CurrentPlayingPlayerIndex = 0;
             }
-
-            foreach (IChangePlayerObserver observer in m_PlayerChangedObservers)
-	        {
-                observer.PlayerChanged();
-	        }   
         }
 
         /// <summary>
@@ -354,16 +348,6 @@ namespace Ex05.MemoryGame.Logic
             }
 
             return retUserGotPoint;
-        }
-
-        public void AttachObserver(IChangePlayerObserver i_Observer)
-        {
-            m_PlayerChangedObservers.Add(i_Observer);
-        }
-
-        public void DetachObserver(IChangePlayerObserver i_Observer)
-        {
-            m_PlayerChangedObservers.Remove(i_Observer);
         }
     }
 }

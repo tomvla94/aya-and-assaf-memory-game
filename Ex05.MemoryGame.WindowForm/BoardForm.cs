@@ -16,7 +16,7 @@ namespace Ex05.MemoryGame.WindowForm
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class BoardForm : Form, IChangePlayerObserver
+    public class BoardForm : Form
     {
         private MemGameBL m_MemoryLogic = new MemGameBL();
         private int m_BoardHeight;
@@ -49,7 +49,22 @@ namespace Ex05.MemoryGame.WindowForm
             initBoardSize();
             initControls();
 
-            ShowDialog();
+            this.ShowDialog();
+            do
+            {
+                // Start a Memory Game Round
+                // Inform the Players Turn
+                // Check if the Player is Human
+                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+                {
+
+                }
+                else
+                {
+                    playComputerTurn();
+                }
+            }
+            while (!m_MemoryLogic.RoundFinished);
         }
 
         private void initBoardSize()
@@ -153,8 +168,6 @@ namespace Ex05.MemoryGame.WindowForm
             {
                 m_MemoryLogic.InitializePlayers(i_FirstPlayerName);
             }
-
-            m_MemoryLogic.AttachObserver(this as IChangePlayerObserver);
         }
 
         private void memcard_Click(object sender, EventArgs e)
@@ -178,6 +191,10 @@ namespace Ex05.MemoryGame.WindowForm
                     m_PrevClickedButton.Enabled = true;
                 }
                 m_PrevClickedButton = null;
+                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Computer)
+                {
+                    playComputerTurn();
+                }
             }
         }
 
@@ -211,16 +228,13 @@ namespace Ex05.MemoryGame.WindowForm
             this.Close();
         }
 
-        public void PlayerChanged()
+        private void playComputerTurn()
         {
-            if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Computer)
-            {
-                bool keepCardsVisible = false;
-                MemSquare firstSquareChoise = null;
-                MemSquare matchSquareChoice = null;
-                m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
-                endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
-            }
+            bool keepCardsVisible = false;
+            MemSquare firstSquareChoise = null;
+            MemSquare matchSquareChoice = null;
+            m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
+            endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
         }
     }
 }
