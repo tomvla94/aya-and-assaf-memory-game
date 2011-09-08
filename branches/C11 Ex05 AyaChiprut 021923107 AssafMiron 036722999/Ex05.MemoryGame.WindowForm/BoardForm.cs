@@ -50,6 +50,10 @@ namespace Ex05.MemoryGame.WindowForm
             initControls();
 
             this.ShowDialog();
+            // TODO: Need to have an Event on each player turn (Maybe use delegate in Change Player Index)
+            // The event will triger the appropiate functionality
+            // no need to apply PlayPlayerTurn on Button Click
+            // Need to save Clicked buttons 
             do
             {
                 // Start a Memory Game Round
@@ -120,8 +124,8 @@ namespace Ex05.MemoryGame.WindowForm
                     m_ButtonBoard[i, j].Text = "";
                     m_ButtonBoard[i, j].Size = new Size(90, 90);
                     m_ButtonBoard[i, j].Square = m_MemoryLogic.Board[i, j];
-                    m_ButtonBoard[i, j].Click += new EventHandler(memcard_Click);
                     m_ButtonBoard[i, j].Location = new Point(i * 90 + 15, j * 90 + 20);
+                    m_ButtonBoard[i, j].Click += new EventHandler(memcard_Click);
                     this.Controls.Add(m_ButtonBoard[i, j]);
                 }
             }
