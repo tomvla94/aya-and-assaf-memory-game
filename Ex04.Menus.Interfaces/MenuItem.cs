@@ -8,7 +8,7 @@ namespace Ex04.Menus.Interfaces
     {
         private const int k_BackOptionIndex = 0;
         private List<MenuItem> m_MenuItems;
-        private IMenuAction m_Action;     
+        private IMenuItemAction m_Action;     
         private string m_BackOption;
         private string m_Title = string.Empty;
 
@@ -141,7 +141,7 @@ namespace Ex04.Menus.Interfaces
             }
         }
 
-        public IMenuAction Action
+        public IMenuItemAction Action
         {
             get { return m_Action; }
             set { m_Action = value; }

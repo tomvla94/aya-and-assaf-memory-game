@@ -8,8 +8,11 @@ namespace Ex04.Menus.Test
     {
         static void Main(string[] args)
         {
-            plumbingMenuUsingInterfaces menu = new plumbingMenuUsingInterfaces();
-            menu.Run();
+            plumbingMenuUsingInterfaces iterfaceMenu = new plumbingMenuUsingInterfaces();
+            iterfaceMenu.Run();
+
+            plumbingMenuUsingDelegates delegateMenu = new plumbingMenuUsingDelegates();
+            delegateMenu.Run();
         }
     }
 }
