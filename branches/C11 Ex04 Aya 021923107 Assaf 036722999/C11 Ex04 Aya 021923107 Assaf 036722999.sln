@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex04.Menus.Interfaces", "Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex04.Menus.Test", "Ex04.Menus.Test\Ex04.Menus.Test.csproj", "{4A315415-0A46-4B3B-91E8-422450A53BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex04.Menus.Delegates", "Ex04.Menus.Delegates\Ex04.Menus.Delegates.csproj", "{50127679-2719-409B-85C1-A75A0CD752C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{4A315415-0A46-4B3B-91E8-422450A53BDA}.Debug|x86.Build.0 = Debug|x86
 		{4A315415-0A46-4B3B-91E8-422450A53BDA}.Release|x86.ActiveCfg = Release|x86
 		{4A315415-0A46-4B3B-91E8-422450A53BDA}.Release|x86.Build.0 = Release|x86
+		{50127679-2719-409B-85C1-A75A0CD752C3}.Debug|x86.ActiveCfg = Debug|x86
+		{50127679-2719-409B-85C1-A75A0CD752C3}.Debug|x86.Build.0 = Debug|x86
+		{50127679-2719-409B-85C1-A75A0CD752C3}.Release|x86.ActiveCfg = Release|x86
+		{50127679-2719-409B-85C1-A75A0CD752C3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

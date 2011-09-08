@@ -33,13 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="plumbingMenu.cs" />
+    <Compile Include="plumbingMenuUsingDelegates.cs" />
+    <Compile Include="plumbingMenuUsingInterfaces.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ex04.Menus.Delegates\Ex04.Menus.Delegates.csproj">
+      <Project>{50127679-2719-409B-85C1-A75A0CD752C3}</Project>
+      <Name>Ex04.Menus.Delegates</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ex04.Menus.Interfaces\Ex04.Menus.Interfaces.csproj">
       <Project>{A1E51CD0-92CA-4EEC-9EEE-F8A2C8FA4C24}</Project>
       <Name>Ex04.Menus.Interfaces</Name>
