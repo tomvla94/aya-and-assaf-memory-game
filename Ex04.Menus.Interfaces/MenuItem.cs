@@ -6,6 +6,7 @@ namespace Ex04.Menus.Interfaces
 {
     public class MenuItem
     {
+        private const char k_UnderLineChar = '*';
         private const int k_BackOptionIndex = 0;
         private List<MenuItem> m_MenuItems;
         private IMenuItemAction m_Action;     
@@ -95,6 +96,7 @@ namespace Ex04.Menus.Interfaces
                         }
                         else if (selectedMenuItem.m_Action != null)
                         {
+                            Console.Clear();
                             selectedMenuItem.m_Action.DoAction();
                             Console.WriteLine("{0}Press any key to continue...", Environment.NewLine);
                             Console.ReadLine();
@@ -150,12 +152,8 @@ namespace Ex04.Menus.Interfaces
 
         private void printUnderLine(int i_TitleLength)
         {
-            for (int i = 0; i < i_TitleLength; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.WriteLine();
+            string underLine = new string(k_UnderLineChar, i_TitleLength);
+            Console.WriteLine(underLine);
         }
 
         private bool IsMenu
