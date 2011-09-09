@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="FuelTypedVehicle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -57,20 +50,22 @@ namespace Ex03.GarageLogic
         /// </summary>
         /// <param name="i_Amount">Can not exeed the vehicles' Maximum Fuel Liters amount</param>
         /// <param name="i_FuelType">Must be the Same Fuel Type that the Vehicle Needs</param>
-        public virtual void Refuel(int i_Amount, eFuelType i_FuelType)
+        public virtual void Refuel(float i_Amount, eFuelType i_FuelType)
         {
             if (i_FuelType != m_FuelType)
             {
                 string wrongFuelErrMsg = string.Format(k_WrongFuelErrorFormat, m_FuelType, i_FuelType);
-                throw new ArgumentException(wrongFuelErrMsg);
+                throw new FormatException(wrongFuelErrMsg);
             }
-            else if (i_Amount + m_CurrentFuelLitersAmount > m_MaxFuelLitersAmount || i_Amount <= 0)
+            else if (i_Amount > m_MaxFuelLitersAmount || i_Amount <= 0)
             {
-                throw new ValueOutOfRangeException("Amount of fuel is bigger or smaller than possible",
-                    m_MaxFuelLitersAmount - m_CurrentFuelLitersAmount, 0);
+                throw new ValueOutOfRangeException(
+                            "Amount of fuel is bigger or smaller than possible",
+                            1, 
+                            m_MaxFuelLitersAmount);
             }
 
-            m_CurrentFuelLitersAmount += i_Amount;
+            m_CurrentFuelLitersAmount = i_Amount;
         }
 
         public override float GetRemainingEnergyPrecentage()
@@ -92,8 +87,6 @@ namespace Ex03.GarageLogic
         {
             m_PropertiesForInput = new List<string>();
 
-            m_PropertiesForInput.Add("Fuel Type");
-            m_PropertiesForInput.Add("Maximum Fuel Liters");
             m_PropertiesForInput.Add("Current Fuel Amount (Liters)");
         }
 
@@ -121,17 +114,22 @@ namespace Ex03.GarageLogic
         /// <param name="i_PropertiesFromUser">Must be of Length 3</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-            // Get First Parameter - The Fuel Type
-            m_FuelType = (eFuelType)Enum.Parse(typeof(eFuelType), i_PropertiesFromUser[0]);
+            // Get First Parameter - The Remaining Amount of Fuel Liters
+            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_CurrentFuelLitersAmount);
             i_PropertiesFromUser.RemoveAt(0);
 
-            // Get Second Parameter - The Maximun Amount of Liters
-            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxFuelLitersAmount);
-            i_PropertiesFromUser.RemoveAt(0);
+            if (!tryParse)
+            {
+                throw new FormatException("Remaining Fuel Liters must be a number.");
+            }
 
-            // Get third Parameter - The Remaining Amount of Fuel Liters
-            tryParse = float.TryParse(i_PropertiesFromUser[0], out m_CurrentFuelLitersAmount);
-            i_PropertiesFromUser.RemoveAt(0);
+            if (m_CurrentFuelLitersAmount > m_MaxFuelLitersAmount)
+            {
+                throw new ValueOutOfRangeException(
+                            "Amount of fuel is bigger or smaller than possible",
+                            1, 
+                            m_MaxFuelLitersAmount);
+            }
         }
     }
 }

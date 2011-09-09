@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="VehicleInGarage.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -97,7 +90,15 @@ namespace Ex03.GarageLogic
 
         public string GetDetails()
         {
-            return m_Vehicle.GetDetails();
+            string retDetails = string.Format(
+                                "Owner Name: {1}{0}Owner Phone: {2}{0}Vehicle State in Garage: {3}{0}Vehicle Details:{0}{4}",
+                                Environment.NewLine,
+                                m_OwnerName,
+                                m_OwnerPhoneNumber,
+                                m_VehicleState.ToString(),
+                                m_Vehicle.GetDetails());
+
+            return retDetails;
         }
     }
 }

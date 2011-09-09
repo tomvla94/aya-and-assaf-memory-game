@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BatteryTypedVehicle.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="FuelTypedVehicle.cs" />
     <Compile Include="GarageBL.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
@@ -46,7 +47,6 @@
     <Compile Include="Vehicles\Car.cs" />
     <Compile Include="Vehicles\ElectricCar.cs" />
     <Compile Include="Vehicles\ElectricMotorcycle.cs" />
-    <Compile Include="Vehicles\Engine.cs" />
     <Compile Include="Vehicles\FueledBus.cs" />
     <Compile Include="Vehicles\FueledCar.cs" />
     <Compile Include="Vehicles\FueledMotorcycle.cs" />

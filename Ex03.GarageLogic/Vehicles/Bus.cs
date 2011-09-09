@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Bus.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -36,26 +29,6 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
-        /// <summary>
-        /// Complex Constructor
-        /// </summary>
-        /// <param name="i_Model"></param>
-        /// <param name="i_LicenseNumber"></param>
-        /// <param name="i_Wheels">List must be with 8 Wheels</param>
-        /// <param name="i_MaxAllowedAmountOfPassengers">Only possitive Numbers</param>
-        /// <param name="i_HasGuideSeat"></param>
-        public Bus(
-            string i_Model,
-            string i_LicenseNumber,
-            List<Wheel> i_Wheels,
-            int i_MaxAllowedAmountOfPassengers,
-            bool i_HasGuideSeat)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
-        {
-            m_MaxAllowedAmountOfPassengers = i_MaxAllowedAmountOfPassengers;
-            v_HasGuideSeat = i_HasGuideSeat;
-        }
-
         public int MaxAllowedAmountOfPassengers
         {
             get { return m_MaxAllowedAmountOfPassengers; }
@@ -73,6 +46,9 @@ namespace Ex03.GarageLogic
                 m_Wheels.Add(new Wheel(k_MaxAirPressure));
                 m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
             }
+
+            // Add the Properties for the Energy Type of the Car
+            m_PropertiesForInput.AddRange(m_Engine.GetPropertiesForInput());
 
             // Add the Properties for the Bus
             m_PropertiesForInput.Add("Maximum Allowed Number of Passengers");
@@ -93,9 +69,17 @@ namespace Ex03.GarageLogic
             // Set the Properties of the Base Vehicle
             base.SetPropertiesFromInput(i_PropertiesFromUser);
 
+            // Set the Properties for the Engine
+            m_Engine.SetPropertiesFromInput(i_PropertiesFromUser);
+
             // Get First Parameter - The Number of Allowed Passengers
             bool tryParse = int.TryParse(i_PropertiesFromUser[0], out m_MaxAllowedAmountOfPassengers);
             i_PropertiesFromUser.RemoveAt(0);
+
+            if (!tryParse || m_MaxAllowedAmountOfPassengers < 0)
+            {
+                throw new FormatException("Allowed Passengers Number must be a possitive number.");
+            }
 
             // Get Second Parameter - If the Bus has a Guid seat or not
             v_HasGuideSeat = bool.Parse(i_PropertiesFromUser[0]);

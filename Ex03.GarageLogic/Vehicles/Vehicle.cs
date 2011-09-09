@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Vehicle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -36,24 +29,7 @@ namespace Ex03.GarageLogic
             m_PropertiesForInput.Add("License Number");
         }
 
-        protected Vehicle(
-            string i_Model,
-            string i_LicenseNumber,
-            int i_NumOfWeels,
-            List<Wheel> i_Wheels)
-        {
-            m_Model = i_Model;
-            m_LicenseNumber = i_LicenseNumber;
-            if (i_NumOfWeels <= k_MinNumOfWheels)
-            {
-                throw new ValueOutOfRangeException("Num of wheels is smaller then possible",
-                    k_MinNumOfWheels, float.MaxValue);
-            }
-
-            m_Wheels = i_Wheels;
-        }
-
-        public string Model
+              public string Model
         {
             get { return m_Model; }
         }
