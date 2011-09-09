@@ -9,6 +9,8 @@ namespace Ex04.Menus.Delegates
     public class MenuItem
     {      
         public event MenuItemActionEventHandler MenuAction;
+
+        private const char k_UnderLineChar = '*';
         private const int k_BackOptionIndex = 0;
         private List<MenuItem> m_MenuItems;
         private string m_BackOption;
@@ -96,6 +98,7 @@ namespace Ex04.Menus.Delegates
                         }
                         else if (selectedMenuItem.MenuAction != null)
                         {
+                            Console.Clear();
                             selectedMenuItem.MenuAction.Invoke();
                             Console.WriteLine("{0}Press any key to continue...", Environment.NewLine);
                             Console.ReadLine();
@@ -144,12 +147,8 @@ namespace Ex04.Menus.Delegates
 
         private void printUnderLine(int i_TitleLength)
         {
-            for (int i = 0; i < i_TitleLength; i++)
-            {
-                Console.Write("*");
-            }
-
-            Console.WriteLine();
+            string underLine = new string(k_UnderLineChar, i_TitleLength);
+            Console.WriteLine(underLine);
         }
 
         private bool IsMenu
