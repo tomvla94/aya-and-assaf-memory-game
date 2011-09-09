@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Car.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -69,6 +62,9 @@ namespace Ex03.GarageLogic
                 m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
             }
 
+            // Add the Properties for the Energy Type of the Car
+            m_PropertiesForInput.AddRange(m_Engine.GetPropertiesForInput());
+
             // Add the Properties for the Car
             string colors;
             colors = "Car Color [";
@@ -100,6 +96,9 @@ namespace Ex03.GarageLogic
             // Set the Properties of the Base Vehicle
             base.SetPropertiesFromInput(i_PropertiesFromUser);
 
+            // Set te Properties of the Engine
+            m_Engine.SetPropertiesFromInput(i_PropertiesFromUser);
+
             // Get First Parameter - The Car Color
             string colorInTheRightFormat = getColorRightFormat(i_PropertiesFromUser[0]);
             m_CarColor = (eCarColor)Enum.Parse(typeof(eCarColor), colorInTheRightFormat);
@@ -111,8 +110,10 @@ namespace Ex03.GarageLogic
 
             if (m_NumOfDoors < k_MinNumOfDoors || m_NumOfDoors > k_MaxNumOfDoors)
             {
-                throw new ValueOutOfRangeException("Number of doors is smaller or bigger than possible",
-                    k_MinNumOfDoors, k_MaxNumOfDoors);
+                throw new ValueOutOfRangeException(
+                            "Number of doors is smaller or bigger than possible",
+                            k_MinNumOfDoors,
+                            k_MaxNumOfDoors);
             }
         }
 

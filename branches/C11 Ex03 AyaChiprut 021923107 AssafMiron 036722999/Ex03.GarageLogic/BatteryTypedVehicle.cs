@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="BattaryTypedVehicle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -25,8 +18,10 @@ namespace Ex03.GarageLogic
             EngineType = eEngineType.Battery;
             if (i_MaxBatteryHours <= k_MinBatteryCharge)
             {
-                throw new ValueOutOfRangeException("Max battery hour has to be possitive",
-                    k_MinBatteryCharge, m_MaxBatteryHours);
+                throw new ValueOutOfRangeException(
+                            "Max battery hour has to be possitive",
+                             k_MinBatteryCharge,
+                             m_MaxBatteryHours);
             }
 
             m_MaxBatteryHours = i_MaxBatteryHours;
@@ -67,7 +62,6 @@ namespace Ex03.GarageLogic
         {
             m_PropertiesForInput = new List<string>();
 
-            m_PropertiesForInput.Add("Maximum Battery Hours");
             m_PropertiesForInput.Add("Remiaing Battery Hours");
         }
 
@@ -106,21 +100,26 @@ namespace Ex03.GarageLogic
         /// <summary>
         /// Sets the Battery Engine Properties Recieved from the User
         /// </summary>
-        /// <param name="i_PropertiesFromUser">Must be of Length 2</param>
+        /// <param name="i_PropertiesFromUser">Must be of Length 1</param>
         public override void SetPropertiesFromInput(List<string> i_PropertiesFromUser)
         {
-            // Get First Parameter - The Maximum Battery Hours
-            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_MaxBatteryHours);
+            // Get First Parameter - The Remaining Battery Hours
+            bool tryParse = float.TryParse(i_PropertiesFromUser[0], out m_RemainingBatteryHours);
             i_PropertiesFromUser.RemoveAt(0);
 
-            // Get Second Parameter - The Remaining Battery Hours
-            tryParse = float.TryParse(i_PropertiesFromUser[0], out m_RemainingBatteryHours);
-            i_PropertiesFromUser.RemoveAt(0);
-
-            if(m_RemainingBatteryHours < k_MinBatteryCharge || m_RemainingBatteryHours > m_MaxBatteryHours)
+            if (tryParse)
             {
-                throw new ValueOutOfRangeException("Remaining battery hours is smaller or bigger than possible",
-                    k_MinBatteryCharge, m_MaxBatteryHours);
+                if (m_RemainingBatteryHours < k_MinBatteryCharge || m_RemainingBatteryHours > m_MaxBatteryHours)
+                {
+                    throw new ValueOutOfRangeException(
+                                "Remaining battery hours is smaller or bigger than possible",
+                                k_MinBatteryCharge,
+                                m_MaxBatteryHours);
+                }
+            }
+            else
+            {
+                throw new FormatException("Remaining battery hours must be a number.");
             }
         }
     }

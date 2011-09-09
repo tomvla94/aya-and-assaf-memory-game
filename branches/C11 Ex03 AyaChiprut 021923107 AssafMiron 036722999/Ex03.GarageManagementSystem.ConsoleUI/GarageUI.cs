@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="GarageUI.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageManagementSystem.ConsoleUI
+﻿namespace Ex03.GarageManagementSystem.ConsoleUI
 {
     using System;
     using System.Collections.Generic;
@@ -67,8 +60,15 @@ Enter your choice: ");
             {
                 case eMenuOption.InsertVehicle:
                     {
-                        insertVehicleToTheGarage();
-                        waitForUserResponse("Vehicle Entered the Garage.");
+                        if (insertVehicleToTheGarage())
+                        {
+                            waitForUserResponse("Vehicle Entered the Garage.");
+                        }
+                        else
+                        {
+                            waitForUserResponse("An Error occurred, the Vehicle is NOT in the Garage.");
+                        }
+
                         break;
                     }
 
@@ -89,21 +89,35 @@ Enter your choice: ");
                 case eMenuOption.InflateTires:
                     {
                         inflatesTiresOfAVehicle();
-                        waitForUserResponse("All Vehicle Wheels are Inflated");
+                        waitForUserResponse("All Vehicle Wheels are Inflated to the Maximum.");
                         break;
                     }
 
                 case eMenuOption.RefuelVehicle:
                     {
-                        refuelAvehicle();
-                        waitForUserResponse("The Vehicle is now Refuled");
+                        if (refuelAvehicle())
+                        {
+                            waitForUserResponse("The Vehicle is now Refuled");
+                        }
+                        else
+                        {
+                            waitForUserResponse();
+                        }
+
                         break;
                     }
 
                 case eMenuOption.RechargeVehicle:
                     {
-                        rechargeAVehicle();
-                        waitForUserResponse("The Vehicle is now Recharged");
+                        if (rechargeAVehicle())
+                        {
+                            waitForUserResponse("The Vehicle is now Recharged");
+                        }
+                        else
+                        {
+                            waitForUserResponse();
+                        }
+
                         break;
                     }
 
@@ -129,7 +143,7 @@ Enter your choice: ");
             {
                 foreach (string message in i_MessageToDisplay)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine(message);
                 }
             }
 
@@ -155,8 +169,10 @@ Enter your choice: ");
             Console.WriteLine(vehicleDeatails);
         }
 
-        private void rechargeAVehicle()
+        private bool rechargeAVehicle()
         {
+            bool retSuccess = false;
+            Console.WriteLine(string.Format("Please wait while recharging you vehicle...{0}", Environment.NewLine));
             try
             {
                 string licenseNumber;
@@ -166,19 +182,25 @@ Enter your choice: ");
                 {
                     numOfHours = getNumOfHoursToRecharge();
                     m_GarageLogic.RechargeVehicle(licenseNumber, numOfHours);
+                    retSuccess = true;
                 }
             }
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
-                rechargeAVehicle();
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
-                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                Console.WriteLine(
+                        "{0}{3}Minimum value:{1}{3}Maximum value:{2}",
+                        i_ValueOutOfRangeException.Message,
+                        i_ValueOutOfRangeException.MinValue,
+                        i_ValueOutOfRangeException.MaxValue,
+                        Environment.NewLine);
                 rechargeAVehicle();
             }
+
+            return retSuccess;
         }
 
         private float getNumOfHoursToRecharge()
@@ -204,8 +226,10 @@ Enter your choice: ");
             return numericAmount;
         }
 
-        private void refuelAvehicle()
+        private bool refuelAvehicle()
         {
+            bool retSuccess = false;
+            Console.WriteLine(string.Format("Please wait while refueling you vehicle...{0}", Environment.NewLine));
             try
             {
                 FuelTypedVehicle.eFuelType fuelType;
@@ -217,19 +241,30 @@ Enter your choice: ");
                     fuelType = getNeededFuelTypeFromUser();
                     amountNeeded = getAmountOfFuelNeeded();
                     m_GarageLogic.RefuelVehicle(licenseNumber, fuelType, amountNeeded);
+                    retSuccess = true;
                 }
+            }
+            catch (FormatException i_FormatException)
+            {
+                Console.WriteLine(i_FormatException.Message);
+                refuelAvehicle();
             }
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
-                refuelAvehicle();
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
-                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                Console.WriteLine(
+                        "{0}{3}Minimum value:{1}{3}Maximum value:{2}",
+                        i_ValueOutOfRangeException.Message,
+                        i_ValueOutOfRangeException.MinValue,
+                        i_ValueOutOfRangeException.MaxValue,
+                        Environment.NewLine);
                 refuelAvehicle();
             }
+
+            return retSuccess;
         }
 
         private int getAmountOfFuelNeeded()
@@ -310,7 +345,6 @@ Enter your choice: ");
                 {
                     Console.WriteLine(string.Format("Inflating...{0}", Environment.NewLine));
                     m_GarageLogic.InflateVehicleWheelAir(licenseNumber);
-                    Console.WriteLine(string.Format("All Vehicle Wheels are Inflated to the Maximum.{0}", Environment.NewLine));
                 }
                 catch (ArgumentException ex)
                 {
@@ -319,8 +353,12 @@ Enter your choice: ");
                 }
                 catch (ValueOutOfRangeException i_ValueOutOfRangeException)
                 {
-                     Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
-                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                     Console.WriteLine(
+                             "{0}{3}Minimum value:{1}{3}Maximum value:{2}",
+                             i_ValueOutOfRangeException.Message,
+                            i_ValueOutOfRangeException.MinValue,
+                            i_ValueOutOfRangeException.MaxValue,
+                    Environment.NewLine);
                     inflatesTiresOfAVehicle();
                 }
             }
@@ -484,8 +522,9 @@ Enter your choice: ");
             return vehicleType;
         }
 
-        private void insertVehicleToTheGarage()
+        private bool insertVehicleToTheGarage()
         {
+            bool retSuccess = false;
             string userInput;
             string[] vehicleTypes;
             int chosenOption;
@@ -521,6 +560,7 @@ Enter your choice: ");
                 string ownerName = getOwnerName();
                 string ownerPhone = getOwnerPhoneNumber();
                 m_GarageLogic.AddVehicleToGarage(ownerName, ownerPhone, newVehicle);
+                retSuccess = true;
             }
             catch (FormatException i_FormatException)
             {
@@ -530,12 +570,20 @@ Enter your choice: ");
             catch (ArgumentException i_ArgumentException)
             {
                 Console.WriteLine(i_ArgumentException.Message);
+                insertVehicleToTheGarage();
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                 Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
-                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                 Console.WriteLine(
+                         "{0}{3}Minimum value:{1}{3}Maximum value:{2}",
+                         i_ValueOutOfRangeException.Message,
+                        i_ValueOutOfRangeException.MinValue,
+                        i_ValueOutOfRangeException.MaxValue,
+                        Environment.NewLine);
+                 insertVehicleToTheGarage();
             }
+
+            return retSuccess;
         }
 
         private string getOwnerPhoneNumber()
@@ -568,8 +616,12 @@ Enter your choice: ");
             }
             catch (ValueOutOfRangeException i_ValueOutOfRangeException)
             {
-                Console.WriteLine("{0}{3}Minimum value:{1}{3}Maximum value:{2}", i_ValueOutOfRangeException.Message,
-                    i_ValueOutOfRangeException.MinValue, i_ValueOutOfRangeException.MaxValue, Environment.NewLine);
+                Console.WriteLine(
+                        "{0}{3}Minimum value:{1}{3}Maximum value:{2}",
+                        i_ValueOutOfRangeException.Message,
+                        i_ValueOutOfRangeException.MinValue,
+                        i_ValueOutOfRangeException.MaxValue,
+                        Environment.NewLine);
                 getInformationAboutTheVehicle(newVehicle);
             }
         }

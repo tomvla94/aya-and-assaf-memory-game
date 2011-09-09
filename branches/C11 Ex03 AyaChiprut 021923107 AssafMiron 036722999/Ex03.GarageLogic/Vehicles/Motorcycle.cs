@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Motorcycle.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -44,36 +37,6 @@ namespace Ex03.GarageLogic
             fillPropertiesForUser();
         }
 
-        /// <summary>
-        /// Complex Motorcycle Constructor
-        /// </summary>
-        /// <param name="i_Model"></param>
-        /// <param name="i_LicenseNumber"></param>
-        /// <param name="i_Wheels">List Must be with 2 Wheels</param>
-        /// <param name="i_EngineType"></param>
-        public Motorcycle(
-            string i_Model,
-            string i_LicenseNumber,
-            List<Wheel> i_Wheels,
-            Engine i_EngineType)
-            : base(i_Model, i_LicenseNumber, k_NumOfWheels, i_Wheels)
-        {
-            m_Engine = i_EngineType;
-            m_PropertiesForInput = new List<string>();
-
-            string licenseType = "License Type [";
-            Array eLicense = Enum.GetValues(typeof(eLicenseType));
-
-            for (int i = 0; i < eLicense.Length; i++)
-            {
-                licenseType += eLicense.GetValue(i).ToString() + ", ";
-            }
-
-            licenseType += "\b\b]";
-
-            m_PropertiesForInput.Add(licenseType);
-        }
-
         public eLicenseType LicenseType
         { 
             get { return m_LicenseType; } 
@@ -86,6 +49,9 @@ namespace Ex03.GarageLogic
                 m_Wheels.Add(new Wheel(k_MaxAirPressure));
                 m_PropertiesForInput.AddRange(m_Wheels[i].GetPropertiesForInput());
             }
+
+            // Add the Properties for the Energy Type of the Car
+            m_PropertiesForInput.AddRange(m_Engine.GetPropertiesForInput());
 
             // Add the Properties for the Motorcycle
             string licenseType = "License Type [";
@@ -114,6 +80,9 @@ namespace Ex03.GarageLogic
         {
             // Set the Properties of the Base Vehicle
             base.SetPropertiesFromInput(i_PropertiesFromUser);
+
+            // Set the Properties for the Engine
+            m_Engine.SetPropertiesFromInput(i_PropertiesFromUser);
 
             // Get First Parameter - The License Type
             string licenseTypeInTheRightFormat = getLicensTypeRightFormat(i_PropertiesFromUser[0]);

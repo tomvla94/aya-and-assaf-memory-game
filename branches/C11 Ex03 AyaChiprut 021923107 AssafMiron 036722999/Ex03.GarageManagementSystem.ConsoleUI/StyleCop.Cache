@@ -1,82 +1,796 @@
 <stylecopresultscache>
-  <version>11</version>
-  <sourcecode name="VehicleDescriptor.cs" parser="StyleCop.CSharp.CsParser">
+  <version>10</version>
+  <sourcecode name="Program.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
+      <timestamp>06/30/2010 11:43:56</timestamp>
+      <milliseconds>0</milliseconds>
     </settings>
-    <timestamp>08/24/2011 16:13:50</timestamp>
-    <milliseconds>0</milliseconds>
+    <timestamp>08/31/2011 16:17:11</timestamp>
+    <milliseconds>718</milliseconds>
     <violations>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
+        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>12</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="GarageUI.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/30/2010 11:43:56</timestamp>
+      <milliseconds>0</milliseconds>
+    </settings>
+    <timestamp>08/31/2011 16:17:11</timestamp>
+    <milliseconds>656</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="FileMustHaveHeader" ruleCheckId="SA1633">
+        <context>The file has no header, the header Xml is invalid, or the header is not located at the top of the file.</context>
+        <line>1</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The class must have a documentation header.</context>
         <line>8</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The enum must have a documentation header.</context>
         <line>10</line>
         <warning>False</warning>
       </violation>
-      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
-        <context>The class must have an access modifier.</context>
-        <line>7</line>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>enum names begin with an upper-case letter: eMenuOption.</context>
+        <line>10</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
+        <context>All enums must be placed after all fields.</context>
+        <line>10</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>12</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>13</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>14</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>15</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>16</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>17</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>18</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="EnumerationItemsMustBeDocumented" ruleCheckId="SA1602">
+        <context>The enumeration sub-item must have a documentation header.</context>
+        <line>19</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The field must have a documentation header.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="VariableNamesMustNotBePrefixed" ruleCheckId="SA1308">
+        <context>Variable names must not start with 'm_'.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustBeginWithLowerCaseLetter" ruleCheckId="SA1306">
+        <context>Variable names must start with a lower-case letter: m_GarageLogic.</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>24</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getMenuOptionFromInput must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>46</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to handleUserChoice must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>49</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>57</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: handleUserChoice.</context>
+        <line>57</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>65</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to insertVehicleToTheGarage must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>63</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>69</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printListOfTheVehicles must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>77</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>78</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to changeVehicleStatus must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>84</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>85</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to inflatesTiresOfAVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>91</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>92</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>100</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to refuelAvehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>98</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>104</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>114</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to rechargeAVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>112</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>118</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printVehicleDetails must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>126</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>127</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printExitMessage must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>133</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to waitForUserResponse must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>134</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>140</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: waitForUserResponse.</context>
+        <line>140</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_MessageToDisplay' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>140</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>154</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: printExitMessage.</context>
+        <line>154</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>159</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: printVehicleDetails.</context>
+        <line>159</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>166</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>164</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>172</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: rechargeAVehicle.</context>
+        <line>172</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>188</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ValueOutOfRangeException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>192</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNumOfHoursToRecharge must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>183</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>184</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>181</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to rechargeAVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>200</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>206</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNumOfHoursToRecharge.</context>
+        <line>206</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>220</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNumOfHoursToRecharge must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>223</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>229</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: refuelAvehicle.</context>
+        <line>229</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>247</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>252</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ValueOutOfRangeException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>256</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededFuelTypeFromUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>241</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getAmountOfFuelNeeded must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>242</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>243</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>239</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to refuelAvehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>250</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to refuelAvehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>264</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>270</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getAmountOfFuelNeeded.</context>
+        <line>270</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>284</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getAmountOfFuelNeeded must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>287</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>293</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNeededFuelTypeFromUser.</context>
+        <line>293</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>325</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>330</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printListOfStringsToTheUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>306</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededFuelType must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>314</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededFuelTypeFromUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>328</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>339</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: inflatesTiresOfAVehicle.</context>
+        <line>339</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ValueOutOfRangeException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>354</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>347</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to inflatesTiresOfAVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>352</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to inflatesTiresOfAVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>362</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>342</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>367</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: changeVehicleStatus.</context>
+        <line>367</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededStateFromUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>374</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>375</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>372</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>379</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: readLicenseNumberAndVerify.</context>
+        <line>379</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'o_LicenseNumber' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>379</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>398</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>404</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>387</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to readLicenseNumberAndVerify must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>402</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>414</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNeededStateFromUser.</context>
+        <line>414</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>445</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>450</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printListOfStringsToTheUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>426</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededVehicleState must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>434</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to changeVehicleStatus must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>448</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>458</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: printListOfTheVehicles.</context>
+        <line>458</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>496</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededVehicleState must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>481</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>483</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printListOfTheVehicles must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>499</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>503</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNeededVehicleState.</context>
+        <line>503</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_UserChoice' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>503</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>514</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNeededVehicleType.</context>
+        <line>514</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_UserChoice' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>514</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>525</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: insertVehicleToTheGarage.</context>
+        <line>525</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_FormatException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>565</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ArgumentException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>570</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ValueOutOfRangeException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>575</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to printListOfStringsToTheUser must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>539</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getNeededVehicleType must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>548</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getInformationAboutTheVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>559</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getOwnerName must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>560</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getOwnerPhoneNumber must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>561</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to m_GarageLogic must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>562</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to insertVehicleToTheGarage must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>568</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to insertVehicleToTheGarage must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>573</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to insertVehicleToTheGarage must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>583</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>589</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getOwnerPhoneNumber.</context>
+        <line>589</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>595</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getOwnerName.</context>
+        <line>595</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>601</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getInformationAboutTheVehicle.</context>
+        <line>601</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_ValueOutOfRangeException' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>617</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to getInformationAboutTheVehicle must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>625</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>629</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: printListOfStringsToTheUser.</context>
+        <line>629</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_Options' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>629</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>639</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getMenuOptionFromInput.</context>
+        <line>639</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_UserChoice' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>639</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.DocumentationRules" rule="ElementsMustBeDocumented" ruleCheckId="SA1600">
+        <context>The method must have a documentation header.</context>
+        <line>652</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="ElementMustBeginWithUpperCaseLetter" ruleCheckId="SA1300">
+        <context>method names begin with an upper-case letter: getNeededFuelType.</context>
+        <line>652</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.NamingRules" rule="FieldNamesMustNotUseHungarianNotation" ruleCheckId="SA1305">
+        <context>The variable name 'i_UserChoice' begins with a prefix that looks like Hungarian notation. Remove the prefix or add it to the list of allowed prefixes.</context>
+        <line>652</line>
         <warning>False</warning>
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="GarageBL.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/25/2011 00:22:35</timestamp>
-    <milliseconds>15</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="VehicleFactory.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/26/2011 15:30:50</timestamp>
-    <milliseconds>269</milliseconds>
-    <violations>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="SingleLineCommentsMustBeginWithSingleSpace" ruleCheckId="SA1005">
-        <context>The comment must start with a single space. To ignore this error when commenting out a line of code, begin the comment with '////' rather than '//'.</context>
-        <line>25</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="VehicleInGarage.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/25/2011 00:21:06</timestamp>
-    <milliseconds>242</milliseconds>
-    <violations />
-  </sourcecode>
-  <project key="802155431">
+  <project key="-77953924">
     <configuration>DEBUG;TRACE</configuration>
   </project>
-  <sourcecode name="Program.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/28/2011 23:36:50</timestamp>
-    <milliseconds>477</milliseconds>
-    <violations />
-  </sourcecode>
-  <sourcecode name="GarageUI.cs" parser="StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>08/01/2011 20:12:46</timestamp>
-      <milliseconds>876</milliseconds>
-    </settings>
-    <timestamp>08/29/2011 00:06:27</timestamp>
-    <milliseconds>884</milliseconds>
-    <violations />
-  </sourcecode>
 </stylecopresultscache>

@@ -1,11 +1,4 @@
-﻿// -----------------------------------------------------------------------
-// <copyright file="Wheel.cs">
-// Aya Chiprut 021923107 
-// Assaf Miron 036722999
-// </copyright>
-// -----------------------------------------------------------------------
-
-namespace Ex03.GarageLogic
+﻿namespace Ex03.GarageLogic
 {
     using System;
     using System.Collections.Generic;
@@ -29,8 +22,10 @@ namespace Ex03.GarageLogic
         {
             if (i_MaxAirPressureByManufacturer <= k_MinAirPressure)
             {
-                throw new ValueOutOfRangeException("Max air pressure has to be possitive",
-                    k_MinAirPressure, m_MaxAirPressureByManufacturer);
+                throw new ValueOutOfRangeException(
+                            "Max air pressure has to be possitive",
+                            k_MinAirPressure,
+                            m_MaxAirPressureByManufacturer);
             }
 
             m_MaxAirPressureByManufacturer = i_MaxAirPressureByManufacturer;
@@ -66,8 +61,10 @@ namespace Ex03.GarageLogic
             bool retAirPressureOK = false;
             if ((i_AirPressure < 0) || (i_AirPressure > m_MaxAirPressureByManufacturer))
             {
-                throw new ValueOutOfRangeException("Air pressure is smaller or bigger than possible",
-                    k_MinAirPressure, m_MaxAirPressureByManufacturer);
+                throw new ValueOutOfRangeException(
+                            "Air pressure is smaller or bigger than possible",
+                            k_MinAirPressure,
+                            m_MaxAirPressureByManufacturer);
             }
             else
             {
@@ -119,6 +116,10 @@ namespace Ex03.GarageLogic
                     m_CurrentAirPressure = 0;
                     throw ex;
                 }
+            }
+            else
+            {
+                throw new ArgumentException("Air Pressure must be a number.");
             }
         }
     }
