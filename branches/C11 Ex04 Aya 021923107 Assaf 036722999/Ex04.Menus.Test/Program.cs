@@ -6,7 +6,7 @@ namespace Ex04.Menus.Test
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             plumbingMenuUsingInterfaces iterfaceMenu = new plumbingMenuUsingInterfaces();
             iterfaceMenu.Run();
