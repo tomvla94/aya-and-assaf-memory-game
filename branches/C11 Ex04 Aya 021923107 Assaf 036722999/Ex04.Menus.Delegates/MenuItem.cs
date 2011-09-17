@@ -122,7 +122,7 @@ namespace Ex04.Menus.Delegates
 
         private bool validateSelection(int i_SelectedOption)
         {
-            return (i_SelectedOption >= k_BackOptionIndex && i_SelectedOption <= m_MenuItems.Count);
+            return i_SelectedOption >= k_BackOptionIndex && i_SelectedOption <= m_MenuItems.Count;
         }
 
         public string Title

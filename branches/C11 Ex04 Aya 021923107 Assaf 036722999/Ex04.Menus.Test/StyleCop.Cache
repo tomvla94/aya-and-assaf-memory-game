@@ -1,0 +1,45 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="Program.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>09/17/2011 20:08:16</timestamp>
+      <milliseconds>875</milliseconds>
+    </settings>
+    <timestamp>09/08/2011 11:33:06</timestamp>
+    <milliseconds>312</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
+        <context>The method must have an access modifier.</context>
+        <line>9</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <project key="-1114765606">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="plumbingMenuUsingInterfaces.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>09/17/2011 20:08:16</timestamp>
+      <milliseconds>875</milliseconds>
+    </settings>
+    <timestamp>09/17/2011 20:15:45</timestamp>
+    <milliseconds>93</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="plumbingMenuUsingDelegates.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>09/17/2011 20:08:16</timestamp>
+      <milliseconds>875</milliseconds>
+    </settings>
+    <timestamp>09/17/2011 20:15:45</timestamp>
+    <milliseconds>93</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>80</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+</stylecopresultscache>
