@@ -1,5 +1,0 @@
-D:\aya-and-assaf-memory-game\branches\C11 Ex04 Aya 021923107 Assaf 036722999\Ex04.Menus.Delegates\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\aya-and-assaf-memory-game\branches\C11 Ex04 Aya 021923107 Assaf 036722999\Ex04.Menus.Delegates\bin\Debug\Ex04.Menus.Delegates.dll
-D:\aya-and-assaf-memory-game\branches\C11 Ex04 Aya 021923107 Assaf 036722999\Ex04.Menus.Delegates\bin\Debug\Ex04.Menus.Delegates.pdb
-D:\aya-and-assaf-memory-game\branches\C11 Ex04 Aya 021923107 Assaf 036722999\Ex04.Menus.Delegates\obj\x86\Debug\Ex04.Menus.Delegates.dll
-D:\aya-and-assaf-memory-game\branches\C11 Ex04 Aya 021923107 Assaf 036722999\Ex04.Menus.Delegates\obj\x86\Debug\Ex04.Menus.Delegates.pdb
