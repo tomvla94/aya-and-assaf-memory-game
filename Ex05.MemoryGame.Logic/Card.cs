@@ -1,6 +1,7 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Card.cs" company="Microsoft">
-// TODO: Update copyright text.
+// <copyright file="Card.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
 // </copyright>
 // -----------------------------------------------------------------------
 

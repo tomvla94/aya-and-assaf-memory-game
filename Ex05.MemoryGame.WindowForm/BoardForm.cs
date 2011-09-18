@@ -1,6 +1,7 @@
 ﻿ // -----------------------------------------------------------------------
-// <copyright file="BoardForm.cs" company="Microsoft">
-// TODO: Update copyright text.
+// <copyright file="BoardForm.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -14,7 +15,8 @@ namespace Ex05.MemoryGame.WindowForm
     using MemoryGame.Logic;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The Main Game Board Form
+    /// Will be presented only after all Settings are Done
     /// </summary>
     public class BoardForm : Form
     {
@@ -27,7 +29,11 @@ namespace Ex05.MemoryGame.WindowForm
         private Label m_LabelFirstPlayerScore;
         private Label m_LabelSecondPlayerScore;
         private Control m_ButtonExit;
+        private bool v_EndPlayerMessageWasShown;
 
+        /// <summary>
+        /// The Main Function for running the Game
+        /// </summary>
         public void Run()
         {
             SettingsForm gameSettings = new SettingsForm();
@@ -49,28 +55,9 @@ namespace Ex05.MemoryGame.WindowForm
             initBoardSize();
             initControls();
 
-            m_MemoryLogic.PlayCurrentPlayerTurn += new CurrentPlayerTurnEventHandler(PlayCurrentPlayerTurn);
+            m_MemoryLogic.PlayCurrentPlayerTurn += new CurrentPlayerTurnEventHandler(playCurrentPlayerTurn);
 
             this.ShowDialog();
-            // TODO: Need to have an Event on each player turn (Maybe use delegate in Change Player Index)
-            // The event will triger the appropiate functionality
-            // no need to apply PlayPlayerTurn on Button Click
-            // Need to save Clicked buttons 
-            //do
-            //{
-            //    // Start a Memory Game Round
-            //    // Inform the Players Turn
-            //    // Check if the Player is Human
-            //    if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
-            //    {
-
-            //    }
-            //    else
-            //    {
-            //        playComputerTurn();
-            //    }
-            //}
-            //while (!m_MemoryLogic.RoundFinished);
         }
 
         private void initBoardSize()
@@ -176,48 +163,53 @@ namespace Ex05.MemoryGame.WindowForm
             }
         }
 
-        void PlayCurrentPlayerTurn()
+        private void playCurrentPlayerTurn()
         {
-            if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+            if (!v_EndPlayerMessageWasShown)
             {
-                MessageBox.Show(string.Format("{0}'s Turn!", m_MemoryLogic.CurrentPlayer.Name), "Memory game", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Computer Player Turn");
-                playComputerTurn();
+                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+                {
+                    MessageBox.Show(string.Format("{0}'s Turn!", m_MemoryLogic.CurrentPlayer.Name), "Memory game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    v_EndPlayerMessageWasShown = false;
+                }
+                else
+                {
+                    MessageBox.Show("Computer Player Turn");
+                    v_EndPlayerMessageWasShown = false;
+                    playComputerTurn();
+                }
             }
         }
 
         private void memcard_Click(object sender, EventArgs e)
         {
-            
-            MemCardButton clickedButton = (MemCardButton)sender;
-            if (IsButtonClicked(clickedButton))
+            if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
             {
-                clickedButton.BackColor = Color.FromName(m_MemoryLogic.CurrentPlayer.Color.ToString());
-                clickedButton.Enabled = false;
-                bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
-                if (m_PrevClickedButton == null)
+                MemCardButton clickedButton = (MemCardButton)sender;
+                if (IsButtonClicked(clickedButton))
                 {
-                    m_PrevClickedButton = clickedButton;
+                    bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
+                    if (m_PrevClickedButton == null)
+                    {
+                        m_PrevClickedButton = clickedButton;
+                    }
+                    else
+                    {
+                        if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
+                        {
+                            clickedButton.BackColor = Color.Empty;
+                            clickedButton.Enabled = true;
+                            m_PrevClickedButton.BackColor = Color.Empty;
+                            m_PrevClickedButton.Enabled = true;
+                        }
+                        m_PrevClickedButton = null;
+                    }
                 }
                 else
                 {
-                    if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
-                    {
-                        clickedButton.BackColor = Color.Empty;
-                        clickedButton.Enabled = true;
-                        m_PrevClickedButton.BackColor = Color.Empty;
-                        m_PrevClickedButton.Enabled = true;
-                    }
-                    m_PrevClickedButton = null;
+                    clickedButton.BackColor = Color.Empty;
+                    clickedButton.Enabled = true;
                 }
-            }
-            else
-            {
-                clickedButton.BackColor = Color.Empty;
-                clickedButton.Enabled = true;
             }
         }
 
@@ -259,9 +251,10 @@ namespace Ex05.MemoryGame.WindowForm
             setCurrentPlayerNameLabel();
             setFirstPlayerScore();
             setSecondPlayerScore();
+            v_EndPlayerMessageWasShown = true;
         }
 
-        void m_ButtonExit_Click(object sender, EventArgs e)
+        private void m_ButtonExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }

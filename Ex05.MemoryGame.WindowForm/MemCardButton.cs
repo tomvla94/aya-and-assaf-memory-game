@@ -26,11 +26,13 @@ namespace Ex05.MemoryGame.WindowForm
             {
                 this.Text = m_Square.Card.Sign;
                 this.BackColor = Color.FromName(i_PlayerColor);
+                this.Enabled = false;
             }
             else
             {
                 this.Text = string.Empty;
                 this.BackColor = Color.Empty;
+                this.Enabled = true;
             }
         }
     }
