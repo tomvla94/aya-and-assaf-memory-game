@@ -302,18 +302,24 @@ namespace Ex05.MemoryGame.Logic
         /// </summary>
         private void changePlayerIndex()
         {
-            if (m_CurrentPlayingPlayerIndex == 0)
+            try
             {
-                m_CurrentPlayingPlayerIndex = 1;
+                if (m_CurrentPlayingPlayerIndex == 0)
+                {
+                    m_CurrentPlayingPlayerIndex = 1;
+                }
+                else
+                {
+                    m_CurrentPlayingPlayerIndex = 0;
+                }
+                return;
             }
-            else
+            finally
             {
-                m_CurrentPlayingPlayerIndex = 0;
-            }
-
-            if (PlayCurrentPlayerTurn != null)
-            {
-                PlayCurrentPlayerTurn.Invoke();
+                if (PlayCurrentPlayerTurn != null)
+                {
+                    PlayCurrentPlayerTurn.Invoke();
+                }
             }
         }
 

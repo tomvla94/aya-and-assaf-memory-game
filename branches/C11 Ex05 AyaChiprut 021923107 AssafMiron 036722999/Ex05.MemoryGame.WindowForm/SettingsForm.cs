@@ -1,6 +1,7 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="SettingsForm.cs" company="Microsoft">
-// TODO: Update copyright text.
+// <copyright file="SettingsForm.cs">
+// Aya Chiprut 021923107 
+// Assaf Miron 036722999
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -13,7 +14,8 @@ namespace Ex05.MemoryGame.WindowForm
     using System.Drawing;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// The Settings Form
+    /// Will be presented at the begining of the Game
     /// </summary>
     public class SettingsForm : Form
     {
@@ -81,7 +83,6 @@ namespace Ex05.MemoryGame.WindowForm
 
             // Setting the Board Button
             m_ButtonBoard = new Button();
-            // TODO: Get the Initial Board Size
             m_ButtonBoard.Text = getButtonBoardText();
             m_ButtonBoard.Size = new Size(50, 50);
             m_ButtonBoard.Click += new EventHandler(m_ButtonBoard_Click);
@@ -238,7 +239,7 @@ namespace Ex05.MemoryGame.WindowForm
             get
             {
                 string retPlayerName = null;
-                if (m_LTextSecondPlayer.Text != "Computer")
+                if (!v_ApponentComputer)
                 {
                     retPlayerName = m_LTextSecondPlayer.Text;
                 }
