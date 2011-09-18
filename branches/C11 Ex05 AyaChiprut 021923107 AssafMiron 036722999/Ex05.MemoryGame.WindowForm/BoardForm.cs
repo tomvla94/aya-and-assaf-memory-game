@@ -49,26 +49,28 @@ namespace Ex05.MemoryGame.WindowForm
             initBoardSize();
             initControls();
 
+            m_MemoryLogic.PlayCurrentPlayerTurn += new CurrentPlayerTurnEventHandler(PlayCurrentPlayerTurn);
+
             this.ShowDialog();
             // TODO: Need to have an Event on each player turn (Maybe use delegate in Change Player Index)
             // The event will triger the appropiate functionality
             // no need to apply PlayPlayerTurn on Button Click
             // Need to save Clicked buttons 
-            do
-            {
-                // Start a Memory Game Round
-                // Inform the Players Turn
-                // Check if the Player is Human
-                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
-                {
+            //do
+            //{
+            //    // Start a Memory Game Round
+            //    // Inform the Players Turn
+            //    // Check if the Player is Human
+            //    if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+            //    {
 
-                }
-                else
-                {
-                    playComputerTurn();
-                }
-            }
-            while (!m_MemoryLogic.RoundFinished);
+            //    }
+            //    else
+            //    {
+            //        playComputerTurn();
+            //    }
+            //}
+            //while (!m_MemoryLogic.RoundFinished);
         }
 
         private void initBoardSize()
@@ -174,32 +176,64 @@ namespace Ex05.MemoryGame.WindowForm
             }
         }
 
+        void PlayCurrentPlayerTurn()
+        {
+            if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+            {
+                MessageBox.Show(string.Format("{0}'s Turn!", m_MemoryLogic.CurrentPlayer.Name), "Memory game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Computer Player Turn");
+                playComputerTurn();
+            }
+        }
+
         private void memcard_Click(object sender, EventArgs e)
         {
             
             MemCardButton clickedButton = (MemCardButton)sender;
-            clickedButton.BackColor = Color.FromName(m_MemoryLogic.CurrentPlayer.Color.ToString());
-            clickedButton.Enabled = false;
-            bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
-            if (m_PrevClickedButton == null)
+            if (IsButtonClicked(clickedButton))
             {
-                m_PrevClickedButton = clickedButton;
+                clickedButton.BackColor = Color.FromName(m_MemoryLogic.CurrentPlayer.Color.ToString());
+                clickedButton.Enabled = false;
+                bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
+                if (m_PrevClickedButton == null)
+                {
+                    m_PrevClickedButton = clickedButton;
+                }
+                else
+                {
+                    if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
+                    {
+                        clickedButton.BackColor = Color.Empty;
+                        clickedButton.Enabled = true;
+                        m_PrevClickedButton.BackColor = Color.Empty;
+                        m_PrevClickedButton.Enabled = true;
+                    }
+                    m_PrevClickedButton = null;
+                }
             }
             else
             {
-                if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
-                {
-                    clickedButton.BackColor = Color.WhiteSmoke;
-                    clickedButton.Enabled = true;
-                    m_PrevClickedButton.BackColor = Color.WhiteSmoke;
-                    m_PrevClickedButton.Enabled = true;
-                }
-                m_PrevClickedButton = null;
-                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Computer)
-                {
-                    playComputerTurn();
-                }
+                clickedButton.BackColor = Color.Empty;
+                clickedButton.Enabled = true;
             }
+        }
+
+        private bool IsButtonClicked(Button i_ButtonClicked)
+        {
+            bool retButtonIsClicked = false;
+            if (i_ButtonClicked.BackColor == Color.Empty)
+            {
+                retButtonIsClicked = false;
+            }
+            else
+            {
+                retButtonIsClicked = true;
+            }
+
+            return retButtonIsClicked;
         }
 
         private bool endPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_IsMatch)

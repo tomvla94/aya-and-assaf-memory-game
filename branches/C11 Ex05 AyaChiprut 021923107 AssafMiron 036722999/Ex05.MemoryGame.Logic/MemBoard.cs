@@ -232,9 +232,9 @@ namespace Ex05.MemoryGame.Logic
         /// Flips a Square
         /// </summary>
         /// <param name="i_SquareChoice">The Square to Flip</param>
-        public void FlipSquare(MemSquare i_SquareChoice)
+        public void FlipSquare(string i_PlayerColor, MemSquare i_SquareChoice)
         {
-            m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip();
+            m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip(i_PlayerColor);
         }
 
         /// <summary>
@@ -242,11 +242,12 @@ namespace Ex05.MemoryGame.Logic
         /// </summary>
         internal void HideAllSquares()
         {
+            string noPlayerColor = string.Empty;
             foreach (MemSquare square in m_Squares)
             {
                 if (!square.Card.IsHidden)
                 {
-                    square.Card.Flip();
+                    square.Card.Flip(noPlayerColor);
                 }
             }
         }

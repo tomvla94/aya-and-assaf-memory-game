@@ -11,11 +11,14 @@ namespace Ex05.MemoryGame.Logic
     using System.Collections.Generic;
     using System.Text;
 
+    public delegate void CurrentPlayerTurnEventHandler();
+
     /// <summary>
     /// The Memory Game Logic
     /// </summary>
     public class MemGameBL
     {
+        public event CurrentPlayerTurnEventHandler PlayCurrentPlayerTurn;
         private readonly List<MemSquare> r_ShowSquareCards = new List<MemSquare>();
         private MemBoard m_MemoryBoard = new MemBoard();
         private Player[] m_Players = new Player[2];
@@ -122,7 +125,7 @@ namespace Ex05.MemoryGame.Logic
             if (m_PrevSquareChosen == null)
             {
                 // Flip the First Card
-                m_MemoryBoard.FlipSquare(i_SquareChoice);
+                m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_SquareChoice);
 
                 // Save the Chosen Square
                 m_PrevSquareChosen = i_SquareChoice;
@@ -137,7 +140,7 @@ namespace Ex05.MemoryGame.Logic
             {
                 // Second Square Choise
                 // Flip the Second Card
-                m_MemoryBoard.FlipSquare(i_SquareChoice);
+                m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_SquareChoice);
 
                 // Save the Shown Square in the List
                 if (!r_ShowSquareCards.Contains(m_MemoryBoard[i_SquareChoice.Row, i_SquareChoice.Col]))
@@ -190,13 +193,13 @@ namespace Ex05.MemoryGame.Logic
             }
 
             // Flip the First Square Card
-            m_MemoryBoard.FlipSquare(i_FirstSquare);
+            m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_FirstSquare);
 
             // Find a Matching Square
             i_SecondSquare = compFindMatch(i_FirstSquare.Card);
 
             // Flip the Second Square Card
-            m_MemoryBoard.FlipSquare(i_SecondSquare);
+            m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_SecondSquare);
 
             // Check if the Computer Found a Match
             i_PlayerScored = i_FirstSquare.Card.IsPairWith(i_SecondSquare.Card);
@@ -307,6 +310,11 @@ namespace Ex05.MemoryGame.Logic
             {
                 m_CurrentPlayingPlayerIndex = 0;
             }
+
+            if (PlayCurrentPlayerTurn != null)
+            {
+                PlayCurrentPlayerTurn.Invoke();
+            }
         }
 
         /// <summary>
@@ -343,8 +351,8 @@ namespace Ex05.MemoryGame.Logic
 
             if (!i_KeepCardsVisible)
             {
-                m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col].Card.Flip();
-                m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col].Card.Flip();
+                m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col].Card.Flip(CurrentPlayer.Color.ToString());
+                m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col].Card.Flip(CurrentPlayer.Color.ToString());
             }
 
             return retUserGotPoint;

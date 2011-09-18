@@ -31,12 +31,12 @@ namespace Ex05.MemoryGame.Logic
             set { v_IsHidden = value; }
         }
 
-        public void Flip()
+        public void Flip(string i_PlayerColor)
         {
             v_IsHidden = !v_IsHidden;
             foreach (IFlipedObserver observer in m_FlipedObservers)
             {
-                observer.CardFliped(v_IsHidden);
+                observer.CardFliped(i_PlayerColor, v_IsHidden);
             }
         }
 
