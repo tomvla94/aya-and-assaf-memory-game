@@ -6,6 +6,6 @@ namespace Ex05.MemoryGame.Logic
 {
     public interface IFlipedObserver
     {
-        void CardFliped(bool i_IsHidden);
+        void CardFliped(string i_PlayerColor, bool i_IsHidden);
     }
 }

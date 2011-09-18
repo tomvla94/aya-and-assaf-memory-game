@@ -20,15 +20,17 @@ namespace Ex05.MemoryGame.WindowForm
             }
         }
 
-        public void CardFliped(bool i_IsHidden)
+        public void CardFliped(string i_PlayerColor, bool i_IsHidden)
         {
             if (!i_IsHidden)
             {
                 this.Text = m_Square.Card.Sign;
+                this.BackColor = Color.FromName(i_PlayerColor);
             }
             else
             {
                 this.Text = string.Empty;
+                this.BackColor = Color.Empty;
             }
         }
     }
