@@ -1,4 +1,4 @@
-﻿ // -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="BoardForm.cs">
 // Aya Chiprut 021923107 
 // Assaf Miron 036722999
@@ -55,8 +55,6 @@ namespace Ex05.MemoryGame.WindowForm
             initBoardSize();
             initControls();
 
-            m_MemoryLogic.PlayCurrentPlayerTurn += new CurrentPlayerTurnEventHandler(playCurrentPlayerTurn);
-
             this.ShowDialog();
         }
 
@@ -64,7 +62,7 @@ namespace Ex05.MemoryGame.WindowForm
         {
             this.Text = "Memory Game";
             this.FormBorderStyle = FormBorderStyle.Fixed3D;
-            this.Size = new Size(m_BoardHeight * 100, m_BoardWidth * 100 + 150);
+            this.Size = new Size(m_BoardHeight * 100, (m_BoardWidth * 100) + 150);
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Initialize a Game Round
@@ -84,10 +82,10 @@ namespace Ex05.MemoryGame.WindowForm
             setCurrentPlayerNameLabel();
 
             createLabel(out m_LabelFirstPlayerScore, 15, m_LabelCurrentPlayer.Location.Y + 30);
-            setFirstPlayerScore();
+            setPlayerScore(m_MemoryLogic.FirstPlayer, m_LabelFirstPlayerScore);
 
             createLabel(out m_LabelSecondPlayerScore, 15, m_LabelFirstPlayerScore.Location.Y + 30);
-            setSecondPlayerScore();
+            setPlayerScore(m_MemoryLogic.SecondPlayer, m_LabelSecondPlayerScore);
 
             m_ButtonExit = new Button();
             m_ButtonExit.Text = "Exit";
@@ -95,7 +93,7 @@ namespace Ex05.MemoryGame.WindowForm
             m_ButtonExit.Location = new Point(lastControlXPos, m_LabelSecondPlayerScore.Location.Y);
             m_ButtonExit.Click += new EventHandler(m_ButtonExit_Click);
             this.Controls.Add(m_ButtonExit);
-            
+
             this.ResumeLayout();
         }
 
@@ -110,10 +108,10 @@ namespace Ex05.MemoryGame.WindowForm
                 for (int j = 0; j < m_BoardWidth; j++)
                 {
                     m_ButtonBoard[i, j] = new MemCardButton();
-                    m_ButtonBoard[i, j].Text = "";
+                    m_ButtonBoard[i, j].Text = string.Empty;
                     m_ButtonBoard[i, j].Size = new Size(90, 90);
                     m_ButtonBoard[i, j].Square = m_MemoryLogic.Board[i, j];
-                    m_ButtonBoard[i, j].Location = new Point(i * 90 + 15, j * 90 + 20);
+                    m_ButtonBoard[i, j].Location = new Point((i * 90) + 15, (j * 90) + 20);
                     m_ButtonBoard[i, j].Click += new EventHandler(memcard_Click);
                     this.Controls.Add(m_ButtonBoard[i, j]);
                 }
@@ -129,20 +127,13 @@ namespace Ex05.MemoryGame.WindowForm
             this.Controls.Add(o_LabelToSet);
         }
 
-        private void setFirstPlayerScore()
+        private void setPlayerScore(Player i_Player, Label i_LabelToUpdate)
         {
-            m_LabelFirstPlayerScore.Text = string.Format("{0}: {1} Pair(s)",
-                m_MemoryLogic.FirstPlayer.Name,
-                m_MemoryLogic.FirstPlayer.Score);
-            m_LabelFirstPlayerScore.BackColor = Color.FromName(m_MemoryLogic.FirstPlayer.Color.ToString());
-        }
-
-        private void setSecondPlayerScore()
-        {
-            m_LabelSecondPlayerScore.Text = string.Format("{0}: {1} Pair(s)",
-                m_MemoryLogic.SecondPlayer.Name,
-                m_MemoryLogic.SecondPlayer.Score);
-            m_LabelSecondPlayerScore.BackColor = Color.FromName(m_MemoryLogic.SecondPlayer.Color.ToString());
+            i_LabelToUpdate.Text = string.Format(
+                  "{0}: {1} Pair(s)",
+                  i_Player.Name,
+                  i_Player.Score);
+            i_LabelToUpdate.BackColor = Color.FromName(i_Player.Color.ToString());
         }
 
         private void setCurrentPlayerNameLabel()
@@ -165,16 +156,16 @@ namespace Ex05.MemoryGame.WindowForm
 
         private void playCurrentPlayerTurn()
         {
-            if (!v_EndPlayerMessageWasShown)
+            if (v_EndPlayerMessageWasShown)
             {
-                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
+                if (!m_LabelCurrentPlayer.Text.Contains(m_MemoryLogic.CurrentPlayer.Name))
                 {
                     MessageBox.Show(string.Format("{0}'s Turn!", m_MemoryLogic.CurrentPlayer.Name), "Memory game", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    v_EndPlayerMessageWasShown = false;
                 }
-                else
+
+                v_EndPlayerMessageWasShown = false;
+                if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Computer)
                 {
-                    MessageBox.Show("Computer Player Turn");
                     v_EndPlayerMessageWasShown = false;
                     playComputerTurn();
                 }
@@ -191,18 +182,15 @@ namespace Ex05.MemoryGame.WindowForm
                     bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
                     if (m_PrevClickedButton == null)
                     {
+                        v_EndPlayerMessageWasShown = false;
                         m_PrevClickedButton = clickedButton;
                     }
                     else
                     {
-                        if (!endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible))
-                        {
-                            clickedButton.BackColor = Color.Empty;
-                            clickedButton.Enabled = true;
-                            m_PrevClickedButton.BackColor = Color.Empty;
-                            m_PrevClickedButton.Enabled = true;
-                        }
+                        endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible);
+
                         m_PrevClickedButton = null;
+                        playCurrentPlayerTurn();
                     }
                 }
                 else
@@ -230,9 +218,44 @@ namespace Ex05.MemoryGame.WindowForm
 
         private bool endPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_IsMatch)
         {
-            bool retUserGotPoint = m_MemoryLogic.EndPlayerTurn(i_FirstSquare, i_SecondSquare, i_IsMatch);
-            showEndTurnMessage(retUserGotPoint);
+            bool retUserGotPoint = false;
+            if (!m_MemoryLogic.RoundFinished)
+            {
+                retUserGotPoint = m_MemoryLogic.EndPlayerTurn(i_FirstSquare, i_SecondSquare, i_IsMatch);
+                showEndTurnMessage(retUserGotPoint);
+            }
+            else
+            {
+                printRoundSummary();
+            }
+
             return retUserGotPoint;
+        }
+
+        /// <summary>
+        /// Prints the Round Summary
+        /// </summary>
+        private void printRoundSummary()
+        {
+            if (m_MemoryLogic.Winner != m_MemoryLogic.Loser)
+            {
+                string roundMessage = string.Format(
+                                "The winner is : {0} with: {1} points against {2} points of {3}",
+                                m_MemoryLogic.Winner.Name,
+                                m_MemoryLogic.Winner.Score,
+                                m_MemoryLogic.Loser.Score,
+                                m_MemoryLogic.Loser.Name);
+
+                MessageBox.Show(
+                    roundMessage,
+                    "Memory Game",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                Console.WriteLine("Its a Tie!\nEverybody is a Winner! :)");
+            }
         }
 
         private void showEndTurnMessage(bool i_UserGotPoint)
@@ -249,8 +272,8 @@ namespace Ex05.MemoryGame.WindowForm
 
             MessageBox.Show(infoMessage);
             setCurrentPlayerNameLabel();
-            setFirstPlayerScore();
-            setSecondPlayerScore();
+            setPlayerScore(m_MemoryLogic.FirstPlayer, m_LabelFirstPlayerScore);
+            setPlayerScore(m_MemoryLogic.SecondPlayer, m_LabelSecondPlayerScore);
             v_EndPlayerMessageWasShown = true;
         }
 
@@ -264,8 +287,13 @@ namespace Ex05.MemoryGame.WindowForm
             bool keepCardsVisible = false;
             MemSquare firstSquareChoise = null;
             MemSquare matchSquareChoice = null;
+            System.Timers.Timer waitTimer = new System.Timers.Timer(10000);
+            waitTimer.Enabled = true;
+            waitTimer.Start();
             m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
             endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
+            playCurrentPlayerTurn();
+            waitTimer.Stop();
         }
     }
 }

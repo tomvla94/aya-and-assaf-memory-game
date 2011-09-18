@@ -31,7 +31,6 @@ namespace Ex05.MemoryGame.WindowForm
         private int m_CurrentHeight;
         private Ex05.MemoryGame.Logic.MemGameBL m_MemoryLogic = new Logic.MemGameBL();
 
-
         public SettingsForm()
         {
             this.Text = "Memory Game - Settings";
@@ -61,7 +60,7 @@ namespace Ex05.MemoryGame.WindowForm
             m_LabelSubHeader.Location = new Point(m_LabelHeader.Location.X + m_LabelSubHeader.Text.Length, m_LabelHeader.Bottom + 20);
             m_LabelSubHeader.AutoSize = true;
 
-            this.Controls.AddRange(new Control[]{ m_LabelHeader, m_LabelSubHeader });
+            this.Controls.AddRange(new Control[] { m_LabelHeader, m_LabelSubHeader });
         }
 
         private void initControls()
@@ -231,7 +230,7 @@ namespace Ex05.MemoryGame.WindowForm
 
         public string FirstPlayerName
         {
-            get {return m_LTextFirstPlayer.Text; }
+            get { return m_LTextFirstPlayer.Text; }
         }
 
         public string SecondPlayerName
@@ -259,4 +258,3 @@ namespace Ex05.MemoryGame.WindowForm
         }
     }
 }
-
