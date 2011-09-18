@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Ex05.MemoryGame.WindowForm
 {
-    class LabeledTextBox : Control
+    public class LabeledTextBox : Control
     {
         private Label label;
         private TextBox textBox;

@@ -11,14 +11,11 @@ namespace Ex05.MemoryGame.Logic
     using System.Collections.Generic;
     using System.Text;
 
-    public delegate void CurrentPlayerTurnEventHandler();
-
     /// <summary>
     /// The Memory Game Logic
     /// </summary>
     public class MemGameBL
     {
-        public event CurrentPlayerTurnEventHandler PlayCurrentPlayerTurn;
         private readonly List<MemSquare> r_ShowSquareCards = new List<MemSquare>();
         private MemBoard m_MemoryBoard = new MemBoard();
         private Player[] m_Players = new Player[2];
@@ -179,44 +176,53 @@ namespace Ex05.MemoryGame.Logic
         /// <param name="i_PlayerScored">Has the Computer Found a Match</param>
         public void PlayComputerTurn(out MemSquare i_FirstSquare, out MemSquare i_SecondSquare, out bool i_PlayerScored)
         {
-            // Check if a pair was already seen on the board
-            if (!aPairAlreadySeen(out i_FirstSquare))
+            if (!RoundFinished)
             {
-                // If Not Choose a Square randomly
-                i_FirstSquare = compChooseRandomSquare();
-            }
+                // Check if a pair was already seen on the board
+                if (!aPairAlreadySeen(out i_FirstSquare))
+                {
+                    // If Not Choose a Square randomly
+                    i_FirstSquare = compChooseRandomSquare();
+                }
 
-            // Check if the First Square Card was Seen on the Board
-            if (!r_ShowSquareCards.Contains(i_FirstSquare))
-            {
-                r_ShowSquareCards.Add(i_FirstSquare);
-            }
+                // Check if the First Square Card was Seen on the Board
+                if (!r_ShowSquareCards.Contains(i_FirstSquare))
+                {
+                    r_ShowSquareCards.Add(i_FirstSquare);
+                }
 
-            // Flip the First Square Card
-            m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_FirstSquare);
+                // Flip the First Square Card
+                m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_FirstSquare);
 
-            // Find a Matching Square
-            i_SecondSquare = compFindMatch(i_FirstSquare.Card);
+                // Find a Matching Square
+                i_SecondSquare = compFindMatch(i_FirstSquare.Card);
 
-            // Flip the Second Square Card
-            m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_SecondSquare);
+                // Flip the Second Square Card
+                m_MemoryBoard.FlipSquare(CurrentPlayer.Color.ToString(), i_SecondSquare);
 
-            // Check if the Computer Found a Match
-            i_PlayerScored = i_FirstSquare.Card.IsPairWith(i_SecondSquare.Card);
-            if (i_PlayerScored)
-            {
-                r_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
-                r_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
-                CurrentPlayer.Score++;
+                // Check if the Computer Found a Match
+                i_PlayerScored = i_FirstSquare.Card.IsPairWith(i_SecondSquare.Card);
+                if (i_PlayerScored)
+                {
+                    r_ShowSquareCards.Remove(m_MemoryBoard[i_FirstSquare.Row, i_FirstSquare.Col]);
+                    r_ShowSquareCards.Remove(m_MemoryBoard[i_SecondSquare.Row, i_SecondSquare.Col]);
+                    CurrentPlayer.Score++;
+                }
+                else
+                {
+                    if (!r_ShowSquareCards.Contains(i_SecondSquare))
+                    {
+                        r_ShowSquareCards.Add(i_SecondSquare);
+                    }
+
+                    changePlayerIndex();
+                }
             }
             else
             {
-                if (!r_ShowSquareCards.Contains(i_SecondSquare))
-                {
-                    r_ShowSquareCards.Add(i_SecondSquare);
-                }
-
-                changePlayerIndex();
+                i_FirstSquare = null;
+                i_SecondSquare = null;
+                i_PlayerScored = false;
             }
         }
 
@@ -271,7 +277,7 @@ namespace Ex05.MemoryGame.Logic
 
             return retFoundSquare;
         }
-        
+
         /// <summary>
         /// Finds a Random Valid Square on the Board
         /// </summary>
@@ -281,7 +287,7 @@ namespace Ex05.MemoryGame.Logic
             MemSquare retFoundSquare = null;
             Random rand = new Random();
             bool foundOption = false;
-            while (!foundOption)
+            while (!foundOption && !RoundFinished)
             {
                 int optionalRow = rand.Next(Board.Height);
                 int optionalCol = rand.Next(Board.Width);
@@ -302,24 +308,13 @@ namespace Ex05.MemoryGame.Logic
         /// </summary>
         private void changePlayerIndex()
         {
-            try
+            if (m_CurrentPlayingPlayerIndex == 0)
             {
-                if (m_CurrentPlayingPlayerIndex == 0)
-                {
-                    m_CurrentPlayingPlayerIndex = 1;
-                }
-                else
-                {
-                    m_CurrentPlayingPlayerIndex = 0;
-                }
-                return;
+                m_CurrentPlayingPlayerIndex = 1;
             }
-            finally
+            else
             {
-                if (PlayCurrentPlayerTurn != null)
-                {
-                    PlayCurrentPlayerTurn.Invoke();
-                }
+                m_CurrentPlayingPlayerIndex = 0;
             }
         }
 

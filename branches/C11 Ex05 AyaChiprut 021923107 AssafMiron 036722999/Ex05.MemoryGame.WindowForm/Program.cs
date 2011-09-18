@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ex05.MemoryGame.WindowForm
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {

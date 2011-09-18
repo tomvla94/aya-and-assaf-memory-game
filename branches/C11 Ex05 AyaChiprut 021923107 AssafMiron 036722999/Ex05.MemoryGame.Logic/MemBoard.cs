@@ -19,8 +19,6 @@ namespace Ex05.MemoryGame.Logic
     {
         private const int k_MinBoradSizeValue = 4;
         private const int k_MaxBoradSizeValue = 6;
-        private const char k_RowSpacer = '=';
-        private const char k_ColSpacer = '|';
         private MemSquare[,] m_Squares;
         private int m_BoardWidth;
         private int m_BoardHeight;
@@ -204,7 +202,7 @@ namespace Ex05.MemoryGame.Logic
         /// <returns>True if the Square is On the Board</returns>
         public bool IsLeagalSquare(int i_Row, int i_Col)
         {
-            return (i_Row <= m_BoardHeight && i_Col < m_BoardWidth);
+            return i_Row <= m_BoardHeight && i_Col < m_BoardWidth;
         }
 
         /// <summary>
@@ -234,7 +232,10 @@ namespace Ex05.MemoryGame.Logic
         /// <param name="i_SquareChoice">The Square to Flip</param>
         public void FlipSquare(string i_PlayerColor, MemSquare i_SquareChoice)
         {
-            m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip(i_PlayerColor);
+            if (i_SquareChoice != null)
+            {
+                m_Squares[i_SquareChoice.Row, i_SquareChoice.Col].Card.Flip(i_PlayerColor);
+            }
         }
 
         /// <summary>

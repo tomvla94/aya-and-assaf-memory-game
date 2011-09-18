@@ -7,14 +7,15 @@ using Ex05.MemoryGame.Logic;
 
 namespace Ex05.MemoryGame.WindowForm
 {
-    class MemCardButton : Button, IFlipedObserver
+    public class MemCardButton : Button, IFlipedObserver
     {
         private MemSquare m_Square;
 
         public MemSquare Square
         {
             get { return m_Square; }
-            set { 
+            set 
+            { 
                 m_Square = value;
                 m_Square.AttachObserver(this as IFlipedObserver);
             }
