@@ -28,8 +28,9 @@ namespace Ex05.MemoryGame.WindowForm
         private Label m_LabelCurrentPlayer;
         private Label m_LabelFirstPlayerScore;
         private Label m_LabelSecondPlayerScore;
-        private Control m_ButtonExit;
+        private Button m_ButtonExit;
         private bool v_EndPlayerMessageWasShown;
+        private bool v_StopTimer;
 
         /// <summary>
         /// The Main Function for running the Game
@@ -287,13 +288,34 @@ namespace Ex05.MemoryGame.WindowForm
             bool keepCardsVisible = false;
             MemSquare firstSquareChoise = null;
             MemSquare matchSquareChoice = null;
-            System.Timers.Timer waitTimer = new System.Timers.Timer(10000);
-            waitTimer.Enabled = true;
-            waitTimer.Start();
+            
             m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
+            matchSquareChoice.Card.Flip(m_MemoryLogic.CurrentPlayer.Color.ToString());
+            waitBeforeShowingCard(100000000);
+            matchSquareChoice.Card.Flip(m_MemoryLogic.CurrentPlayer.Color.ToString());
             endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
+            waitBeforeShowingCard(100000000);
             playCurrentPlayerTurn();
+        }
+
+        private void waitBeforeShowingCard(int i_Interval)
+        {
+            Timer waitTimer = new Timer();
+            int count = 0;
+            waitTimer.Interval = i_Interval;
+            waitTimer.Tick += new EventHandler(waitTimer_Tick);
+            waitTimer.Start();
+            while (count < i_Interval)
+            {
+                count++;
+            }
             waitTimer.Stop();
+            waitTimer.Tick -= new EventHandler(waitTimer_Tick);
+        }
+
+        void waitTimer_Tick(object sender, EventArgs e)
+        {
+            v_StopTimer = true;
         }
     }
 }
