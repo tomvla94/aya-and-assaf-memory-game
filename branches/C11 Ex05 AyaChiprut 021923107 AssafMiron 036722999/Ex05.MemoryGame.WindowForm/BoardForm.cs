@@ -288,34 +288,23 @@ namespace Ex05.MemoryGame.WindowForm
             bool keepCardsVisible = false;
             MemSquare firstSquareChoise = null;
             MemSquare matchSquareChoice = null;
-            
+            string compColor = m_MemoryLogic.CurrentPlayer.Color.ToString();
             m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
-            matchSquareChoice.Card.Flip(m_MemoryLogic.CurrentPlayer.Color.ToString());
+            matchSquareChoice.Card.Flip(compColor);
             waitBeforeShowingCard(100000000);
-            matchSquareChoice.Card.Flip(m_MemoryLogic.CurrentPlayer.Color.ToString());
+            matchSquareChoice.Card.Flip(compColor);
+            waitBeforeShowingCard(100000000);
             endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
-            waitBeforeShowingCard(100000000);
             playCurrentPlayerTurn();
         }
 
         private void waitBeforeShowingCard(int i_Interval)
         {
-            Timer waitTimer = new Timer();
             int count = 0;
-            waitTimer.Interval = i_Interval;
-            waitTimer.Tick += new EventHandler(waitTimer_Tick);
-            waitTimer.Start();
             while (count < i_Interval)
             {
                 count++;
             }
-            waitTimer.Stop();
-            waitTimer.Tick -= new EventHandler(waitTimer_Tick);
-        }
-
-        void waitTimer_Tick(object sender, EventArgs e)
-        {
-            v_StopTimer = true;
         }
     }
 }
