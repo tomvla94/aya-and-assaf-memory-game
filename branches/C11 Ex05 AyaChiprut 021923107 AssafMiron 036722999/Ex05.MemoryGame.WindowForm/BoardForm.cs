@@ -30,7 +30,6 @@ namespace Ex05.MemoryGame.WindowForm
         private Label m_LabelSecondPlayerScore;
         private Button m_ButtonExit;
         private bool v_EndPlayerMessageWasShown;
-        private bool v_StopTimer;
 
         /// <summary>
         /// The Main Function for running the Game
