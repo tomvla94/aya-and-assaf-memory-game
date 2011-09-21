@@ -11,6 +11,10 @@ namespace Ex05.MemoryGame.WindowForm
     {
         private MemSquare m_Square;
 
+        /// <summary>
+        /// Gets the Square Property
+        /// Sets the Input Sqaure and Attach it as an IFlipedObserver
+        /// </summary>
         public MemSquare Square
         {
             get { return m_Square; }
@@ -21,6 +25,11 @@ namespace Ex05.MemoryGame.WindowForm
             }
         }
 
+        /// <summary>
+        /// Shows the Result of the Fliped card on the MemCardButton
+        /// </summary>
+        /// <param name="i_PlayerColor">Used for a back color of the button</param>
+        /// <param name="i_IsHidden">The card hidden state</param>
         public void CardFliped(string i_PlayerColor, bool i_IsHidden)
         {
             if (!i_IsHidden)

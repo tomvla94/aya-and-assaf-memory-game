@@ -20,6 +20,7 @@ namespace Ex05.MemoryGame.WindowForm
     /// </summary>
     public class BoardForm : Form
     {
+        private const int k_NumerOfTicksToWait = 100000000;
         private MemGameBL m_MemoryLogic = new MemGameBL();
         private int m_BoardHeight;
         private int m_BoardWidth;
@@ -41,18 +42,22 @@ namespace Ex05.MemoryGame.WindowForm
 
             if (gameSettings.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
+                // Initialize the Players in the Game
                 initPlayers(gameSettings.FirstPlayerName, gameSettings.SecondPlayerName);
 
+                // Save the Board Width and Height
                 m_BoardHeight = gameSettings.BoardHeight;
                 m_BoardWidth = gameSettings.BoardWidth;
 
-                showGameBoard(m_MemoryLogic.Board);
+                showGameBoard();
             }
         }
 
-        private void showGameBoard(MemBoard memBoard)
+        private void showGameBoard()
         {
+            // Initialize the Form Board Size
             initBoardSize();
+            // Initialize all the controls on the form
             initControls();
 
             this.ShowDialog();
@@ -177,43 +182,21 @@ namespace Ex05.MemoryGame.WindowForm
             if (m_MemoryLogic.CurrentPlayer.Type == Player.ePlayerType.Human)
             {
                 MemCardButton clickedButton = (MemCardButton)sender;
-                if (IsButtonClicked(clickedButton))
+                bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
+                if (m_PrevClickedButton == null)
                 {
-                    bool keepCardsVisible = m_MemoryLogic.PlayPlayerTurn(clickedButton.Square);
-                    if (m_PrevClickedButton == null)
-                    {
-                        v_EndPlayerMessageWasShown = false;
-                        m_PrevClickedButton = clickedButton;
-                    }
-                    else
-                    {
-                        endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible);
-
-                        m_PrevClickedButton = null;
-                        playCurrentPlayerTurn();
-                    }
+                    v_EndPlayerMessageWasShown = false;
+                    m_PrevClickedButton = clickedButton;
                 }
                 else
                 {
-                    clickedButton.BackColor = Color.Empty;
-                    clickedButton.Enabled = true;
+                    waitBeforeShowingCard(k_NumerOfTicksToWait);
+                    endPlayerTurn(m_PrevClickedButton.Square, clickedButton.Square, keepCardsVisible);
+
+                    m_PrevClickedButton = null;
+                    playCurrentPlayerTurn();
                 }
             }
-        }
-
-        private bool IsButtonClicked(Button i_ButtonClicked)
-        {
-            bool retButtonIsClicked = false;
-            if (i_ButtonClicked.BackColor == Color.Empty)
-            {
-                retButtonIsClicked = false;
-            }
-            else
-            {
-                retButtonIsClicked = true;
-            }
-
-            return retButtonIsClicked;
         }
 
         private bool endPlayerTurn(MemSquare i_FirstSquare, MemSquare i_SecondSquare, bool i_IsMatch)
@@ -258,6 +241,10 @@ namespace Ex05.MemoryGame.WindowForm
             }
         }
 
+        /// <summary>
+        /// Shows the Appropiate Message for the User
+        /// </summary>
+        /// <param name="i_UserGotPoint"></param>
         private void showEndTurnMessage(bool i_UserGotPoint)
         {
             string infoMessage;
@@ -290,13 +277,17 @@ namespace Ex05.MemoryGame.WindowForm
             string compColor = m_MemoryLogic.CurrentPlayer.Color.ToString();
             m_MemoryLogic.PlayComputerTurn(out firstSquareChoise, out matchSquareChoice, out keepCardsVisible);
             matchSquareChoice.Card.Flip(compColor);
-            waitBeforeShowingCard(100000000);
+            waitBeforeShowingCard(k_NumerOfTicksToWait);
             matchSquareChoice.Card.Flip(compColor);
-            waitBeforeShowingCard(100000000);
+            waitBeforeShowingCard(k_NumerOfTicksToWait);
             endPlayerTurn(firstSquareChoise, matchSquareChoice, keepCardsVisible);
             playCurrentPlayerTurn();
         }
 
+        /// <summary>
+        /// Creates a Delay the size of the Interval
+        /// </summary>
+        /// <param name="i_Interval"></param>
         private void waitBeforeShowingCard(int i_Interval)
         {
             int count = 0;
