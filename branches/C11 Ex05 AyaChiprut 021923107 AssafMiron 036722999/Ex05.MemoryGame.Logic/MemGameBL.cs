@@ -68,12 +68,12 @@ namespace Ex05.MemoryGame.Logic
 
         public int GetMaximumBoardSize()
         {
-            return m_MemoryBoard.GetMaxSize();
+            return m_MemoryBoard.MaxSize;
         }
 
         public int GetMinimumBoardSize()
         {
-            return m_MemoryBoard.GetMinSize();
+            return m_MemoryBoard.MinSize;
         }
 
         /// <summary>

@@ -25,44 +25,32 @@ namespace Ex05.MemoryGame.Logic
 
         public int Width
         {
-            get
-            {
-                return m_BoardWidth;
-            }
+            get { return m_BoardWidth; }
         }
 
         public int Height
         {
-            get
-            {
-                return m_BoardHeight;
-            }
+            get { return m_BoardHeight; }
         }
 
-        public int GetMaxSize()
+        public int MaxSize
         {
-            return k_MaxBoradSizeValue;
+            get { return k_MaxBoradSizeValue; }
         }
 
-        public int GetMinSize()
+        public int MinSize
         {
-            return k_MinBoradSizeValue;
+            get { return k_MinBoradSizeValue; }
         }
 
         public int NumberOfVisibleSquares
         {
-            get
-            {
-                return countNumberOfVisibleSquares();
-            }
+            get { return countNumberOfVisibleSquares(); }
         }
 
         public MemSquare this[int i_Row, int i_Col]
         {
-            get
-            {
-                return m_Squares[i_Row, i_Col];
-            }
+            get { return m_Squares[i_Row, i_Col]; }
         }
 
         /// <summary>
@@ -94,13 +82,13 @@ namespace Ex05.MemoryGame.Logic
         {
             int counter = m_BoardWidth + 1;
             int numOfTimesLetterUsed = 1;
-            for (int i = 0; i < m_BoardHeight; i ++)
+            for (int i = 0; i < m_BoardHeight; i++)
             {
                 for (int j = 0; j < m_BoardWidth; j++)
                 {
                     char letter = (char)('B' + counter);
                     m_Squares[i, j] = new MemSquare(i, j, letter.ToString());
-                    
+
                     if (numOfTimesLetterUsed == 2)
                     {
                         counter++;

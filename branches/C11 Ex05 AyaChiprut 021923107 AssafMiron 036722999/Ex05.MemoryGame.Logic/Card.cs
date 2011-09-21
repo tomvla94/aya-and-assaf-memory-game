@@ -32,6 +32,10 @@ namespace Ex05.MemoryGame.Logic
             set { v_IsHidden = value; }
         }
 
+        /// <summary>
+        /// Flips the Card and Informs the Observers that the Card is Fliped
+        /// </summary>
+        /// <param name="i_PlayerColor">The Player Color to pass the Observers</param>
         public void Flip(string i_PlayerColor)
         {
             v_IsHidden = !v_IsHidden;
@@ -41,6 +45,11 @@ namespace Ex05.MemoryGame.Logic
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i_CardToCheck"></param>
+        /// <returns></returns>
         public bool IsPairWith(Card i_CardToCheck)
         {
             return m_Sign.CompareTo(i_CardToCheck.Sign) == 0;
