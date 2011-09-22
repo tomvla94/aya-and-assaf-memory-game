@@ -57,6 +57,7 @@ namespace Ex05.MemoryGame.WindowForm
         {
             // Initialize the Form Board Size
             initBoardSize();
+
             // Initialize all the controls on the form
             initControls();
 
